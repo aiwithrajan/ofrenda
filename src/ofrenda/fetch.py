@@ -89,6 +89,10 @@ def fetch_repo(
                 result[name] = len(cached)
                 continue
         rows, truncated = gh.paginate(path, params, max_pages=caps[name])
+        if name == "issues" and not rows and bool(meta.get("has_issues")):
+            # An empty issues stream on a repo that has issues means the fetch
+            # was neutered (rate limit / transient 404) - never cache silence.
+            raise RuntimeError(f"{full_name}: issues empty though has_issues=true")
         _write(CACHE / slug / f"{name}.ndjson", rows)
         result[name] = len(rows)
         if truncated:

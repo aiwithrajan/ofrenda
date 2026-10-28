@@ -137,7 +137,7 @@ def discover_zero_release(gh: GitHub, limit: int = 3, max_scans: int = 12) -> li
     return names[:limit]
 
 
-def discover_single_commit(gh: GitHub, limit: int = 3, max_scans: int = 14) -> list[str]:
+def discover_single_commit(gh: GitHub, limit: int = 3, max_scans: int = 22) -> list[str]:
     """Asking a commits page for 2 items and receiving 1 means exactly one commit."""
     names: list[str] = []
     scanned = 0
@@ -145,6 +145,8 @@ def discover_single_commit(gh: GitHub, limit: int = 3, max_scans: int = 14) -> l
     queries = (
         "size:<8 stars:50..500 pushed:<2019-01-01 language:python",
         "size:<8 stars:50..500 pushed:<2019-01-01 language:javascript",
+        "size:<15 stars:100..800 created:<2018-01-01 language:python",
+        "size:<15 stars:100..600 pushed:<2018-01-01 language:javascript",
     )
     for query in queries:
         if len(names) >= limit or scanned >= max_scans:

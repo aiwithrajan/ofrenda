@@ -1,0 +1,21 @@
+OFRENDA PROBE — 2026-10-28T18:32:49
+PRD §13 + §20 prereg: T grid Jan 1 2015..2023 · caps 40/60/40/5, newest-first · masks before labels · kill-switch = median > 90 calls/repo
+    rate limit low (29); sleeping 53s
+    rate limit low (29); sleeping 53s
+    rate limit low (29); sleeping 53s
+    rate limit low (29); sleeping 56s
+    rate limit low (29); sleeping 55s
+[discovery] archived         3/3 chosen -> reddit-archive/reddit, youfou/wxpy, alexjc/neural-enhance
+[discovery] issues-disabled  3/3 chosen -> vinta/awesome-python, Kristories/awesome-guidelines, AwesomeHomelab/awesome-homelab
+[discovery] zero-releases    3/3 chosen -> zihangdai/mos, ryanohoro/csbruter, ofirnachum/sequence_gan
+[discovery] single-commit    2/3 chosen -> ojasookert/CVE-2017-0785, neex/ffmpeg-avi-m3u-xbin
+[discovery] fixed rows: controls x5, bot-maintainer x3, corpse x1
+[fetch] control          psf/requests ...
+        FAILED: fetch failed: IncompleteRead: IncompleteRead(376690 bytes read, 53429 more expected)
+[fetch] control          pallets/flask ...
+        FAILED: fetch failed: IncompleteRead: IncompleteRead(481538 bytes read, 7188 more expected)
+[fetch] control          expressjs/express ...
+        FAILED: fetch failed: IncompleteRead: IncompleteRead(503282 bytes read, 61061 more expected)
+[fetch] control          axios/axios ...
+        ok — 3 calls, 1575.2s (cache 2016-04-27 .. 2026-10-26)
+[fetch] control          tiangolo/fastapi ...

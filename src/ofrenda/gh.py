@@ -7,6 +7,7 @@ zero installs.
 
 from __future__ import annotations
 
+import http.client
 import json
 import os
 import subprocess
@@ -86,23 +87,41 @@ class GitHub:
                     self.search_calls += 1
                 else:
                     self.calls += 1
-                rem = headers.get("X-RateLimit-Remaining")
-                rst = headers.get("X-RateLimit-Reset")
-                if rem is not None:
-                    self.remaining = int(rem)
-                if rst is not None:
-                    self.reset_at = float(rst)
+                    # Search has its own per-minute budget; feeding its headers
+                    # into the core limiter stalls every core call artificially.
+                    rem = headers.get("X-RateLimit-Remaining")
+                    rst = headers.get("X-RateLimit-Reset")
+                    if rem is not None:
+                        self.remaining = int(rem)
+                    if rst is not None:
+                        self.reset_at = float(rst)
                 return data
             except urllib.error.HTTPError as exc:
                 if exc.code == 404:
                     return None
                 if exc.code in (403, 429):
-                    time.sleep(min(60, 2 ** attempt * 5))
+                    headers = exc.headers or {}
+                    remain = headers.get("X-RateLimit-Remaining")
+                    retry_after = headers.get("Retry-After")
+                    reset = headers.get("X-RateLimit-Reset")
+                    if remain == "0" and reset:
+                        wait = max(1.0, float(reset) - time.time() + 2)
+                        print(f"    core budget exhausted; sleeping {wait:.0f}s to reset", flush=True)
+                        time.sleep(wait)
+                        continue
+                    time.sleep(min(60, float(retry_after) if retry_after else 2 ** attempt * 5))
                     continue
                 if exc.code == 422:
                     return None
                 raise
-            except (urllib.error.URLError, TimeoutError):
+            except (
+                urllib.error.URLError,
+                TimeoutError,
+                ConnectionError,
+                http.client.HTTPException,
+            ):
+                # HTTPException covers IncompleteRead/RemoteDisconnected: big
+                # JSON payloads die mid-read on flaky links; retry, don't abort.
                 time.sleep(2 ** attempt)
         return None
 
@@ -120,9 +139,14 @@ class GitHub:
         for page in range(1, max_pages + 1):
             base["page"] = page
             batch = self.get(path, base)
+            if batch is None and page > 1:
+                # A stream that dies mid-pagination is an anomaly (rate limit,
+                # transient network) - returning "empty" would cache silence.
+                raise RuntimeError(f"{path}: stream broke mid-pagination at page {page}")
             if not batch:
                 return items, False
             items.extend(batch)
             if len(batch) < per_page:
                 return items, False
+            time.sleep(0.5)  # pacing: secondary rate limits punish bursts
         return items, True
