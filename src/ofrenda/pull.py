@@ -403,30 +403,38 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.roster is not None and not args.roster.exists():
         raise SystemExit(f"--roster {args.roster}: file not found (discover first)")
-    existing = ROSTER if (args.roster is None and not args.fresh) else None
-    if existing and existing.exists():
-        plan = json.loads(existing.read_text(encoding="utf-8"))
-        if plan.get("n") == args.n:
-            print(f"roster: reusing {existing} (n={args.n})")
-        else:
-            existing = None  # roster shape is n-shaped; rebuild
-    if not existing:
-        gh = GitHub()
-        roster, receipts = discover_roster(gh, args.n)
-        OUT_DIR.mkdir(parents=True, exist_ok=True)
-        plan = {"when": dt.datetime.now().isoformat(timespec="seconds"),
-                "n": args.n, "receipts": receipts, "roster": roster}
-        ROSTER.write_text(json.dumps(plan, ensure_ascii=False, indent=1) + "\n",
-                          encoding="utf-8")
-        counts = {}
-        for entry in roster:
-            counts[entry["group"]] = counts.get(entry["group"], 0) + 1
-        print(f"roster: {len(roster)} entries for n={args.n} -> {counts}"
-              f" (search calls {gh.search_calls})")
-        if args.discover_only:
-            return 0
 
-    run(GitHub(), args.roster, limit=args.limit)
+    # Caller-managed roster: pull it as-is, no discovery.
+    if args.roster is not None:
+        run(GitHub(), args.roster, limit=args.limit)
+        return 0
+
+    # Reuse pull_out/roster.json when it exists and was built for this n;
+    # a mismatched n rebuilds it (roster shape is n-shaped).
+    if not args.fresh and ROSTER.exists():
+        plan = json.loads(ROSTER.read_text(encoding="utf-8"))
+        if plan.get("n") == args.n:
+            print(f"roster: reusing {ROSTER} (n={args.n})")
+            run(GitHub(), None, limit=args.limit)
+            return 0
+        print(f"roster: n={plan.get('n')} != {args.n} - rediscovering")
+
+    gh = GitHub()
+    roster, receipts = discover_roster(gh, args.n)
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    plan = {"when": dt.datetime.now().isoformat(timespec="seconds"),
+            "n": args.n, "receipts": receipts, "roster": roster}
+    ROSTER.write_text(json.dumps(plan, ensure_ascii=False, indent=1) + "\n",
+                      encoding="utf-8")
+    counts = {}
+    for entry in roster:
+        counts[entry["group"]] = counts.get(entry["group"], 0) + 1
+    print(f"roster: {len(roster)} entries for n={args.n} -> {counts}"
+          f" (search calls {gh.search_calls})")
+    if args.discover_only:
+        return 0
+
+    run(GitHub(), None, limit=args.limit)
     return 0
 
 

@@ -199,5 +199,62 @@ class RunTest(unittest.TestCase):
             self.assertEqual(summary["tallies"]["dead"]["ok"], 2)
 
 
+class MainTest(unittest.TestCase):
+    """Covers the fresh-start path that crashed on first launch (roster absent)."""
+
+    class _StubGH(StubGH):
+        pass
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.tmp_path = Path(self.tmp.name)
+        patchers = [
+            mock.patch.object(pull, "ROSTER", self.tmp_path / "roster.json"),
+            mock.patch.object(pull, "JOURNAL", self.tmp_path / "journal.ndjson"),
+            mock.patch.object(pull, "OUT_DIR", self.tmp_path),
+            mock.patch.object(pull, "SEARCH_PACE", 0.0),
+            mock.patch.object(pull, "REPO_PAUSE", 0.0),
+        ]
+        for patcher in patchers:
+            patcher.start()
+            self.addCleanup(patcher.stop)
+
+    def test_fresh_start_discovers_then_pulls(self):
+        fetched = []
+
+        def fake_fetch(gh, name, **kwargs):
+            fetched.append(name)
+            return {"ok": True, "calls": 61, "seconds": 1.0}
+
+        with mock.patch.object(pull, "GitHub", self._StubGH), \
+             mock.patch.object(pull, "fetch_repo", fake_fetch):
+            self.assertEqual(pull.main(["--n", "6", "--limit", "2"]), 0)
+        self.assertTrue((self.tmp_path / "roster.json").exists())
+        self.assertEqual(len(fetched), 2)
+
+        first_batch = list(fetched)
+        self.assertEqual(len(first_batch), 2)
+
+        # rerun: roster reused, journaled repos skipped, no new discovery
+        with mock.patch.object(pull, "GitHub", self._StubGH), \
+             mock.patch.object(pull, "fetch_repo", fake_fetch):
+            self.assertEqual(pull.main(["--n", "6"]), 0)
+        self.assertEqual(fetched[:2], first_batch)          # nothing re-fetched
+        self.assertEqual(len(fetched), 6)                   # 2 + remaining 4
+
+    def test_n_mismatch_rebuilds(self):
+        with mock.patch.object(pull, "GitHub", self._StubGH), \
+             mock.patch.object(pull, "fetch_repo", lambda gh, n, **k: {"ok": True}):
+            pull.main(["--n", "6", "--limit", "1"])
+        first = (self.tmp_path / "roster.json").read_text()
+        with mock.patch.object(pull, "GitHub", self._StubGH), \
+             mock.patch.object(pull, "fetch_repo", lambda gh, n, **k: {"ok": True}):
+            pull.main(["--n", "12", "--limit", "1"])
+        second = (self.tmp_path / "roster.json").read_text()
+        self.assertNotEqual(first, second)
+        self.assertEqual(json.loads(second)["n"], 12)
+
+
 if __name__ == "__main__":
     unittest.main()
