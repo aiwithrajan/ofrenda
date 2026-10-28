@@ -24,10 +24,13 @@ the development process explicit and checkable.
 - Phase 3: **complete** — `features.py` (registered f1–f6 + bf50 + controls,
   `build_rows` -> `derived/rows.ndjson`), `pull.py` (cell-grid roster
   discovery, 0.6/0.2/0.2 strata, matched alive controls, journaled resumable
-  serial pull, 5-failure abort; PRD §20 19:24), and 47 unit tests over
+  serial pull, 5-failure abort; PRD §20 19:24), and 52 unit tests over
   synthetic fixtures (`tests/`) — zero API calls; `py_compile` gate clean.
-- Phase 4: **probe run 2 executing in background**; run-1 aborted with fetch-layer
-  defects fixed under §20 19:12 (no label was ever computed).
+- Phase 4: **complete 21:22** — run 2 verdict: kill-switch fired
+  (median 131 calls/repo > 90) ⇒ **n = 150 locked** (strata 90/30/30).
+  Fetch hardening round 2 registered (§20 21:22): `RateLimited` classified
+  separately from 404, 8 retries, Retry-After backoff, 0.75 s page pacing,
+  2 s per-repo pause.
 - Neuro: `gemma3:12b` downloaded and verified locally — interview runtime ready.
 - Blocked on human (before Phase 6): TabPFN licence sign at platform.priorlabs.ai;
   promo credits (Tinker, Ultramarine $5, .tech).

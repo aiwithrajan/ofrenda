@@ -1,0 +1,591 @@
+{
+ "when": "2026-10-28T21:21:23",
+ "config": {
+  "grid": [
+   "2015-01-01",
+   "2016-01-01",
+   "2017-01-01",
+   "2018-01-01",
+   "2019-01-01",
+   "2020-01-01",
+   "2021-01-01",
+   "2022-01-01",
+   "2023-01-01"
+  ],
+  "mix_t": "2023-01-01",
+  "page_caps": {
+   "issues": 40,
+   "comments": 60,
+   "commits": 40,
+   "releases": 5
+  },
+  "kill_switch_median_calls_per_repo": 90
+ },
+ "gh": {
+  "core_calls": 497,
+  "search_calls": 5,
+  "remaining": 4872
+ },
+ "discovery": {
+  "archived": {
+   "candidates": [
+    "reddit-archive/reddit",
+    "youfou/wxpy",
+    "alexjc/neural-enhance"
+   ],
+   "chosen": [
+    "reddit-archive/reddit",
+    "youfou/wxpy",
+    "alexjc/neural-enhance"
+   ]
+  },
+  "issues-disabled": {
+   "candidates": [
+    "vinta/awesome-python",
+    "Kristories/awesome-guidelines",
+    "AwesomeHomelab/awesome-homelab"
+   ],
+   "chosen": [
+    "vinta/awesome-python",
+    "Kristories/awesome-guidelines",
+    "AwesomeHomelab/awesome-homelab"
+   ]
+  },
+  "zero-releases": {
+   "candidates": [
+    "zihangdai/mos",
+    "ryanohoro/csbruter",
+    "ofirnachum/sequence_gan"
+   ],
+   "chosen": [
+    "zihangdai/mos",
+    "ryanohoro/csbruter",
+    "ofirnachum/sequence_gan"
+   ]
+  },
+  "single-commit": {
+   "candidates": [
+    "ojasookert/CVE-2017-0785",
+    "neex/ffmpeg-avi-m3u-xbin",
+    "twjiang/fact_triple_extraction"
+   ],
+   "chosen": [
+    "ojasookert/CVE-2017-0785",
+    "neex/ffmpeg-avi-m3u-xbin",
+    "twjiang/fact_triple_extraction"
+   ]
+  }
+ },
+ "repos": [
+  {
+   "group": "control",
+   "repo": "psf/requests",
+   "ok": true,
+   "archived": false,
+   "archived_at": null,
+   "stars": 54589,
+   "language": "Python",
+   "created_at": "2011-02-13T18:38:17Z",
+   "has_issues": true,
+   "streams": {
+    "issues": 4000,
+    "comments": 6000,
+    "commits": 4000,
+    "releases": 19
+   },
+   "truncated": [
+    "issues",
+    "comments",
+    "commits"
+   ],
+   "calls": 142,
+   "seconds": 667.5,
+   "span": {
+    "from": "2012-12-22",
+    "to": "2026-10-28"
+   },
+   "bot_commit_share": 0.017,
+   "login_none_commits": 482,
+   "ghost_comments": 0,
+   "coverage": {
+    "f1_release_decay": true,
+    "f2_commit_entropy": true,
+    "f3_backlog_slope": true,
+    "f4_latency_trend": true,
+    "f5_response_rate": true,
+    "f6_maint_volume": true,
+    "bf50": true
+   },
+   "rows": [
+    {
+     "t": "2015-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 0,
+     "responses": 0,
+     "human_events": 679
+    },
+    {
+     "t": "2016-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 0,
+     "responses": 0,
+     "human_events": 962
+    },
+    {
+     "t": "2017-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 0,
+     "responses": 0,
+     "human_events": 806
+    },
+    {
+     "t": "2018-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 2,
+     "human_events": 423
+    },
+    {
+     "t": "2019-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 159,
+     "human_events": 1650
+    },
+    {
+     "t": "2020-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 215,
+     "human_events": 1950
+    },
+    {
+     "t": "2021-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 296,
+     "human_events": 1710
+    },
+    {
+     "t": "2022-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 232,
+     "human_events": 1179
+    },
+    {
+     "t": "2023-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 155,
+     "human_events": 1229
+    }
+   ],
+   "archived_anchors": []
+  },
+  {
+   "group": "control",
+   "repo": "pallets/flask",
+   "ok": true,
+   "archived": false,
+   "archived_at": null,
+   "stars": 74926,
+   "language": "Python",
+   "created_at": "2010-04-06T11:11:59Z",
+   "has_issues": true,
+   "streams": {
+    "issues": 4000,
+    "comments": 6000,
+    "commits": 4000,
+    "releases": 38
+   },
+   "truncated": [
+    "issues",
+    "comments",
+    "commits"
+   ],
+   "calls": 142,
+   "seconds": 678.1,
+   "span": {
+    "from": "2013-06-14",
+    "to": "2026-10-27"
+   },
+   "bot_commit_share": 0.048,
+   "login_none_commits": 174,
+   "ghost_comments": 0,
+   "coverage": {
+    "f1_release_decay": true,
+    "f2_commit_entropy": true,
+    "f3_backlog_slope": true,
+    "f4_latency_trend": true,
+    "f5_response_rate": true,
+    "f6_maint_volume": true,
+    "bf50": true
+   },
+   "rows": [
+    {
+     "t": "2015-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 0,
+     "responses": 0,
+     "human_events": 451
+    },
+    {
+     "t": "2016-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 0,
+     "responses": 0,
+     "human_events": 650
+    },
+    {
+     "t": "2017-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 326,
+     "human_events": 1771
+    },
+    {
+     "t": "2018-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 564,
+     "human_events": 2412
+    },
+    {
+     "t": "2019-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 422,
+     "human_events": 1812
+    },
+    {
+     "t": "2020-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 447,
+     "human_events": 1837
+    },
+    {
+     "t": "2021-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 427,
+     "human_events": 1833
+    },
+    {
+     "t": "2022-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 341,
+     "human_events": 1437
+    },
+    {
+     "t": "2023-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 233,
+     "human_events": 923
+    }
+   ],
+   "archived_anchors": []
+  },
+  {
+   "group": "control",
+   "repo": "expressjs/express",
+   "ok": false,
+   "error": "fetch failed: RuntimeError: /repos/expressjs/express/issues/comments: stream broke mid-pagination at page 27"
+  },
+  {
+   "group": "control",
+   "repo": "axios/axios",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "control",
+   "repo": "tiangolo/fastapi",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "bot-maintainer",
+   "repo": "renovatebot/renovate",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "bot-maintainer",
+   "repo": "semantic-release/semantic-release",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "bot-maintainer",
+   "repo": "dependabot/dependabot-core",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "corpse",
+   "repo": "request/request",
+   "ok": true,
+   "archived": false,
+   "archived_at": null,
+   "stars": 25486,
+   "language": "JavaScript",
+   "created_at": "2011-01-23T01:25:14Z",
+   "has_issues": true,
+   "streams": {
+    "issues": 3477,
+    "comments": 6000,
+    "commits": 2270,
+    "releases": 0
+   },
+   "truncated": [
+    "comments"
+   ],
+   "calls": 120,
+   "seconds": 281.8,
+   "span": {
+    "from": "2010-05-07",
+    "to": "2026-10-20"
+   },
+   "bot_commit_share": 0.022,
+   "login_none_commits": 170,
+   "ghost_comments": 0,
+   "coverage": {
+    "f1_release_decay": false,
+    "f2_commit_entropy": true,
+    "f3_backlog_slope": true,
+    "f4_latency_trend": true,
+    "f5_response_rate": true,
+    "f6_maint_volume": true,
+    "bf50": true
+   },
+   "rows": [
+    {
+     "t": "2015-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 387,
+     "human_events": 2061
+    },
+    {
+     "t": "2016-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 207,
+     "human_events": 1994
+    },
+    {
+     "t": "2017-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 77,
+     "human_events": 1441
+    },
+    {
+     "t": "2018-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 37,
+     "human_events": 1083
+    },
+    {
+     "t": "2019-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 18,
+     "human_events": 804
+    },
+    {
+     "t": "2020-01-01T00:00:00+00:00",
+     "y1": 0,
+     "y2": 0,
+     "responses": 7,
+     "human_events": 681
+    },
+    {
+     "t": "2021-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 0,
+     "responses": 0,
+     "human_events": 221
+    },
+    {
+     "t": "2022-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 0,
+     "responses": 0,
+     "human_events": 96
+    },
+    {
+     "t": "2023-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 0,
+     "responses": 0,
+     "human_events": 71
+    }
+   ],
+   "archived_anchors": []
+  },
+  {
+   "group": "archived",
+   "repo": "reddit-archive/reddit",
+   "ok": false,
+   "error": "fetch failed: RuntimeError: /repos/reddit-archive/reddit/issues: stream broke mid-pagination at page 3"
+  },
+  {
+   "group": "archived",
+   "repo": "youfou/wxpy",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "archived",
+   "repo": "alexjc/neural-enhance",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "issues-disabled",
+   "repo": "vinta/awesome-python",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "issues-disabled",
+   "repo": "Kristories/awesome-guidelines",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "issues-disabled",
+   "repo": "AwesomeHomelab/awesome-homelab",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "zero-releases",
+   "repo": "zihangdai/mos",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "zero-releases",
+   "repo": "ryanohoro/csbruter",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "zero-releases",
+   "repo": "ofirnachum/sequence_gan",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "single-commit",
+   "repo": "ojasookert/CVE-2017-0785",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "single-commit",
+   "repo": "neex/ffmpeg-avi-m3u-xbin",
+   "ok": false,
+   "error": "fetch failed: repo not found"
+  },
+  {
+   "group": "single-commit",
+   "repo": "twjiang/fact_triple_extraction",
+   "ok": true,
+   "archived": false,
+   "archived_at": null,
+   "stars": 332,
+   "language": "Python",
+   "created_at": "2016-03-09T15:03:18Z",
+   "has_issues": true,
+   "streams": {
+    "issues": 10,
+    "comments": 32,
+    "commits": 1,
+    "releases": 0
+   },
+   "truncated": [],
+   "calls": 5,
+   "seconds": 4.0,
+   "span": {
+    "from": "2016-03-10",
+    "to": "2023-07-31"
+   },
+   "bot_commit_share": 0.0,
+   "login_none_commits": 0,
+   "ghost_comments": 0,
+   "coverage": {
+    "f1_release_decay": false,
+    "f2_commit_entropy": false,
+    "f3_backlog_slope": true,
+    "f4_latency_trend": true,
+    "f5_response_rate": true,
+    "f6_maint_volume": true,
+    "bf50": true
+   },
+   "rows": [
+    {
+     "t": "2018-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 0,
+     "responses": 0,
+     "human_events": 11
+    },
+    {
+     "t": "2019-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 0,
+     "responses": 0,
+     "human_events": 16
+    },
+    {
+     "t": "2020-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 0,
+     "responses": 0,
+     "human_events": 6
+    },
+    {
+     "t": "2021-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 0,
+     "responses": 0,
+     "human_events": 2
+    },
+    {
+     "t": "2022-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 0,
+     "responses": 0,
+     "human_events": 1
+    },
+    {
+     "t": "2023-01-01T00:00:00+00:00",
+     "y1": 1,
+     "y2": 1,
+     "responses": 0,
+     "human_events": 0
+    }
+   ],
+   "archived_anchors": []
+  }
+ ],
+ "kill_switch": {
+  "min": 5,
+  "median": 131.0,
+  "max": 142,
+  "n": 4,
+  "threshold": 90,
+  "projected_hours_300": 7.86,
+  "projected_hours_150": 3.93,
+  "verdict": "DESCOPE → n=150"
+ },
+ "wallclock_seconds": 7570.0
+}

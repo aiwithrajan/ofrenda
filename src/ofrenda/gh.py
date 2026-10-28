@@ -19,6 +19,16 @@ import urllib.request
 API = "https://api.github.com"
 
 
+class RateLimited(RuntimeError):
+    """403/429 retries exhausted. None from get() now means a genuine 404/422.
+
+    Probe run 2 finding (PRD §20, 21:22): sustained secondary-limit 403s
+    exhausted the old 4-retry budget and came back as None, which the fetch
+    layer misreported as "repo not found" for repos that exist. Rate limiting
+    is its own failure mode now, not a lookup miss.
+    """
+
+
 def resolve_token() -> str:
     for var in ("GITHUB_TOKEN", "GH_TOKEN"):
         value = os.environ.get(var)
@@ -74,7 +84,7 @@ class GitHub:
             print(f"    rate limit low ({self.remaining}); sleeping {wait:.0f}s")
             time.sleep(wait)
 
-    def get(self, path: str, params: dict | None = None, retries: int = 4):
+    def get(self, path: str, params: dict | None = None, retries: int = 8):
         url = API + path
         if params:
             url += "?" + urllib.parse.urlencode(params)
@@ -109,7 +119,10 @@ class GitHub:
                         print(f"    core budget exhausted; sleeping {wait:.0f}s to reset", flush=True)
                         time.sleep(wait)
                         continue
-                    time.sleep(min(60, float(retry_after) if retry_after else 2 ** attempt * 5))
+                    # Secondary limits: honor Retry-After (capped), else back off
+                    # hard — episodes outlast the old 60 s ceiling.
+                    wait = float(retry_after) if retry_after else 2 ** attempt * 15
+                    time.sleep(min(130, wait))
                     continue
                 if exc.code == 422:
                     return None
@@ -123,7 +136,7 @@ class GitHub:
                 # HTTPException covers IncompleteRead/RemoteDisconnected: big
                 # JSON payloads die mid-read on flaky links; retry, don't abort.
                 time.sleep(2 ** attempt)
-        return None
+        raise RateLimited(f"{path}: 403/429 on every attempt ({retries})")
 
     def paginate(
         self,
@@ -148,5 +161,5 @@ class GitHub:
             items.extend(batch)
             if len(batch) < per_page:
                 return items, False
-            time.sleep(0.5)  # pacing: secondary rate limits punish bursts
+            time.sleep(0.75)  # pacing: secondary limits punish bursts (§20 21:22)
         return items, True

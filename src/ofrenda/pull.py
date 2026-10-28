@@ -47,6 +47,7 @@ JOURNAL = OUT_DIR / "journal.ndjson"
 
 SPECIMEN = "request/request"
 FAIL_LIMIT = 5
+REPO_PAUSE = 2.0  # seconds between repos: stay off the abuse detector (§20 21:22)
 SEARCH_PACE = 2.2  # seconds between search calls (~27/min against 30/min cap)
 
 STAR_BANDS = ((100, 300), (300, 1000), (1000, 3000), (3000, None))
@@ -340,6 +341,7 @@ def run(
             print(f"[skip] {group:<10} {name} (journaled)")
             continue
         print(f"[pull] {group:<10} {name} ...", flush=True)
+        time.sleep(REPO_PAUSE)
         try:
             stat = fetch_repo(gh, name)
         except Exception as exc:  # journal-and-continue; abort is scripted

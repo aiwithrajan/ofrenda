@@ -154,6 +154,7 @@ class RunTest(unittest.TestCase):
                 return {"ok": True, "calls": 61, "seconds": 9.0}
 
             with mock.patch.object(pull, "JOURNAL", Path(tmp) / "journal.ndjson"), \
+                 mock.patch.object(pull, "REPO_PAUSE", 0.0), \
                  mock.patch.object(pull, "fetch_repo", fake_fetch):
                 summary = pull.run(StubGH(), roster_path)
                 self.assertFalse(summary["aborted"])
@@ -176,6 +177,7 @@ class RunTest(unittest.TestCase):
                 raise RuntimeError("down")
 
             with mock.patch.object(pull, "JOURNAL", Path(tmp) / "journal.ndjson"), \
+                 mock.patch.object(pull, "REPO_PAUSE", 0.0), \
                  mock.patch.object(pull, "fetch_repo", fake_fetch):
                 summary = pull.run(StubGH(), roster_path)
             self.assertTrue(summary["aborted"])
@@ -191,6 +193,7 @@ class RunTest(unittest.TestCase):
                 return {"ok": True, "calls": 61, "seconds": 9.0}
 
             with mock.patch.object(pull, "JOURNAL", Path(tmp) / "journal.ndjson"), \
+                 mock.patch.object(pull, "REPO_PAUSE", 0.0), \
                  mock.patch.object(pull, "fetch_repo", fake_fetch):
                 summary = pull.run(StubGH(), roster_path, limit=2)
             self.assertEqual(summary["tallies"]["dead"]["ok"], 2)

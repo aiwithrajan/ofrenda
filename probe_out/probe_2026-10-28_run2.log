@@ -1,0 +1,125 @@
+OFRENDA PROBE — 2026-10-28T19:15:13
+PRD §13 + §20 prereg: T grid Jan 1 2015..2023 · caps 40/60/40/5, newest-first · masks before labels · kill-switch = median > 90 calls/repo
+[discovery] archived         3/3 chosen -> reddit-archive/reddit, youfou/wxpy, alexjc/neural-enhance
+[discovery] issues-disabled  3/3 chosen -> vinta/awesome-python, Kristories/awesome-guidelines, AwesomeHomelab/awesome-homelab
+[discovery] zero-releases    3/3 chosen -> zihangdai/mos, ryanohoro/csbruter, ofirnachum/sequence_gan
+[discovery] single-commit    3/3 chosen -> ojasookert/CVE-2017-0785, neex/ffmpeg-avi-m3u-xbin, twjiang/fact_triple_extraction
+[discovery] fixed rows: controls x5, bot-maintainer x3, corpse x1
+[fetch] control          psf/requests ...
+        ok — 142 calls, 667.5s (cache 2012-12-22 .. 2026-10-28)
+[fetch] control          pallets/flask ...
+        ok — 142 calls, 678.1s (cache 2013-06-14 .. 2026-10-27)
+[fetch] control          expressjs/express ...
+        FAILED: fetch failed: RuntimeError: /repos/expressjs/express/issues/comments: stream broke mid-pagination at page 27
+[fetch] control          axios/axios ...
+        FAILED: fetch failed: repo not found
+[fetch] control          tiangolo/fastapi ...
+        FAILED: fetch failed: repo not found
+[fetch] bot-maintainer   renovatebot/renovate ...
+        FAILED: fetch failed: repo not found
+[fetch] bot-maintainer   semantic-release/semantic-release ...
+        FAILED: fetch failed: repo not found
+[fetch] bot-maintainer   dependabot/dependabot-core ...
+        FAILED: fetch failed: repo not found
+[fetch] corpse           request/request ...
+        ok — 120 calls, 281.8s (cache 2010-05-07 .. 2026-10-20)
+[fetch] archived         reddit-archive/reddit ...
+        FAILED: fetch failed: RuntimeError: /repos/reddit-archive/reddit/issues: stream broke mid-pagination at page 3
+[fetch] archived         youfou/wxpy ...
+        FAILED: fetch failed: repo not found
+[fetch] archived         alexjc/neural-enhance ...
+        FAILED: fetch failed: repo not found
+[fetch] issues-disabled  vinta/awesome-python ...
+        FAILED: fetch failed: repo not found
+[fetch] issues-disabled  Kristories/awesome-guidelines ...
+        FAILED: fetch failed: repo not found
+[fetch] issues-disabled  AwesomeHomelab/awesome-homelab ...
+        FAILED: fetch failed: repo not found
+[fetch] zero-releases    zihangdai/mos ...
+        FAILED: fetch failed: repo not found
+[fetch] zero-releases    ryanohoro/csbruter ...
+        FAILED: fetch failed: repo not found
+[fetch] zero-releases    ofirnachum/sequence_gan ...
+        FAILED: fetch failed: repo not found
+[fetch] single-commit    ojasookert/CVE-2017-0785 ...
+        FAILED: fetch failed: repo not found
+[fetch] single-commit    neex/ffmpeg-avi-m3u-xbin ...
+        FAILED: fetch failed: repo not found
+[fetch] single-commit    twjiang/fact_triple_extraction ...
+        ok — 5 calls, 4.0s (cache 2016-03-10 .. 2023-07-31)
+
+[1] ROSTER FETCH — streams (rows of 100), truncation flags, cost
+    group           repo                                iss   cmt   com  rel  calls   secs  truncated
+    control         psf/requests                       4000  6000  4000   19    142 667.5s  issues,comments,commits
+        cached event span 2012-12-22 .. 2026-10-28
+    control         pallets/flask                      4000  6000  4000   38    142 678.1s  issues,comments,commits
+        cached event span 2013-06-14 .. 2026-10-27
+    control         expressjs/express                   FAILED: fetch failed: RuntimeError: /repos/expressjs/express/issues/comments: stream broke mid-pagination at page 27
+    control         axios/axios                         FAILED: fetch failed: repo not found
+    control         tiangolo/fastapi                    FAILED: fetch failed: repo not found
+    bot-maintainer  renovatebot/renovate                FAILED: fetch failed: repo not found
+    bot-maintainer  semantic-release/semantic-release   FAILED: fetch failed: repo not found
+    bot-maintainer  dependabot/dependabot-core          FAILED: fetch failed: repo not found
+    corpse          request/request                    3477  6000  2270    0    120 281.8s  comments
+        cached event span 2010-05-07 .. 2026-10-20
+    archived        reddit-archive/reddit               FAILED: fetch failed: RuntimeError: /repos/reddit-archive/reddit/issues: stream broke mid-pagination at page 3
+    archived        youfou/wxpy                         FAILED: fetch failed: repo not found
+    archived        alexjc/neural-enhance               FAILED: fetch failed: repo not found
+    issues-disabled vinta/awesome-python                FAILED: fetch failed: repo not found
+    issues-disabled Kristories/awesome-guidelines       FAILED: fetch failed: repo not found
+    issues-disabled AwesomeHomelab/awesome-homelab      FAILED: fetch failed: repo not found
+    zero-releases   zihangdai/mos                       FAILED: fetch failed: repo not found
+    zero-releases   ryanohoro/csbruter                  FAILED: fetch failed: repo not found
+    zero-releases   ofirnachum/sequence_gan             FAILED: fetch failed: repo not found
+    single-commit   ojasookert/CVE-2017-0785            FAILED: fetch failed: repo not found
+    single-commit   neex/ffmpeg-avi-m3u-xbin            FAILED: fetch failed: repo not found
+    single-commit   twjiang/fact_triple_extraction       10    32     1    0      5   4.0s  -
+        cached event span 2016-03-10 .. 2023-07-31
+
+[2] COVERAGE — is each registered feature computable for this repo?
+    repo                                   f1     f2     f3     f4     f5     f6   bf50
+    psf/requests                          +    +    +    +    +    +    +
+    pallets/flask                         +    +    +    +    +    +    +
+    request/request                       ·    +    +    +    +    +    +
+    twjiang/fact_triple_extraction        ·    ·    +    +    +    +    +
+    computable (n of 21)                    2      3      4      4      4      4      4
+
+[3] LABEL MIX at T = 2023-01-01 (post-mask rows only)
+    unmasked rows at T: 4 of 21 repos
+    ALIVE (y1=0):          2
+    GHOSTING (y1=1,y2=0):  1
+    DEAD (y2=1):           1
+    psf/requests                      ALIVE    y1=0 y2=0 (responses=155, human_events=1229)
+    pallets/flask                     ALIVE    y1=0 y2=0 (responses=233, human_events=923)
+    request/request                   GHOSTING y1=1 y2=0 (responses=0, human_events=71)
+    twjiang/fact_triple_extraction    DEAD     y1=1 y2=1 (responses=0, human_events=0)
+
+[4] GRID — post-mask rows and y2 prevalence across Jan 1 2015..2023
+    T             rows  y1=1  y2=1  y2/rows
+    2015-01-01       3     2     0     0.00
+    2016-01-01       3     2     0     0.00
+    2017-01-01       3     1     0     0.00
+    2018-01-01       4     1     0     0.00
+    2019-01-01       4     1     0     0.00
+    2020-01-01       4     1     0     0.00
+    2021-01-01       4     2     0     0.00
+    2022-01-01       4     2     0     0.00
+    2023-01-01       4     2     1     0.25
+
+[5] INVARIANTS — printed before any evaluation uses these labels
+    derived rows (post-mask): 33
+    monotonicity violations (y2=1 & y1=0): 0  (expected 0)
+    login-None commits seen: 826  (now counted human unless git-level identity is a bot)
+    ghost-user comments seen: 0  (counted human)
+    known-alive controls with >=1 ALIVE/GHOSTING row: 2 of 2  (if 0, the label derivation is broken)
+
+[6] ARCHIVED ANCHORS — §11 dry-run (arch −36mo primary, −18mo sanity)
+    (no archived repos were fetched)
+
+[7] KILL-SWITCH (§13) — calls per repo decide, not optimism
+    calls/repo: min=5 median=131 max=142  (n=4 repos)
+    projected full pull: n=300 → 7.9 h; n=150 → 3.9 h (rate-bound)
+    pre-registered threshold 90: DESCOPE → n=150
+
+wrote /Users/apple/Documents/Default Project/ofrenda/probe_out/probe_summary.json
+probe wall-clock 7570.0s; core calls 497; search calls 5

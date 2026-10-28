@@ -11,7 +11,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-from .gh import GitHub
+from .gh import GitHub, RateLimited
 
 CACHE = Path(__file__).resolve().parents[2] / "cache"
 
@@ -58,7 +58,12 @@ def fetch_repo(
     started = time.time()
     calls_before = gh.calls
 
-    meta = gh.get(f"/repos/{full_name}")
+    try:
+        meta = gh.get(f"/repos/{full_name}")
+    except RateLimited:
+        # Distinguish "the API is refusing us" from "the repo is gone" —
+        # run 2's probe mislabeled rate-limited repos as not-found (§20 21:22).
+        return {"repo": full_name, "ok": False, "error": "rate-limited"}
     if not meta:
         return {"repo": full_name, "ok": False, "error": "repo not found"}
 
