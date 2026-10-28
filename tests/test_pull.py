@@ -199,6 +199,37 @@ class RunTest(unittest.TestCase):
             self.assertEqual(summary["tallies"]["dead"]["ok"], 2)
 
 
+class SearchPageTest(unittest.TestCase):
+    def test_throttle_episode_is_survived(self):
+        gh = StubGH()
+        attempts = []
+
+        def flaky(path, params=None):
+            attempts.append(1)
+            if len(attempts) < 3:
+                raise pull.RateLimited("403")
+            return {"items": [{"full_name": "stub/x"}]}
+
+        gh.get = flaky
+        with mock.patch.object(pull, "SEARCH_PACE", 0.0), \
+             mock.patch.object(pull.time, "sleep"):
+            items = pull._search_page(gh, "q")
+        self.assertEqual(items, [{"full_name": "stub/x"}])
+        self.assertEqual(len(attempts), 3)
+
+    def test_persistent_throttle_degrades_to_empty(self):
+        gh = StubGH()
+
+        def always_403(path, params=None):
+            raise pull.RateLimited("403")
+
+        gh.get = always_403
+        with mock.patch.object(pull, "SEARCH_PACE", 0.0), \
+             mock.patch.object(pull.time, "sleep"):
+            items = pull._search_page(gh, "q")
+        self.assertEqual(items, [])
+
+
 class MainTest(unittest.TestCase):
     """Covers the fresh-start path that crashed on first launch (roster absent)."""
 

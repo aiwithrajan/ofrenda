@@ -39,7 +39,7 @@ from typing import Any
 
 from .fetch import PAGE_CAPS, fetch_repo
 from .derive import parse
-from .gh import GitHub
+from .gh import GitHub, RateLimited
 
 OUT_DIR = Path(__file__).resolve().parents[2] / "pull_out"
 ROSTER = OUT_DIR / "roster.json"
@@ -48,7 +48,7 @@ JOURNAL = OUT_DIR / "journal.ndjson"
 SPECIMEN = "request/request"
 FAIL_LIMIT = 5
 REPO_PAUSE = 2.0  # seconds between repos: stay off the abuse detector (§20 21:22)
-SEARCH_PACE = 2.2  # seconds between search calls (~27/min against 30/min cap)
+SEARCH_PACE = 3.0  # seconds between search calls (20/min: margin under the cap)
 
 STAR_BANDS = ((100, 300), (300, 1000), (1000, 3000), (3000, None))
 CREATED_BANDS = (
@@ -124,12 +124,27 @@ class _Candidates:
         return item
 
 
-def _search_page(gh: GitHub, query: str) -> list[dict[str, Any]]:
-    time.sleep(SEARCH_PACE)
-    result = gh.get("/search/repositories", {"q": query, "per_page": 100})
-    if not isinstance(result, dict):
-        return []
-    return list(result.get("items") or [])
+def _search_page(gh: GitHub, query: str, rounds: int = 3) -> list[dict[str, Any]]:
+    """One search result page, with search-throttle degradation (§20 22:42).
+
+    The search endpoint has its own secondary abuse detection. A 403 episode
+    is survived by waiting out the per-minute window and re-querying; only
+    after `rounds` failed rounds does the cell go unfilled (receipted, never
+    silently empty).
+    """
+    for attempt in range(rounds):
+        time.sleep(SEARCH_PACE)
+        try:
+            result = gh.get("/search/repositories", {"q": query, "per_page": 100})
+        except RateLimited as exc:
+            print(f"    search throttled ({attempt + 1}/{rounds}); waiting 60s"
+                  f" — {exc}", flush=True)
+            time.sleep(60)
+            continue
+        if not isinstance(result, dict):
+            return []
+        return list(result.get("items") or [])
+    return []
 
 
 def _vet(stratum: str, item: dict[str, Any], cell: tuple) -> str | None:
