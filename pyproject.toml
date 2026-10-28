@@ -19,6 +19,8 @@ dependencies = [
 
 [project.scripts]
 ofrenda-probe = "ofrenda.probe:main"
+ofrenda-features = "ofrenda.features:main"
+ofrenda-pull = "ofrenda.pull:main"
 
 [build-system]
 requires = ["setuptools>=68"]

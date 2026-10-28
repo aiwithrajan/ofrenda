@@ -35,6 +35,10 @@ BOT_DENYLIST = {
 MAINTAINER_ASSOC = {"OWNER", "MEMBER", "COLLABORATOR"}
 WINDOW_MONTHS = 18
 
+# Pre-registered annual reference grid (PRD §20, 2026-10-28 18:32):
+# Jan 1 of 2015..2023 — the nine-point grid both the probe and the fits use.
+ANNUAL_GRID = [dt.datetime(y, 1, 1, tzinfo=dt.timezone.utc) for y in range(2015, 2024)]
+
 
 def is_bot(login: str | None) -> bool:
     if not login:
@@ -193,6 +197,44 @@ def labels_at(repo: Repo, reference: dt.datetime) -> tuple[int, int, dict[str, i
         "responses": answered,
         "human_events": active,
     }
+
+
+def rows_for(
+    repo: Repo,
+    grid: list[dt.datetime],
+    activity: list[dt.datetime] | None = None,
+    responses: list[tuple[dt.datetime, int]] | None = None,
+) -> list[dict[str, Any]]:
+    """Masked label rows for a repo over an annual T grid (PRD §8).
+
+    Mask 1: T >= creation + 12 months — features need history.
+    Mask 2: >= 1 human event in [T - 12 months, T) — no trivially-DEAD rows.
+
+    Same masks-and-labels math the probe pre-registered (§20, 18:32 / 19:20);
+    lifted out of probe.py so features and fits share one implementation.
+    """
+    if activity is None:
+        activity = repo.human_activity()
+    if responses is None:
+        responses = repo.responses()
+    rows: list[dict[str, Any]] = []
+    for t in grid:
+        if repo.created_at and t < add_months(repo.created_at, 12):
+            continue  # mask 1
+        lower = add_months(t, -12)
+        if not any(lower <= when < t for when in activity):
+            continue  # mask 2
+        end = add_months(t, WINDOW_MONTHS)
+        answered = sum(1 for when, _ in responses if t <= when < end)
+        active = sum(1 for when in activity if t <= when < end)
+        rows.append({
+            "t": t.isoformat(),
+            "y1": 0 if answered else 1,
+            "y2": 0 if active else 1,
+            "responses": answered,
+            "human_events": active,
+        })
+    return rows
 
 
 def coverage(repo: Repo) -> dict[str, bool]:
