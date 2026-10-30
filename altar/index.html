@@ -324,9 +324,9 @@
           </div>
         </div>
 
-        <!-- SVG Chart Curve Across Full Width -->
+        <!-- SVG Chart Curve Across Full Width (Increased Vertical Length) -->
         <div class="svg-chart-box direct-svg-box">
-          <svg class="ghosting-svg-chart" viewBox="0 0 920 180" preserveAspectRatio="none" aria-label="Social vs Code Activity Divergence Chart">
+          <svg class="ghosting-svg-chart" viewBox="0 0 920 260" preserveAspectRatio="none" aria-label="Social vs Code Activity Divergence Chart">
             <defs>
               <linearGradient id="blueGlow" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25"/>
@@ -338,28 +338,29 @@
               </linearGradient>
             </defs>
 
-            <!-- Grid & Division Line -->
-            <line x1="40" y1="140" x2="880" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
-            <line x1="40" y1="80" x2="880" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+            <!-- Subtle Grid & Division Lines -->
+            <line x1="40" y1="200" x2="880" y2="200" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+            <line x1="40" y1="130" x2="880" y2="130" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+            <line x1="40" y1="60" x2="880" y2="60" stroke="rgba(255,255,255,0.025)" stroke-width="1" />
             
             <!-- Dashed Boundary Line between divergence and silence -->
-            <line x1="640" y1="15" x2="640" y2="140" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="4 4" />
+            <line x1="640" y1="20" x2="640" y2="200" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" stroke-dasharray="5 5" />
 
             <!-- Yellow/Gold Code Activity Line (stays steady then plunges) -->
             <path class="chart-curve code-curve"
-                  d="M 40,65 C 160,60 300,62 450,62 C 550,62 600,68 640,72 C 700,78 760,105 820,135 L 880,140"
-                  fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" />
+                  d="M 40,85 C 160,80 300,82 450,82 C 550,82 600,90 640,96 C 700,105 770,145 830,192 L 880,200"
+                  fill="none" stroke="#f59e0b" stroke-width="2.8" stroke-linecap="round" />
 
             <!-- Blue Social Activity Line (drops early 2015-2018) -->
             <path class="chart-curve social-curve"
-                  d="M 40,55 C 120,68 220,60 320,82 C 420,105 500,95 560,118 C 600,128 620,135 640,138 L 880,140"
-                  fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" />
+                  d="M 40,72 C 120,92 220,80 320,115 C 420,150 500,135 560,168 C 600,182 620,192 640,196 L 880,200"
+                  fill="none" stroke="#38bdf8" stroke-width="2.8" stroke-linecap="round" />
 
             <!-- Axis Year Labels -->
-            <text x="40" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2011</text>
-            <text x="320" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2015</text>
-            <text x="630" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2018</text>
-            <text x="850" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2020</text>
+            <text x="40" y="234" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="12">2011</text>
+            <text x="320" y="234" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="12">2015</text>
+            <text x="630" y="234" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="12">2018</text>
+            <text x="850" y="234" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="12">2020</text>
           </svg>
         </div>
 
