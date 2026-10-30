@@ -485,13 +485,13 @@ html, body {
   transform: scale(1.03);
 }
 
-/* Center Candles Cluster (Pure Vector SVG) */
+/* Center Candles Cluster (Interactive: 3 Outline Candles -> Full Shrine on Click) */
 .shrine-cluster-wrap {
   position: relative;
   cursor: pointer;
   padding: 8px 16px;
   border-radius: var(--radius-sm);
-  transition: transform 0.25s ease, filter 0.25s ease;
+  transition: transform 0.25s ease, filter 0.3s ease;
   user-select: none;
 }
 
@@ -504,9 +504,120 @@ html, body {
   width: 280px;
   height: 140px;
   overflow: visible;
-  filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.4));
+  transition: filter 0.5s ease;
 }
 
+/* Secondary Candles (Hidden in unlit state, reveal on click) */
+.candle-unit.candle-secondary {
+  transform-origin: bottom center;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base floor glow */
+.altar-floor-glow {
+  transition: opacity 0.6s ease;
+}
+
+/* --- STATE: UNLIT (Default: Exactly 3 Outline Candles) --- */
+.shrine-cluster-wrap.state-unlit .altar-svg-shrine {
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.25));
+}
+
+.shrine-cluster-wrap.state-unlit .candle-secondary {
+  opacity: 0;
+  transform: translateY(18px) scaleY(0.2);
+  pointer-events: none;
+}
+
+.shrine-cluster-wrap.state-unlit .altar-floor-glow {
+  opacity: 0.12;
+}
+
+.shrine-cluster-wrap.state-unlit .candle-primary .wax-body {
+  fill: rgba(212, 175, 55, 0.05);
+  stroke: rgba(212, 175, 55, 0.65);
+  stroke-width: 1.6;
+  stroke-dasharray: 4 2.5;
+  transition: all 0.5s ease;
+}
+
+.shrine-cluster-wrap.state-unlit .candle-primary .wax-top {
+  fill: none;
+  stroke: rgba(212, 175, 55, 0.7);
+  stroke-width: 1.5;
+  transition: all 0.5s ease;
+}
+
+.shrine-cluster-wrap.state-unlit .candle-primary .wax-wick {
+  stroke: rgba(212, 175, 55, 0.5);
+  stroke-width: 1.5;
+}
+
+.shrine-cluster-wrap.state-unlit .candle-primary .flame-glow {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.shrine-cluster-wrap.state-unlit .candle-primary .flame-shape {
+  fill: none;
+  stroke: rgba(245, 158, 11, 0.6);
+  stroke-width: 1.4;
+  stroke-dasharray: 3 2;
+  transition: all 0.5s ease;
+}
+
+.shrine-cluster-wrap.state-unlit .candle-primary .flame-core {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.shrine-cluster-wrap.state-unlit:hover {
+  filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.4));
+}
+
+.shrine-cluster-wrap.state-unlit:hover .candle-primary .wax-body {
+  stroke: rgba(245, 158, 11, 0.9);
+  fill: rgba(212, 175, 55, 0.1);
+}
+
+/* --- STATE: LIT (Full Candle Cluster with Golden Glow) --- */
+.shrine-cluster-wrap.state-lit .altar-svg-shrine {
+  filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.48));
+}
+
+.shrine-cluster-wrap.state-lit .candle-secondary {
+  opacity: 1;
+  transform: translateY(0) scaleY(1);
+}
+
+.shrine-cluster-wrap.state-lit .altar-floor-glow {
+  opacity: 1;
+}
+
+.shrine-cluster-wrap.state-lit .candle-primary .wax-body {
+  fill: url(#waxGrad);
+  stroke: none;
+}
+
+.shrine-cluster-wrap.state-lit .candle-primary .wax-top {
+  fill: url(#waxTopGrad);
+  stroke: none;
+}
+
+.shrine-cluster-wrap.state-lit .candle-primary .flame-shape {
+  fill: url(#flameGrad);
+  stroke: none;
+}
+
+.shrine-cluster-wrap.state-lit .candle-primary .flame-glow {
+  opacity: 0.45;
+}
+
+.shrine-cluster-wrap.state-lit .candle-primary .flame-core {
+  opacity: 0.95;
+}
+
+/* Flame Flicker Animation */
 .flame-group {
   transform-box: fill-box;
   transform-origin: 50% 90%;
@@ -525,14 +636,6 @@ html, body {
   0% { transform: scale(1) rotate(-1deg); }
   50% { transform: scale(1.06, 1.14) rotate(1.2deg); }
   100% { transform: scale(0.97, 0.93) rotate(-0.8deg); }
-}
-
-.candle-unit {
-  transition: filter 0.2s ease;
-}
-
-.shrine-cluster-wrap:hover .candle-unit {
-  filter: brightness(1.12);
 }
 
 /* Shrine Actions */

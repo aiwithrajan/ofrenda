@@ -175,9 +175,14 @@ function handleLightCandle() {
     setTimeout(() => (countDisplay.style.color = "#ffffff"), 350);
   }
 
-  // Visual burst on center candle shrine
+  // Ignite from 3 outline candles into full glowing candle cluster
   const shrine = document.getElementById("candleShrineWrapper");
   if (shrine) {
+    if (shrine.classList.contains("state-unlit")) {
+      shrine.classList.remove("state-unlit");
+      shrine.classList.add("state-lit");
+      shrine.setAttribute("title", "Altar fully kindled in memoriam. Click to offer another candle.");
+    }
     shrine.style.transform = "scale(1.08)";
     setTimeout(() => (shrine.style.transform = ""), 250);
   }
