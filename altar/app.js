@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chatViewport.scrollTop = chatViewport.scrollHeight;
   }
 
-  function handleQuery(query) {
+  async function handleQuery(query) {
     const qLower = query.toLowerCase().trim();
     if (!qLower) return;
 
@@ -84,10 +84,29 @@ document.addEventListener("DOMContentLoaded", () => {
     typingIndicator.className = "message assistant typing";
     typingIndicator.innerHTML = `
       <div class="avatar">👻</div>
-      <div class="bubble"><p><em>Consulting repository archive...</em></p></div>
+      <div class="bubble"><p><em>Consulting repository archive records...</em></p></div>
     `;
     chatViewport.appendChild(typingIndicator);
     chatViewport.scrollTop = chatViewport.scrollHeight;
+
+    try {
+      // Attempt live server forensic query
+      const res = await fetch("/api/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: query }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        typingIndicator.remove();
+        const citStr = data.citations && data.citations.length > 0 ? data.citations.join(" • ") : null;
+        appendMessage(data.answer, false, citStr);
+        return;
+      }
+    } catch (err) {
+      // Backend not running / static mode -> fall back smoothly
+    }
 
     setTimeout(() => {
       typingIndicator.remove();
