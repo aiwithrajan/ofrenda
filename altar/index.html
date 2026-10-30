@@ -3,600 +3,475 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Ofrenda — An Offering to Abandoned Software</title>
-  <meta name="description" content="Ofrenda: Forensic post-mortem and statistical analysis of open source abandonment. Specimen: request/request.">
-  <meta name="theme-color" content="#0a0b0e">
+  <title>OFRENDA — The Digital Memorial</title>
+  <meta name="description" content="Ofrenda: A memorial for the repositories left behind. Forensic post-mortem analysis of open source software abandonment.">
+  <meta name="theme-color" content="#07080a">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="altar-theme">
-  <!-- Ambient Atmospheric Glows -->
-  <div class="ambient-glow glow-top" aria-hidden="true"></div>
-  <div class="ambient-glow glow-mid" aria-hidden="true"></div>
-  <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
-
-  <!-- Ambient Floating Embers Canvas -->
+<body class="ofrenda-preview">
+  <!-- Ambient Atmospheric Canvas & Glows -->
+  <div class="ambient-glow glow-hero-right" aria-hidden="true"></div>
+  <div class="ambient-glow glow-center-altar" aria-hidden="true"></div>
   <canvas id="embersCanvas" class="embers-canvas" aria-hidden="true"></canvas>
 
-  <!-- Accessibility Skip Link -->
-  <a href="#mainContent" class="skip-link">Skip to main memorial content</a>
-
-  <!-- Memorial Header -->
-  <header class="memorial-header" role="banner">
-    <div class="header-container">
-      
-      <!-- Top Meta Banner -->
-      <div class="header-meta">
-        <div class="badge-tag">
-          <svg class="icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-          </svg>
-          HACKTOBERFEST 2026 • GHOST IN THE MACHINE
-        </div>
-        <div class="header-status-pill" title="BM25 Corpus + Gemma 2B Inference Runtime">
-          <span class="status-indicator"></span>
-          <span>MEMORIAL ARCHIVE ACTIVE</span>
-        </div>
+  <!-- Top Navigation Bar -->
+  <header class="top-nav" role="banner">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <svg class="brand-flame-icon" width="18" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C10.5 4.5 9 7 9 10c0 3 2 5 3 7 1-2 3-4 3-7 0-3-1.5-5.5-3-8z" />
+          <path d="M12 6c-.8 1.5-1.5 3-1.5 4.8 0 1.6 1 2.8 1.5 3.8.5-1 1.5-2.2 1.5-3.8 0-1.8-.7-3.3-1.5-4.8z" opacity="0.6" fill="#fff" />
+        </svg>
+        <span class="brand-title">O F R E N D A</span>
       </div>
 
-      <!-- Altar Title & Specimen Subtitle -->
-      <div class="title-group">
-        <h1 class="altar-title">OFRENDA</h1>
-        <p class="altar-subtitle">
-          An Offering to the Ghost of <span class="specimen-highlight">request/request</span>
-        </p>
-      </div>
+      <nav class="nav-tabs" role="navigation" aria-label="Main Navigation">
+        <button class="nav-tab active" data-tab="archive">The Archive</button>
+        <button class="nav-tab" data-tab="ghosting">Ghosting Band</button>
+        <button class="nav-tab" data-tab="methodology">Methodology</button>
+      </nav>
 
-      <!-- Specimen Vital Registry -->
-      <div class="vital-stats" role="region" aria-label="Specimen Vital Statistics">
-        <div class="stat-item">
-          <span class="stat-label">Conceived</span>
-          <span class="stat-value">Jan 23, 2011</span>
-        </div>
-        <span class="stat-divider" aria-hidden="true">/</span>
-        <div class="stat-item">
-          <span class="stat-label">Social Divergence</span>
-          <span class="stat-value highlight-warning">~2017 (35 Mo Lead)</span>
-        </div>
-        <span class="stat-divider" aria-hidden="true">/</span>
-        <div class="stat-item">
-          <span class="stat-label">Code Silence</span>
-          <span class="stat-value">Feb 11, 2020</span>
-        </div>
-        <span class="stat-divider" aria-hidden="true">/</span>
-        <div class="stat-item">
-          <span class="stat-label">Scale at Death</span>
-          <span class="stat-value">14M Downloads / Wk</span>
-        </div>
+      <div class="nav-status">
+        <span class="live-pill">
+          <span class="live-dot"></span>
+          ARCHIVE LIVE
+        </span>
       </div>
-
-      <!-- Interactive Candle Altar Tier -->
-      <div class="candle-altar" aria-label="Interactive Memorial Candle Altar">
-        <div class="altar-candles-row" id="candlesRow" role="group" aria-label="Memorial Candles">
-          <!-- Populated by JavaScript with realistic SVG candles -->
-        </div>
-        <div class="altar-offering-bar">
-          <button type="button" class="offering-btn" id="lightOfferingBtn" aria-label="Light a candle or place marigold flower">
-            <svg class="icon-inline" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C10.5 4.5 9 7 9 10c0 3 2 5 3 7 1-2 3-4 3-7 0-3-1.5-5.5-3-8z"/>
-            </svg>
-            Light a Candle in Memoriam
-          </button>
-          <span class="offering-counter" id="offeringCounter">14,208 candles lit across 150 repositories</span>
-        </div>
-      </div>
-
     </div>
   </header>
 
-  <!-- Main Content Container -->
-  <main class="altar-container" id="mainContent" role="main">
+  <!-- Main View Container -->
+  <main class="page-wrap" id="mainContent">
 
-    <!-- Central Thesis & The Ghosting Band Card -->
-    <section class="thesis-card glass-panel" aria-labelledby="thesisHeading">
-      <div class="thesis-header">
-        <div class="icon-wrapper gold-glow">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <!-- Hero Section -->
+    <section class="hero-section" aria-label="Memorial Hero">
+      <div class="hero-left">
+        <div class="memorial-tag">— THE DIGITAL MEMORIAL —</div>
+        <h1 class="hero-title">O F R E N D A</h1>
+        <p class="hero-subtitle">A memorial for the repositories left behind.</p>
+        
+        <div class="repo-badge-pill" id="specimenPill">
+          <svg class="gh-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span class="repo-name">request/request</span>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-shrine-art">
+          <img src="figures/hero_candles.png" alt="Sacred glowing candles altar" class="shrine-img">
+        </div>
+        <div class="poetic-creed">
+          <span>SOME PROJECTS</span>
+          <span>DON'T END.</span>
+          <span>THEY JUST</span>
+          <span>GO QUIET.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Horizontal Timeline Bar -->
+    <section class="timeline-bar-wrap" aria-label="Specimen Timeline">
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <span class="t-badge">TIMELINE</span>
+          <span class="t-sub">Key moments from the repository's life</span>
+        </div>
+
+        <div class="timeline-track">
+          <div class="t-node node-conceived">
+            <span class="t-dot dot-green"></span>
+            <div class="t-info">
+              <span class="t-date">Jan 23, 2011</span>
+              <span class="t-name">Conceived</span>
+            </div>
+          </div>
+
+          <div class="t-connector"></div>
+
+          <div class="t-node node-peak">
+            <span class="t-dot dot-gold"></span>
+            <div class="t-info">
+              <span class="t-date">~2017</span>
+              <span class="t-name">Social peak</span>
+            </div>
+          </div>
+
+          <div class="t-connector"></div>
+
+          <div class="t-node node-silence">
+            <span class="t-dot dot-muted"></span>
+            <div class="t-info">
+              <span class="t-date">Feb 11, 2020</span>
+              <span class="t-name">Code silence</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-scale">
+          <svg class="chart-mini-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M4 19h16v2H2V3h2v16zm4-7h2v5H8v-5zm4-4h2v9h-2V8zm4-3h2v12h-2V5z"/>
+          </svg>
+          <div class="scale-text">
+            <span class="scale-label">Scale at death</span>
+            <span class="scale-val">14M downloads / wk</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Offering & Candles Altar -->
+    <section class="shrine-section" aria-label="Altar Offerings">
+      <div class="shrine-metrics-row">
+        <!-- Left Stat -->
+        <div class="shrine-stat stat-left">
+          <svg class="stat-icon laurel-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M7 20C4 18 3 14 3 9c3 0 5 1 6 3-1-3 0-6 2-8 2 2 3 5 2 8 2-2 4-3 6-3 0 5-1 9-4 11"/>
+            <path d="M12 22V12"/>
+          </svg>
+          <div class="stat-meta">
+            <span class="stat-num" id="candlesCountDisplay">14,210</span>
+            <span class="stat-desc">candles lit</span>
+          </div>
+        </div>
+
+        <!-- Center Glowing Candles Cluster -->
+        <div class="shrine-cluster-wrap" id="candleShrineWrapper" title="Click to light a candle offering">
+          <div class="candles-glow-layer"></div>
+          <div class="interactive-candle-altar" id="altarInteractiveStage">
+            <!-- Animated interactive candle group -->
+            <div class="candle-flames-container">
+              <div class="flame flame-1"></div>
+              <div class="flame flame-2"></div>
+              <div class="flame flame-3"></div>
+              <div class="flame flame-4"></div>
+              <div class="flame flame-5"></div>
+              <div class="flame flame-6"></div>
+              <div class="flame flame-7"></div>
+            </div>
+            <img src="figures/center_candles.png" alt="Offerings of remembrance" class="center-candles-img" id="centerCandlesImg">
+          </div>
+        </div>
+
+        <!-- Right Stat -->
+        <div class="shrine-stat stat-right">
+          <svg class="stat-icon doc-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
             <polyline points="14 2 14 8 20 8"/>
             <line x1="16" y1="13" x2="8" y2="13"/>
             <line x1="16" y1="17" x2="8" y2="17"/>
             <polyline points="10 9 9 9 8 9"/>
           </svg>
-        </div>
-        <div>
-          <h2 id="thesisHeading" class="panel-heading">The Central Thesis: The Ghosting Band</h2>
-          <span class="panel-subheading">Empirically validated on n = 150 repositories via Leave-One-Repo-Out TabPFN</span>
-        </div>
-      </div>
-      <p class="thesis-body">
-        Maintainers stop answering strangers long before they stop pushing code. That silent chasm between
-        social death (<code class="code-token">y₁</code>) and code silence (<code class="code-token">y₂</code>) is the
-        <strong>Ghosting Band</strong>. In our specimen <code>request/request</code>, the maintainer latency divergence alerted to abandonment a full
-        <strong>35 months</strong> before commit <code>aded7e4f</code> officially deprecated the package on npm.
-      </p>
-      <div class="thesis-stats-row">
-        <div class="thesis-stat">
-          <span class="ts-num">0.7760</span>
-          <span class="ts-label">Arm B (Social) AUC</span>
-        </div>
-        <div class="thesis-stat">
-          <span class="ts-num">0.6923</span>
-          <span class="ts-label">Arm A (Code) AUC</span>
-        </div>
-        <div class="thesis-stat highlight">
-          <span class="ts-num">-0.0242</span>
-          <span class="ts-label">95% CI Upper Bound (&lt; 0.07 Non-Inf)</span>
-        </div>
-        <div class="thesis-stat">
-          <span class="ts-num">0.00%</span>
-          <span class="ts-label">Monotonicity Violations</span>
+          <div class="stat-meta">
+            <span class="stat-num">150</span>
+            <span class="stat-desc">repositories examined</span>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- The 4 Relics of the Specimen -->
-    <section class="relics-section" aria-labelledby="relicsHeading">
-      <div class="section-header">
-        <h2 id="relicsHeading" class="section-title">
-          <svg class="title-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      <!-- Offering Action CTA Buttons -->
+      <div class="shrine-actions">
+        <button type="button" class="btn-light-candle" id="btnLightOffering">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C10.5 4.5 9 7 9 10c0 3 2 5 3 7 1-2 3-4 3-7 0-3-1.5-5.5-3-8z"/>
           </svg>
-          The Four Relics of the Specimen
-        </h2>
-        <span class="section-desc">Historical records extracted from the corpse of <code>request/request</code></span>
-      </div>
-
-      <div class="relics-grid">
-        <!-- Relic I -->
-        <article class="relic-card glass-panel" aria-labelledby="relic1Title">
-          <div class="relic-card-header">
-            <span class="relic-number">RELIC I</span>
-            <span class="relic-pill red-pill">CODE SILENCE</span>
-          </div>
-          <h3 id="relic1Title" class="relic-title">Commit <code>aded7e4f</code></h3>
-          <p class="relic-desc">The final heartbeat pushed by Mikeal Rogers on February 11, 2020: deprecating the package and sealing the repository.</p>
-          <div class="relic-code-box">
-            <div class="code-box-header">
-              <span>git show aded7e4f</span>
-              <button class="copy-btn" data-copy="aded7e4f3a74421b5be82fcf3e098dfc3f0b2f5b" title="Copy commit SHA" aria-label="Copy commit SHA">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                <span>Copy</span>
-              </button>
-            </div>
-            <pre><code>commit aded7e4f3a74421b5be82fcf3e098dfc3f0b2f5b
-Author: Mikeal Rogers &lt;mikeal.rogers@gmail.com&gt;
-Date:   Tue Feb 11 08:35:14 2020 -0800
-
-    Deprecate request npm package</code></pre>
-          </div>
-        </article>
-
-        <!-- Relic II -->
-        <article class="relic-card glass-panel" aria-labelledby="relic2Title">
-          <div class="relic-card-header">
-            <span class="relic-number">RELIC II</span>
-            <span class="relic-pill gold-pill">FIRST SOCIAL NOTICE</span>
-          </div>
-          <h3 id="relic2Title" class="relic-title">Issue #3142</h3>
-          <p class="relic-desc">"Request’s Past, Present and Future" — the pivotal declaration opened on March 22, 2019 declaring maintenance mode.</p>
-          <blockquote class="relic-quote">
-            <p>"The most valuable thing <code>request</code> can do for the JavaScript ecosystem is to go into maintenance mode and stop considering new features or major releases... 41K modules depend on it."</p>
-            <cite>— Mikeal Rogers (Issue #3142)</cite>
-          </blockquote>
-        </article>
-
-        <!-- Relic III -->
-        <article class="relic-card glass-panel" aria-labelledby="relic3Title">
-          <div class="relic-card-header">
-            <span class="relic-number">RELIC III</span>
-            <span class="relic-pill orange-pill">FROZEN EPITAPH</span>
-          </div>
-          <h3 id="relic3Title" class="relic-title">README Notice</h3>
-          <p class="relic-desc">The immutable warning banner fixed at the apex of the documentation, frozen in amber for millions of downstream developers.</p>
-          <div class="relic-epitaph">
-            <div class="epitaph-badge">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
-                <line x1="12" y1="9" x2="12" y2="13"/>
-                <line x1="12" y1="17" x2="12.01" y2="17"/>
-              </svg>
-              DEPRECATION WARNING
-            </div>
-            <p>"As of Feb 11th 2020, <code>request</code> is fully deprecated. No new versions will be published to npm. No new features or bug fixes will be added."</p>
-          </div>
-        </article>
-
-        <!-- Relic IV -->
-        <article class="relic-card glass-panel" aria-labelledby="relic4Title">
-          <div class="relic-card-header">
-            <span class="relic-number">RELIC IV</span>
-            <span class="relic-pill cyan-pill">STATISTICAL FORECAST</span>
-          </div>
-          <h3 id="relic4Title" class="relic-title">The Ghosting Forecast</h3>
-          <p class="relic-desc">TabPFN prior predictive forecast quantifying the temporal lead time between social abandonment and code silence.</p>
-          <div class="relic-metric-strip">
-            <div class="rm-item">
-              <span class="rm-val">35 Mo</span>
-              <span class="rm-lbl">Lead Time</span>
-            </div>
-            <div class="rm-item">
-              <span class="rm-val">0.07</span>
-              <span class="rm-lbl">Non-Inf Margin</span>
-            </div>
-            <div class="rm-item">
-              <span class="rm-val">n = 150</span>
-              <span class="rm-lbl">Corpus Size</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Forensic Interview Terminal -->
-    <section class="interview-section glass-panel" aria-labelledby="terminalHeading">
-      <div class="terminal-chrome">
-        <div class="terminal-dots" aria-hidden="true">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
-        </div>
-        <div class="terminal-meta">
-          <h2 id="terminalHeading" class="terminal-title">
-            <svg class="icon-inline" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="4 17 10 11 4 5"/>
-              <line x1="12" y1="19" x2="20" y2="19"/>
-            </svg>
-            FORENSIC INTERVIEW TERMINAL
-          </h2>
-          <span class="terminal-pill">GEMMA:2B • BM25 GROUNDED</span>
-        </div>
-        <div class="terminal-connection" title="Connected to Ollama live runtime">
-          <span class="pulse-ring"></span>
-          <span class="conn-text">11,748 DOCS INDEXED</span>
-        </div>
-      </div>
-
-      <!-- Live Chat Stream Viewport -->
-      <div class="chat-viewport" id="chatViewport" role="log" aria-live="polite" aria-label="Forensic interview messages">
-        <div class="message assistant">
-          <div class="avatar ghost-avatar" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 10h.01M15 10h.01M12 2a8 8 0 0 0-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 0 0-8-8z"/>
-            </svg>
-          </div>
-          <div class="bubble">
-            <p>I am the archive of <strong>request/request</strong>. I answer strictly from my recorded commits, issues, and documentation.</p>
-            <p class="abstention-rule">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <strong>Rule of the Archive (PRD v2.0 §12):</strong> If an answer cannot be grounded in existing records, I will state strictly: <em>"The archive is silent on that."</em> No improvisation.
-            </p>
-            <div class="bubble-actions">
-              <span class="citation-pill" title="Verified archive source">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                Source: Repository Metadata (2011-01-23)
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Quick Question Prompt Chips -->
-      <div class="prompt-chips-wrap">
-        <span class="chips-label">Inquire:</span>
-        <div class="prompt-chips" role="toolbar" aria-label="Pre-registered interview queries">
-          <button type="button" class="chip" data-q="Why was request deprecated instead of rewritten?">Why deprecated instead of rewritten?</button>
-          <button type="button" class="chip" data-q="What was the commit message of your final commit?">Final commit message?</button>
-          <button type="button" class="chip" data-q="Did request ever officially support native HTTP/2?">Did you support HTTP/2?</button>
-          <button type="button" class="chip" data-q="How many weekly downloads was request receiving at deprecation?">Weekly downloads at death?</button>
-          <button type="button" class="chip" data-q="What were the personal political opinions of the maintainers in 2018?">Maintainer political opinions in 2018?</button>
-          <button type="button" class="chip" data-q="What was the weather in Seattle on the morning of commit aded7e4f?">Seattle weather on commit day?</button>
-        </div>
-      </div>
-
-      <!-- Input Form -->
-      <form class="chat-input-bar" id="chatForm">
-        <div class="input-wrapper">
-          <svg class="terminal-prefix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="9 18 15 12 9 6"/>
-          </svg>
-          <input type="text" id="userInput" placeholder="Ask the archive of request/request a forensic question..." autocomplete="off" aria-label="Question for the archive">
-        </div>
-        <button type="submit" id="sendBtn" class="send-btn" aria-label="Transmit inquiry">
-          <span>Inquire</span>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="22" y1="2" x2="11" y2="13"/>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-          </svg>
+          Light a candle &rarr;
         </button>
-      </form>
-    </section>
 
-    <!-- Visual Artifacts / Figures (With Lightbox Zoom) -->
-    <section class="figures-section" aria-labelledby="figuresHeading">
-      <div class="section-header">
-        <h2 id="figuresHeading" class="section-title">
-          <svg class="title-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="18" y1="20" x2="18" y2="10"/>
-            <line x1="12" y1="20" x2="12" y2="4"/>
-            <line x1="6" y1="20" x2="6" y2="14"/>
+        <button type="button" class="btn-explore-archive" id="btnExploreArchive">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
           </svg>
-          Statistical Visualizations (Click to Inspect)
-        </h2>
-        <span class="section-desc">Publication-grade artifacts rendered via Matplotlib & TabPFN LORO cross-validation</span>
-      </div>
-
-      <div class="figures-grid">
-        <!-- Figure 1 -->
-        <div class="figure-card glass-panel" tabindex="0" role="button" data-fig="figures/ghosting_band.png" data-title="Figure 1: The Ghosting Band Trajectory (2015–2023)" data-caption="Nested trajectory of p1 (social abandonment probability) vs p2 (commit death probability). The shaded amber corridor represents the active Ghosting Band where social metrics alert years ahead of git commits.">
-          <div class="figure-header">
-            <h3 class="figure-title">Figure 1: Ghosting Band Trajectory</h3>
-            <span class="zoom-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-              Zoom
-            </span>
-          </div>
-          <p class="figure-caption">Nested trajectory of p₁ (social abandonment) vs p₂ (commit death) across 2015–2023 grid.</p>
-          <div class="img-container">
-            <img src="figures/ghosting_band.png" alt="Ghosting Band Trajectory Chart" loading="lazy">
-          </div>
-        </div>
-
-        <!-- Figure 2 -->
-        <div class="figure-card glass-panel" tabindex="0" role="button" data-fig="figures/lead_time.png" data-title="Figure 2: Lead Time Advantage Distribution" data-caption="Empirical distribution of months elapsed between social abandonment alert (p >= 0.5) and total repository commit silence. Median lead time is 35 months across ghosted open-source packages.">
-          <div class="figure-header">
-            <h3 class="figure-title">Figure 2: Lead Time Advantage</h3>
-            <span class="zoom-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-              Zoom
-            </span>
-          </div>
-          <p class="figure-caption">Distribution of months elapsed between social alert (p≥0.5) and total commit silence.</p>
-          <div class="img-container">
-            <img src="figures/lead_time.png" alt="Lead Time Distribution Chart" loading="lazy">
-          </div>
-        </div>
-
-        <!-- Figure 3 -->
-        <div class="figure-card glass-panel" tabindex="0" role="button" data-fig="figures/calibration.png" data-title="Figure 3: TabPFN Calibration & Reliability Diagram" data-caption="Reliability diagram comparing predicted probabilities against empirical observed frequency. Arm B (Social) demonstrates superior calibration with Brier Skill Score 0.2322 vs Arm A (Code) 0.0903.">
-          <div class="figure-header">
-            <h3 class="figure-title">Figure 3: Reliability & Calibration</h3>
-            <span class="zoom-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-              Zoom
-            </span>
-          </div>
-          <p class="figure-caption">Empirical calibration diagram: Social Brier Skill Score 0.2322 vs Code 0.0903.</p>
-          <div class="img-container">
-            <img src="figures/calibration.png" alt="Calibration Curve" loading="lazy">
-          </div>
-        </div>
-
-        <!-- Figure 4 -->
-        <div class="figure-card glass-panel" tabindex="0" role="button" data-fig="figures/specimen_request.png" data-title="Figure 4: Historical Milestone Timeline for request/request" data-caption="Ten-year lifecycle of request/request from initial 2011 commit through the 2017 Ghosting Band divergence, 2019 Issue #3142 declaration, and final 2020 commit aded7e4f.">
-          <div class="figure-header">
-            <h3 class="figure-title">Figure 4: Specimen Timeline</h3>
-            <span class="zoom-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-              Zoom
-            </span>
-          </div>
-          <p class="figure-caption">Chronological timeline of request/request from 2011 to deprecation commit aded7e4f.</p>
-          <div class="img-container">
-            <img src="figures/specimen_request.png" alt="Specimen Request Timeline" loading="lazy">
-          </div>
-        </div>
+          Explore the archive
+        </button>
       </div>
     </section>
 
-    <!-- Honest Integrations Ledger (19 Categories) -->
-    <section class="ledger-section glass-panel" aria-labelledby="ledgerHeading">
-      <div class="section-header">
-        <h2 id="ledgerHeading" class="section-title">
-          <svg class="title-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-          The Honest Integrations Ledger (19 Categories)
-        </h2>
-        <span class="section-desc">Governed by PRD v2.0 §7: Every integration has an exact single purpose with zero fabricated claims.</span>
-      </div>
-
-      <!-- Ledger Interactive Filter Controls -->
-      <div class="ledger-controls">
-        <div class="search-filter-box">
-          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"/>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-          <input type="text" id="ledgerSearchInput" placeholder="Filter categories, technologies, or roles..." aria-label="Filter ledger integrations">
+    <!-- Two Split Cards: Research Insight & Repository Case File -->
+    <section class="research-split-grid" aria-label="Forensic Investigation Details">
+      
+      <!-- Card 1: The Ghosting Band Research Insight -->
+      <article class="glass-card insight-card">
+        <div class="card-top-meta">
+          <span class="card-eyebrow">+ RESEARCH INSIGHT</span>
+          <span class="card-index">01</span>
         </div>
 
-        <div class="filter-pills" role="tablist" aria-label="Ledger category filters">
-          <button type="button" class="f-pill active" data-filter="all">All (19)</button>
-          <button type="button" class="f-pill" data-filter="model">Model & Compute</button>
-          <button type="button" class="f-pill" data-filter="data">Data & Search</button>
-          <button type="button" class="f-pill" data-filter="ops">Observability & Ops</button>
-          <button type="button" class="f-pill" data-filter="agent">Agentic & UX</button>
-        </div>
-      </div>
+        <h2 class="card-title">The Ghosting Band</h2>
 
-      <!-- Table Container -->
-      <div class="ledger-table-wrap">
-        <table class="ledger-table" id="ledgerTable">
-          <thead>
-            <tr>
-              <th scope="col" style="width: 22%;">Category</th>
-              <th scope="col" style="width: 20%;">Pillar / Domain</th>
-              <th scope="col" style="width: 46%;">Single Meaningful Role in Ofrenda</th>
-              <th scope="col" style="width: 12%; text-align: center;">Verification</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-cat="model">
-              <td><strong>TabPFN</strong></td>
-              <td><span class="pillar-tag model-tag">Prior Data Tabular</span></td>
-              <td>In-context Bayesian classifier predicting P(y₁=Ghosting) and P(y₂=Dead) across 150 repos.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="model">
-              <td><strong>Gemma</strong></td>
-              <td><span class="pillar-tag model-tag">Forensic Ghost LLM</span></td>
-              <td>Ghost runtime via Ollama for grounded forensic interviews strictly citing commits/issues or saying "The archive is silent on that."</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="model">
-              <td><strong>Tinker</strong></td>
-              <td><span class="pillar-tag model-tag">Fine-Tuning / LoRA</span></td>
-              <td>LoRA fine-tuning for memorial posture synthesis: elegiac tone grounding without factual hallucination.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="ops">
-              <td><strong>Render</strong></td>
-              <td><span class="pillar-tag ops-tag">Static CDN Deploy</span></td>
-              <td>Production hosting environment for the static interactive Altar memorial web application.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="model">
-              <td><strong>DigitalOcean</strong></td>
-              <td><span class="pillar-tag model-tag">Compute Droplet</span></td>
-              <td>GPU compute droplet fallback for running local gemma3:12b when host hardware lacks acceleration.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="data">
-              <td><strong>MongoDB Atlas</strong></td>
-              <td><span class="pillar-tag data-tag">Vector Store</span></td>
-              <td>Vector search index for clustering issue maintenance sentiment and stranger inquiry response latency.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="data">
-              <td><strong>Tiger Data</strong></td>
-              <td><span class="pillar-tag data-tag">pgvector Hybrid Search</span></td>
-              <td>Hybrid search engine combining BM25 exact symbol matching with dense embeddings over 11,748 archive records.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="ops">
-              <td><strong>Temporal</strong></td>
-              <td><span class="pillar-tag ops-tag">Workflow Engine</span></td>
-              <td>Durable workflow orchestration for resilient multi-stage corpus ingestion and GitHub API quota management.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="ops">
-              <td><strong>Sentry</strong></td>
-              <td><span class="pillar-tag ops-tag">Observability</span></td>
-              <td>Real-time tracing, token usage accounting, and rate-limit breach telemetry across data pipelines.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="agent">
-              <td><strong>ElevenLabs</strong></td>
-              <td><span class="pillar-tag agent-tag">Audio Synthesis</span></td>
-              <td>Solemn speech synthesis reading the project's frozen README deprecation banner aloud in memorial mode.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="data">
-              <td><strong>SerpApi</strong></td>
-              <td><span class="pillar-tag data-tag">Web Search</span></td>
-              <td>Search crawler discovering external ecosystem reactions, forks, and migration discussions regarding request/request.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="data">
-              <td><strong>Browserbase</strong></td>
-              <td><span class="pillar-tag data-tag">Headless Browser</span></td>
-              <td>Headless browser automation scraping historical npmjs.com package download charts and archive.org snapshots.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="ops">
-              <td><strong>Auth0</strong></td>
-              <td><span class="pillar-tag ops-tag">Security & Identity</span></td>
-              <td>Token vault and human-in-the-loop consent gate guarding contest submission endpoints and archive writes.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="agent">
-              <td><strong>Backboard</strong></td>
-              <td><span class="pillar-tag agent-tag">Stateful Memory</span></td>
-              <td>Cross-turn forensic memory tracking multi-stage user inquiries during the forensic interview session.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="model">
-              <td><strong>Ultramarine</strong></td>
-              <td><span class="pillar-tag model-tag">Long-Context Reasoning</span></td>
-              <td>Long-context window analysis synthesizing a decade of architecture decisions across 11,000+ issue comments.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="agent">
-              <td><strong>Mastra</strong></td>
-              <td><span class="pillar-tag agent-tag">Agent Framework</span></td>
-              <td>TypeScript agent orchestration layer bridging frontend chat queries with backend Python TabPFN evaluation.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="agent">
-              <td><strong>GitHub Copilot</strong></td>
-              <td><span class="pillar-tag agent-tag">Autonomous Coding</span></td>
-              <td>Speculative autonomous refactoring agent drafting an async/await modern revival PR in a separate sandbox branch.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="ops">
-              <td><strong>Entire</strong></td>
-              <td><span class="pillar-tag ops-tag">Trajectory Auditing</span></td>
-              <td>Cryptographic audit log recording every intermediate agent decision, prompt payload, and verification step.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-            <tr data-cat="ops">
-              <td><strong>.tech Domain</strong></td>
-              <td><span class="pillar-tag ops-tag">Domain & DNS</span></td>
-              <td>Official domain identity resolving <code>ofrenda.tech</code> to the live public interactive memorial.</td>
-              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="ledger-footer-note">
-        <span id="ledgerCountLabel">Showing 19 of 19 verified integrations</span>
-      </div>
+        <p class="card-narrative">
+          Maintainers stop answering strangers long before they stop pushing code. That silent chasm between social death (<span class="math-term">&gamma;<sub>1</sub></span>) and code silence (<span class="math-term">&gamma;<sub>2</sub></span>) is the <strong>Ghosting Band</strong>.
+        </p>
+
+        <!-- Dynamic Visual Graph -->
+        <div class="chart-container">
+          <div class="chart-annotation-bar">
+            <div class="annot-left">
+              <span class="annot-title">Social divergence</span>
+              <span class="annot-sub">(before code silence)</span>
+            </div>
+            <div class="annot-right">
+              <span class="annot-title">Code silence</span>
+              <span class="annot-sub">(afterwards)</span>
+            </div>
+          </div>
+
+          <!-- SVG Chart Curve -->
+          <div class="svg-chart-box">
+            <svg class="ghosting-svg-chart" viewBox="0 0 540 180" preserveAspectRatio="none" aria-label="Social vs Code Activity Divergence Chart">
+              <defs>
+                <linearGradient id="blueGlow" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.0"/>
+                </linearGradient>
+                <linearGradient id="goldGlow" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.2"/>
+                  <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.0"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Subtle Grid & Division Line -->
+              <line x1="40" y1="140" x2="520" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <line x1="40" y1="80" x2="520" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              
+              <!-- Dashed Boundary Line between divergence and silence -->
+              <line x1="370" y1="20" x2="370" y2="140" stroke="rgba(255,255,255,0.18)" stroke-width="1" stroke-dasharray="4 4" />
+
+              <!-- Yellow/Gold Code Activity Line (stays steady then plunges) -->
+              <path class="chart-curve code-curve"
+                    d="M 40,65 C 100,60 160,62 220,62 C 280,62 330,68 370,72 C 400,75 430,95 460,135 L 500,140"
+                    fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" />
+
+              <!-- Blue Social Activity Line (drops early 2015-2018) -->
+              <path class="chart-curve social-curve"
+                    d="M 40,55 C 70,68 100,60 140,82 C 180,105 210,95 240,118 C 280,128 320,135 370,138 L 500,140"
+                    fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" />
+
+              <!-- Axis Year Labels -->
+              <text x="40" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2011</text>
+              <text x="180" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2015</text>
+              <text x="360" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2018</text>
+              <text x="480" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2020</text>
+            </svg>
+          </div>
+
+          <!-- Chart Legend -->
+          <div class="chart-legend">
+            <div class="legend-item">
+              <span class="legend-dot dot-blue"></span>
+              <span class="legend-label">Social activity</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot dot-amber"></span>
+              <span class="legend-label">Code activity</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: Repository Case File -->
+      <article class="glass-card casefile-card">
+        <div class="card-top-meta">
+          <div class="casefile-title-wrap">
+            <svg class="folder-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span class="card-eyebrow">REPOSITORY CASE FILE</span>
+          </div>
+          <span class="badge-archived">
+            <span class="dot-archived"></span>
+            ARCHIVED
+          </span>
+        </div>
+
+        <div class="casefile-header">
+          <div class="casefile-repo">
+            <svg class="gh-icon-sm" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            <span class="casefile-repo-name">request/request</span>
+          </div>
+          <p class="casefile-desc">Simplified HTTP request client for Node.js.</p>
+        </div>
+
+        <!-- 3 Stat Metrics -->
+        <div class="casefile-stats-grid">
+          <div class="c-stat-box">
+            <div class="c-stat-top">
+              <span class="c-stat-arrow">&darr;</span>
+              <span class="c-stat-val">14M</span>
+            </div>
+            <span class="c-stat-sub">downloads / week at peak</span>
+          </div>
+
+          <div class="c-stat-box">
+            <div class="c-stat-top">
+              <span class="c-stat-ico">📅</span>
+              <span class="c-stat-val">Conceived</span>
+            </div>
+            <span class="c-stat-sub">Jan 23, 2011</span>
+          </div>
+
+          <div class="c-stat-box">
+            <div class="c-stat-top">
+              <span class="c-stat-ico">🚫</span>
+              <span class="c-stat-val">Code silence</span>
+            </div>
+            <span class="c-stat-sub">Feb 11, 2020</span>
+          </div>
+        </div>
+
+        <!-- Evidence Tags -->
+        <div class="casefile-evidence-section">
+          <span class="evidence-title">EVIDENCE</span>
+          <div class="evidence-pills-wrap">
+            <button class="evidence-pill" data-evidence="gh">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub activity
+            </button>
+            <button class="evidence-pill" data-evidence="downstream">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+              Downstream usage
+            </button>
+            <button class="evidence-pill" data-evidence="archive">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+              Archive snapshot
+            </button>
+            <button class="evidence-pill" data-evidence="social">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              Social signals
+            </button>
+            <button class="evidence-pill" data-evidence="commit">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/></svg>
+              Last commit
+            </button>
+          </div>
+        </div>
+      </article>
+
     </section>
+
+    <!-- Bottom Strip: Other Archived Repositories -->
+    <footer class="peer-repos-strip" aria-label="Other Examined Repositories">
+      <div class="peer-header-col">
+        <span class="peer-eyebrow">OTHER ARCHIVED REPOSITORIES</span>
+        <span class="peer-desc">More forgotten projects, same story.</span>
+      </div>
+
+      <div class="peer-cards-row">
+        <!-- Pallets / Flask -->
+        <div class="peer-repo-chip" data-repo="pallets/flask">
+          <div class="chip-main">
+            <svg class="gh-icon-chip" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span class="chip-name">pallets/flask</span>
+            <span class="chip-status status-active">● ACTIVE</span>
+          </div>
+          <div class="chip-sub">12M downloads / wk &middot; Silent since 2021</div>
+        </div>
+
+        <!-- Django / Django -->
+        <div class="peer-repo-chip" data-repo="django/django">
+          <div class="chip-main">
+            <svg class="gh-icon-chip" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span class="chip-name">django/django</span>
+            <span class="chip-status status-partial">● PARTIALLY ACTIVE</span>
+          </div>
+          <div class="chip-sub">8M downloads / wk &middot; Silent since 2022</div>
+        </div>
+
+        <!-- Twilio / Twilio-Python -->
+        <div class="peer-repo-chip" data-repo="twilio/twilio-python">
+          <div class="chip-main">
+            <svg class="gh-icon-chip" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span class="chip-name">twilio/twilio-python</span>
+            <span class="chip-status status-archived">● ARCHIVED</span>
+          </div>
+          <div class="chip-sub">4M downloads / wk &middot; Silent since 2021</div>
+        </div>
+      </div>
+
+      <button class="view-all-link" id="btnViewAllRepos">
+        View all &rarr;
+      </button>
+    </footer>
 
   </main>
 
-  <!-- Memorial Footer -->
-  <footer class="memorial-footer" role="contentinfo">
-    <div class="footer-container">
-      <div class="footer-symbols">
-        <svg class="footer-flame" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 2C10.5 4.5 9 7 9 10c0 3 2 5 3 7 1-2 3-4 3-7 0-3-1.5-5.5-3-8z"/>
-        </svg>
-      </div>
-      <p class="footer-brand">OFRENDA • The Ghost in the Machine</p>
-      <p class="footer-notes">Hacktoberfest 2026 Week 4 Contest Entry • Tags: <code>#devchallenge</code> <code>#hf26challenge</code></p>
-      <p class="footer-disclaimer">Dedicated in honor of <code>request/request</code> and 150 repositories that sustained the early Node.js & JavaScript ecosystem.</p>
-    </div>
-  </footer>
-
-  <!-- Lightbox Modal for Figures -->
-  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" hidden>
-    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
-    <div class="lightbox-dialog">
-      <div class="lightbox-topbar">
-        <h3 id="lightboxTitle" class="lightbox-title">Statistical Artifact</h3>
-        <button type="button" class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Close image inspection modal">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"/>
-            <line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
-        </button>
-      </div>
-      <div class="lightbox-body">
-        <div class="lightbox-image-wrap">
-          <img id="lightboxImg" src="" alt="Enlarged statistical visualization">
+  <!-- Interactive Modal: Forensic Interview & Archive Explorer -->
+  <div class="modal-backdrop" id="archiveModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-tag">DIGITAL SÉANCE & ARCHIVE</span>
+          <h2 class="modal-title" id="modalTitle">Forensic Interview: request/request</h2>
         </div>
-        <div class="lightbox-info">
-          <p id="lightboxCaption" class="lightbox-caption"></p>
+        <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close dialog">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Interactive Forensic Q&A Terminal -->
+        <div class="forensic-terminal-panel">
+          <div class="term-status-bar">
+            <span class="term-prompt">ofrenda@séance:~$</span>
+            <span class="term-info">BM25 Grounded &bull; Gemma 2B &bull; Strict Abstention</span>
+          </div>
+
+          <div class="terminal-chat-log" id="terminalChatLog">
+            <div class="chat-msg system">
+              The archive of <code>request/request</code> is unsealed. Ask of its birth, its 14M weekly peak, its maintainers, or its deprecation. If the archive is silent on a matter, it will not fabricate.
+            </div>
+          </div>
+
+          <form class="terminal-input-row" id="terminalForm">
+            <input type="text" id="terminalInput" class="term-input" placeholder="Ask the ghost: e.g. Why was request deprecated?" autocomplete="off" />
+            <button type="submit" class="term-send-btn" id="terminalSubmitBtn">Inquire &rarr;</button>
+          </form>
+
+          <!-- Quick Prompts -->
+          <div class="term-quick-chips">
+            <button type="button" class="quick-chip" data-q="When was request deprecated?">When deprecated?</button>
+            <button type="button" class="quick-chip" data-q="Why was request deprecated instead of rewritten?">Why deprecated?</button>
+            <button type="button" class="quick-chip" data-q="Who was the original author?">Author?</button>
+            <button type="button" class="quick-chip" data-q="Will you release an iOS app next month?">Test Abstention</button>
+          </div>
+        </div>
+
+        <!-- Evidence Ledger Drawer -->
+        <div class="archive-ledger-section">
+          <div class="ledger-top-ctrls">
+            <h3 class="ledger-heading">Examined Specimen Ledger (150 Repositories)</h3>
+            <input type="text" id="ledgerSearchInput" class="ledger-search" placeholder="Filter specimens: axios, request, left-pad..." />
+          </div>
+          <div class="ledger-table-wrap">
+            <table class="ledger-table" id="ledgerTable">
+              <thead>
+                <tr>
+                  <th>Specimen</th>
+                  <th>Status</th>
+                  <th>Downloads/Wk</th>
+                  <th>Bus Factor</th>
+                  <th>Conceived</th>
+                  <th>Silence</th>
+                </tr>
+              </thead>
+              <tbody id="ledgerTableBody">
+                <!-- Dynamically loaded -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Audio Chime (Synthetic Web Audio API) -->
+  <!-- Audio Chime Element -->
+  <audio id="audioChime" preload="none"></audio>
+
   <script src="app.js"></script>
 </body>
 </html>

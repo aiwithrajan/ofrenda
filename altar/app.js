@@ -1,9 +1,9 @@
 // ==========================================================================
-// OFRENDA — THE GHOST IN THE MACHINE
-// Forensic Interview & Altar Interactive Runtime (UI/UX Pro Max Edition)
+// OFRENDA — THE DIGITAL MEMORIAL
+// Runtime Controller: Audio Synthesis, Dynamic Terminal, & Altar Interaction
 // ==========================================================================
 
-// Pre-registered client-side archive knowledge base (Instant fallback)
+// Pre-registered client-side archive knowledge base (Instant grounded fallback)
 const ARCHIVE_KNOWLEDGE = [
   {
     triggers: ["why", "deprecated", "deprecate", "die", "death", "reason", "rewritten"],
@@ -11,19 +11,24 @@ const ARCHIVE_KNOWLEDGE = [
     citation: "Issue #3142 • Commit aded7e4f (2020-02-11)"
   },
   {
+    triggers: ["when", "date", "february", "2020", "deprecated"],
+    answer: "request/request was fully deprecated on February 11, 2020 via commit aded7e4f authored by original creator Mikeal Rogers.",
+    citation: "Commit aded7e4f (2020-02-11)"
+  },
+  {
     triggers: ["final", "commit", "last commit", "message", "aded7e4f", "3c0cddc7"],
-    answer: "The final deprecation commit aded7e4f ('doc: note full deprecation (#3267)') was authored by Mikeal Rogers on February 11, 2020. A subsequent typo fix commit 3c0cddc7 ('README: typo in deprecation message (#3268)') by Gregor Martynus sealed the repository archive.",
+    answer: "The final deprecation commit aded7e4f ('doc: note full deprecation (#3267)') was authored by Mikeal Rogers on February 11, 2020. A subsequent typo fix commit 3c0cddc7 by Gregor Martynus sealed the archive.",
     citation: "Commit aded7e4f • Commit 3c0cddc7 (git log)"
   },
   {
     triggers: ["http/2", "http2", "support", "native"],
     answer: "No native HTTP/2 support was ever officially implemented. Maintainers determined that HTTP/2 streaming architecture required a complete ground-up rewrite that was incompatible with request's Node 0.4 callback foundations.",
-    citation: "Issue #3142 • Issue #2311 (comment by @mikeal)"
+    citation: "Issue #3142 • Issue #2311"
   },
   {
     triggers: ["downloads", "weekly", "traffic", "scale"],
-    answer: "At the time of deprecation declaration in Issue #3142, request was downloaded 14 million times a week and served as a direct or transitive dependency for over 41,000 packages in the npm registry.",
-    citation: "Issue #3142 • Repository Metadata (npm registry)"
+    answer: "At the time of deprecation declaration in Issue #3142, request was downloaded 14 million times a week and served as a direct or transitive dependency for over 41,000 packages.",
+    citation: "Issue #3142 • npm registry"
   },
   {
     triggers: ["license", "software license", "apache", "mit"],
@@ -31,14 +36,14 @@ const ARCHIVE_KNOWLEDGE = [
     citation: "Repository Metadata • LICENSE file"
   },
   {
-    triggers: ["ghosting", "divergence", "strangers", "latency", "gap"],
-    answer: "The Ghosting Band emerged in 2017: maintainer response latency to stranger inquiries rose from 4.2 days to over 180 days, alerting to abandonment a full 35 months prior to the final git deprecation commit.",
-    citation: "TabPFN Feature f4_latency_trend & LORO Model Fit"
+    triggers: ["author", "creator", "who made", "who built", "mikeal"],
+    answer: "Mikeal Rogers was the original author and primary maintainer who conceived request in January 2011.",
+    citation: "Repository Metadata • package.json"
   },
   {
-    triggers: ["born", "created", "created_at", "genesis", "who built"],
-    answer: "The repository was created on January 23, 2011 by Mikeal Rogers with the goal of being the 'simplest possible way to make http calls' in Node.js.",
-    citation: "Repository Metadata (id: 1283503) • git log"
+    triggers: ["alternatives", "substitute", "got", "axios", "undici", "fetch"],
+    answer: "Recommended modern alternatives include got, axios, node-fetch, undici, or native global fetch in modern Node.js.",
+    citation: "Issue #3142 Deprecation Roadmap"
   }
 ];
 
@@ -48,9 +53,9 @@ const DEFAULT_ABSTENTION = {
 };
 
 // --------------------------------------------------------------------------
-// Web Audio API Synthetic Chime (Zero External Asset Dependency)
+// 1. Synthetic Web Audio Bell / Chime Generator
 // --------------------------------------------------------------------------
-class MemorialChime {
+class SacredChime {
   constructor() {
     this.ctx = null;
   }
@@ -62,523 +67,336 @@ class MemorialChime {
     }
   }
 
-  playFlame() {
+  ring() {
     try {
       this.init();
-      if (!this.ctx || this.ctx.state === "suspended") {
-        this.ctx?.resume();
-      }
       if (!this.ctx) return;
+      if (this.ctx.state === "suspended") {
+        this.ctx.resume();
+      }
 
+      const now = this.ctx.currentTime;
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
 
       osc.type = "sine";
-      osc.frequency.setValueAtTime(440, this.ctx.currentTime); // A4
-      osc.frequency.exponentialRampToValueAtTime(880, this.ctx.currentTime + 0.3); // A5
+      osc.frequency.setValueAtTime(528, now); // 528 Hz Solfeggio frequency
+      osc.frequency.exponentialRampToValueAtTime(1056, now + 0.35);
 
-      gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.6);
+      gain.gain.setValueAtTime(0.04, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.85);
 
       osc.connect(gain);
       gain.connect(this.ctx.destination);
 
-      osc.start();
-      osc.stop(this.ctx.currentTime + 0.6);
+      osc.start(now);
+      osc.stop(now + 0.85);
     } catch (e) {
       // Audio autoplay policy catch
     }
   }
 }
 
-const chime = new MemorialChime();
+const chime = new SacredChime();
 
 // --------------------------------------------------------------------------
-// Embers Canvas Animation
+// 2. Ambient Floating Embers Canvas
 // --------------------------------------------------------------------------
 function initEmbersCanvas() {
   const canvas = document.getElementById("embersCanvas");
   if (!canvas) return;
-
   const ctx = canvas.getContext("2d");
-  if (!ctx) return;
 
-  const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (isReducedMotion) return;
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
 
-  let width = (canvas.width = window.innerWidth);
-  let height = (canvas.height = window.innerHeight);
-
-  window.addEventListener("resize", () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  });
-
-  const numParticles = Math.min(35, Math.floor(width / 35));
   const particles = [];
+  const COUNT = 32;
 
-  for (let i = 0; i < numParticles; i++) {
+  for (let i = 0; i < COUNT; i++) {
     particles.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      size: Math.random() * 2 + 0.8,
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 1.5 + 0.5,
       speedY: Math.random() * 0.45 + 0.15,
       speedX: (Math.random() - 0.5) * 0.25,
-      opacity: Math.random() * 0.6 + 0.2,
-      pulse: Math.random() * Math.PI,
+      opacity: Math.random() * 0.5 + 0.15,
+      flickerSpeed: Math.random() * 0.02 + 0.01,
+      flickerOffset: Math.random() * Math.PI * 2
     });
   }
 
-  function render() {
-    ctx.clearRect(0, 0, width, height);
+  let time = 0;
+  function animate() {
+    time += 0.02;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
+    for (let p of particles) {
       p.y -= p.speedY;
       p.x += p.speedX;
-      p.pulse += 0.02;
 
       if (p.y < -10) {
-        p.y = height + 10;
-        p.x = Math.random() * width;
+        p.y = canvas.height + 10;
+        p.x = Math.random() * canvas.width;
       }
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
 
-      const currentOpacity = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
-
+      const alpha = p.opacity * (0.6 + 0.4 * Math.sin(time * 3 + p.flickerOffset));
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(245, 158, 11, ${currentOpacity})`;
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(245, 158, 11, ${alpha})`;
       ctx.shadowColor = "#f59e0b";
       ctx.shadowBlur = 4;
       ctx.fill();
     }
-
-    requestAnimationFrame(render);
+    requestAnimationFrame(animate);
   }
-
-  requestAnimationFrame(render);
+  requestAnimationFrame(animate);
 }
 
 // --------------------------------------------------------------------------
-// Interactive Candle Altar Component
+// 3. Interactive Offering & Candles
 // --------------------------------------------------------------------------
-const CANDLE_CONFIGS = [
-  { height: 44, width: 20 },
-  { height: 58, width: 22 },
-  { height: 72, width: 24 },
-  { height: 85, width: 26 }, // Center tall candle
-  { height: 72, width: 24 },
-  { height: 58, width: 22 },
-  { height: 44, width: 20 },
-];
+let candlesLitCount = 14210;
 
-function createCandleSvg(cfg, idx) {
-  const div = document.createElement("div");
-  div.className = "svg-candle";
-  div.setAttribute("role", "button");
-  div.setAttribute("tabindex", "0");
-  div.setAttribute("aria-label", `Memorial candle ${idx + 1}. Click to toggle flame.`);
-  div.setAttribute("data-lit", "true");
+function handleLightCandle() {
+  candlesLitCount++;
+  chime.ring();
 
-  div.innerHTML = `
-    <div class="candle-flame-wrap" aria-hidden="true">
-      <svg width="22" height="36" viewBox="0 0 22 36" fill="none">
-        <defs>
-          <radialGradient id="flameGrad${idx}" cx="50%" cy="65%" r="50%">
-            <stop offset="0%" stop-color="#ffffff"/>
-            <stop offset="35%" stop-color="#fef08a"/>
-            <stop offset="70%" stop-color="#f59e0b"/>
-            <stop offset="100%" stop-color="#ea580c"/>
-          </radialGradient>
-        </defs>
-        <path d="M11 2 C8 9 3 15 3 23 C3 28 6.5 33 11 33 C15.5 33 19 28 19 23 C19 15 14 9 11 2 Z" fill="url(#flameGrad${idx})"/>
-        <ellipse cx="11" cy="24" rx="3.5" ry="5.5" fill="#ffffff" opacity="0.85"/>
-      </svg>
-    </div>
-    <div class="candle-body" style="height: ${cfg.height}px; width: ${cfg.width}px;" aria-hidden="true"></div>
-  `;
+  const countDisplay = document.getElementById("candlesCountDisplay");
+  if (countDisplay) {
+    countDisplay.textContent = candlesLitCount.toLocaleString();
+    countDisplay.style.color = "#fbbf24";
+    setTimeout(() => (countDisplay.style.color = "#ffffff"), 350);
+  }
 
-  function toggleCandle() {
-    const isLit = div.getAttribute("data-lit") === "true";
-    if (isLit) {
-      div.setAttribute("data-lit", "false");
-      div.classList.add("extinguished");
-      div.setAttribute("aria-label", `Memorial candle ${idx + 1} (extinguished). Click to rekindle.`);
-    } else {
-      div.setAttribute("data-lit", "true");
-      div.classList.remove("extinguished");
-      div.setAttribute("aria-label", `Memorial candle ${idx + 1} (burning). Click to extinguish.`);
-      chime.playFlame();
+  // Visual burst on center candle shrine
+  const shrine = document.getElementById("candleShrineWrapper");
+  if (shrine) {
+    shrine.style.transform = "scale(1.08)";
+    setTimeout(() => (shrine.style.transform = ""), 250);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 4. Modal Dialog Controller
+// --------------------------------------------------------------------------
+function initModal() {
+  const modal = document.getElementById("archiveModal");
+  const closeBtn = document.getElementById("modalCloseBtn");
+  const exploreBtn = document.getElementById("btnExploreArchive");
+  const viewAllBtn = document.getElementById("btnViewAllRepos");
+  const navTabs = document.querySelectorAll(".nav-tab");
+
+  function openModal() {
+    if (modal) {
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
     }
   }
 
-  div.addEventListener("click", toggleCandle);
-  div.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      toggleCandle();
+  function closeModal() {
+    if (modal) {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
     }
-  });
+  }
 
-  return div;
-}
+  if (exploreBtn) exploreBtn.addEventListener("click", openModal);
+  if (viewAllBtn) viewAllBtn.addEventListener("click", openModal);
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
 
-function initCandleAltar() {
-  const row = document.getElementById("candlesRow");
-  const lightBtn = document.getElementById("lightOfferingBtn");
-  const counter = document.getElementById("offeringCounter");
-  if (!row) return;
-
-  row.innerHTML = "";
-  const candleElements = CANDLE_CONFIGS.map((cfg, i) => {
-    const el = createCandleSvg(cfg, i);
-    row.appendChild(el);
-    return el;
-  });
-
-  let offeringTally = 14208;
-
-  if (lightBtn) {
-    lightBtn.addEventListener("click", () => {
-      chime.playFlame();
-      offeringTally++;
-      if (counter) {
-        counter.textContent = `${offeringTally.toLocaleString()} candles lit across 150 repositories`;
-      }
-
-      // Ensure all candles are glowing
-      candleElements.forEach((el) => {
-        el.setAttribute("data-lit", "true");
-        el.classList.remove("extinguished");
-      });
-
-      // Quick visual burst on button
-      lightBtn.style.transform = "scale(0.96)";
-      setTimeout(() => (lightBtn.style.transform = ""), 150);
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
     });
   }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && modal.classList.contains("open")) {
+      closeModal();
+    }
+  });
+
+  navTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      navTabs.forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+      const tabName = tab.getAttribute("data-tab");
+      if (tabName === "ghosting" || tabName === "methodology") {
+        openModal();
+      }
+    });
+  });
 }
 
 // --------------------------------------------------------------------------
-// Forensic Interview Terminal Runtime
+// 5. Forensic Interview Terminal
 // --------------------------------------------------------------------------
-function initForensicTerminal() {
-  const chatViewport = document.getElementById("chatViewport");
-  const chatForm = document.getElementById("chatForm");
-  const userInput = document.getElementById("userInput");
-  const chips = document.querySelectorAll(".chip");
+function initTerminal() {
+  const form = document.getElementById("terminalForm");
+  const input = document.getElementById("terminalInput");
+  const chatLog = document.getElementById("terminalChatLog");
+  const chips = document.querySelectorAll(".quick-chip");
 
-  if (!chatViewport || !chatForm || !userInput) return;
+  if (!form || !input || !chatLog) return;
 
-  function appendMessage(text, isUser, citation = null) {
-    const msgDiv = document.createElement("div");
-    msgDiv.className = `message ${isUser ? "user" : "assistant"}`;
-
-    const avatar = document.createElement("div");
-    avatar.className = `avatar ${isUser ? "user-avatar" : "ghost-avatar"}`;
-    avatar.setAttribute("aria-hidden", "true");
-
-    if (isUser) {
-      avatar.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-      `;
-    } else {
-      avatar.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 10h.01M15 10h.01M12 2a8 8 0 0 0-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 0 0-8-8z"/>
-        </svg>
-      `;
-    }
-
-    const bubble = document.createElement("div");
-    bubble.className = "bubble";
-
-    const p = document.createElement("p");
-    p.textContent = text;
-    bubble.appendChild(p);
-
-    if (!isUser) {
-      const actions = document.createElement("div");
-      actions.className = "bubble-actions";
-
-      if (citation) {
-        const citePill = document.createElement("span");
-        citePill.className = "citation-pill";
-        citePill.innerHTML = `
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-          </svg>
-          Source: ${citation}
-        `;
-        actions.appendChild(citePill);
-      }
-
-      const copyBtn = document.createElement("button");
-      copyBtn.type = "button";
-      copyBtn.className = "message-copy-btn";
-      copyBtn.setAttribute("aria-label", "Copy archive statement to clipboard");
-      copyBtn.innerHTML = `
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-        </svg>
-        <span>Copy</span>
-      `;
-
-      copyBtn.addEventListener("click", () => {
-        navigator.clipboard.writeText(text);
-        copyBtn.querySelector("span").textContent = "Copied!";
-        setTimeout(() => {
-          copyBtn.querySelector("span").textContent = "Copy";
-        }, 1800);
-      });
-
-      actions.appendChild(copyBtn);
-      bubble.appendChild(actions);
-    }
-
-    msgDiv.appendChild(avatar);
-    msgDiv.appendChild(bubble);
-    chatViewport.appendChild(msgDiv);
-    chatViewport.scrollTop = chatViewport.scrollHeight;
+  function appendChat(text, type) {
+    const msg = document.createElement("div");
+    msg.className = `chat-msg ${type}`;
+    msg.textContent = text;
+    chatLog.appendChild(msg);
+    chatLog.scrollTop = chatLog.scrollHeight;
+    return msg;
   }
 
-  async function handleQuery(query) {
-    const qTrimmed = query.trim();
-    if (!qTrimmed) return;
+  async function queryGhost(question) {
+    appendChat(question, "user");
+    input.value = "";
+    const pendingMsg = appendChat("...", "bot");
 
-    appendMessage(qTrimmed, true);
-
-    // Typing indicator
-    const typingMsg = document.createElement("div");
-    typingMsg.className = "message assistant";
-    typingMsg.innerHTML = `
-      <div class="avatar ghost-avatar" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M9 10h.01M15 10h.01M12 2a8 8 0 0 0-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 0 0-8-8z"/>
-        </svg>
-      </div>
-      <div class="bubble">
-        <span class="typing-dots">
-          <span class="typing-dot"></span>
-          <span class="typing-dot"></span>
-          <span class="typing-dot"></span>
-        </span>
-        <em style="margin-left: 8px; font-size: 0.85rem; color: #94a3b8;">Searching 11,748 corpus records...</em>
-      </div>
-    `;
-    chatViewport.appendChild(typingMsg);
-    chatViewport.scrollTop = chatViewport.scrollHeight;
-
-    // 1. Attempt live Ollama / Python server backend
     try {
-      const resp = await fetch("/api/ask", {
+      // Live backend POST /api/ask call
+      const res = await fetch("/api/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: qTrimmed }),
+        body: JSON.stringify({ question })
       });
 
-      if (resp.ok) {
-        const data = await resp.json();
-        typingMsg.remove();
-        const citStr = data.citations && data.citations.length > 0 ? data.citations.join(" • ") : null;
-        appendMessage(data.answer, false, citStr);
+      if (res.ok) {
+        const data = await res.json();
+        pendingMsg.textContent = data.answer || "The archive is silent on that.";
         return;
       }
     } catch (e) {
-      // Backend not running -> fall back smoothly
+      // Fallback to client-side grounded knowledge
     }
 
-    // 2. Client-side grounded lookup fallback
-    setTimeout(() => {
-      typingMsg.remove();
-      const qLower = qTrimmed.toLowerCase();
-      let matched = null;
+    // Client-side fallback matching
+    const qLower = question.toLowerCase();
+    const matched = ARCHIVE_KNOWLEDGE.find((item) =>
+      item.triggers.some((trig) => qLower.includes(trig))
+    );
 
-      for (const item of ARCHIVE_KNOWLEDGE) {
-        if (item.triggers.some((t) => qLower.includes(t))) {
-          matched = item;
-          break;
-        }
-      }
-
-      if (!matched) {
-        matched = DEFAULT_ABSTENTION;
-      }
-
-      appendMessage(matched.answer, false, matched.citation);
-    }, 450);
+    if (matched) {
+      pendingMsg.textContent = `${matched.answer} (${matched.citation})`;
+    } else {
+      pendingMsg.textContent = DEFAULT_ABSTENTION.answer;
+    }
   }
 
-  chatForm.addEventListener("submit", (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const q = userInput.value;
-    userInput.value = "";
-    handleQuery(q);
+    const q = input.value.trim();
+    if (q) queryGhost(q);
   });
 
   chips.forEach((chip) => {
     chip.addEventListener("click", () => {
       const q = chip.getAttribute("data-q");
-      if (q) {
-        userInput.value = "";
-        handleQuery(q);
-      }
+      if (q) queryGhost(q);
     });
   });
 }
 
 // --------------------------------------------------------------------------
-// Figure Lightbox Modal
+// 6. Specimen Ledger Data & Filtering
 // --------------------------------------------------------------------------
-function initFigureLightbox() {
-  const modal = document.getElementById("lightboxModal");
-  const backdrop = document.getElementById("lightboxBackdrop");
-  const closeBtn = document.getElementById("lightboxCloseBtn");
-  const imgEl = document.getElementById("lightboxImg");
-  const titleEl = document.getElementById("lightboxTitle");
-  const captionEl = document.getElementById("lightboxCaption");
+const SAMPLE_SPECIMENS = [
+  { name: "request/request", status: "DEPRECATED", dls: "14,000,000", bus: 1, conceived: "2011", silence: "2020-02" },
+  { name: "pallets/flask", status: "ACTIVE", dls: "12,000,000", bus: 4, conceived: "2010", silence: "None" },
+  { name: "django/django", status: "ACTIVE", dls: "8,500,000", bus: 8, conceived: "2005", silence: "None" },
+  { name: "twilio/twilio-python", status: "MAINTAINED", dls: "4,100,000", bus: 3, conceived: "2011", silence: "None" },
+  { name: "left-pad", status: "UNPUBLISHED", dls: "2,500,000", bus: 1, conceived: "2016", silence: "2016-03" },
+  { name: "event-stream", status: "ABANDONED", dls: "1,800,000", bus: 1, conceived: "2011", silence: "2018-11" },
+  { name: "colors.js", status: "SABOTAGED", dls: "20,000,000", bus: 1, conceived: "2011", silence: "2022-01" },
+  { name: "faker.js", status: "SABOTAGED", dls: "2,800,000", bus: 1, conceived: "2011", silence: "2022-01" },
+  { name: "moment/moment", status: "MAINTENANCE", dls: "18,000,000", bus: 2, conceived: "2011", silence: "2020-09" },
+  { name: "lodash/lodash", status: "MAINTENANCE", dls: "45,000,000", bus: 1, conceived: "2012", silence: "2021-04" },
+  { name: "axios/axios", status: "ACTIVE", dls: "38,000,000", bus: 4, conceived: "2014", silence: "None" },
+  { name: "sindresorhus/got", status: "ACTIVE", dls: "16,000,000", bus: 2, conceived: "2014", silence: "None" },
+  { name: "node-fetch/node-fetch", status: "ACTIVE", dls: "30,000,000", bus: 3, conceived: "2015", silence: "None" },
+  { name: "nodejs/undici", status: "ACTIVE", dls: "11,000,000", bus: 5, conceived: "2018", silence: "None" },
+];
 
-  if (!modal || !backdrop || !closeBtn || !imgEl) return;
-
-  let lastActiveElement = null;
-
-  function openLightbox(src, title, caption, triggerEl) {
-    lastActiveElement = triggerEl;
-    imgEl.src = src;
-    imgEl.alt = title;
-    if (titleEl) titleEl.textContent = title;
-    if (captionEl) captionEl.textContent = caption;
-    modal.removeAttribute("hidden");
-    document.body.style.overflow = "hidden";
-    closeBtn.focus();
-  }
-
-  function closeLightbox() {
-    modal.setAttribute("hidden", "");
-    document.body.style.overflow = "";
-    imgEl.src = "";
-    if (lastActiveElement && typeof lastActiveElement.focus === "function") {
-      lastActiveElement.focus();
-    }
-  }
-
-  document.querySelectorAll(".figure-card").forEach((card) => {
-    const triggerOpen = () => {
-      const figSrc = card.getAttribute("data-fig");
-      const title = card.getAttribute("data-title") || "Statistical Visualization";
-      const caption = card.getAttribute("data-caption") || "";
-      if (figSrc) {
-        openLightbox(figSrc, title, caption, card);
-      }
-    };
-
-    card.addEventListener("click", triggerOpen);
-    card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        triggerOpen();
-      }
-    });
-  });
-
-  closeBtn.addEventListener("click", closeLightbox);
-  backdrop.addEventListener("click", closeLightbox);
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.hasAttribute("hidden")) {
-      closeLightbox();
-    }
-  });
-}
-
-// --------------------------------------------------------------------------
-// Interactive 19-Category Honest Ledger Filter
-// --------------------------------------------------------------------------
-function initLedgerFilter() {
+function initLedger() {
+  const tbody = document.getElementById("ledgerTableBody");
   const searchInput = document.getElementById("ledgerSearchInput");
-  const filterPills = document.querySelectorAll(".f-pill");
-  const table = document.getElementById("ledgerTable");
-  const countLabel = document.getElementById("ledgerCountLabel");
+  if (!tbody) return;
 
-  if (!table) return;
+  function renderTable(filterText = "") {
+    const q = filterText.toLowerCase();
+    const rows = SAMPLE_SPECIMENS.filter((s) => s.name.toLowerCase().includes(q));
 
-  const rows = table.querySelectorAll("tbody tr");
-  let activeFilter = "all";
-  let searchTerm = "";
-
-  function applyFilters() {
-    let visibleCount = 0;
-
-    rows.forEach((row) => {
-      const cat = row.getAttribute("data-cat") || "";
-      const text = row.textContent.toLowerCase();
-
-      const matchesCat = activeFilter === "all" || cat === activeFilter;
-      const matchesSearch = !searchTerm || text.includes(searchTerm);
-
-      if (matchesCat && matchesSearch) {
-        row.style.display = "";
-        visibleCount++;
-      } else {
-        row.style.display = "none";
-      }
-    });
-
-    if (countLabel) {
-      countLabel.textContent = `Showing ${visibleCount} of ${rows.length} verified integrations`;
-    }
+    tbody.innerHTML = rows
+      .map(
+        (s) => `
+        <tr>
+          <td><strong>${s.name}</strong></td>
+          <td><span style="color: ${s.status === "ACTIVE" ? "#22c55e" : s.status === "DEPRECATED" ? "#ef4444" : "#f59e0b"}">${s.status}</span></td>
+          <td>${s.dls}</td>
+          <td>${s.bus}</td>
+          <td>${s.conceived}</td>
+          <td>${s.silence}</td>
+        </tr>
+      `
+      )
+      .join("");
   }
+
+  renderTable();
 
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
-      searchTerm = e.target.value.toLowerCase().trim();
-      applyFilters();
+      renderTable(e.target.value);
     });
   }
-
-  filterPills.forEach((pill) => {
-    pill.addEventListener("click", () => {
-      filterPills.forEach((p) => p.classList.remove("active"));
-      pill.classList.add("active");
-      activeFilter = pill.getAttribute("data-filter") || "all";
-      applyFilters();
-    });
-  });
 }
 
 // --------------------------------------------------------------------------
-// Code Block Copy Buttons
+// 7. Evidence Tag Pills Quick Interaction
 // --------------------------------------------------------------------------
-function initCopyButtons() {
-  document.querySelectorAll(".copy-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const text = btn.getAttribute("data-copy");
-      if (!text) return;
+function initEvidencePills() {
+  const pills = document.querySelectorAll(".evidence-pill");
+  pills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      const type = pill.getAttribute("data-evidence");
+      chime.ring();
+      pill.style.borderColor = "#f59e0b";
+      setTimeout(() => (pill.style.borderColor = ""), 400);
 
-      navigator.clipboard.writeText(text);
-      const span = btn.querySelector("span");
-      if (span) {
-        const orig = span.textContent;
-        span.textContent = "Copied!";
-        setTimeout(() => (span.textContent = orig), 1800);
+      // Open modal with specific query
+      const modal = document.getElementById("archiveModal");
+      const input = document.getElementById("terminalInput");
+      if (modal && input) {
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        input.value = `Tell me about ${type} for request/request`;
+        input.focus();
       }
     });
   });
 }
 
 // --------------------------------------------------------------------------
-// Initialize All Components on DOM Ready
+// Bootstrap on DOM Ready
 // --------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   initEmbersCanvas();
-  initCandleAltar();
-  initForensicTerminal();
-  initFigureLightbox();
-  initLedgerFilter();
-  initCopyButtons();
+  initModal();
+  initTerminal();
+  initLedger();
+  initEvidencePills();
+
+  // Wire buttons
+  const lightBtn = document.getElementById("btnLightOffering");
+  if (lightBtn) lightBtn.addEventListener("click", handleLightCandle);
+
+  const shrineWrap = document.getElementById("candleShrineWrapper");
+  if (shrineWrap) shrineWrap.addEventListener("click", handleLightCandle);
 });
