@@ -115,7 +115,7 @@ function initEmbersCanvas() {
   window.addEventListener("resize", resize);
 
   const particles = [];
-  const COUNT = 34;
+  const COUNT = 32;
 
   for (let i = 0; i < COUNT; i++) {
     particles.push({
@@ -125,6 +125,7 @@ function initEmbersCanvas() {
       speedY: Math.random() * 0.45 + 0.15,
       speedX: (Math.random() - 0.5) * 0.25,
       opacity: Math.random() * 0.5 + 0.15,
+      flickerSpeed: Math.random() * 0.02 + 0.01,
       flickerOffset: Math.random() * Math.PI * 2
     });
   }
@@ -161,7 +162,7 @@ function initEmbersCanvas() {
 // --------------------------------------------------------------------------
 // 3. Interactive Offering & Candles
 // --------------------------------------------------------------------------
-let candlesLitCount = 14212;
+let candlesLitCount = 14210;
 
 function handleLightCandle() {
   candlesLitCount++;
@@ -174,15 +175,16 @@ function handleLightCandle() {
     setTimeout(() => (countDisplay.style.color = "#ffffff"), 350);
   }
 
+  // Visual burst on center candle shrine
   const shrine = document.getElementById("candleShrineWrapper");
   if (shrine) {
-    shrine.style.transform = "scale(1.05)";
+    shrine.style.transform = "scale(1.08)";
     setTimeout(() => (shrine.style.transform = ""), 250);
   }
 }
 
 // --------------------------------------------------------------------------
-// 4. Modal Dialog Controller & Global Search
+// 4. Modal Dialog Controller
 // --------------------------------------------------------------------------
 function initModal() {
   const modal = document.getElementById("archiveModal");
@@ -190,19 +192,11 @@ function initModal() {
   const exploreBtn = document.getElementById("btnExploreArchive");
   const viewAllBtn = document.getElementById("btnViewAllRepos");
   const navTabs = document.querySelectorAll(".nav-tab");
-  const globalSearchInput = document.getElementById("globalSearchInput");
 
-  function openModal(defaultQuery = "") {
+  function openModal() {
     if (modal) {
       modal.classList.add("open");
       modal.setAttribute("aria-hidden", "false");
-      if (defaultQuery) {
-        const input = document.getElementById("terminalInput");
-        if (input) {
-          input.value = defaultQuery;
-          input.focus();
-        }
-      }
     }
   }
 
@@ -213,8 +207,8 @@ function initModal() {
     }
   }
 
-  if (exploreBtn) exploreBtn.addEventListener("click", () => openModal());
-  if (viewAllBtn) viewAllBtn.addEventListener("click", () => openModal());
+  if (exploreBtn) exploreBtn.addEventListener("click", openModal);
+  if (viewAllBtn) viewAllBtn.addEventListener("click", openModal);
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
 
   if (modal) {
@@ -224,28 +218,10 @@ function initModal() {
   }
 
   document.addEventListener("keydown", (e) => {
-    // ⌘K or Ctrl+K shortcut for search
-    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-      e.preventDefault();
-      if (globalSearchInput) {
-        globalSearchInput.focus();
-      } else {
-        openModal();
-      }
-    }
     if (e.key === "Escape" && modal && modal.classList.contains("open")) {
       closeModal();
     }
   });
-
-  if (globalSearchInput) {
-    globalSearchInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        const q = globalSearchInput.value.trim();
-        openModal(q ? `Search for ${q}` : "");
-      }
-    });
-  }
 
   navTabs.forEach((tab) => {
     tab.addEventListener("click", () => {
@@ -257,16 +233,6 @@ function initModal() {
       }
     });
   });
-
-  // Dark/Night Ambient Toggle Button
-  const themeBtn = document.getElementById("themeToggleBtn");
-  if (themeBtn) {
-    themeBtn.addEventListener("click", () => {
-      chime.ring();
-      themeBtn.style.transform = "rotate(180deg)";
-      setTimeout(() => (themeBtn.style.transform = ""), 400);
-    });
-  }
 }
 
 // --------------------------------------------------------------------------
@@ -295,6 +261,7 @@ function initTerminal() {
     const pendingMsg = appendChat("...", "bot");
 
     try {
+      // Live backend POST /api/ask call
       const res = await fetch("/api/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -307,9 +274,10 @@ function initTerminal() {
         return;
       }
     } catch (e) {
-      // Fallback
+      // Fallback to client-side grounded knowledge
     }
 
+    // Client-side fallback matching
     const qLower = question.toLowerCase();
     const matched = ARCHIVE_KNOWLEDGE.find((item) =>
       item.triggers.some((trig) => qLower.includes(trig))
@@ -344,14 +312,15 @@ const SAMPLE_SPECIMENS = [
   { name: "pallets/flask", status: "ACTIVE", dls: "12,000,000", bus: 4, conceived: "2010", silence: "None" },
   { name: "django/django", status: "ACTIVE", dls: "8,500,000", bus: 8, conceived: "2005", silence: "None" },
   { name: "twilio/twilio-python", status: "MAINTAINED", dls: "4,100,000", bus: 3, conceived: "2011", silence: "None" },
-  { name: "numpy/numpy", status: "ACTIVE", dls: "3,000,000", bus: 6, conceived: "2006", silence: "None" },
   { name: "left-pad", status: "UNPUBLISHED", dls: "2,500,000", bus: 1, conceived: "2016", silence: "2016-03" },
   { name: "event-stream", status: "ABANDONED", dls: "1,800,000", bus: 1, conceived: "2011", silence: "2018-11" },
   { name: "colors.js", status: "SABOTAGED", dls: "20,000,000", bus: 1, conceived: "2011", silence: "2022-01" },
+  { name: "faker.js", status: "SABOTAGED", dls: "2,800,000", bus: 1, conceived: "2011", silence: "2022-01" },
   { name: "moment/moment", status: "MAINTENANCE", dls: "18,000,000", bus: 2, conceived: "2011", silence: "2020-09" },
   { name: "lodash/lodash", status: "MAINTENANCE", dls: "45,000,000", bus: 1, conceived: "2012", silence: "2021-04" },
   { name: "axios/axios", status: "ACTIVE", dls: "38,000,000", bus: 4, conceived: "2014", silence: "None" },
   { name: "sindresorhus/got", status: "ACTIVE", dls: "16,000,000", bus: 2, conceived: "2014", silence: "None" },
+  { name: "node-fetch/node-fetch", status: "ACTIVE", dls: "30,000,000", bus: 3, conceived: "2015", silence: "None" },
   { name: "nodejs/undici", status: "ACTIVE", dls: "11,000,000", bus: 5, conceived: "2018", silence: "None" },
 ];
 
@@ -390,30 +359,28 @@ function initLedger() {
 }
 
 // --------------------------------------------------------------------------
-// 7. Evidence Pills & Carousel Controls
+// 7. Evidence Tag Pills Quick Interaction
 // --------------------------------------------------------------------------
 function initEvidencePills() {
   const pills = document.querySelectorAll(".evidence-pill");
   pills.forEach((pill) => {
     pill.addEventListener("click", () => {
-      pills.forEach((p) => p.classList.remove("active"));
-      pill.classList.add("active");
       const type = pill.getAttribute("data-evidence");
       chime.ring();
+      pill.style.borderColor = "#f59e0b";
+      setTimeout(() => (pill.style.borderColor = ""), 400);
+
+      // Open modal with specific query
+      const modal = document.getElementById("archiveModal");
+      const input = document.getElementById("terminalInput");
+      if (modal && input) {
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        input.value = `Tell me about ${type} for request/request`;
+        input.focus();
+      }
     });
   });
-
-  // Carousel Next/Prev Controls
-  const btnPrev = document.getElementById("btnPrevInsight");
-  const btnNext = document.getElementById("btnNextInsight");
-  if (btnPrev && btnNext) {
-    btnPrev.addEventListener("click", () => {
-      chime.ring();
-    });
-    btnNext.addEventListener("click", () => {
-      chime.ring();
-    });
-  }
 }
 
 // --------------------------------------------------------------------------
@@ -426,6 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initLedger();
   initEvidencePills();
 
+  // Wire buttons
   const lightBtn = document.getElementById("btnLightOffering");
   if (lightBtn) lightBtn.addEventListener("click", handleLightCandle);
 

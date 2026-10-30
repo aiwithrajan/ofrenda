@@ -5,55 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>OFRENDA — The Digital Memorial</title>
   <meta name="description" content="Ofrenda: A memorial for the repositories left behind. Forensic post-mortem analysis of open source software abandonment.">
-  <meta name="theme-color" content="#060709">
+  <meta name="theme-color" content="#07080a">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Caveat:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="dashboard-theme">
+<body class="ofrenda-preview">
   <!-- Ambient Atmospheric Canvas & Glows -->
-  <div class="ambient-glow glow-hero-center" aria-hidden="true"></div>
+  <div class="ambient-glow glow-hero-right" aria-hidden="true"></div>
+  <div class="ambient-glow glow-center-altar" aria-hidden="true"></div>
   <canvas id="embersCanvas" class="embers-canvas" aria-hidden="true"></canvas>
 
   <!-- Top Navigation Bar -->
   <header class="top-nav" role="banner">
     <div class="nav-container">
-      <div class="nav-left-group">
-        <div class="nav-brand">
-          <svg class="brand-flame-icon" width="20" height="22" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C10.5 4.5 9 7 9 10c0 3 2 5 3 7 1-2 3-4 3-7 0-3-1.5-5.5-3-8z" />
-            <path d="M12 6c-.8 1.5-1.5 3-1.5 4.8 0 1.6 1 2.8 1.5 3.8.5-1 1.5-2.2 1.5-3.8 0-1.8-.7-3.3-1.5-4.8z" opacity="0.6" fill="#fff" />
-          </svg>
-          <span class="brand-title">O F R E N D A</span>
-        </div>
-
-        <nav class="nav-tabs" role="navigation" aria-label="Main Navigation">
-          <button class="nav-tab active" data-tab="archive">The Archive</button>
-          <button class="nav-tab" data-tab="ghosting">Ghosting Band</button>
-          <button class="nav-tab" data-tab="methodology">Methodology</button>
-        </nav>
+      <div class="nav-brand">
+        <svg class="brand-flame-icon" width="18" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C10.5 4.5 9 7 9 10c0 3 2 5 3 7 1-2 3-4 3-7 0-3-1.5-5.5-3-8z" />
+          <path d="M12 6c-.8 1.5-1.5 3-1.5 4.8 0 1.6 1 2.8 1.5 3.8.5-1 1.5-2.2 1.5-3.8 0-1.8-.7-3.3-1.5-4.8z" opacity="0.6" fill="#fff" />
+        </svg>
+        <span class="brand-title">O F R E N D A</span>
       </div>
 
-      <div class="nav-right-group">
-        <div class="nav-search-box" id="navSearchBox" role="search">
-          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-          <input type="text" class="nav-search-input" id="globalSearchInput" placeholder="Search repositories..." autocomplete="off">
-          <kbd class="kbd-badge">⌘K</kbd>
-        </div>
+      <nav class="nav-tabs" role="navigation" aria-label="Main Navigation">
+        <button class="nav-tab active" data-tab="archive">The Archive</button>
+        <button class="nav-tab" data-tab="ghosting">Ghosting Band</button>
+        <button class="nav-tab" data-tab="methodology">Methodology</button>
+      </nav>
 
-        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Night Ambient Theme">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
-
+      <div class="nav-status">
         <span class="live-pill">
           <span class="live-dot"></span>
-          Archive Live
+          ARCHIVE LIVE
         </span>
       </div>
     </div>
@@ -62,96 +46,32 @@
   <!-- Main View Container -->
   <main class="page-wrap" id="mainContent">
 
-    <!-- 3-Column Hero Section -->
-    <section class="hero-dashboard-section" aria-label="Memorial Hero">
-      
-      <!-- Left Column: Memorial Statement & CTAs -->
-      <div class="hero-col-left">
-        <div class="memorial-tag">THE DIGITAL MEMORIAL</div>
+    <!-- Hero Section -->
+    <section class="hero-section" aria-label="Memorial Hero">
+      <div class="hero-left">
+        <div class="memorial-tag">— THE DIGITAL MEMORIAL —</div>
         <h1 class="hero-title">O F R E N D A</h1>
         <p class="hero-subtitle">A memorial for the repositories left behind.</p>
         
-        <div class="hero-separator-line"></div>
-
-        <div class="hero-narrative">
-          <p>Some projects don't end. They just stop being seen.</p>
-          <p class="narrative-accent">OFRENDA remembers them.</p>
-        </div>
-
-        <div class="hero-actions">
-          <button type="button" class="btn-light-candle" id="btnLightOffering">
-            <svg class="candle-btn-ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C10.5 4.5 9 7 9 10c0 3 2 5 3 7 1-2 3-4 3-7 0-3-1.5-5.5-3-8z"/>
-            </svg>
-            Light a candle &rarr;
-          </button>
-
-          <button type="button" class="btn-explore-archive" id="btnExploreArchive">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-            Explore the archive
-          </button>
+        <div class="repo-badge-pill" id="specimenPill">
+          <svg class="gh-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span class="repo-name">request/request</span>
         </div>
       </div>
 
-      <!-- Center Column: Atmospheric Shrine & Candles Visual -->
-      <div class="hero-col-center">
-        <div class="center-altar-frame" id="candleShrineWrapper" title="Click to offer a candle">
-          <img src="figures/shrine_flowers_candles.png" alt="Sacred candles and flowers altar" class="shrine-art-img">
-          
-          <!-- Flickering Flame Overlays -->
-          <div class="flame-cluster" aria-hidden="true">
-            <div class="candle-flame flame-tall"></div>
-            <div class="candle-flame flame-mid-l"></div>
-            <div class="candle-flame flame-mid-r"></div>
-            <div class="candle-flame flame-low-l"></div>
-            <div class="candle-flame flame-low-r"></div>
-          </div>
+      <div class="hero-right">
+        <div class="hero-shrine-art">
+          <img src="figures/hero_candles.png" alt="Sacred glowing candles altar" class="shrine-img">
+        </div>
+        <div class="poetic-creed">
+          <span>SOME PROJECTS</span>
+          <span>DON'T END.</span>
+          <span>THEY JUST</span>
+          <span>GO QUIET.</span>
         </div>
       </div>
-
-      <!-- Right Column: Live Counters & Emotional Tribute -->
-      <div class="hero-col-right">
-        <!-- Stat 1: Candles Lit -->
-        <div class="hero-metric-item">
-          <div class="metric-icon-wrap">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-            </svg>
-          </div>
-          <div class="metric-text-wrap">
-            <span class="metric-number" id="candlesCountDisplay">14,212</span>
-            <span class="metric-title">candles lit</span>
-            <span class="metric-note">(active repositories)</span>
-          </div>
-        </div>
-
-        <!-- Stat 2: Repositories Examined -->
-        <div class="hero-metric-item">
-          <div class="metric-icon-wrap">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-            </svg>
-          </div>
-          <div class="metric-text-wrap">
-            <span class="metric-number">150</span>
-            <span class="metric-title">repositories examined</span>
-            <span class="metric-note">(archived + active)</span>
-          </div>
-        </div>
-
-        <!-- Poetic Tribute in Cursive -->
-        <div class="handwritten-tribute">
-          <p class="tribute-line-1">"Not just code,</p>
-          <p class="tribute-line-2">but the people behind it."</p>
-        </div>
-      </div>
-
     </section>
 
     <!-- Horizontal Timeline Bar -->
@@ -163,9 +83,8 @@
         </div>
 
         <div class="timeline-track">
-          <!-- Node 1: Conceived -->
           <div class="t-node node-conceived">
-            <span class="t-dot dot-gold-solid"></span>
+            <span class="t-dot dot-green"></span>
             <div class="t-info">
               <span class="t-date">Jan 23, 2011</span>
               <span class="t-name">Conceived</span>
@@ -174,9 +93,8 @@
 
           <div class="t-connector"></div>
 
-          <!-- Node 2: Social Peak -->
           <div class="t-node node-peak">
-            <span class="t-dot dot-gold-ring"></span>
+            <span class="t-dot dot-gold"></span>
             <div class="t-info">
               <span class="t-date">~2017</span>
               <span class="t-name">Social peak</span>
@@ -185,9 +103,8 @@
 
           <div class="t-connector"></div>
 
-          <!-- Node 3: Code Silence -->
           <div class="t-node node-silence">
-            <span class="t-dot dot-cyan"></span>
+            <span class="t-dot dot-muted"></span>
             <div class="t-info">
               <span class="t-date">Feb 11, 2020</span>
               <span class="t-name">Code silence</span>
@@ -207,173 +124,263 @@
       </div>
     </section>
 
-    <!-- Split Grid: Research Insight & Repository Case File -->
+    <!-- Interactive Offering & Candles Altar -->
+    <section class="shrine-section" aria-label="Altar Offerings">
+      <div class="shrine-metrics-row">
+        <!-- Left Stat -->
+        <div class="shrine-stat stat-left">
+          <svg class="stat-icon laurel-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M7 20C4 18 3 14 3 9c3 0 5 1 6 3-1-3 0-6 2-8 2 2 3 5 2 8 2-2 4-3 6-3 0 5-1 9-4 11"/>
+            <path d="M12 22V12"/>
+          </svg>
+          <div class="stat-meta">
+            <span class="stat-num" id="candlesCountDisplay">14,210</span>
+            <span class="stat-desc">candles lit</span>
+          </div>
+        </div>
+
+        <!-- Center Glowing Candles Cluster (Pure Vector SVG - No Image Box) -->
+        <div class="shrine-cluster-wrap" id="candleShrineWrapper" title="Click to light a candle offering" role="button" tabindex="0" aria-label="Memorial Candle Altar. Click to offer remembrance.">
+          <svg class="altar-svg-shrine" viewBox="0 0 280 140" width="280" height="140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Ambient Base Glow -->
+              <radialGradient id="altarBaseGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.35"/>
+                <stop offset="60%" stop-color="#b45309" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="#050608" stop-opacity="0"/>
+              </radialGradient>
+
+              <!-- Wax Gradient (Warm Cream to Dark Amber) -->
+              <linearGradient id="waxGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#fef3c7"/>
+                <stop offset="35%" stop-color="#fde68a"/>
+                <stop offset="75%" stop-color="#d97706"/>
+                <stop offset="100%" stop-color="#78350f"/>
+              </linearGradient>
+
+              <!-- Wax Top Rim -->
+              <linearGradient id="waxTopGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#fef08a"/>
+              </linearGradient>
+
+              <!-- Flame Gradient -->
+              <radialGradient id="flameGrad" cx="50%" cy="75%" r="60%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="30%" stop-color="#fef08a"/>
+                <stop offset="65%" stop-color="#f59e0b"/>
+                <stop offset="100%" stop-color="#ea580c"/>
+              </radialGradient>
+
+              <!-- Flame Glow Filter -->
+              <filter id="flameBlur" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2.5"/>
+              </filter>
+            </defs>
+
+            <!-- Warm Base Altar Floor Glow -->
+            <ellipse cx="140" cy="132" rx="125" ry="8" fill="url(#altarBaseGlow)"/>
+
+            <!-- Candle 1 (Far Left, 38px) -->
+            <g class="candle-unit" transform="translate(25, 0)">
+              <rect x="0" y="92" width="18" height="38" rx="2" fill="url(#waxGrad)"/>
+              <ellipse cx="9" cy="92" rx="9" ry="2.5" fill="url(#waxTopGrad)"/>
+              <line x1="9" y1="92" x2="9" y2="85" stroke="#1c1917" stroke-width="1.8"/>
+              <g class="flame-group flame-anim-1">
+                <ellipse cx="9" cy="77" rx="9" ry="14" fill="#f59e0b" opacity="0.35" filter="url(#flameBlur)"/>
+                <path d="M9 67 C6.5 73 3.5 78 3.5 82 C3.5 85.5 6 88 9 88 C12 88 14.5 85.5 14.5 82 C14.5 78 11.5 73 9 67 Z" fill="url(#flameGrad)"/>
+                <ellipse cx="9" cy="83" rx="2.5" ry="4" fill="#ffffff" opacity="0.9"/>
+              </g>
+            </g>
+
+            <!-- Candle 2 (Mid Left, 56px) -->
+            <g class="candle-unit" transform="translate(56, 0)">
+              <rect x="0" y="74" width="22" height="56" rx="2" fill="url(#waxGrad)"/>
+              <ellipse cx="11" cy="74" rx="11" ry="3" fill="url(#waxTopGrad)"/>
+              <line x1="11" y1="74" x2="11" y2="67" stroke="#1c1917" stroke-width="1.8"/>
+              <g class="flame-group flame-anim-2">
+                <ellipse cx="11" cy="57" rx="10" ry="16" fill="#f59e0b" opacity="0.38" filter="url(#flameBlur)"/>
+                <path d="M11 47 C8 53 4.5 59 4.5 63.5 C4.5 67.5 7.5 70.5 11 70.5 C14.5 70.5 17.5 67.5 17.5 63.5 C17.5 59 14 53 11 47 Z" fill="url(#flameGrad)"/>
+                <ellipse cx="11" cy="64" rx="3" ry="5" fill="#ffffff" opacity="0.9"/>
+              </g>
+            </g>
+
+            <!-- Candle 3 (Inner Left, 72px) -->
+            <g class="candle-unit" transform="translate(91, 0)">
+              <rect x="0" y="58" width="24" height="72" rx="2" fill="url(#waxGrad)"/>
+              <ellipse cx="12" cy="58" rx="12" ry="3.5" fill="url(#waxTopGrad)"/>
+              <line x1="12" y1="58" x2="12" y2="50" stroke="#1c1917" stroke-width="1.8"/>
+              <g class="flame-group flame-anim-3">
+                <ellipse cx="12" cy="38" rx="11" ry="18" fill="#f59e0b" opacity="0.4" filter="url(#flameBlur)"/>
+                <path d="M12 28 C8.5 35 5 41 5 46 C5 50.5 8 54 12 54 C16 54 19 50.5 19 46 C19 41 15.5 35 12 28 Z" fill="url(#flameGrad)"/>
+                <ellipse cx="12" cy="47" rx="3.5" ry="5.5" fill="#ffffff" opacity="0.92"/>
+              </g>
+            </g>
+
+            <!-- Candle 4 (Center Tallest, 88px) -->
+            <g class="candle-unit" transform="translate(127, 0)">
+              <rect x="0" y="42" width="26" height="88" rx="2.5" fill="url(#waxGrad)"/>
+              <ellipse cx="13" cy="42" rx="13" ry="3.8" fill="url(#waxTopGrad)"/>
+              <line x1="13" y1="42" x2="13" y2="33" stroke="#1c1917" stroke-width="2"/>
+              <g class="flame-group flame-anim-4">
+                <ellipse cx="13" cy="20" rx="12" ry="20" fill="#f59e0b" opacity="0.45" filter="url(#flameBlur)"/>
+                <path d="M13 10 C9 18 5 24 5 30 C5 35 8.5 39 13 39 C17.5 39 21 35 21 30 C21 24 17 18 13 10 Z" fill="url(#flameGrad)"/>
+                <ellipse cx="13" cy="31" rx="4" ry="6" fill="#ffffff" opacity="0.95"/>
+              </g>
+            </g>
+
+            <!-- Candle 5 (Inner Right, 70px) -->
+            <g class="candle-unit" transform="translate(165, 0)">
+              <rect x="0" y="60" width="24" height="70" rx="2" fill="url(#waxGrad)"/>
+              <ellipse cx="12" cy="60" rx="12" ry="3.5" fill="url(#waxTopGrad)"/>
+              <line x1="12" y1="60" x2="12" y2="52" stroke="#1c1917" stroke-width="1.8"/>
+              <g class="flame-group flame-anim-5">
+                <ellipse cx="12" cy="40" rx="11" ry="18" fill="#f59e0b" opacity="0.4" filter="url(#flameBlur)"/>
+                <path d="M12 30 C8.5 37 5 43 5 48 C5 52.5 8 56 12 56 C16 56 19 52.5 19 48 C19 43 15.5 37 12 30 Z" fill="url(#flameGrad)"/>
+                <ellipse cx="12" cy="49" rx="3.5" ry="5.5" fill="#ffffff" opacity="0.92"/>
+              </g>
+            </g>
+
+            <!-- Candle 6 (Mid Right, 54px) -->
+            <g class="candle-unit" transform="translate(201, 0)">
+              <rect x="0" y="76" width="22" height="54" rx="2" fill="url(#waxGrad)"/>
+              <ellipse cx="11" cy="76" rx="11" ry="3" fill="url(#waxTopGrad)"/>
+              <line x1="11" y1="76" x2="11" y2="69" stroke="#1c1917" stroke-width="1.8"/>
+              <g class="flame-group flame-anim-6">
+                <ellipse cx="11" cy="59" rx="10" ry="16" fill="#f59e0b" opacity="0.38" filter="url(#flameBlur)"/>
+                <path d="M11 49 C8 55 4.5 61 4.5 65.5 C4.5 69.5 7.5 72.5 11 72.5 C14.5 72.5 17.5 69.5 17.5 65.5 C17.5 61 14 55 11 49 Z" fill="url(#flameGrad)"/>
+                <ellipse cx="11" cy="66" rx="3" ry="5" fill="#ffffff" opacity="0.9"/>
+              </g>
+            </g>
+
+            <!-- Candle 7 (Far Right, 36px) -->
+            <g class="candle-unit" transform="translate(235, 0)">
+              <rect x="0" y="94" width="18" height="36" rx="2" fill="url(#waxGrad)"/>
+              <ellipse cx="9" cy="94" rx="9" ry="2.5" fill="url(#waxTopGrad)"/>
+              <line x1="9" y1="94" x2="9" y2="87" stroke="#1c1917" stroke-width="1.8"/>
+              <g class="flame-group flame-anim-7">
+                <ellipse cx="9" cy="79" rx="9" ry="14" fill="#f59e0b" opacity="0.35" filter="url(#flameBlur)"/>
+                <path d="M9 69 C6.5 75 3.5 80 3.5 84 C3.5 87.5 6 90 9 90 C12 90 14.5 87.5 14.5 84 C14.5 80 11.5 75 9 69 Z" fill="url(#flameGrad)"/>
+                <ellipse cx="9" cy="85" rx="2.5" ry="4" fill="#ffffff" opacity="0.9"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Right Stat -->
+        <div class="shrine-stat stat-right">
+          <svg class="stat-icon doc-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          <div class="stat-meta">
+            <span class="stat-num">150</span>
+            <span class="stat-desc">repositories examined</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Offering Action CTA Buttons -->
+      <div class="shrine-actions">
+        <button type="button" class="btn-light-candle" id="btnLightOffering">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C10.5 4.5 9 7 9 10c0 3 2 5 3 7 1-2 3-4 3-7 0-3-1.5-5.5-3-8z"/>
+          </svg>
+          Light a candle &rarr;
+        </button>
+
+        <button type="button" class="btn-explore-archive" id="btnExploreArchive">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+          </svg>
+          Explore the archive
+        </button>
+      </div>
+    </section>
+
+    <!-- Two Split Cards: Research Insight & Repository Case File -->
     <section class="research-split-grid" aria-label="Forensic Investigation Details">
       
-      <!-- Card 1: The Ghosting Band Research Insight (01 / 03) -->
+      <!-- Card 1: The Ghosting Band Research Insight -->
       <article class="glass-card insight-card">
         <div class="card-top-meta">
-          <div class="insight-meta-left">
-            <svg class="insight-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C10.5 4.5 9 7 9 10c0 3 2 5 3 7 1-2 3-4 3-7 0-3-1.5-5.5-3-8z" />
-            </svg>
-            <span class="card-eyebrow">RESEARCH INSIGHT</span>
-          </div>
-          
-          <div class="card-pagination">
-            <span class="page-num">01 / 03</span>
-            <button type="button" class="page-nav-arrow" id="btnPrevInsight" aria-label="Previous insight">&lt;</button>
-            <button type="button" class="page-nav-arrow" id="btnNextInsight" aria-label="Next insight">&gt;</button>
-          </div>
+          <span class="card-eyebrow">+ RESEARCH INSIGHT</span>
+          <span class="card-index">01</span>
         </div>
 
         <h2 class="card-title">The Ghosting Band</h2>
 
         <p class="card-narrative">
-          Maintainers stop answering strangers long before they stop pushing code.
-          That silent chasm between social death (<span class="math-term-gold">&gamma;<sub>1</sub></span>) and code silence (<span class="math-term-cyan">&gamma;<sub>2</sub></span>) is the <strong>Ghosting Band</strong>.
+          Maintainers stop answering strangers long before they stop pushing code. That silent chasm between social death (<span class="math-term">&gamma;<sub>1</sub></span>) and code silence (<span class="math-term">&gamma;<sub>2</sub></span>) is the <strong>Ghosting Band</strong>.
         </p>
 
-        <!-- Inner Split: Graph on Left, Insights Sidebar on Right -->
-        <div class="insight-inner-grid">
-          
-          <!-- Graph Area -->
-          <div class="chart-container">
-            <div class="chart-annotation-bar">
-              <div class="annot-left">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
-                <div class="annot-text-group">
-                  <span class="annot-title">Social divergence</span>
-                  <span class="annot-sub">(before code silence)</span>
-                </div>
-              </div>
-              <div class="annot-right">
-                <span class="annot-title">Code silence</span>
-                <span class="annot-sub">(afterwards)</span>
-              </div>
+        <!-- Dynamic Visual Graph -->
+        <div class="chart-container">
+          <div class="chart-annotation-bar">
+            <div class="annot-left">
+              <span class="annot-title">Social divergence</span>
+              <span class="annot-sub">(before code silence)</span>
             </div>
-
-            <!-- SVG Graph with Ghosting Band Shading & Y-Axis -->
-            <div class="svg-chart-box">
-              <svg class="ghosting-svg-chart" viewBox="0 0 460 210" preserveAspectRatio="none">
-                <defs>
-                  <linearGradient id="bandGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.18"/>
-                    <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.04"/>
-                  </linearGradient>
-                </defs>
-
-                <!-- Y-Axis Ticks & Gridlines -->
-                <text x="28" y="30" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="9.5" text-anchor="end">1.0</text>
-                <line x1="36" y1="26" x2="440" y2="26" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-
-                <text x="28" y="60" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="9.5" text-anchor="end">0.8</text>
-                <line x1="36" y1="56" x2="440" y2="56" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-
-                <text x="28" y="90" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="9.5" text-anchor="end">0.6</text>
-                <line x1="36" y1="86" x2="440" y2="86" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-
-                <text x="28" y="120" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="9.5" text-anchor="end">0.4</text>
-                <line x1="36" y1="116" x2="440" y2="116" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-
-                <text x="28" y="150" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="9.5" text-anchor="end">0.2</text>
-                <line x1="36" y1="146" x2="440" y2="146" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-
-                <text x="28" y="180" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="9.5" text-anchor="end">0.0</text>
-                <line x1="36" y1="176" x2="440" y2="176" stroke="rgba(255,255,255,0.09)" stroke-width="1" />
-
-                <!-- Vertical Axis Label -->
-                <text x="-105" y="12" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" transform="rotate(-90)" letter-spacing="0.05em">Activity level</text>
-
-                <!-- Shaded Ghosting Band (2015 to 2018) -->
-                <rect x="160" y="26" width="125" height="150" fill="url(#bandGrad)" />
-                <line x1="160" y1="26" x2="160" y2="176" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.6"/>
-                <line x1="285" y1="26" x2="285" y2="176" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.6"/>
-                
-                <text x="222" y="42" fill="#f59e0b" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="600" text-anchor="middle" letter-spacing="0.08em">GHOSTING BAND</text>
-
-                <!-- Yellow/Gold Code Activity Curve -->
-                <path class="chart-curve code-curve"
-                      d="M 50,62 L 90,62 L 130,62 L 170,64 L 210,65 L 250,68 L 290,75 L 330,96 L 370,132 L 410,165 L 430,176"
-                      fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" />
-
-                <!-- Code Curve Dots -->
-                <circle cx="50" cy="62" r="3" fill="#f59e0b"/>
-                <circle cx="90" cy="62" r="3" fill="#f59e0b"/>
-                <circle cx="130" cy="62" r="3" fill="#f59e0b"/>
-                <circle cx="170" cy="64" r="3" fill="#f59e0b"/>
-                <circle cx="210" cy="65" r="3" fill="#f59e0b"/>
-                <circle cx="250" cy="68" r="3" fill="#f59e0b"/>
-                <circle cx="290" cy="75" r="3" fill="#f59e0b"/>
-                <circle cx="330" cy="96" r="3" fill="#f59e0b"/>
-                <circle cx="370" cy="132" r="3" fill="#f59e0b"/>
-                <circle cx="410" cy="165" r="3" fill="#f59e0b"/>
-
-                <!-- Blue/Cyan Social Activity Curve -->
-                <path class="chart-curve social-curve"
-                      d="M 50,56 L 90,72 L 130,88 L 170,105 L 210,135 L 250,152 L 290,162 L 330,168 L 370,172 L 410,175 L 430,176"
-                      fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" />
-
-                <!-- Social Curve Dots -->
-                <circle cx="50" cy="56" r="3" fill="#38bdf8"/>
-                <circle cx="90" cy="72" r="3" fill="#38bdf8"/>
-                <circle cx="130" cy="88" r="3" fill="#38bdf8"/>
-                <circle cx="170" cy="105" r="3" fill="#38bdf8"/>
-                <circle cx="210" cy="135" r="3" fill="#38bdf8"/>
-                <circle cx="250" cy="152" r="3" fill="#38bdf8"/>
-                <circle cx="290" cy="162" r="3" fill="#38bdf8"/>
-                <circle cx="330" cy="168" r="3" fill="#38bdf8"/>
-                <circle cx="370" cy="172" r="3" fill="#38bdf8"/>
-
-                <!-- X-Axis Labels -->
-                <text x="50" y="196" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">2011</text>
-                <text x="160" y="196" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">2015</text>
-                <text x="285" y="196" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">2018</text>
-                <text x="410" y="196" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">2020</text>
-              </svg>
-            </div>
-
-            <!-- Legend -->
-            <div class="chart-legend">
-              <div class="legend-item">
-                <span class="legend-dot dot-blue"></span>
-                <span class="legend-label">Social activity</span>
-              </div>
-              <div class="legend-item">
-                <span class="legend-dot dot-amber"></span>
-                <span class="legend-label">Code activity</span>
-              </div>
+            <div class="annot-right">
+              <span class="annot-title">Code silence</span>
+              <span class="annot-sub">(afterwards)</span>
             </div>
           </div>
 
-          <!-- Insight Sidebar -->
-          <div class="insight-sidebar">
-            <div class="insight-stat-box">
-              <span class="stat-sidebar-label">Average gap</span>
-              <span class="stat-sidebar-val">2.8 years</span>
-              <span class="stat-sidebar-sub">between social & code silence</span>
-            </div>
+          <!-- SVG Chart Curve -->
+          <div class="svg-chart-box">
+            <svg class="ghosting-svg-chart" viewBox="0 0 540 180" preserveAspectRatio="none" aria-label="Social vs Code Activity Divergence Chart">
+              <defs>
+                <linearGradient id="blueGlow" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.0"/>
+                </linearGradient>
+                <linearGradient id="goldGlow" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.2"/>
+                  <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.0"/>
+                </linearGradient>
+              </defs>
 
-            <div class="insight-patterns-box">
-              <span class="patterns-label">Key patterns</span>
-              <ul class="patterns-list">
-                <li><span class="pattern-ico">👥</span> Social signals fade first</li>
-                <li><span class="pattern-ico">&lt;/&gt;</span> Code activity persists</li>
-                <li><span class="pattern-ico">📈</span> Abrupt decline after gap</li>
-              </ul>
-            </div>
+              <!-- Subtle Grid & Division Line -->
+              <line x1="40" y1="140" x2="520" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <line x1="40" y1="80" x2="520" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              
+              <!-- Dashed Boundary Line between divergence and silence -->
+              <line x1="370" y1="20" x2="370" y2="140" stroke="rgba(255,255,255,0.18)" stroke-width="1" stroke-dasharray="4 4" />
 
-            <div class="sidebar-quote">
-              <p>"The loudest goodbye</p>
-              <p>is often a silent one."</p>
-            </div>
+              <!-- Yellow/Gold Code Activity Line (stays steady then plunges) -->
+              <path class="chart-curve code-curve"
+                    d="M 40,65 C 100,60 160,62 220,62 C 280,62 330,68 370,72 C 400,75 430,95 460,135 L 500,140"
+                    fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" />
+
+              <!-- Blue Social Activity Line (drops early 2015-2018) -->
+              <path class="chart-curve social-curve"
+                    d="M 40,55 C 70,68 100,60 140,82 C 180,105 210,95 240,118 C 280,128 320,135 370,138 L 500,140"
+                    fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" />
+
+              <!-- Axis Year Labels -->
+              <text x="40" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2011</text>
+              <text x="180" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2015</text>
+              <text x="360" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2018</text>
+              <text x="480" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2020</text>
+            </svg>
           </div>
 
+          <!-- Chart Legend -->
+          <div class="chart-legend">
+            <div class="legend-item">
+              <span class="legend-dot dot-blue"></span>
+              <span class="legend-label">Social activity</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot dot-amber"></span>
+              <span class="legend-label">Code activity</span>
+            </div>
+          </div>
         </div>
       </article>
 
@@ -394,7 +401,7 @@
 
         <div class="casefile-header">
           <div class="casefile-repo">
-            <svg class="gh-icon-sm" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <svg class="gh-icon-sm" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
             </svg>
             <span class="casefile-repo-name">request/request</span>
@@ -422,18 +429,18 @@
 
           <div class="c-stat-box">
             <div class="c-stat-top">
-              <span class="c-stat-ico red-ico">⊘</span>
+              <span class="c-stat-ico">🚫</span>
               <span class="c-stat-val">Code silence</span>
             </div>
             <span class="c-stat-sub">Feb 11, 2020</span>
           </div>
         </div>
 
-        <!-- Evidence Pills (GitHub active by default) -->
+        <!-- Evidence Tags -->
         <div class="casefile-evidence-section">
           <span class="evidence-title">EVIDENCE</span>
           <div class="evidence-pills-wrap">
-            <button class="evidence-pill active" data-evidence="gh">
+            <button class="evidence-pill" data-evidence="gh">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               GitHub activity
             </button>
@@ -446,116 +453,61 @@
               Archive snapshot
             </button>
             <button class="evidence-pill" data-evidence="social">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
               Social signals
             </button>
             <button class="evidence-pill" data-evidence="commit">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/></svg>
               Last commit
             </button>
           </div>
         </div>
-
-        <!-- NEW: Key Insights Bullet Section -->
-        <div class="casefile-key-insights">
-          <div class="insights-top-heading">
-            <span class="bulb-ico">💡</span>
-            <span class="insights-title">KEY INSIGHTS</span>
-          </div>
-          <ul class="insights-bullet-list">
-            <li>Maintainers stopped engaging on social platforms in 2017.</li>
-            <li>Code activity continued for ~3 years after social decline.</li>
-            <li>No commits after Feb 11, 2020.</li>
-          </ul>
-        </div>
-
       </article>
 
     </section>
 
-    <!-- Bottom Strip: 4 Peer Repositories Grid -->
+    <!-- Bottom Strip: Other Archived Repositories -->
     <footer class="peer-repos-strip" aria-label="Other Examined Repositories">
-      <div class="peer-header-row">
-        <div class="peer-header-left">
-          <svg class="stack-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-            <polyline points="2 17 12 22 22 17"></polyline>
-            <polyline points="2 12 12 17 22 12"></polyline>
-          </svg>
-          <div class="peer-titles">
-            <span class="peer-eyebrow">OTHER ARCHIVED REPOSITORIES</span>
-            <span class="peer-desc">More forgotten projects, same story.</span>
-          </div>
-        </div>
-
-        <button class="view-all-link" id="btnViewAllRepos">
-          View all &rarr;
-        </button>
+      <div class="peer-header-col">
+        <span class="peer-eyebrow">OTHER ARCHIVED REPOSITORIES</span>
+        <span class="peer-desc">More forgotten projects, same story.</span>
       </div>
 
-      <!-- 4 Repos Grid -->
-      <div class="peer-grid-4">
-        <!-- 1. Pallets / Flask -->
-        <div class="peer-repo-card" data-repo="pallets/flask">
-          <div class="chip-top">
-            <div class="chip-repo-info">
-              <svg class="gh-icon-chip" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              <span class="chip-name">pallets/flask</span>
-            </div>
-            <span class="chip-badge status-active">● ACTIVE</span>
+      <div class="peer-cards-row">
+        <!-- Pallets / Flask -->
+        <div class="peer-repo-chip" data-repo="pallets/flask">
+          <div class="chip-main">
+            <svg class="gh-icon-chip" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span class="chip-name">pallets/flask</span>
+            <span class="chip-status status-active">● ACTIVE</span>
           </div>
-          <div class="chip-bottom">
-            <span class="chip-metric">&darr; 12M downloads / wk &middot; Silent since 2021</span>
-            <span class="chip-arrow">&rarr;</span>
-          </div>
+          <div class="chip-sub">12M downloads / wk &middot; Silent since 2021</div>
         </div>
 
-        <!-- 2. Django / Django -->
-        <div class="peer-repo-card" data-repo="django/django">
-          <div class="chip-top">
-            <div class="chip-repo-info">
-              <svg class="gh-icon-chip" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              <span class="chip-name">django/django</span>
-            </div>
-            <span class="chip-badge status-partial">● PARTIALLY ACTIVE</span>
+        <!-- Django / Django -->
+        <div class="peer-repo-chip" data-repo="django/django">
+          <div class="chip-main">
+            <svg class="gh-icon-chip" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span class="chip-name">django/django</span>
+            <span class="chip-status status-partial">● PARTIALLY ACTIVE</span>
           </div>
-          <div class="chip-bottom">
-            <span class="chip-metric">&darr; 8M downloads / wk &middot; Silent since 2022</span>
-            <span class="chip-arrow">&rarr;</span>
-          </div>
+          <div class="chip-sub">8M downloads / wk &middot; Silent since 2022</div>
         </div>
 
-        <!-- 3. Twilio / Twilio-Python -->
-        <div class="peer-repo-card" data-repo="twilio/twilio-python">
-          <div class="chip-top">
-            <div class="chip-repo-info">
-              <svg class="gh-icon-chip" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              <span class="chip-name">twilio/twilio-python</span>
-            </div>
-            <span class="chip-badge status-archived">● ARCHIVED</span>
+        <!-- Twilio / Twilio-Python -->
+        <div class="peer-repo-chip" data-repo="twilio/twilio-python">
+          <div class="chip-main">
+            <svg class="gh-icon-chip" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span class="chip-name">twilio/twilio-python</span>
+            <span class="chip-status status-archived">● ARCHIVED</span>
           </div>
-          <div class="chip-bottom">
-            <span class="chip-metric">&darr; 4M downloads / wk &middot; Silent since 2021</span>
-            <span class="chip-arrow">&rarr;</span>
-          </div>
+          <div class="chip-sub">4M downloads / wk &middot; Silent since 2021</div>
         </div>
-
-        <!-- 4. Numpy / Numpy -->
-        <div class="peer-repo-card" data-repo="numpy/numpy">
-          <div class="chip-top">
-            <div class="chip-repo-info">
-              <svg class="gh-icon-chip" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              <span class="chip-name">numpy/numpy</span>
-            </div>
-            <span class="chip-badge status-unknown">● UNKNOWN</span>
-          </div>
-          <div class="chip-bottom">
-            <span class="chip-metric">&darr; 3M downloads / wk &middot; Silent since 2019</span>
-            <span class="chip-arrow">&rarr;</span>
-          </div>
-        </div>
-
       </div>
+
+      <button class="view-all-link" id="btnViewAllRepos">
+        View all &rarr;
+      </button>
     </footer>
 
   </main>
@@ -626,6 +578,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Audio Chime Element -->
+  <audio id="audioChime" preload="none"></audio>
 
   <script src="app.js"></script>
 </body>
