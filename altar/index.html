@@ -298,89 +298,87 @@
       </div>
     </section>
 
-    <!-- Two Split Cards: Research Insight & Repository Case File -->
-    <section class="research-split-grid" aria-label="Forensic Investigation Details">
-      
-      <!-- Card 1: The Ghosting Band Research Insight -->
-      <article class="glass-card insight-card">
-        <div class="card-top-meta">
-          <span class="card-eyebrow">+ RESEARCH INSIGHT</span>
-          <span class="card-index">01</span>
-        </div>
+    <!-- Full-Width Direct Research Insight (No heavy container, written directly) -->
+    <section class="research-direct-section" aria-label="Forensic Research Insight">
+      <div class="direct-insight-meta">
+        <span class="card-eyebrow">+ RESEARCH INSIGHT</span>
+        <span class="card-index">01</span>
+      </div>
 
-        <h2 class="card-title">The Ghosting Band</h2>
+      <h2 class="direct-insight-title">The Ghosting Band</h2>
 
-        <p class="card-narrative">
-          Maintainers stop answering strangers long before they stop pushing code. That silent chasm between social death (<span class="math-term">&gamma;<sub>1</sub></span>) and code silence (<span class="math-term">&gamma;<sub>2</sub></span>) is the <strong>Ghosting Band</strong>.
-        </p>
+      <p class="direct-insight-narrative">
+        Maintainers stop answering strangers long before they stop pushing code. That silent chasm between social death (<span class="math-term">&gamma;<sub>1</sub></span>) and code silence (<span class="math-term">&gamma;<sub>2</sub></span>) is the <strong>Ghosting Band</strong>.
+      </p>
 
-        <!-- Dynamic Visual Graph -->
-        <div class="chart-container">
-          <div class="chart-annotation-bar">
-            <div class="annot-left">
-              <span class="annot-title">Social divergence</span>
-              <span class="annot-sub">(before code silence)</span>
-            </div>
-            <div class="annot-right">
-              <span class="annot-title">Code silence</span>
-              <span class="annot-sub">(afterwards)</span>
-            </div>
+      <!-- Direct Full-Width Visual Graph -->
+      <div class="direct-chart-wrap">
+        <div class="chart-annotation-bar">
+          <div class="annot-left">
+            <span class="annot-title">Social divergence</span>
+            <span class="annot-sub">(before code silence)</span>
           </div>
-
-          <!-- SVG Chart Curve -->
-          <div class="svg-chart-box">
-            <svg class="ghosting-svg-chart" viewBox="0 0 540 180" preserveAspectRatio="none" aria-label="Social vs Code Activity Divergence Chart">
-              <defs>
-                <linearGradient id="blueGlow" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25"/>
-                  <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.0"/>
-                </linearGradient>
-                <linearGradient id="goldGlow" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.2"/>
-                  <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.0"/>
-                </linearGradient>
-              </defs>
-
-              <!-- Subtle Grid & Division Line -->
-              <line x1="40" y1="140" x2="520" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
-              <line x1="40" y1="80" x2="520" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
-              
-              <!-- Dashed Boundary Line between divergence and silence -->
-              <line x1="370" y1="20" x2="370" y2="140" stroke="rgba(255,255,255,0.18)" stroke-width="1" stroke-dasharray="4 4" />
-
-              <!-- Yellow/Gold Code Activity Line (stays steady then plunges) -->
-              <path class="chart-curve code-curve"
-                    d="M 40,65 C 100,60 160,62 220,62 C 280,62 330,68 370,72 C 400,75 430,95 460,135 L 500,140"
-                    fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" />
-
-              <!-- Blue Social Activity Line (drops early 2015-2018) -->
-              <path class="chart-curve social-curve"
-                    d="M 40,55 C 70,68 100,60 140,82 C 180,105 210,95 240,118 C 280,128 320,135 370,138 L 500,140"
-                    fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" />
-
-              <!-- Axis Year Labels -->
-              <text x="40" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2011</text>
-              <text x="180" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2015</text>
-              <text x="360" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2018</text>
-              <text x="480" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2020</text>
-            </svg>
-          </div>
-
-          <!-- Chart Legend -->
-          <div class="chart-legend">
-            <div class="legend-item">
-              <span class="legend-dot dot-blue"></span>
-              <span class="legend-label">Social activity</span>
-            </div>
-            <div class="legend-item">
-              <span class="legend-dot dot-amber"></span>
-              <span class="legend-label">Code activity</span>
-            </div>
+          <div class="annot-right">
+            <span class="annot-title">Code silence</span>
+            <span class="annot-sub">(afterwards)</span>
           </div>
         </div>
-      </article>
 
-      <!-- Card 2: Repository Case File -->
+        <!-- SVG Chart Curve Across Full Width -->
+        <div class="svg-chart-box direct-svg-box">
+          <svg class="ghosting-svg-chart" viewBox="0 0 920 180" preserveAspectRatio="none" aria-label="Social vs Code Activity Divergence Chart">
+            <defs>
+              <linearGradient id="blueGlow" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25"/>
+                <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.0"/>
+              </linearGradient>
+              <linearGradient id="goldGlow" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.0"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Grid & Division Line -->
+            <line x1="40" y1="140" x2="880" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+            <line x1="40" y1="80" x2="880" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+            
+            <!-- Dashed Boundary Line between divergence and silence -->
+            <line x1="640" y1="15" x2="640" y2="140" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="4 4" />
+
+            <!-- Yellow/Gold Code Activity Line (stays steady then plunges) -->
+            <path class="chart-curve code-curve"
+                  d="M 40,65 C 160,60 300,62 450,62 C 550,62 600,68 640,72 C 700,78 760,105 820,135 L 880,140"
+                  fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" />
+
+            <!-- Blue Social Activity Line (drops early 2015-2018) -->
+            <path class="chart-curve social-curve"
+                  d="M 40,55 C 120,68 220,60 320,82 C 420,105 500,95 560,118 C 600,128 620,135 640,138 L 880,140"
+                  fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" />
+
+            <!-- Axis Year Labels -->
+            <text x="40" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2011</text>
+            <text x="320" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2015</text>
+            <text x="630" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2018</text>
+            <text x="850" y="165" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">2020</text>
+          </svg>
+        </div>
+
+        <!-- Chart Legend -->
+        <div class="chart-legend">
+          <div class="legend-item">
+            <span class="legend-dot dot-blue"></span>
+            <span class="legend-label">Social activity</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot dot-amber"></span>
+            <span class="legend-label">Code activity</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Repository Case File (Positioned underneath) -->
+    <section class="casefile-row-section" aria-label="Repository Case File">
       <article class="glass-card casefile-card">
         <div class="card-top-meta">
           <div class="casefile-title-wrap">
@@ -395,49 +393,74 @@
           </span>
         </div>
 
-        <div class="casefile-header">
-          <div class="casefile-repo">
-            <svg class="gh-icon-sm" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-            <span class="casefile-repo-name">request/request</span>
+        <div class="casefile-content-grid">
+          <!-- Left Column: Repo Identity -->
+          <div class="casefile-identity">
+            <div class="casefile-repo">
+              <svg class="gh-icon-sm" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              <span class="casefile-repo-name">request/request</span>
+            </div>
+            <p class="casefile-desc">Simplified HTTP request client for Node.js.</p>
           </div>
-          <p class="casefile-desc">Simplified HTTP request client for Node.js.</p>
+
+          <!-- Middle Column: 3 Stat Metrics -->
+          <div class="casefile-stats-grid">
+            <div class="c-stat-box">
+              <div class="c-stat-top">
+                <span class="c-stat-arrow">&darr;</span>
+                <span class="c-stat-val">14M</span>
+              </div>
+              <span class="c-stat-sub">downloads / week at peak</span>
+            </div>
+
+            <div class="c-stat-box">
+              <div class="c-stat-top">
+                <span class="c-stat-ico">📅</span>
+                <span class="c-stat-val">Conceived</span>
+              </div>
+              <span class="c-stat-sub">Jan 23, 2011</span>
+            </div>
+
+            <div class="c-stat-box">
+              <div class="c-stat-top">
+                <span class="c-stat-ico">🚫</span>
+                <span class="c-stat-val">Code silence</span>
+              </div>
+              <span class="c-stat-sub">Feb 11, 2020</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Evidence Tags -->
+          <div class="casefile-evidence-section">
+            <span class="evidence-title">EVIDENCE</span>
+            <div class="evidence-pills-wrap">
+              <button class="evidence-pill" data-evidence="gh">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub activity
+              </button>
+              <button class="evidence-pill" data-evidence="downstream">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+                Downstream usage
+              </button>
+              <button class="evidence-pill" data-evidence="archive">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+                Archive snapshot
+              </button>
+              <button class="evidence-pill" data-evidence="social">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                Social signals
+              </button>
+              <button class="evidence-pill" data-evidence="commit">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/></svg>
+                Last commit
+              </button>
+            </div>
+          </div>
         </div>
-
-        <!-- 3 Stat Metrics -->
-        <div class="casefile-stats-grid">
-          <div class="c-stat-box">
-            <div class="c-stat-top">
-              <span class="c-stat-arrow">&darr;</span>
-              <span class="c-stat-val">14M</span>
-            </div>
-            <span class="c-stat-sub">downloads / week at peak</span>
-          </div>
-
-          <div class="c-stat-box">
-            <div class="c-stat-top">
-              <span class="c-stat-ico">📅</span>
-              <span class="c-stat-val">Conceived</span>
-            </div>
-            <span class="c-stat-sub">Jan 23, 2011</span>
-          </div>
-
-          <div class="c-stat-box">
-            <div class="c-stat-top">
-              <span class="c-stat-ico">🚫</span>
-              <span class="c-stat-val">Code silence</span>
-            </div>
-            <span class="c-stat-sub">Feb 11, 2020</span>
-          </div>
-        </div>
-
-        <!-- Evidence Tags -->
-        <div class="casefile-evidence-section">
-          <span class="evidence-title">EVIDENCE</span>
-          <div class="evidence-pills-wrap">
-            <button class="evidence-pill" data-evidence="gh">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </article>
+    </section>
               GitHub activity
             </button>
             <button class="evidence-pill" data-evidence="downstream">
