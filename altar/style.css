@@ -235,6 +235,30 @@ html, body {
   box-shadow: 0 0 8px rgba(245, 158, 11, 0.7);
 }
 
+.nav-docs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: rgba(22, 26, 36, 0.85);
+  color: #fef08a;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-right: 10px;
+}
+
+.nav-docs-badge:hover {
+  background: rgba(30, 36, 52, 0.95);
+  border-color: #f59e0b;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
 .live-pill {
   display: inline-flex;
   align-items: center;
@@ -2071,5 +2095,172 @@ html, body {
   .peer-cards-row {
     width: 100%;
     flex-direction: column;
+  }
+}
+
+/* ==========================================================================
+   SITE FOOTER (Sacred Gold & OLED Obsidian)
+   ========================================================================== */
+.altar-site-footer {
+  width: 100%;
+  border-top: 1px solid rgba(212, 175, 55, 0.25);
+  background: linear-gradient(180deg, rgba(8, 10, 15, 0.95) 0%, rgba(4, 5, 8, 0.98) 100%);
+  padding: 60px 0 36px;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1.2fr 1.1fr 1.1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.footer-col-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-brand-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #dfb256;
+  margin-bottom: 12px;
+}
+
+.footer-brand-title .brand-flame-icon {
+  color: #f59e0b;
+  filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6));
+}
+
+.footer-brand-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 16px;
+  max-width: 320px;
+}
+
+.footer-meta-tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: #71717a;
+  letter-spacing: 0.06em;
+}
+
+.footer-col-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-nav-title {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #dfb256;
+  margin-bottom: 16px;
+}
+
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links-list li a {
+  color: var(--text-secondary);
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-links-list li a:hover {
+  color: #fef08a;
+  transform: translateX(3px);
+}
+
+.footer-doc-link {
+  color: #fef08a !important;
+  font-weight: 600;
+}
+
+.footer-doc-link:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+.footer-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-serif);
+  font-style: italic;
+  letter-spacing: 0.03em;
+}
+
+.footer-back-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.footer-back-top:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: #dfb256;
+  color: #fef08a;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .footer-top-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .footer-bottom-bar {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
   }
 }

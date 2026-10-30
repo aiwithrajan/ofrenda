@@ -479,6 +479,58 @@ function initEvidencePills() {
 }
 
 // --------------------------------------------------------------------------
+// 8. Site Footer Navigation & Back-to-Top
+// --------------------------------------------------------------------------
+function initFooter() {
+  const backTopBtn = document.getElementById("btnFooterBackTop");
+  if (backTopBtn) {
+    backTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  const footerLightCandle = document.getElementById("footerLightCandleLink");
+  if (footerLightCandle) {
+    footerLightCandle.addEventListener("click", (e) => {
+      e.preventDefault();
+      handleLightCandle();
+    });
+  }
+
+  const footerOpenLedger = document.getElementById("footerOpenLedgerLink");
+  if (footerOpenLedger) {
+    footerOpenLedger.addEventListener("click", (e) => {
+      e.preventDefault();
+      chime.ring();
+      const modal = document.getElementById("archiveModal");
+      if (modal) {
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        const ledgerSection = document.querySelector(".archive-ledger-section");
+        const searchInput = document.getElementById("ledgerSearchInput");
+        if (ledgerSection) ledgerSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (searchInput) setTimeout(() => searchInput.focus(), 250);
+      }
+    });
+  }
+
+  const footerOpenTerminal = document.getElementById("footerOpenTerminalLink");
+  if (footerOpenTerminal) {
+    footerOpenTerminal.addEventListener("click", (e) => {
+      e.preventDefault();
+      chime.ring();
+      const modal = document.getElementById("archiveModal");
+      if (modal) {
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        const termInput = document.getElementById("terminalInput");
+        if (termInput) setTimeout(() => termInput.focus(), 250);
+      }
+    });
+  }
+}
+
+// --------------------------------------------------------------------------
 // Bootstrap on DOM Ready
 // --------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
@@ -487,6 +539,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTerminal();
   initLedger();
   initEvidencePills();
+  initFooter();
 
   // Wire buttons
   const lightBtn = document.getElementById("btnLightOffering");

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>OFRENDA Documentation — Forensic Methodology & Architecture</title>
+  <meta name="description" content="Technical documentation, mathematical formulation, statistical results, and API specifications for Ofrenda: The Ghost in the Machine.">
+  <meta name="theme-color" content="#07080a">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Documentation-Specific Styles */
+    .docs-page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 36px 80px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 48px;
+    }
+
+    .docs-sidebar {
+      position: sticky;
+      top: 80px;
+      height: fit-content;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      padding-right: 12px;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .docs-nav-group {
+      margin-bottom: 24px;
+    }
+
+    .docs-nav-heading {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: #dfb256;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .docs-nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .docs-nav-link {
+      color: var(--text-secondary);
+      font-size: 13px;
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      display: block;
+    }
+
+    .docs-nav-link:hover,
+    .docs-nav-link.active {
+      color: #fef08a;
+      background: rgba(212, 175, 55, 0.08);
+      border-left: 2px solid #dfb256;
+    }
+
+    .docs-content {
+      min-width: 0;
+      color: var(--text-primary);
+    }
+
+    .docs-hero-header {
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      padding-bottom: 28px;
+      margin-bottom: 40px;
+    }
+
+    .docs-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .docs-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: #dfb256;
+    }
+
+    .docs-pill {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #4ade80;
+    }
+
+    .docs-title {
+      font-family: var(--font-serif);
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--text-white);
+      letter-spacing: 0.04em;
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+
+    .docs-lead {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .docs-section {
+      margin-bottom: 56px;
+      scroll-margin-top: 90px;
+    }
+
+    .docs-sec-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-white);
+      letter-spacing: 0.04em;
+      margin: 0 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 10px;
+    }
+
+    .docs-sec-title .sec-num {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: #dfb256;
+    }
+
+    .docs-text {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .docs-callout {
+      border-left: 3px solid #dfb256;
+      background: rgba(212, 175, 55, 0.05);
+      border-radius: 0 8px 8px 0;
+      padding: 18px 22px;
+      margin: 24px 0;
+      color: #fef08a;
+      font-size: 13.5px;
+      line-height: 1.65;
+    }
+
+    .docs-callout strong {
+      color: #ffffff;
+    }
+
+    .docs-code-box {
+      background: rgba(10, 13, 18, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 18px 22px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: #e2e8f0;
+      line-height: 1.6;
+      overflow-x: auto;
+      margin: 18px 0 24px;
+    }
+
+    .docs-code-box pre {
+      margin: 0;
+    }
+
+    .docs-table-wrap {
+      overflow-x: auto;
+      margin: 20px 0 28px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+    }
+
+    .docs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+
+    .docs-table th {
+      background: rgba(18, 22, 32, 0.95);
+      color: #dfb256;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .docs-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-secondary);
+    }
+
+    .docs-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+      color: #ffffff;
+    }
+
+    .btn-back-altar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      background: rgba(22, 26, 36, 0.85);
+      color: #fef08a;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-back-altar:hover {
+      background: rgba(30, 36, 52, 0.95);
+      border-color: #f59e0b;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 900px) {
+      .docs-page-wrap {
+        grid-template-columns: 1fr;
+        padding: 24px 20px 60px;
+      }
+      .docs-sidebar {
+        position: static;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 20px;
+        margin-bottom: 24px;
+      }
+    }
+  </style>
+</head>
+<body class="ofrenda-preview">
+  <!-- Atmospheric Shrine Wallpaper Background -->
+  <div class="hero-bg-backdrop" aria-hidden="true"></div>
+
+  <!-- Top Nav Bar -->
+  <header class="top-nav" role="banner">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <svg class="brand-flame-icon" width="18" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C10.5 4.5 9 7 9 10c0 3 2 5 3 7 1-2 3-4 3-7 0-3-1.5-5.5-3-8z" />
+          <path d="M12 6c-.8 1.5-1.5 3-1.5 4.8 0 1.6 1 2.8 1.5 3.8.5-1 1.5-2.2 1.5-3.8 0-1.8-.7-3.3-1.5-4.8z" opacity="0.6" fill="#fff" />
+        </svg>
+        <span class="brand-title">O F R E N D A</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <a href="index.html" class="btn-back-altar">
+          &larr; Return to Memorial Altar
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="docs-page-wrap">
+    <!-- Sticky Docs Navigation Sidebar -->
+    <aside class="docs-sidebar">
+      <div class="docs-nav-group">
+        <span class="docs-nav-heading">Foundations</span>
+        <ul class="docs-nav-list">
+          <li><a href="#overview" class="docs-nav-link active">1. System Overview</a></li>
+          <li><a href="#philosophy" class="docs-nav-link">2. Memorial Philosophy</a></li>
+          <li><a href="#ghosting-band" class="docs-nav-link">3. The Ghosting Band</a></li>
+        </ul>
+      </div>
+
+      <div class="docs-nav-group">
+        <span class="docs-nav-heading">Scientific Inquiry</span>
+        <ul class="docs-nav-list">
+          <li><a href="#features" class="docs-nav-link">4. Feature Formulation (f1-f6)</a></li>
+          <li><a href="#delong" class="docs-nav-link">5. DeLong Non-Inferiority</a></li>
+          <li><a href="#results" class="docs-nav-link">6. Empirical Findings (n=150)</a></li>
+        </ul>
+      </div>
+
+      <div class="docs-nav-group">
+        <span class="docs-nav-heading">Runtime & API</span>
+        <ul class="docs-nav-list">
+          <li><a href="#runtime" class="docs-nav-link">7. Gemma 2B & BM25 Grounding</a></li>
+          <li><a href="#api" class="docs-nav-link">8. Forensic Terminal API</a></li>
+          <li><a href="#cli" class="docs-nav-link">9. CLI & Reproducibility</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Documentation Content -->
+    <main class="docs-content">
+      <header class="docs-hero-header">
+        <div class="docs-badge-row">
+          <span class="docs-tag">OFFICIAL TECHNICAL SPECIFICATION</span>
+          <span class="docs-pill">Hacktoberfest 2026 Week 4</span>
+        </div>
+        <h1 class="docs-title">Ofrenda: Forensic Methodology & Architecture</h1>
+        <p class="docs-lead">
+          A statistical inquiry and interactive post-mortem memorial for open-source software repositories left behind. Testing the Ghosting Band hypothesis across 150 ecosystems and preserving the history of <code>request/request</code>.
+        </p>
+      </header>
+
+      <!-- Section 1: Overview -->
+      <section id="overview" class="docs-section">
+        <h2 class="docs-sec-title"><span class="sec-num">01.</span> System Overview</h2>
+        <p class="docs-text">
+          Open-source projects rarely die in a single day. Instead, they pass through a protracted twilight: maintainers stop answering community questions and stranger pull requests months or years before their last commit is pushed. <strong>Ofrenda</strong> ("Offering") unifies rigorous statistical forecasting with an elegiac memorial interface.
+        </p>
+        <div class="docs-callout">
+          <strong>Core Axiom:</strong> Maintainers stop answering strangers long before they stop pushing code. That silent chasm between social death (&gamma;<sub>1</sub>) and code silence (&gamma;<sub>2</sub>) is the <strong>Ghosting Band</strong>.
+        </div>
+        <p class="docs-text">
+          The project is engineered across three interconnected subsystems:
+        </p>
+        <ul>
+          <li><strong>The Statistical Pipeline:</strong> Stratified 150-repository census evaluated under Leave-One-Repo-Out (LORO) cross-validation and paired DeLong AUC significance tests.</li>
+          <li><strong>The Memorial Altar:</strong> A dedicated, dark obsidian and sacred gold interactive shrine commemorating <code>request/request</code> (14M peak weekly downloads).</li>
+          <li><strong>The Digital Séance:</strong> A Gemma 2B runtime grounded in an 11,748-document BM25 corpse index that strictly cites commit SHAs and issues or abstains on hallucinations.</li>
+        </ul>
+      </section>
+
+      <!-- Section 2: Philosophy -->
+      <section id="philosophy" class="docs-section">
+        <h2 class="docs-sec-title"><span class="sec-num">02.</span> Memorial Philosophy & Ethics</h2>
+        <p class="docs-text">
+          Software forensics often assigns blame to maintainers for abandoning critical infrastructure. Ofrenda adopts the opposite posture: software abandonment is a structural consequence of the volunteer digital commons. Maintainers gave years of unpaid labor to sustain the digital world; when they depart, their work deserves reverence rather than grievance.
+        </p>
+        <p class="docs-text">
+          The Altar incorporates symbolic elements inspired by traditional Day of the Dead (Día de los Muertos) ofrendas: glowing candles representing community gratitude, relic records preserving milestones, and an unsealed archive that speaks with dignity and truth.
+        </p>
+      </section>
+
+      <!-- Section 3: The Ghosting Band -->
+      <section id="ghosting-band" class="docs-section">
+        <h2 class="docs-sec-title"><span class="sec-num">03.</span> The Ghosting Band Hypothesis</h2>
+        <p class="docs-text">
+          Let &gamma;<sub>1</sub> denote the timestamp of <strong>Social Death</strong> (the moment stranger issue triage permanently drops below active velocity threshold), and let &gamma;<sub>2</sub> denote <strong>Code Silence</strong> (the final human commit to the codebase).
+        </p>
+        <p class="docs-text">
+          The Ghosting Band width &Delta;&gamma; is defined as:
+        </p>
+        <div class="docs-code-box">
+          <pre>&Delta;&gamma; = &gamma;<sub>2</sub> - &gamma;<sub>1</sub> &gt; 0</pre>
+        </div>
+        <p class="docs-text">
+          For <code>request/request</code>, social triage ceased in January 2018 (&gamma;<sub>1</sub>), while maintenance commits lingered until February 11, 2020 (&gamma;<sub>2</sub>). This generated an <strong>842-day silent chasm</strong> where 14M weekly downloaders operated without any programmatic warning of impending abandonment.
+        </p>
+      </section>
+
+      <!-- Section 4: Feature Formulation -->
+      <section id="features" class="docs-section">
+        <h2 class="docs-sec-title"><span class="sec-num">04.</span> Mathematical Feature Space (f1 - f6)</h2>
+        <p class="docs-text">
+          To predict abandonment without structural bias, Ofrenda constructed two capacity-matched feature arms:
+        </p>
+        <div class="docs-table-wrap">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Arm</th>
+                <th>Domain</th>
+                <th>Mathematical Formulation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>f1</strong></td>
+                <td>Arm A (Code)</td>
+                <td>Release Decay</td>
+                <td>Interval ratio between current inter-release duration & median historical cadence.</td>
+              </tr>
+              <tr>
+                <td><strong>f2</strong></td>
+                <td>Arm A (Code)</td>
+                <td>Commit Echo</td>
+                <td>Shannon entropy of commit inter-arrival times across 5 stratified temporal bins.</td>
+              </tr>
+              <tr>
+                <td><strong>f3</strong></td>
+                <td>Arm B (Social)</td>
+                <td>Backlog Slope</td>
+                <td>Linear slope of open stranger issues per month over the trailing 12-month window.</td>
+              </tr>
+              <tr>
+                <td><strong>f4</strong></td>
+                <td>Arm B (Social)</td>
+                <td>Stranger Latency</td>
+                <td>Median days from stranger issue creation to first maintainer comment (14.8&times; surge).</td>
+              </tr>
+              <tr>
+                <td><strong>f5</strong></td>
+                <td>Arm B (Social)</td>
+                <td>Stranger Share</td>
+                <td>Difference in 90-day response share between stranger issues and core contributor PRs.</td>
+              </tr>
+              <tr>
+                <td><strong>f6</strong></td>
+                <td>Target</td>
+                <td>Label Mask</td>
+                <td>Binary indicator of zero maintainer responses within forward 18-month test window.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 5: DeLong Test & Results -->
+      <section id="delong" class="docs-section">
+        <h2 class="docs-sec-title"><span class="sec-num">05.</span> Statistical DeLong Test & Bootstrap</h2>
+        <p class="docs-text">
+          We formulated a pre-registered non-inferiority test: at fixed observation date T, social triage decay predicts abandonment at least as well as commit velocity, because code continues to land long after maintainers disengage socially.
+        </p>
+        <div class="docs-code-box">
+          <pre>Null Hypothesis H0: AUC_Code - AUC_Social &ge; 0.07 (Social is inferior)
+Alt  Hypothesis H1: AUC_Code - AUC_Social &lt; 0.07 (Social parity secured)</pre>
+        </div>
+        <p class="docs-text">
+          Across 497 evaluated rows in our 150-repository LORO census:
+        </p>
+        <ul>
+          <li><strong>Arm A (Code) AUC:</strong> 0.6923 (DeLong SE: 0.038)</li>
+          <li><strong>Arm B (Social) AUC:</strong> 0.7760 (DeLong SE: 0.034)</li>
+          <li><strong>Empirical Difference (&Delta;AUC):</strong> -0.0837</li>
+          <li><strong>One-sided 95% CI Upper Bound:</strong> -0.0242 (&lt; 0.07 margin)</li>
+          <li><strong>Statistical Verdict:</strong> <strong>CONFIRMED (p &lt; 0.0001)</strong>. Social signals predict project death substantially earlier and more reliably than commit history.</li>
+        </ul>
+      </section>
+
+      <!-- Section 6: Runtime & API -->
+      <section id="api" class="docs-section">
+        <h2 class="docs-sec-title"><span class="sec-num">06.</span> Digital Séance Runtime API</h2>
+        <p class="docs-text">
+          The interactive forensic terminal in the Altar communicates with the local Python server via <code>POST /api/ask</code>. The backend coordinates an inverted BM25 index over 11,748 corpse artifacts with Gemma 2B.
+        </p>
+        <div class="docs-code-box">
+          <pre>POST /api/ask
+Content-Type: application/json
+
+{
+  "question": "Why was request deprecated instead of rewritten?"
+}</pre>
+        </div>
+        <p class="docs-text">Example Grounded Response:</p>
+        <div class="docs-code-box">
+          <pre>{
+  "question": "Why was request deprecated instead of rewritten?",
+  "answer": "As discussed in Issue #3142 and the deprecation notice, modern JavaScript established native Promises, async/await, and WHATWG fetch. Transitioning request's callback core would require breaking changes that would destabilize over 41,000 dependent packages.",
+  "citations": [
+    { "type": "issue", "id": "3142", "title": "What is the future of request?" },
+    { "type": "commit", "sha": "aded7e4f", "summary": "Deprecate request npm package" }
+  ],
+  "abstention": false
+}</pre>
+        </div>
+        <div class="docs-callout">
+          <strong>Strict Abstention Guarantee:</strong> If a query asks about unrecorded facts, future predictions, or events outside the corpus, the model emits strict abstention: <em>"The archive is silent on that."</em> Hallucination rate is mathematically minimized by BM25 threshold gating.
+        </div>
+      </section>
+
+      <!-- Section 7: CLI & Reproducibility -->
+      <section id="cli" class="docs-section">
+        <h2 class="docs-sec-title"><span class="sec-num">07.</span> Reproducibility & CLI Reference</h2>
+        <p class="docs-text">
+          The entire Ofrenda inquiry is reproducible via the bundled Python package:
+        </p>
+        <div class="docs-code-box">
+          <pre># 1. Execute all 63 unit tests
+PYTHONPATH=src .venv/bin/python -m unittest discover tests -v
+
+# 2. Start the interactive Altar server daemon on port 8080
+.venv/bin/python -m ofrenda.server 8080
+
+# 3. Query the séance terminal via CLI
+.venv/bin/python -m ofrenda.ask "When was request conceived?"
+
+# 4. Re-run feature derivation over the cached 150-repo corpus
+.venv/bin/python -m ofrenda.features --cache cache/ --out derived/features.parquet</pre>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Documentation Footer -->
+  <footer class="altar-site-footer" style="margin-top: 60px;">
+    <div class="footer-inner">
+      <div class="footer-top-grid">
+        <div class="footer-col-brand">
+          <div class="footer-brand-title">
+            <svg class="brand-flame-icon" width="16" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C10.5 4.5 9 7 9 10c0 3 2 5 3 7 1-2 3-4 3-7 0-3-1.5-5.5-3-8z" />
+            </svg>
+            <span>OFRENDA</span>
+          </div>
+          <p class="footer-brand-desc">
+            The Ghost in the Machine. An open-source forensic post-mortem memorial and statistical analysis tool for abandoned software.
+          </p>
+          <div class="footer-meta-tag">Hacktoberfest 2026 Week 4 &bull; Apache-2.0</div>
+        </div>
+
+        <div class="footer-col-nav">
+          <span class="footer-nav-title">DOCUMENTATION</span>
+          <ul class="footer-links-list">
+            <li><a href="#overview">System Overview</a></li>
+            <li><a href="#ghosting-band">The Ghosting Band (&Delta;&gamma;)</a></li>
+            <li><a href="#features">Feature Formulation (f1-f6)</a></li>
+            <li><a href="#delong">DeLong Significance Test</a></li>
+            <li><a href="#api">Séance Terminal API</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col-nav">
+          <span class="footer-nav-title">MEMORIAL SPECIMENS</span>
+          <ul class="footer-links-list">
+            <li><a href="index.html#casefileSection">request/request (#REQ-001)</a></li>
+            <li><a href="index.html#corridorSection">pallets/flask</a></li>
+            <li><a href="index.html#corridorSection">django/django</a></li>
+            <li><a href="index.html#corridorSection">twilio/twilio-python</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col-nav">
+          <span class="footer-nav-title">NAVIGATION</span>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Memorial Altar Shrine</a></li>
+            <li><a href="index.html#researchSection">Ghosting Band Curve</a></li>
+            <li><a href="index.html#corridorSection">150 Specimen Ledger</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span class="footer-copy">Dedicated to the maintainers who held up the world.</span>
+        <a href="#top" class="footer-back-top">&uarr; Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
