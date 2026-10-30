@@ -273,13 +273,36 @@ function initModal() {
     }
   });
 
+  // Navigation and Smooth Scroll Cues
+  const scrollDownToResearch = document.getElementById("scrollDownToResearch");
+  if (scrollDownToResearch) {
+    scrollDownToResearch.addEventListener("click", () => {
+      const researchSec = document.getElementById("researchSection");
+      if (researchSec) researchSec.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  const scrollDownToCaseFile = document.getElementById("scrollDownToCaseFile");
+  if (scrollDownToCaseFile) {
+    scrollDownToCaseFile.addEventListener("click", () => {
+      const casefileSec = document.querySelector(".casefile-dossier-wrap");
+      if (casefileSec) casefileSec.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
   navTabs.forEach((tab) => {
     tab.addEventListener("click", () => {
       navTabs.forEach((t) => t.classList.remove("active"));
       tab.classList.add("active");
       const tabName = tab.getAttribute("data-tab");
-      if (tabName === "ghosting" || tabName === "methodology") {
-        openModal();
+      if (tabName === "ghosting") {
+        const researchSec = document.getElementById("researchSection");
+        if (researchSec) researchSec.scrollIntoView({ behavior: "smooth" });
+      } else if (tabName === "archive") {
+        const mainContent = document.getElementById("mainContent");
+        if (mainContent) mainContent.scrollIntoView({ behavior: "smooth" });
+      } else if (tabName === "methodology") {
+        openModal("ledger");
       }
     });
   });

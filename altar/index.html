@@ -302,7 +302,7 @@
       </section>
 
       <!-- Scroll Down Cue -->
-      <div class="scroll-down-hint" aria-hidden="true">
+      <div class="scroll-down-hint" id="scrollDownToResearch" role="button" tabindex="0" aria-label="Scroll to Forensic Research Insight">
         <span>SCROLL FOR FORENSIC RESEARCH INSIGHT</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="6 9 12 15 18 9"></polyline>
@@ -311,7 +311,7 @@
 
     </div>
 
-    <!-- Full-Width Direct Research Insight (Seen on scroll below the fold) -->
+    <!-- Full-Width Direct Research Insight (Dedicated Full Viewport Section) -->
     <section class="research-direct-section" id="researchSection" aria-label="Forensic Research Insight">
       <div class="direct-insight-meta">
         <span class="card-eyebrow">+ RESEARCH INSIGHT</span>
@@ -337,7 +337,7 @@
           </div>
         </div>
 
-        <!-- SVG Chart Curve Across Full Width (Increased Vertical Length) -->
+        <!-- SVG Chart Curve Across Full Width -->
         <div class="svg-chart-box direct-svg-box">
           <svg class="ghosting-svg-chart" viewBox="0 0 920 260" preserveAspectRatio="none" aria-label="Social vs Code Activity Divergence Chart">
             <defs>
@@ -388,6 +388,44 @@
             <span class="legend-label">Code activity</span>
           </div>
         </div>
+      </div>
+
+      <!-- Empirical Forensic Research Key Points -->
+      <div class="research-findings-grid">
+        <div class="r-finding-card">
+          <div class="r-card-head">
+            <span class="r-card-label">CHASM GAP (&Delta;&gamma;)</span>
+            <span class="r-card-badge badge-amber">842 Days</span>
+          </div>
+          <h4 class="r-card-title">Dual Silence Divergence</h4>
+          <p class="r-card-desc">Social responsiveness dropped to zero in January 2018 (&gamma;<sub>1</sub>), yet commits quietly continued until February 2020 (&gamma;<sub>2</sub>) before official deprecation.</p>
+        </div>
+
+        <div class="r-finding-card">
+          <div class="r-card-head">
+            <span class="r-card-label">EXTERNAL TRIAGE (F4)</span>
+            <span class="r-card-badge badge-cyan">14.8&times; Latency</span>
+          </div>
+          <h4 class="r-card-title">Stranger Issue Abandonment</h4>
+          <p class="r-card-desc">Median maintainer response time to outside community issues surged from 18 to 269 days, serving as the earliest algorithmic indicator of project ghosting.</p>
+        </div>
+
+        <div class="r-finding-card">
+          <div class="r-card-head">
+            <span class="r-card-label">DEP CONCEALMENT (F2)</span>
+            <span class="r-card-badge badge-rose">84 Echo Commits</span>
+          </div>
+          <h4 class="r-card-title">The Echo Commit Illusion</h4>
+          <p class="r-card-desc">Automated bots and maintenance commits created a false signal of project health, leaving 14M weekly npm consumers unaware of critical maintainer fatigue.</p>
+        </div>
+      </div>
+
+      <!-- Scroll Down Cue to Repository Case File -->
+      <div class="scroll-down-hint scroll-hint-subtle" id="scrollDownToCaseFile" role="button" tabindex="0" aria-label="Scroll to Repository Case File">
+        <span>SCROLL FOR REPOSITORY CASE FILE</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
       </div>
     </section>
 
