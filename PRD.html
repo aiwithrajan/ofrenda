@@ -1,0 +1,972 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Ofrenda — PRD v2.0</title><style>
+@page { margin: 18mm 16mm; }
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10.5pt; line-height: 1.55; color: #1a1a1a; max-width: 760px;
+}
+h1 { font-size: 21pt; border-bottom: 2.5px solid #111; padding-bottom: 6px; }
+h2 { font-size: 14.5pt; margin-top: 26px; border-bottom: 1px solid #999; padding-bottom: 3px; }
+h3 { font-size: 11.5pt; margin-top: 18px; color: #333; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 8.8pt; }
+th, td { border: 0.6px solid #777; padding: 4px 7px; text-align: left; vertical-align: top; }
+th { background: #efefef; }
+code { font-family: "SF Mono", Menlo, monospace; font-size: 8.8pt;
+       background: #f4f4f4; padding: 0.5px 3px; border-radius: 2px; }
+li { margin-bottom: 3px; }
+blockquote { color: #444; border-left: 3px solid #bbb; margin-left: 0; padding-left: 12px; }
+hr { border: none; border-top: 1px solid #bbb; margin: 20px 0; }
+strong { font-weight: 650; }
+</style></head><body><h1>Ofrenda — Product Requirements Document</h1>
+<p><strong>Version:</strong> 2.0 · <strong>Date:</strong> 2026-10-28 18:03 IST
+<strong>Status:</strong> Awaiting build approval. Design settled.
+<strong>Deadline:</strong> 2026-11-01 12:29 IST (2026-10-31 23:59 PDT) — <strong>~90 hours remaining</strong>
+<strong>Supersedes:</strong> <code>PREREGISTRATION.md</code> (mine, 2026-10-27) and Collaborator B's <code>FREEZE SPEC</code>
+(2026-10-27). Both are retained as the historical record and must not be edited further.
+Where this document and either prior spec disagree, <strong>this document governs.</strong></p>
+<hr />
+<h2>1. Overview</h2>
+<p>Ofrenda is a contest entry for Hacktoberfest Week 4, "Ghost in the Machine." It takes an
+abandoned open-source project and does two things with it:</p>
+<ol>
+<li><strong>Forecasts when it stopped answering people</strong>, not when it stopped committing — producing
+   two nested probability curves whose gap is the "ghosting band."</li>
+<li><strong>Interviews it.</strong> A local open-weight model speaks as the project, citing its own issues
+   and its deprecation notice, and says "the archive is silent on that" when it has nothing.</li>
+</ol>
+<p>The corpse is <code>request/request</code>: the deprecated Node.js HTTP client. Its death is pinned to
+three dated events (O-11 settled against primary sources — logged §20): maintenance mode
+declared <strong>2019-03-30</strong> in issue #3142, which is <strong>still open</strong> (437 comments, ~3k +1s) and
+promises <em>"releases will be fully automated, any merge into master will be published"</em> — so
+post-2019 releases are bot-authored, and the death announcement is itself an unanswered
+thread the ghost can cite. npm deprecation <strong>2020-02-11</strong> (registry <code>time</code> field, v2.88.2).
+README rewritten as fully deprecated ~June 2020 (to be pinned via commit history at probe
+time). The repo still received pushes in 2024 and was never archived.
+<strong>Expected-shape anchor: 2019-03-30.</strong> It is held out of training, so its forecast is
+entirely out-of-sample.</p>
+<p><strong>Nothing has been built. No data has been pulled. The probe has not run.</strong></p>
+<hr />
+<h2>2. Problem and thesis</h2>
+<p><strong>Thesis.</strong> A project dies years before its last commit. Maintainers stop answering strangers
+long before they stop pushing code, and that gap is the difference between <em>abandoned</em> and
+<em>dead</em>.</p>
+<p>The last-commit date is the common proxy for "is this maintained?" and it arrives late. Ofrenda
+tests whether a social signal — a maintainer answering an outsider — gives earlier warning than
+code activity does.</p>
+<p><strong>Why it is testable.</strong> There is no "death date" field in any dataset, and death is a judgement,
+not an observation. So the project predicts something observable instead: <em>whether a maintainer
+answered an issue in the 18 months after a reference date T.</em></p>
+<p><strong>The definition that matters.</strong> A comment counts only when <code>author_association</code> is
+<code>OWNER</code>, <code>MEMBER</code> or <code>COLLABORATOR</code>, the author is not a bot, and the commenter is not the
+person who opened that issue. Reviewing a contributor's pull request is not answering a
+stranger. That distinction is the thesis, and it must survive into the code.</p>
+<p><strong>The label is a proxy for social death, not death.</strong> The write-up must say this in those words.</p>
+<hr />
+<h2>3. Goals and non-goals</h2>
+<h3>Goals</h3>
+<ul>
+<li>Submit a complete, rule-compliant entry before the deadline.</li>
+<li>Test one claim with a pre-registered analysis: social signals are <strong>not materially worse</strong>
+  than code signals at predicting maintainer silence.</li>
+<li>Produce calibrated probabilities with intervals, never bare point estimates.</li>
+<li>Ship an interview with <code>request/request</code> that is grounded in its own record.</li>
+<li>Enter <strong>all 19 available prize categories</strong> (all except Arduino) with genuinely meaningful use.</li>
+<li>Publish a write-up that states its limitations before a judge finds them.</li>
+</ul>
+<h3>Non-goals</h3>
+<ul>
+<li>Reviving the project. Revival is an epilogue: a proposed PR, never claimed to work.</li>
+<li>Predicting a death date. TabPFN has nothing to condition on at n = 1.</li>
+<li>Naming or puppeting a maintainer. The ghost speaks as the project, never as a person.</li>
+<li>Winning more than one category. The contest allows one win per challenge.</li>
+<li>Critiquing the people who burned out maintaining <code>request</code>. Register: elegy, not autopsy.</li>
+<li>Best-in-class statistical novelty. Two arms and one honest test beats four arms and no time.</li>
+</ul>
+<hr />
+<h2>4. Success criteria</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Criterion</th>
+<th>Measure</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Primary test</strong></td>
+<td>Non-inferiority: one-sided CI upper bound on <code>AUC_A − AUC_B</code> below 0.07, paired DeLong + repo-clustered bootstrap</td>
+<td><strong>Corrected in this version</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Calibration</td>
+<td>Brier Skill Score vs base rate + reliability diagram</td>
+<td>Settled</td>
+</tr>
+<tr>
+<td>3</td>
+<td>External validity</td>
+<td>Held-out archived repos at <code>T = archive − 36mo</code></td>
+<td>Settled</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Probe passes</td>
+<td>Coverage table, label mix, row counts, calls/repo all printed</td>
+<td>Settled</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Interview quality</td>
+<td>25 scored questions: entailment + abstention. Zero failures in 25 bounds failure at ~12% (rule of three)</td>
+<td>Settled</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Compliance</td>
+<td>Repo starts at freeze commit; demo recorded; post in English; tags correct</td>
+<td>Checklist §18</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Coverage</td>
+<td>19 of 19 categories entered, each with a one-sentence meaningful use</td>
+<td>§7</td>
+</tr>
+</tbody>
+</table>
+<h3>The primary test, stated correctly</h3>
+<p>This is the most important correction in this document, and it changes the conclusion you are
+allowed to draw.</p>
+<p>The thesis predicts <strong>parity</strong>: if social signals lead, then at a fixed T the social arm should
+predict the next 18 months <em>at least as well</em> as the code arm, because the code signal has not
+moved yet. A superiority test would report that prediction as a failure.</p>
+<pre><code>H0: AUC_A − AUC_B ≥ 0.07     (social is materially worse)
+H1: AUC_A − AUC_B &lt; 0.07     (social is not materially worse)
+One-sided α = 0.05
+Non-inferiority declared if the upper bound of the one-sided CI
+on (AUC_A − AUC_B) falls below 0.07.
+</code></pre>
+<p><strong>ΔAUC 0.07 is the non-inferiority margin, not a success threshold.</strong> Superiority is reported
+descriptively and never used as the pass/fail criterion.</p>
+<p>If the result is inconclusive — CI straddling the margin — that is reported as inconclusive.
+It is not reframed as a win.</p>
+<hr />
+<h2>5. Scope</h2>
+<p>Two artifacts, one corpse.</p>
+<p><strong>Forecast.</strong> Two nested probabilities per reference date across a nine-point grid, a ghosting
+band with a bootstrap ribbon, and a lead-time analysis. Descriptive, not decorative.</p>
+<p><strong>Interview.</strong> A local Gemma model, retrieval over the corpse's cached archive, strict
+citation-or-silence, plus an altar page (final commit, oldest unanswered issue, the stale line
+in the README, the forecast curve).</p>
+<p><strong>19 integrations</strong>, six load-bearing and thirteen thin but real. See §7.</p>
+<p><strong>Out of scope:</strong> revival beyond a proposed diff; any UI beyond the altar page; any model
+training beyond TabPFN's in-context fitting and one Tinker fine-tune.</p>
+<hr />
+<h2>6. The 19 categories</h2>
+<p>All except Arduino, which requires physical hardware. The contest bar is <em>"does the project use
+that technology in a meaningful way?"</em> — not <em>"would the project be impossible without it."</em>
+Each entry below must do one real thing in the product and be describable in one sentence.</p>
+<h3>Featured ($200 each)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Meaningful use in Ofrenda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TabPFN</strong></td>
+<td>The forecast itself. Two in-context classifiers over ~300 repos — exactly TabPFN's small-n tabular regime</td>
+</tr>
+<tr>
+<td><strong>Gemma</strong></td>
+<td>The interview runtime. Runs locally via Ollama; the ghost is Gemma</td>
+</tr>
+<tr>
+<td><strong>Tinker</strong></td>
+<td>Fine-tune on the project's own commit messages and changelog so it speaks in the project's cadence; baseline is vanilla Gemma</td>
+</tr>
+<tr>
+<td><strong>Render</strong></td>
+<td>Hosts the altar page and the interview endpoint</td>
+</tr>
+<tr>
+<td><strong>DigitalOcean</strong></td>
+<td>GPU Droplet serving <code>gemma3:12b</code> for visitors without a GPU — the "someone else's laptop" path</td>
+</tr>
+</tbody>
+</table>
+<h3>Partner ($100 each)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Meaningful use in Ofrenda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MongoDB Atlas</strong></td>
+<td>Vector store of issues and commits for retrieval; Atlas Vector Search does the semantic leg</td>
+</tr>
+<tr>
+<td><strong>Tiger Data</strong></td>
+<td>pgvector hybrid search — exact symbol names need BM25, concepts need vectors</td>
+</tr>
+<tr>
+<td><strong>Temporal</strong></td>
+<td>Durable ingestion workflow. A 4-hour pull that must survive failure and resume</td>
+</tr>
+<tr>
+<td><strong>Sentry</strong></td>
+<td>Agent tracing — tokens, latency and cost per stage. The debugging narrative is the submission</td>
+</tr>
+<tr>
+<td><strong>ElevenLabs</strong></td>
+<td>The ghost speaks its own changelog aloud; also transcribes the project's conference talk for indexing</td>
+</tr>
+<tr>
+<td><strong>SerpApi</strong></td>
+<td>Finds forks, successor projects, "is this dead?" threads and the deprecation announcement itself</td>
+</tr>
+<tr>
+<td><strong>Browserbase</strong></td>
+<td>Reads the dead docs site and archive.org snapshots — pages with no API</td>
+</tr>
+<tr>
+<td><strong>Auth0</strong></td>
+<td>Consent gate: a human must approve before the ghost is published or speaks publicly. Token Vault holds the repo token</td>
+</tr>
+<tr>
+<td><strong>Backboard</strong></td>
+<td>Cross-session memory — the ghost remembers what you asked last time</td>
+</tr>
+<tr>
+<td><strong>Ultramarine</strong></td>
+<td>Long-document reasoning over ten years of issues: "what was it trying to become?" Cost of each run reported</td>
+</tr>
+<tr>
+<td><strong>Mastra</strong></td>
+<td>Agent orchestration for the interview loop (TypeScript sidecar against the Python core)</td>
+</tr>
+<tr>
+<td><strong>GitHub Copilot</strong></td>
+<td>Copilot CLI / coding agent produces the modernization PR that is the revival epilogue</td>
+</tr>
+<tr>
+<td><strong>Entire</strong></td>
+<td>Agent session record in the write-up. <strong>Product unverified — confirm what it does before claiming it</strong></td>
+</tr>
+<tr>
+<td><strong>.tech domain</strong></td>
+<td>The project lives at a <code>.tech</code> address, linked in the write-up</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule: no decorative calls.</strong> If an integration is removed and the product behaves identically,
+it does not belong in the submission. Every one of the 19 must appear in the honest-ledger
+section with what it actually bought.</p>
+<hr />
+<h2>7. Data and corpus</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target n</td>
+<td>300 repositories (150 if the probe kill-switch fires)</td>
+</tr>
+<tr>
+<td>Dead cohort</td>
+<td><code>pushed:&lt;2021-01-01 stars:&gt;100 archived:false</code></td>
+</tr>
+<tr>
+<td>Archived stratum</td>
+<td>≥ 60 of 300 → 40 train, 20 held out, blocked by language</td>
+</tr>
+<tr>
+<td>Alive controls</td>
+<td><code>pushed:&gt;2025-06-01</code>, matched on star and age band</td>
+</tr>
+<tr>
+<td>Age floor</td>
+<td>Created after 2012; earlier issue history is unreliable or migrated</td>
+</tr>
+<tr>
+<td>Languages</td>
+<td>JavaScript and Python only</td>
+</tr>
+<tr>
+<td>Excluded</td>
+<td><code>request/request</code> — specimen, never training data</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td><code>gh auth token</code> — verified 5,000 core/hr, 30 search/min</td>
+</tr>
+</tbody>
+</table>
+<h3>Endpoints and cost</h3>
+<p>One endpoint cannot produce a valid label. <code>/issues/comments</code> also returns comments on pull
+requests, so without a join the label degrades to "responded to anything" — which is not the
+thesis.</p>
+<ul>
+<li><code>/issues?state=all&amp;since=</code> → issue author, <code>created_at</code>, <code>pull_request</code> filter</li>
+<li><code>/issues/comments?since=</code> → comment author, <code>author_association</code>, timestamp</li>
+</ul>
+<p><strong>≈ 18,000 calls for 300 repos ≈ 3.5–4 hours at 5,000/hr.</strong> REST, not GraphQL: GraphQL is billed
+by node cost and blows the budget on heavily commented corpses.</p>
+<p><strong>Fetch in stages — but every stream is required.</strong> An earlier draft said "comments first —
+labels need only these." That is not implementable, and is corrected here (logged §20):
+<code>y1</code> requires the issues join (PRs are identified by the <code>pull_request</code> key on issue objects,
+and each issue's opener comes from the same fetch), and <code>y2</code> must also see commits and
+releases. No label can be computed without all four streams. Staging therefore means:
+fetch repo meta first and bail on degenerate or pathological corpses before paying for the
+remaining streams — not comments-only labels.</p>
+<p><strong>Store events, not features.</strong> Raw NDJSON at fetch time; labels and features are pure functions
+over that cache. Relabelling is then free and competing label definitions can be tested against
+one fetch. Aggregates bake in window choices and are expensive to retract.</p>
+<h3>The probe is rate-bound, not latency-bound</h3>
+<p>18,000 calls at 5,000/hr is 3.6 hours regardless of per-repo latency, provided concurrency
+saturates the budget. <strong>So the probe logs calls per repo, not wall-clock per repo.</strong> At 60
+calls/repo the full pull is 3.6h; at 120 it is 7.2h and the timeline breaks. That is the number
+that predicts the schedule.</p>
+<hr />
+<h2>8. Labels and masks</h2>
+<p>At reference date <code>T</code>, outcome window <code>[T, T + 18 months)</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Equals 1 when</th>
+<th>Reported as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>y1</code></td>
+<td>No maintainer answered a stranger's issue in the window</td>
+<td><code>P(≥ GHOSTING)</code></td>
+</tr>
+<tr>
+<td><code>y2</code></td>
+<td>No human activity of any kind in the window</td>
+<td><code>P(≥ DEAD)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Nesting holds by construction: <code>y2 = 1 ⇒ y1 = 1</code>. The three states read off them are
+<strong>ALIVE</strong> (<code>y1 = 0</code>), <strong>GHOSTING</strong> (<code>y1 = 1, y2 = 0</code>), <strong>DEAD</strong> (<code>y2 = 1</code>).</p>
+<p><strong>Monotonicity.</strong> Fit <code>y2</code> conditionally on <code>y1 = 1</code> and multiply: <code>p2 = p1 · P(y2 | y1 = 1)</code>, so
+<code>p2 ≤ p1</code> always. Isotonic projection is a no-op check, not a correction. Report the violation
+rate either way.</p>
+<h3>Masks</h3>
+<ol>
+<li><code>T ≥ creation + 12 months</code> — features need history.</li>
+<li><strong><code>≥ 1 human event in [T − 12 months, T)</code></strong> — without this, a repo silent since 2016 yields a
+   trivially DEAD row for every later <code>T</code>. That is free accuracy and a meaningless AUC. This is
+   the single easiest way to produce a beautiful, wrong result.</li>
+</ol>
+<p><strong>Print post-mask row counts and <code>y2</code> prevalence before trusting the second curve.</strong> Mask 2
+removes the rows that supply most <code>y2 = 1</code> cases.</p>
+<hr />
+<h2>9. Features and arms</h2>
+<h3>Banned class</h3>
+<p>Any recency transform over an event stream the outcome window also reads. The clearest case is
+<code>days_since_last_human_commit</code> — nearly the label in disguise, which would make the thesis
+unfalsifiable by proving the trivial "recent ⇒ alive."</p>
+<p><code>docs_vs_code_divergence</code> is dropped: its denominator is days since the last code change, which
+is exactly such a transform.</p>
+<h3>Registered features</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Arm</th>
+<th>Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>f1</code></td>
+<td>A</td>
+<td>Release-cadence decay: ratio of inter-release interval medians, recent 24mo vs prior 24mo. <strong>Requires a <code>never_released</code> indicator</strong> — many dead repos never released at all</td>
+</tr>
+<tr>
+<td><code>f2</code></td>
+<td>A</td>
+<td>Commit-interval Shannon entropy, 12mo</td>
+</tr>
+<tr>
+<td><code>f3</code></td>
+<td>B</td>
+<td>Open-issue backlog slope, 12mo. <strong>Human-opened only</strong> — dependabot corrupts it</td>
+</tr>
+<tr>
+<td><code>f4</code></td>
+<td>B</td>
+<td>Maintainer response-latency trend: median recent vs prior 12mo, answered stranger issues</td>
+</tr>
+<tr>
+<td><code>f5</code></td>
+<td>B</td>
+<td>Response-rate decline: share of stranger-opened issues answered, recent vs prior</td>
+</tr>
+<tr>
+<td><code>f6</code></td>
+<td>B</td>
+<td>Maintainer-comment volume ratio, recent vs prior 12mo</td>
+</tr>
+<tr>
+<td><code>bf50</code></td>
+<td>control</td>
+<td>Authors covering 50% of commits in <code>[T−12mo, T)</code></td>
+</tr>
+</tbody>
+</table>
+<h3>The arms must be capacity-matched</h3>
+<p>A naive split gives Arm A two features and Arm B four. A non-inferiority test where one arm has
+twice the capacity is confounded <strong>in the direction of the hypothesis</strong> — B has more chances to
+capture signal, so "parity" is partly capacity.</p>
+<p><strong>Primary test uses two features per arm:</strong>
+- <strong>A₂</strong> = {<code>f1</code>, <code>f2</code>}
+- <strong>B₂</strong> = {<code>f4</code>, <code>f5</code>} — the two most thesis-relevant social signals</p>
+<p><code>f3</code> and <code>f6</code> are reported descriptively only. No new features are invented to pad Arm A.</p>
+<p><strong>Every fit also carries background controls:</strong> <code>log10(stars)</code>, repo age at T, language,
+created-year cohort. These are matched-pair controls, not competitors to the signal under test.</p>
+<h3>Say this in the write-up</h3>
+<p>With the strongest code feature banned, feature counts differ even after matching. Report the
+counts beside the result, and state that part of any gap is structural.</p>
+<hr />
+<h2>10. Analysis plan</h2>
+<p>Nothing here may change after the first outcome is observed. Additions are permitted only if
+timestamped before the probe completes and logged in the change table (§20).</p>
+<h3>Split</h3>
+<p><strong>Leave-one-repo-out</strong> over <code>(repo, T)</code> rows. Several reference dates per repo would otherwise
+leak a project's own history across the split. TabPFN is in-context, so held-out repos are simply
+excluded from the context set.</p>
+<h3>Comparison hierarchy — fixed-sequence gatekeeping</h3>
+<p>Not a pairwise matrix. Six tests at α = 0.05 gives ~26% family-wise error.</p>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Test</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Primary, confirmatory</td>
+<td><strong>A₂ vs B₂ non-inferiority</strong></td>
+<td>One-sided α = 0.05, margin 0.07</td>
+</tr>
+<tr>
+<td>2. Descriptive</td>
+<td>Superiority <code>A₂</code> vs <code>B₂</code>, full-feature <code>A</code> vs <code>B</code></td>
+<td>No inference claimed</td>
+</tr>
+<tr>
+<td>3. Descriptive</td>
+<td>Per-bus-factor-quartile AUC</td>
+<td>Interaction only, no inference</td>
+</tr>
+</tbody>
+</table>
+<p><code>B′</code> and <code>C</code> arms are <strong>dropped</strong> to fit the timeline. Consequence: the claim <em>"the social signal
+survives structural controls"</em> comes out of the write-up entirely. Registering it and not
+testing it would be worse.</p>
+<h3>Instruments</h3>
+<ul>
+<li><strong>Paired DeLong</strong> for the AUC difference — the models share rows, so pairing is far more
+  sensitive than comparing point estimates. An unpaired SE at n = 300 is ~0.045, which is why a
+  bare 0.07 threshold proves nothing.</li>
+<li><strong>Repo-clustered bootstrap</strong> (≥1,000 resamples) as the confirmatory check. DeLong assumes
+  independent rows; rows from one repo are not independent. If the two disagree, the bootstrap
+  governs.</li>
+<li><strong>Brier Skill Score</strong> vs base rate (<code>1 − Brier/Brier_ref</code>). Raw Brier is uninterpretable.</li>
+<li><strong>Reliability diagram</strong> — Brier conflates calibration with resolution.</li>
+<li><strong>Band ribbon</strong> from the same bootstrap. The band is a difference of two probabilities, so
+  calibration error compounds in the subtraction.</li>
+</ul>
+<h3>Lead-time analysis (descriptive, cheap, high value)</h3>
+<p>For each repo, find the first <code>T</code> at which each arm's <code>p(DEAD)</code> crosses 0.5, and compare that
+date to the actual death date. Non-inferiority shows social is <em>as good</em>; only lead time shows it
+is <em>earlier</em> — which is what the thesis actually claims. Costs no α and produces the chart the
+argument needs.</p>
+<hr />
+<h2>11. External validation</h2>
+<p><code>archived:true</code> is GitHub's own death certificate and the only ground truth here that is not an
+opinion. It is also selected — owners archive what they care about — so it is a stratum, never a
+clean sample. <code>request/request</code> is permanently outside this validation set.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Reference date</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary</td>
+<td><code>T = archive − 36 months</code></td>
+<td>Window closes 18 months before declaration; real uncertainty remains</td>
+</tr>
+<tr>
+<td>Sanity</td>
+<td><code>T = archive − 18 months</code></td>
+<td>Window ends at declaration — near-tautological, boundary check only</td>
+</tr>
+</tbody>
+</table>
+<p>20 of the 60 archived corpses are held out entirely. Validating on repos seen in training is
+in-sample and worth nothing. <strong>Archival status is a label source and must never enter the feature
+schema.</strong></p>
+<hr />
+<h2>12. The interview</h2>
+<ul>
+<li>Local Gemma via Ollama. <code>gemma3:12b</code> recommended (~8 GB); <code>2b</code> will not produce a convincing
+  interview.</li>
+<li>Commits act as memory, issues as arguments, docs as self-image.</li>
+<li>Every answer carries a citation (issue #, commit SHA, README line) or the sentence
+  <strong>"the archive is silent on that."</strong> No improvisation.</li>
+<li><strong>Two voices, split by artifact.</strong> Elegy in the interview display. Plain autopsy-descriptive
+  prose in evidence and methodology sections. Mixing them makes either the story or the method
+  unreadable.</li>
+<li>The ghost speaks as the project. No individual maintainer is named, and no claim about anyone's
+  state of mind goes in unsourced.</li>
+<li><strong>The interview is n = 1.</strong> It is a story, not evidence, and the write-up must not present it
+  as evidence.</li>
+</ul>
+<hr />
+<h2>13. Probe — 20 repos, before the full pull</h2>
+<p>The probe exists to break the pipeline, not confirm it. A random sample tests the happy path;
+spend the 20 on cases that would kill the full pull.</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>n</th>
+<th>What it breaks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Issues disabled</td>
+<td>3</td>
+<td><code>f4</code> undefined; how large is the hole?</td>
+</tr>
+<tr>
+<td>Zero releases ever</td>
+<td>3</td>
+<td><code>f1</code> divide-by-zero path</td>
+</tr>
+<tr>
+<td>Bot "maintainer"</td>
+<td>3</td>
+<td>Bot filter correctness</td>
+</tr>
+<tr>
+<td>Single commit</td>
+<td>3</td>
+<td>Degenerate history</td>
+</tr>
+<tr>
+<td><code>archived:true</code></td>
+<td>3</td>
+<td>Label-source join correctness</td>
+</tr>
+<tr>
+<td>Known-alive controls</td>
+<td>5</td>
+<td>If all 20 return DEAD, the label is broken, not the corpus</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Print:</strong> per-feature coverage table · label distribution · post-mask row counts and <code>y2</code>
+prevalence · monotonicity violation rate · <strong>calls per repo</strong>.</p>
+<p><strong>Freeze labels before printing any label.</strong> No threshold tuning after the first look.</p>
+<p><strong>Kill-switch:</strong> &gt; 90 calls/repo ⇒ 300 repos exceeds 5.4 hours ⇒ descope. Ladder: 300 → 150 →
+100 → single cohort. Decided by the probe, not by optimism.</p>
+<hr />
+<h2>14. Risks</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Effect</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trivially DEAD rows</td>
+<td>Inflated AUC</td>
+<td>Mask 2 (§8)</td>
+</tr>
+<tr>
+<td>Mask removes too many DEAD rows</td>
+<td><code>y2</code> too few positives</td>
+<td>Print post-mask counts in the probe</td>
+</tr>
+<tr>
+<td>Maintainer rule biased toward ALIVE</td>
+<td>Result drifts to null</td>
+<td><code>author_association</code>; top-5 only as robustness with K ∈ {1,3,5}</td>
+</tr>
+<tr>
+<td>Recency features</td>
+<td>Thesis unfalsifiable</td>
+<td>Ban the whole class</td>
+</tr>
+<tr>
+<td>Capacity mismatch between arms</td>
+<td>Part of the gap is built in</td>
+<td>Matched 2-vs-2 primary</td>
+</tr>
+<tr>
+<td>Superiority misread as the test</td>
+<td><strong>A correct result reported as failure</strong></td>
+<td>Non-inferiority (§4)</td>
+</tr>
+<tr>
+<td>API budget</td>
+<td>Pull exceeds the window</td>
+<td>Calls/repo kill-switch</td>
+</tr>
+<tr>
+<td>19 integrations eat the schedule</td>
+<td>No write-up</td>
+<td>Timebox each; writing starts Day 1</td>
+</tr>
+<tr>
+<td>Compliance miss</td>
+<td>Disqualification</td>
+<td>§18 checklist</td>
+</tr>
+<tr>
+<td>Two AIs agreeing</td>
+<td>Shared blind spots look like consensus</td>
+<td>Treat the probe, not the agreement, as the first real test</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>15. Limitations — to publish, verbatim</h2>
+<ol>
+<li>Two definitions of DEAD coexist: declared (archived) and inferred (silence). The model learns
+   a blend.</li>
+<li>The archived stratum is selected. Owners archive what they care about; <code>request</code> was deprecated
+   but never archived.</li>
+<li>Missingness correlates with age. Pre-2012 repos have unreliable issue history.</li>
+<li>Issue features are undefined where issues are disabled, and not at random.</li>
+<li>n = 300 is small for three latent states. Report intervals, never bare point estimates.</li>
+<li>The label is a proxy for social death, not death itself.</li>
+<li>The interview half is n = 1: a story, not evidence.</li>
+<li>The primary claim is non-inferiority, not superiority. Parity is the prediction.</li>
+</ol>
+<hr />
+<h2>16. Timeline — ~90 hours</h2>
+<p>Assumes the probe runs tonight. Every day of delay comes straight out of the write-up.</p>
+<table>
+<thead>
+<tr>
+<th>Window</th>
+<th>Work</th>
+<th>Hours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oct 28 evening</td>
+<td>Claim credits; sign TabPFN licence; start <code>gemma3:12b</code> pull in background; run probe; lock n</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Oct 29</td>
+<td>Full pull; derive; features; two fits; band + lead-time charts; <strong>write-up skeleton</strong></td>
+<td>13</td>
+</tr>
+<tr>
+<td>Oct 30</td>
+<td>Interview spine (index → ask → cite); altar page; first 10 integrations</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Oct 31</td>
+<td>Remaining 9 integrations; deploy; demo video; write-up draft</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Nov 1 until 12:29</td>
+<td>Final write-up; compliance checklist; publish</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td><strong>49</strong></td>
+</tr>
+</tbody>
+</table>
+<p>~90 hours available, ~49 committed. The slack is for integrations that fight back — and several
+will. Writing is drafted from Day 1 because it carries the heaviest weight.</p>
+<hr />
+<h2>17. Open decisions</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Decision</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O-1</td>
+<td>Project name: "Ofrenda" or "Ghost repo interview"</td>
+<td>Ofrenda</td>
+</tr>
+<tr>
+<td>O-2</td>
+<td>Corpse = <code>request/request</code></td>
+<td>Lock</td>
+</tr>
+<tr>
+<td>O-3</td>
+<td>Pull <code>gemma3:12b</code> (~8 GB)</td>
+<td>Yes — 2b cannot carry an interview</td>
+</tr>
+<tr>
+<td>O-4</td>
+<td><strong>Build approval</strong></td>
+<td><strong>The only blocker</strong></td>
+</tr>
+<tr>
+<td>O-5</td>
+<td>Credits to claim: Tinker, Ultramarine $5, .tech</td>
+<td>Claim all three; ~10 minutes</td>
+</tr>
+<tr>
+<td>O-6</td>
+<td>Language strata JS + Python</td>
+<td>Lock</td>
+</tr>
+<tr>
+<td>O-7</td>
+<td>Demo recorder: vhs vs asciinema</td>
+<td>vhs</td>
+</tr>
+<tr>
+<td>O-8</td>
+<td>Maintainer-mortality feature</td>
+<td><strong>Dropped.</strong> Unregistered, +2 calls/repo, and inapplicable to an org-owned corpse</td>
+</tr>
+<tr>
+<td>O-9</td>
+<td>"Survives structural controls" claim</td>
+<td><strong>Struck</strong> — B′ and C are cut</td>
+</tr>
+<tr>
+<td>O-10</td>
+<td>Primary claim</td>
+<td><strong>Settled: non-inferiority</strong> (§4)</td>
+</tr>
+<tr>
+<td>O-11</td>
+<td><code>request</code> deprecation date</td>
+<td><strong>Settled 2026-10-28</strong> on primary sources: maintenance mode <strong>2019-03-30</strong> (issue #3142, still open), npm deprecation <strong>2020-02-11</strong> (registry <code>time</code>, v2.88.2), README ~<strong>Jun 2020</strong>; expected-shape anchor 2019-03-30 (§1, §20)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>18. Compliance checklist</h2>
+<p>Verified against the challenge page and official rules on 2026-10-28.</p>
+<h3>Before building</h3>
+<ul>
+<li>[ ] DEV account exists and is in good standing (entrants must be DEV members)</li>
+<li>[ ] Submission repo created after 26 Oct, 9:00 AM PDT (21:30 IST); reuses no older code</li>
+<li>[ ] <code>marigold/</code> stub removed from the workspace — <strong>done, 2026-10-28</strong></li>
+<li>[ ] TabPFN non-commercial licence signed at platform.priorlabs.ai</li>
+<li>[ ] Promo credits claimed: Tinker, Ultramarine $5, <code>.tech</code> domain</li>
+<li>[ ] Project name decided</li>
+</ul>
+<h3>In the repo</h3>
+<ul>
+<li>[ ] README lists every commit made after the deadline</li>
+<li>[ ] README credits all prior work and open-source code used</li>
+<li>[ ] Repo link opens without a login</li>
+</ul>
+<h3>In the post</h3>
+<ul>
+<li>[ ] English</li>
+<li>[ ] Tags <code>devchallenge</code>, <code>hf26challenge</code></li>
+<li>[ ] Sections: What I Built · Demo · Code · How I Built It · Why Does Open Innovation Matter? · Prize Categories</li>
+<li>[ ] Demo is a deployed link or a video walkthrough (plan: real video, not a GIF)</li>
+<li>[ ] Names the open-source AI used, how the project is built around it, and why open innovation matters — with one concrete comparison against a closed option</li>
+<li>[ ] Lists all 19 categories entered, each with its meaningful use</li>
+<li>[ ] Optional: DevRelay session; "The Spirit of It"</li>
+<li>[ ] <code>request/request</code> facts checked against sources; no unsourced claims about anyone's state of mind</li>
+<li>[ ] Limitations section included</li>
+</ul>
+<h3>Publishing</h3>
+<ul>
+<li>[ ] Post stays a draft until final — <strong>only the first entry submitted is judged</strong></li>
+<li>[ ] Published well before 2026-11-01 12:29 IST. The sponsor's clock is the official clock</li>
+</ul>
+<hr />
+<h2>19. What changed from the two prior specs</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Change</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Primary test: superiority → <strong>non-inferiority</strong></td>
+<td>Parity is what the thesis predicts; a superiority test reports a correct result as failure</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Arms capacity-matched to 2 vs 2</td>
+<td>2-vs-4 confounds the test toward the hypothesis</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>f3</code> moved from Arm A to Arm B</td>
+<td>Backlog slope is issue-derived; in A it blurs code-vs-social</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Row mask 2 added</td>
+<td>Trivially DEAD rows inflate AUC</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Maintainers via <code>author_association</code></td>
+<td>Top-5 authors biases the label toward ALIVE</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>docs_vs_code_divergence</code> dropped</td>
+<td>Fails the recency ban on its own denominator</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>B′</code> and <code>C</code> arms dropped</td>
+<td>Timeline. "Survives structural controls" struck with them</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Kill-switch: wall-clock → <strong>calls per repo</strong></td>
+<td>The pull is rate-bound, not latency-bound</td>
+</tr>
+<tr>
+<td>9</td>
+<td>19 categories restored</td>
+<td>Contest bar is "meaningful use," not "irreplaceable" — the stricter test was ours, not theirs</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>O-8</code> maintainer-mortality dropped</td>
+<td>Unregistered, costly, inapplicable to an org-owned corpse</td>
+</tr>
+<tr>
+<td>11</td>
+<td>This document supersedes both prior specs</td>
+<td>Three sources of truth undermine the pre-registration claim</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Lead-time analysis added</td>
+<td>Non-inferiority shows "as good"; only lead time shows "earlier"</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>20. Change log</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+<th>Author</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-10-28 18:03</td>
+<td>v2.0 — consolidated, 19 categories restored, non-inferiority adopted, arms matched, statistics reduced to fit the timeline</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2026-10-28 18:32</td>
+<td><strong>§1/§7 corrections.</strong> Corpse dates pinned: maintenance mode 2019-03-30 (issue #3142, still open), npm deprecation 2020-02-11 (registry <code>time</code>), README ~Jun 2020 (pending commit-history pin); expected-shape anchor = 2019-03-30. "Comments first" staging replaced: labels require all four streams (issues join for PR numberset + openers; commits + releases for y2)</td>
+<td>AI-A</td>
+</tr>
+<tr>
+<td>2026-10-28 18:32</td>
+<td><strong>Two derive defects fixed pre-hoc (nothing had run).</strong> (1) <code>human_activity()</code> skipped commits with no GitHub-linked login → false-DEAD rows. Fix: <code>is_bot_commit()</code> checks GitHub login first, then git author/committer name+email (<code>[bot]</code> substring or denylist). (2) Comments by deleted/ghost accounts (<code>user: null</code>) were invisible → now count as human in activity (unknowable identity ≠ bot)</td>
+<td>AI-A</td>
+</tr>
+<tr>
+<td>2026-10-28 18:32</td>
+<td><strong>Pagination caps pre-registered:</strong> issues 40 / comments 60 / commits 40 / releases 5 pages × 100. Issues &amp; comments fetched <strong>newest-first</strong> so caps truncate at the old end — capped repos lose early-T rows via mask 2, never late labels. <code>truncated</code> flags kept and reported</td>
+<td>AI-A</td>
+</tr>
+<tr>
+<td>2026-10-28 18:32</td>
+<td><strong>Probe pre-registration (before any label prints):</strong> T grid = Jan 1 of 2015…2023 (9 points, annual); all labels frozen before printing — no threshold tuning after the first look; print label mix at T = 2023-01-01, post-mask row counts, y2 prevalence, monotonicity violations, ghost-user counts, calls/repo</td>
+<td>AI-A</td>
+</tr>
+<tr>
+<td>2026-10-28 18:32</td>
+<td><strong>Probe roster = §13's 20 + the corpse.</strong> <code>request/request</code> is fetched and derived during the probe (excluded from every fit regardless — specimen rule intact): front-loads its ingest and catches specimen-specific truncation before the full pull</td>
+<td>AI-A</td>
+</tr>
+<tr>
+<td>2026-10-28 18:32</td>
+<td><strong>Kill-switch operationalized:</strong> median core calls/repo across the roster &gt; 90 ⇒ descope the corpus 300 → 150 (ladder per §13: 300 → 150 → 100 → single cohort). Decided by probe output, not optimism</td>
+<td>AI-A</td>
+</tr>
+<tr>
+<td>2026-10-28 19:12</td>
+<td><strong>Probe run 1 aborted at the 40-min wall — fetch-layer defects, nothing derived, no label printed.</strong> Evidence from run 1's log/cache: (1) three controls died on <code>IncompleteRead</code>, a transport error that <code>gh.get</code> did not retry; (2) <code>axios</code> cached EMPTY issues/comments/commits after silent 403-exhaustion returning <code>None</code> — silence written to disk as if true; (3) search-endpoint rate headers leaked into the core limiter, stalling every search 53 s. Fixes: search/core limiter isolated; <code>IncompleteRead</code>/<code>RemoteDisconnected</code>/connection errors retryable; 403 honors <code>Retry-After</code> and <code>X-RateLimit-Reset</code>; pagination raises if a stream breaks after page 1; empty-issues guard when <code>has_issues=true</code>; 0.5 s/page pacing. Run-1 log kept as evidence (<code>probe_out/probe_2026-10-28.log</code>); partial cache discarded; run 2 fetches fresh</td>
+<td>AI-A</td>
+</tr>
+<tr>
+<td>2026-10-28 19:20</td>
+<td><strong>Backend registrations (pre-fit, while run 2 fetches).</strong> Feature arithmetic pinned: <code>f1</code> = median inter-release interval ratio over [T−24mo,T) vs [T−48mo,T−24mo), with a <code>never_released</code> companion indicator (zero releases anywhere in the record); <code>f2</code> = Shannon entropy (bits) of intervals between <strong>human</strong> commits in [T−12mo,T), binned in days (&lt;1 / 1–3 / 3–14 / 14–45 / 45–120 / ≥120); <code>f4</code> = median issue→first-maintainer-response latency ratio (recent vs prior 12mo across [T−24mo,T)), first-response <strong>after T is banned</strong> (look-ahead rule); <code>f5</code> = recent_share − prior_share of stranger issues answered (differences, not ratios, so no division holes); <code>f6</code> = maintainer-comment volume ratio (divisor 0 → None) with both counts emitted descriptively; <code>f3</code> = OLS slope of monthly human-opened unresolved non-PR backlog (descriptive only); <code>bf50</code> = top human commit authors covering 50% of [T−12mo,T) commits. <strong>Global ratio convention: denominator 0 → None, never imputed.</strong> Rows land in <code>derived/rows.ndjson</code>. Annual grid constant moved to derive as <code>ANNUAL_GRID</code> (same math, one definition; masked rows via <code>derive.rows_for</code>)</td>
+<td>AI-A</td>
+</tr>
+<tr>
+<td>2026-10-28 19:24</td>
+<td><strong>Corpus-pull design locked before run 2 lands</strong> (implements §7). Cells = language × star-band × created-band: star bands 100–300 / 300–1 000 / 1 000–3 000 / ≥3 000; created bands 2013–2015 / 2016–2018 / 2019–2020 (age floor: nothing created before 2013); only Python + JavaScript. <strong>Strata shares fixed at 0.6 dead / 0.2 archived / 0.2 alive</strong>, language split 50/50 within strata; alive controls are matched on stars + age band by giving each cell an alive quota proportional to the dead cohort's actual cell counts (largest-remainder rounding). Dead query = <code>pushed:&lt;2021-01-01 archived:false fork:false &lt;bands&gt;</code>; archived = same with <code>archived:true</code>; alive = <code>pushed:&gt;2025-06-01 archived:false fork:false &lt;bands&gt;</code>. Candidates taken in search-result order, <strong>page 1 only</strong> (per_page=100); a short cell's quota redistributes over cells that still have page-1 candidates, fixed order. Roster-vet rejects stale-index contradictions (fork flag, star/created band mismatch, dead candidates still pushing, pre-2013 creation). <code>pull.py</code> CLI: <code>--n</code> (default 300), <code>--discover-only</code>, <code>--fresh</code>, <code>--limit</code>; roster lives at <code>pull_out/roster.json</code> (chosen candidates + per-cell receipts embedded); a <code>--n</code> mismatch rebuilds the roster. Pull is serial and journaled (<code>pull_out/journal.ndjson</code>, one row per attempt); journaled-ok repos are skipped for free on restart, failed entries are retried; <strong>5 consecutive failures abort</strong> the run.</td>
+<td>Pull order: dead → archived → alive, cells in fixed order</td>
+</tr>
+<tr>
+<td>2026-10-28 22:42</td>
+<td><strong>Search-throttle degradation policy (second launch attempt).</strong> The first pull launch died 10 min into roster discovery: a search query exhausted gh.get's 8-retry 403 budget and the new <code>RateLimited</code> hardening (correct for core streams) crashed the run at the search layer — GitHub's search endpoint applies its own secondary abuse detection on top of the 30/min cap, and ~10 min of 27/min paging trips it. Policy: <code>_search_page</code> now owns search retries — on a 403/429 episode it waits 60 s (lets the per-minute window roll) and re-queries, up to 3 rounds; only then does the cell go <strong>unfilled</strong> (recorded in the roster receipts, redistributed, never silently dropped). Search pacing raised 2.2 → 3.0 s (20/min) for margin. Discovery is idempotent and restartable by design; unfilled deficits are visible in <code>pull_out/roster.json</code>, never cached as truth. Pull logs are unbuffered (<code>python -u</code>) from here on — the buffered tee hid all diagnostics for 10 minutes</td>
+<td>AI-A</td>
+</tr>
+<tr>
+<td>2026-10-28 21:22</td>
+<td><strong>Probe run 2 verdict — kill-switch FIRES: n = 150 locked.</strong> Run 2 (log <code>probe_out/probe_2026-10-28_run2.log</code>, summary <code>probe_out/probe_summary.json</code>): 4 of 21 roster repos fetched successfully (psf/requests 142 calls, pallets/flask 142, request/request 120, twjiang/fact_triple_extraction 5); all four cached real data under the registered caps — no silence cached. <strong>Median calls/repo = 131 &gt; 90 ⇒ DESCOPE 300 → 150</strong> (pre-registered §13 rule applied as written; honest caveat: computed on n=4 successful fetches because 17 of 21 failed — sample dominated by the two fat controls, which is exactly the rate-bound case the switch exists to catch). Ladder stops at 150; strata rescale to 90/30/30 per §20 19:24. <strong>Invariants on the fetched sample: monotonicity violations 0; both fetched controls have ALIVE rows; the corpse reads GHOSTING at T=2023-01-01 (y1=1, y2=0 — no maintainer answered in 18 months while humans still commit) — the thesis anchor is live.</strong> Failure-mode findings (drive fetch hardening, this row): (1) sustained secondary-limit 403s exhausted gh.get's 4-retry budget and returned None, which fetch_repo misreported as "repo not found" for repos that exist (axios, fastapi, 15 others); (2) two transport breaks mid-pagination (express page 27, reddit-archive page 3) hard-aborted those repos. Hardening round 2, effective for the full pull: gh.get raises <code>RateLimited</code> instead of returning None on exhausted 403/429 retries (None now means genuine 404/422), retries 4→8, 403 backoff honors Retry-After up to 130 s, page pacing 0.5→0.75 s, pull adds a 2 s pause between repos. Failed probe repos re-fetch on the pull (per-stream cache makes retries cost only missing streams). No analysis-plan text changed — verdict and fixes only</td>
+<td>AI-A</td>
+</tr>
+</tbody>
+</table>
+<p><em>Any change after the probe runs requires a dated row here. No silent edits.</em></p></body></html>

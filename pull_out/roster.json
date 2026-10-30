@@ -1,0 +1,1603 @@
+{
+ "when": "2026-10-28T22:53:37",
+ "n": 150,
+ "receipts": {
+  "totals": {
+   "dead": 90,
+   "archived": 30,
+   "alive": 30
+  },
+  "dead": {
+   "chosen": {
+    "python|stars:100-300|created:2013-2015": 5,
+    "python|stars:100-300|created:2016-2018": 4,
+    "python|stars:100-300|created:2019-2020": 4,
+    "python|stars:300-1000|created:2013-2015": 4,
+    "python|stars:300-1000|created:2016-2018": 4,
+    "python|stars:300-1000|created:2019-2020": 4,
+    "python|stars:1000-3000|created:2013-2015": 4,
+    "python|stars:1000-3000|created:2016-2018": 4,
+    "python|stars:1000-3000|created:2019-2020": 4,
+    "python|stars:>=3000|created:2013-2015": 3,
+    "python|stars:>=3000|created:2016-2018": 3,
+    "python|stars:>=3000|created:2019-2020": 3,
+    "javascript|stars:100-300|created:2013-2015": 4,
+    "javascript|stars:100-300|created:2016-2018": 4,
+    "javascript|stars:100-300|created:2019-2020": 4,
+    "javascript|stars:300-1000|created:2013-2015": 4,
+    "javascript|stars:300-1000|created:2016-2018": 4,
+    "javascript|stars:300-1000|created:2019-2020": 4,
+    "javascript|stars:1000-3000|created:2013-2015": 4,
+    "javascript|stars:1000-3000|created:2016-2018": 4,
+    "javascript|stars:1000-3000|created:2019-2020": 4,
+    "javascript|stars:>=3000|created:2013-2015": 3,
+    "javascript|stars:>=3000|created:2016-2018": 3,
+    "javascript|stars:>=3000|created:2019-2020": 2
+   },
+   "queries": {
+    "python|stars:100-300|created:2013-2015": "pushed:<2021-01-01 archived:false fork:false stars:100..299 created:2013-01-01..2015-12-31 language:python",
+    "python|stars:100-300|created:2016-2018": "pushed:<2021-01-01 archived:false fork:false stars:100..299 created:2016-01-01..2018-12-31 language:python",
+    "python|stars:100-300|created:2019-2020": "pushed:<2021-01-01 archived:false fork:false stars:100..299 created:2019-01-01..2020-12-31 language:python",
+    "python|stars:300-1000|created:2013-2015": "pushed:<2021-01-01 archived:false fork:false stars:300..999 created:2013-01-01..2015-12-31 language:python",
+    "python|stars:300-1000|created:2016-2018": "pushed:<2021-01-01 archived:false fork:false stars:300..999 created:2016-01-01..2018-12-31 language:python",
+    "python|stars:300-1000|created:2019-2020": "pushed:<2021-01-01 archived:false fork:false stars:300..999 created:2019-01-01..2020-12-31 language:python",
+    "python|stars:1000-3000|created:2013-2015": "pushed:<2021-01-01 archived:false fork:false stars:1000..2999 created:2013-01-01..2015-12-31 language:python",
+    "python|stars:1000-3000|created:2016-2018": "pushed:<2021-01-01 archived:false fork:false stars:1000..2999 created:2016-01-01..2018-12-31 language:python",
+    "python|stars:1000-3000|created:2019-2020": "pushed:<2021-01-01 archived:false fork:false stars:1000..2999 created:2019-01-01..2020-12-31 language:python",
+    "python|stars:>=3000|created:2013-2015": "pushed:<2021-01-01 archived:false fork:false stars:>=3000 created:2013-01-01..2015-12-31 language:python",
+    "python|stars:>=3000|created:2016-2018": "pushed:<2021-01-01 archived:false fork:false stars:>=3000 created:2016-01-01..2018-12-31 language:python",
+    "python|stars:>=3000|created:2019-2020": "pushed:<2021-01-01 archived:false fork:false stars:>=3000 created:2019-01-01..2020-12-31 language:python",
+    "javascript|stars:100-300|created:2013-2015": "pushed:<2021-01-01 archived:false fork:false stars:100..299 created:2013-01-01..2015-12-31 language:javascript",
+    "javascript|stars:100-300|created:2016-2018": "pushed:<2021-01-01 archived:false fork:false stars:100..299 created:2016-01-01..2018-12-31 language:javascript",
+    "javascript|stars:100-300|created:2019-2020": "pushed:<2021-01-01 archived:false fork:false stars:100..299 created:2019-01-01..2020-12-31 language:javascript",
+    "javascript|stars:300-1000|created:2013-2015": "pushed:<2021-01-01 archived:false fork:false stars:300..999 created:2013-01-01..2015-12-31 language:javascript",
+    "javascript|stars:300-1000|created:2016-2018": "pushed:<2021-01-01 archived:false fork:false stars:300..999 created:2016-01-01..2018-12-31 language:javascript",
+    "javascript|stars:300-1000|created:2019-2020": "pushed:<2021-01-01 archived:false fork:false stars:300..999 created:2019-01-01..2020-12-31 language:javascript",
+    "javascript|stars:1000-3000|created:2013-2015": "pushed:<2021-01-01 archived:false fork:false stars:1000..2999 created:2013-01-01..2015-12-31 language:javascript",
+    "javascript|stars:1000-3000|created:2016-2018": "pushed:<2021-01-01 archived:false fork:false stars:1000..2999 created:2016-01-01..2018-12-31 language:javascript",
+    "javascript|stars:1000-3000|created:2019-2020": "pushed:<2021-01-01 archived:false fork:false stars:1000..2999 created:2019-01-01..2020-12-31 language:javascript",
+    "javascript|stars:>=3000|created:2013-2015": "pushed:<2021-01-01 archived:false fork:false stars:>=3000 created:2013-01-01..2015-12-31 language:javascript",
+    "javascript|stars:>=3000|created:2016-2018": "pushed:<2021-01-01 archived:false fork:false stars:>=3000 created:2016-01-01..2018-12-31 language:javascript",
+    "javascript|stars:>=3000|created:2019-2020": "pushed:<2021-01-01 archived:false fork:false stars:>=3000 created:2019-01-01..2020-12-31 language:javascript"
+   },
+   "want": {
+    "python|stars:100-300|created:2013-2015": 4,
+    "python|stars:100-300|created:2016-2018": 4,
+    "python|stars:100-300|created:2019-2020": 4,
+    "python|stars:300-1000|created:2013-2015": 4,
+    "python|stars:300-1000|created:2016-2018": 4,
+    "python|stars:300-1000|created:2019-2020": 4,
+    "python|stars:1000-3000|created:2013-2015": 4,
+    "python|stars:1000-3000|created:2016-2018": 4,
+    "python|stars:1000-3000|created:2019-2020": 4,
+    "python|stars:>=3000|created:2013-2015": 3,
+    "python|stars:>=3000|created:2016-2018": 3,
+    "python|stars:>=3000|created:2019-2020": 3,
+    "javascript|stars:100-300|created:2013-2015": 4,
+    "javascript|stars:100-300|created:2016-2018": 4,
+    "javascript|stars:100-300|created:2019-2020": 4,
+    "javascript|stars:300-1000|created:2013-2015": 4,
+    "javascript|stars:300-1000|created:2016-2018": 4,
+    "javascript|stars:300-1000|created:2019-2020": 4,
+    "javascript|stars:1000-3000|created:2013-2015": 4,
+    "javascript|stars:1000-3000|created:2016-2018": 4,
+    "javascript|stars:1000-3000|created:2019-2020": 4,
+    "javascript|stars:>=3000|created:2013-2015": 3,
+    "javascript|stars:>=3000|created:2016-2018": 3,
+    "javascript|stars:>=3000|created:2019-2020": 3
+   }
+  },
+  "archived": {
+   "chosen": {
+    "python|stars:100-300|created:2013-2015": 2,
+    "python|stars:100-300|created:2016-2018": 2,
+    "python|stars:100-300|created:2019-2020": 2,
+    "python|stars:300-1000|created:2013-2015": 1,
+    "python|stars:300-1000|created:2016-2018": 1,
+    "python|stars:300-1000|created:2019-2020": 1,
+    "python|stars:1000-3000|created:2013-2015": 1,
+    "python|stars:1000-3000|created:2016-2018": 1,
+    "python|stars:1000-3000|created:2019-2020": 1,
+    "python|stars:>=3000|created:2013-2015": 1,
+    "python|stars:>=3000|created:2016-2018": 1,
+    "python|stars:>=3000|created:2019-2020": 1,
+    "javascript|stars:100-300|created:2013-2015": 2,
+    "javascript|stars:100-300|created:2016-2018": 2,
+    "javascript|stars:100-300|created:2019-2020": 2,
+    "javascript|stars:300-1000|created:2013-2015": 1,
+    "javascript|stars:300-1000|created:2016-2018": 1,
+    "javascript|stars:300-1000|created:2019-2020": 1,
+    "javascript|stars:1000-3000|created:2013-2015": 1,
+    "javascript|stars:1000-3000|created:2016-2018": 1,
+    "javascript|stars:1000-3000|created:2019-2020": 1,
+    "javascript|stars:>=3000|created:2013-2015": 1,
+    "javascript|stars:>=3000|created:2016-2018": 1,
+    "javascript|stars:>=3000|created:2019-2020": 1
+   },
+   "queries": {
+    "python|stars:100-300|created:2013-2015": "pushed:<2021-01-01 archived:true fork:false stars:100..299 created:2013-01-01..2015-12-31 language:python",
+    "python|stars:100-300|created:2016-2018": "pushed:<2021-01-01 archived:true fork:false stars:100..299 created:2016-01-01..2018-12-31 language:python",
+    "python|stars:100-300|created:2019-2020": "pushed:<2021-01-01 archived:true fork:false stars:100..299 created:2019-01-01..2020-12-31 language:python",
+    "python|stars:300-1000|created:2013-2015": "pushed:<2021-01-01 archived:true fork:false stars:300..999 created:2013-01-01..2015-12-31 language:python",
+    "python|stars:300-1000|created:2016-2018": "pushed:<2021-01-01 archived:true fork:false stars:300..999 created:2016-01-01..2018-12-31 language:python",
+    "python|stars:300-1000|created:2019-2020": "pushed:<2021-01-01 archived:true fork:false stars:300..999 created:2019-01-01..2020-12-31 language:python",
+    "python|stars:1000-3000|created:2013-2015": "pushed:<2021-01-01 archived:true fork:false stars:1000..2999 created:2013-01-01..2015-12-31 language:python",
+    "python|stars:1000-3000|created:2016-2018": "pushed:<2021-01-01 archived:true fork:false stars:1000..2999 created:2016-01-01..2018-12-31 language:python",
+    "python|stars:1000-3000|created:2019-2020": "pushed:<2021-01-01 archived:true fork:false stars:1000..2999 created:2019-01-01..2020-12-31 language:python",
+    "python|stars:>=3000|created:2013-2015": "pushed:<2021-01-01 archived:true fork:false stars:>=3000 created:2013-01-01..2015-12-31 language:python",
+    "python|stars:>=3000|created:2016-2018": "pushed:<2021-01-01 archived:true fork:false stars:>=3000 created:2016-01-01..2018-12-31 language:python",
+    "python|stars:>=3000|created:2019-2020": "pushed:<2021-01-01 archived:true fork:false stars:>=3000 created:2019-01-01..2020-12-31 language:python",
+    "javascript|stars:100-300|created:2013-2015": "pushed:<2021-01-01 archived:true fork:false stars:100..299 created:2013-01-01..2015-12-31 language:javascript",
+    "javascript|stars:100-300|created:2016-2018": "pushed:<2021-01-01 archived:true fork:false stars:100..299 created:2016-01-01..2018-12-31 language:javascript",
+    "javascript|stars:100-300|created:2019-2020": "pushed:<2021-01-01 archived:true fork:false stars:100..299 created:2019-01-01..2020-12-31 language:javascript",
+    "javascript|stars:300-1000|created:2013-2015": "pushed:<2021-01-01 archived:true fork:false stars:300..999 created:2013-01-01..2015-12-31 language:javascript",
+    "javascript|stars:300-1000|created:2016-2018": "pushed:<2021-01-01 archived:true fork:false stars:300..999 created:2016-01-01..2018-12-31 language:javascript",
+    "javascript|stars:300-1000|created:2019-2020": "pushed:<2021-01-01 archived:true fork:false stars:300..999 created:2019-01-01..2020-12-31 language:javascript",
+    "javascript|stars:1000-3000|created:2013-2015": "pushed:<2021-01-01 archived:true fork:false stars:1000..2999 created:2013-01-01..2015-12-31 language:javascript",
+    "javascript|stars:1000-3000|created:2016-2018": "pushed:<2021-01-01 archived:true fork:false stars:1000..2999 created:2016-01-01..2018-12-31 language:javascript",
+    "javascript|stars:1000-3000|created:2019-2020": "pushed:<2021-01-01 archived:true fork:false stars:1000..2999 created:2019-01-01..2020-12-31 language:javascript",
+    "javascript|stars:>=3000|created:2013-2015": "pushed:<2021-01-01 archived:true fork:false stars:>=3000 created:2013-01-01..2015-12-31 language:javascript",
+    "javascript|stars:>=3000|created:2016-2018": "pushed:<2021-01-01 archived:true fork:false stars:>=3000 created:2016-01-01..2018-12-31 language:javascript",
+    "javascript|stars:>=3000|created:2019-2020": "pushed:<2021-01-01 archived:true fork:false stars:>=3000 created:2019-01-01..2020-12-31 language:javascript"
+   },
+   "want": {
+    "python|stars:100-300|created:2013-2015": 2,
+    "python|stars:100-300|created:2016-2018": 2,
+    "python|stars:100-300|created:2019-2020": 2,
+    "python|stars:300-1000|created:2013-2015": 1,
+    "python|stars:300-1000|created:2016-2018": 1,
+    "python|stars:300-1000|created:2019-2020": 1,
+    "python|stars:1000-3000|created:2013-2015": 1,
+    "python|stars:1000-3000|created:2016-2018": 1,
+    "python|stars:1000-3000|created:2019-2020": 1,
+    "python|stars:>=3000|created:2013-2015": 1,
+    "python|stars:>=3000|created:2016-2018": 1,
+    "python|stars:>=3000|created:2019-2020": 1,
+    "javascript|stars:100-300|created:2013-2015": 2,
+    "javascript|stars:100-300|created:2016-2018": 2,
+    "javascript|stars:100-300|created:2019-2020": 2,
+    "javascript|stars:300-1000|created:2013-2015": 1,
+    "javascript|stars:300-1000|created:2016-2018": 1,
+    "javascript|stars:300-1000|created:2019-2020": 1,
+    "javascript|stars:1000-3000|created:2013-2015": 1,
+    "javascript|stars:1000-3000|created:2016-2018": 1,
+    "javascript|stars:1000-3000|created:2019-2020": 1,
+    "javascript|stars:>=3000|created:2013-2015": 1,
+    "javascript|stars:>=3000|created:2016-2018": 1,
+    "javascript|stars:>=3000|created:2019-2020": 1
+   }
+  },
+  "alive": {
+   "chosen": {
+    "python|stars:100-300|created:2013-2015": 2,
+    "python|stars:100-300|created:2016-2018": 2,
+    "python|stars:100-300|created:2019-2020": 2,
+    "python|stars:300-1000|created:2013-2015": 2,
+    "python|stars:300-1000|created:2016-2018": 2,
+    "python|stars:300-1000|created:2019-2020": 2,
+    "python|stars:1000-3000|created:2013-2015": 1,
+    "python|stars:1000-3000|created:2016-2018": 1,
+    "python|stars:1000-3000|created:2019-2020": 1,
+    "python|stars:>=3000|created:2013-2015": 1,
+    "python|stars:>=3000|created:2016-2018": 1,
+    "python|stars:>=3000|created:2019-2020": 1,
+    "javascript|stars:100-300|created:2013-2015": 1,
+    "javascript|stars:100-300|created:2016-2018": 1,
+    "javascript|stars:100-300|created:2019-2020": 1,
+    "javascript|stars:300-1000|created:2013-2015": 1,
+    "javascript|stars:300-1000|created:2016-2018": 1,
+    "javascript|stars:300-1000|created:2019-2020": 1,
+    "javascript|stars:1000-3000|created:2013-2015": 1,
+    "javascript|stars:1000-3000|created:2016-2018": 1,
+    "javascript|stars:1000-3000|created:2019-2020": 1,
+    "javascript|stars:>=3000|created:2013-2015": 1,
+    "javascript|stars:>=3000|created:2016-2018": 1,
+    "javascript|stars:>=3000|created:2019-2020": 1
+   },
+   "queries": {
+    "python|stars:100-300|created:2013-2015": "pushed:>2025-06-01 archived:false fork:false stars:100..299 created:2013-01-01..2015-12-31 language:python",
+    "python|stars:100-300|created:2016-2018": "pushed:>2025-06-01 archived:false fork:false stars:100..299 created:2016-01-01..2018-12-31 language:python",
+    "python|stars:100-300|created:2019-2020": "pushed:>2025-06-01 archived:false fork:false stars:100..299 created:2019-01-01..2020-12-31 language:python",
+    "python|stars:300-1000|created:2013-2015": "pushed:>2025-06-01 archived:false fork:false stars:300..999 created:2013-01-01..2015-12-31 language:python",
+    "python|stars:300-1000|created:2016-2018": "pushed:>2025-06-01 archived:false fork:false stars:300..999 created:2016-01-01..2018-12-31 language:python",
+    "python|stars:300-1000|created:2019-2020": "pushed:>2025-06-01 archived:false fork:false stars:300..999 created:2019-01-01..2020-12-31 language:python",
+    "python|stars:1000-3000|created:2013-2015": "pushed:>2025-06-01 archived:false fork:false stars:1000..2999 created:2013-01-01..2015-12-31 language:python",
+    "python|stars:1000-3000|created:2016-2018": "pushed:>2025-06-01 archived:false fork:false stars:1000..2999 created:2016-01-01..2018-12-31 language:python",
+    "python|stars:1000-3000|created:2019-2020": "pushed:>2025-06-01 archived:false fork:false stars:1000..2999 created:2019-01-01..2020-12-31 language:python",
+    "python|stars:>=3000|created:2013-2015": "pushed:>2025-06-01 archived:false fork:false stars:>=3000 created:2013-01-01..2015-12-31 language:python",
+    "python|stars:>=3000|created:2016-2018": "pushed:>2025-06-01 archived:false fork:false stars:>=3000 created:2016-01-01..2018-12-31 language:python",
+    "python|stars:>=3000|created:2019-2020": "pushed:>2025-06-01 archived:false fork:false stars:>=3000 created:2019-01-01..2020-12-31 language:python",
+    "javascript|stars:100-300|created:2013-2015": "pushed:>2025-06-01 archived:false fork:false stars:100..299 created:2013-01-01..2015-12-31 language:javascript",
+    "javascript|stars:100-300|created:2016-2018": "pushed:>2025-06-01 archived:false fork:false stars:100..299 created:2016-01-01..2018-12-31 language:javascript",
+    "javascript|stars:100-300|created:2019-2020": "pushed:>2025-06-01 archived:false fork:false stars:100..299 created:2019-01-01..2020-12-31 language:javascript",
+    "javascript|stars:300-1000|created:2013-2015": "pushed:>2025-06-01 archived:false fork:false stars:300..999 created:2013-01-01..2015-12-31 language:javascript",
+    "javascript|stars:300-1000|created:2016-2018": "pushed:>2025-06-01 archived:false fork:false stars:300..999 created:2016-01-01..2018-12-31 language:javascript",
+    "javascript|stars:300-1000|created:2019-2020": "pushed:>2025-06-01 archived:false fork:false stars:300..999 created:2019-01-01..2020-12-31 language:javascript",
+    "javascript|stars:1000-3000|created:2013-2015": "pushed:>2025-06-01 archived:false fork:false stars:1000..2999 created:2013-01-01..2015-12-31 language:javascript",
+    "javascript|stars:1000-3000|created:2016-2018": "pushed:>2025-06-01 archived:false fork:false stars:1000..2999 created:2016-01-01..2018-12-31 language:javascript",
+    "javascript|stars:1000-3000|created:2019-2020": "pushed:>2025-06-01 archived:false fork:false stars:1000..2999 created:2019-01-01..2020-12-31 language:javascript",
+    "javascript|stars:>=3000|created:2013-2015": "pushed:>2025-06-01 archived:false fork:false stars:>=3000 created:2013-01-01..2015-12-31 language:javascript",
+    "javascript|stars:>=3000|created:2016-2018": "pushed:>2025-06-01 archived:false fork:false stars:>=3000 created:2016-01-01..2018-12-31 language:javascript",
+    "javascript|stars:>=3000|created:2019-2020": "pushed:>2025-06-01 archived:false fork:false stars:>=3000 created:2019-01-01..2020-12-31 language:javascript"
+   },
+   "want": {
+    "python|stars:100-300|created:2013-2015": 2,
+    "python|stars:100-300|created:2016-2018": 2,
+    "python|stars:100-300|created:2019-2020": 2,
+    "python|stars:300-1000|created:2013-2015": 2,
+    "python|stars:300-1000|created:2016-2018": 2,
+    "python|stars:300-1000|created:2019-2020": 2,
+    "python|stars:1000-3000|created:2013-2015": 1,
+    "python|stars:1000-3000|created:2016-2018": 1,
+    "python|stars:1000-3000|created:2019-2020": 1,
+    "python|stars:>=3000|created:2013-2015": 1,
+    "python|stars:>=3000|created:2016-2018": 1,
+    "python|stars:>=3000|created:2019-2020": 1,
+    "javascript|stars:100-300|created:2013-2015": 1,
+    "javascript|stars:100-300|created:2016-2018": 1,
+    "javascript|stars:100-300|created:2019-2020": 1,
+    "javascript|stars:300-1000|created:2013-2015": 1,
+    "javascript|stars:300-1000|created:2016-2018": 1,
+    "javascript|stars:300-1000|created:2019-2020": 1,
+    "javascript|stars:1000-3000|created:2013-2015": 1,
+    "javascript|stars:1000-3000|created:2016-2018": 1,
+    "javascript|stars:1000-3000|created:2019-2020": 1,
+    "javascript|stars:>=3000|created:2013-2015": 1,
+    "javascript|stars:>=3000|created:2016-2018": 1,
+    "javascript|stars:>=3000|created:2019-2020": 1
+   }
+  }
+ },
+ "roster": [
+  {
+   "group": "dead",
+   "full_name": "scrapy-plugins/scrapy-jsonrpc",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2014-08-15T17:51:13Z",
+   "pushed_at": "2019-08-26T05:39:07Z",
+   "cell": "python|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "snipsco/ntm-lasagne",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2015-09-17T16:14:50Z",
+   "pushed_at": "2018-07-31T11:41:29Z",
+   "cell": "python|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "jorgenkg/python-neural-network",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2015-01-09T12:19:19Z",
+   "pushed_at": "2020-01-26T14:33:13Z",
+   "cell": "python|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "CarterBain/AlephNull",
+   "language": "Python",
+   "stars": 298,
+   "created_at": "2013-08-28T18:25:01Z",
+   "pushed_at": "2017-05-18T05:25:09Z",
+   "cell": "python|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "schelotto/Wasserstein-AutoEncoders",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2018-01-24T11:13:22Z",
+   "pushed_at": "2020-08-07T14:32:02Z",
+   "cell": "python|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "opconty/pytorch_ctpn",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2018-12-27T06:11:30Z",
+   "pushed_at": "2019-04-23T02:20:30Z",
+   "cell": "python|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "wookayin/tensorflow-plot",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2017-03-26T01:11:48Z",
+   "pushed_at": "2019-07-24T04:45:53Z",
+   "cell": "python|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "tintinweb/ida-batch_decompile",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2016-09-29T22:57:36Z",
+   "pushed_at": "2020-05-14T12:36:23Z",
+   "cell": "python|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "NVlabs/neuralrgbd",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2019-05-14T22:46:23Z",
+   "pushed_at": "2019-08-18T14:34:11Z",
+   "cell": "python|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "zuzhiang/SMS_Bomber",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2019-08-31T13:57:58Z",
+   "pushed_at": "2019-09-04T01:53:05Z",
+   "cell": "python|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "DylanWusee/pointconv_pytorch",
+   "language": "Python",
+   "stars": 298,
+   "created_at": "2019-07-30T22:38:13Z",
+   "pushed_at": "2020-11-19T06:33:45Z",
+   "cell": "python|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "kevinlin311tw/CDCL-human-part-segmentation",
+   "language": "Python",
+   "stars": 298,
+   "created_at": "2019-09-08T07:48:58Z",
+   "pushed_at": "2020-06-14T18:50:06Z",
+   "cell": "python|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "CacheBrowser/cachebrowser",
+   "language": "Python",
+   "stars": 973,
+   "created_at": "2015-11-03T20:34:42Z",
+   "pushed_at": "2018-04-12T00:03:12Z",
+   "cell": "python|stars:300-1000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "clarkduvall/serpy",
+   "language": "Python",
+   "stars": 957,
+   "created_at": "2015-03-30T07:29:03Z",
+   "pushed_at": "2020-08-18T04:39:32Z",
+   "cell": "python|stars:300-1000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "myquant/strategy",
+   "language": "Python",
+   "stars": 957,
+   "created_at": "2015-11-20T05:39:17Z",
+   "pushed_at": "2017-07-11T09:57:16Z",
+   "cell": "python|stars:300-1000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "gabrieleangeletti/Deep-Learning-TensorFlow",
+   "language": "Python",
+   "stars": 954,
+   "created_at": "2015-08-17T07:08:07Z",
+   "pushed_at": "2017-09-24T15:52:26Z",
+   "cell": "python|stars:300-1000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "fuzzbunch/fuzzbunch",
+   "language": "Python",
+   "stars": 999,
+   "created_at": "2017-04-14T18:44:36Z",
+   "pushed_at": "2017-04-17T13:44:24Z",
+   "cell": "python|stars:300-1000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "merantix/picasso",
+   "language": "Python",
+   "stars": 997,
+   "created_at": "2017-05-15T08:19:48Z",
+   "pushed_at": "2018-03-12T09:29:11Z",
+   "cell": "python|stars:300-1000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "kuangliu/pytorch-retinanet",
+   "language": "Python",
+   "stars": 997,
+   "created_at": "2017-08-18T11:48:50Z",
+   "pushed_at": "2019-03-17T13:08:29Z",
+   "cell": "python|stars:300-1000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "foamliu/Deep-Image-Matting",
+   "language": "Python",
+   "stars": 991,
+   "created_at": "2018-04-16T03:26:31Z",
+   "pushed_at": "2019-08-20T01:18:30Z",
+   "cell": "python|stars:300-1000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "RustyShackleford221/OSCP-Prep",
+   "language": "Python",
+   "stars": 980,
+   "created_at": "2019-01-01T22:05:35Z",
+   "pushed_at": "2019-02-04T19:18:51Z",
+   "cell": "python|stars:300-1000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "z814081807/DeepNER",
+   "language": "Python",
+   "stars": 966,
+   "created_at": "2020-12-23T11:09:37Z",
+   "pushed_at": "2020-12-23T11:57:17Z",
+   "cell": "python|stars:300-1000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "WisconsinAIVision/MixNMatch",
+   "language": "Python",
+   "stars": 964,
+   "created_at": "2019-11-26T02:40:22Z",
+   "pushed_at": "2020-07-07T23:01:18Z",
+   "cell": "python|stars:300-1000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "SoftwareGift/FeatherNets_Face-Anti-spoofing-Attack-Detection-Challenge-CVPR2019",
+   "language": "Python",
+   "stars": 956,
+   "created_at": "2019-03-02T02:29:10Z",
+   "pushed_at": "2020-10-06T18:32:41Z",
+   "cell": "python|stars:300-1000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "ryankiros/neural-storyteller",
+   "language": "Python",
+   "stars": 2960,
+   "created_at": "2015-10-28T19:38:46Z",
+   "pushed_at": "2017-10-18T21:15:39Z",
+   "cell": "python|stars:1000-3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "lanbing510/DouBanSpider",
+   "language": "Python",
+   "stars": 2790,
+   "created_at": "2015-05-17T16:30:30Z",
+   "pushed_at": "2020-04-08T05:15:32Z",
+   "cell": "python|stars:1000-3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "ethereon/caffe-tensorflow",
+   "language": "Python",
+   "stars": 2787,
+   "created_at": "2015-11-10T06:43:47Z",
+   "pushed_at": "2019-07-18T13:35:38Z",
+   "cell": "python|stars:1000-3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "soumith/convnet-benchmarks",
+   "language": "Python",
+   "stars": 2687,
+   "created_at": "2014-07-12T03:18:46Z",
+   "pushed_at": "2017-06-09T15:12:02Z",
+   "cell": "python|stars:1000-3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "cybertronai/gradient-checkpointing",
+   "language": "Python",
+   "stars": 2843,
+   "created_at": "2017-09-26T17:25:12Z",
+   "pushed_at": "2020-04-26T07:34:18Z",
+   "cell": "python|stars:1000-3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "RocketMap/RocketMap",
+   "language": "Python",
+   "stars": 2807,
+   "created_at": "2016-08-04T22:18:49Z",
+   "pushed_at": "2018-04-02T19:48:05Z",
+   "cell": "python|stars:1000-3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "ecthros/uncaptcha",
+   "language": "Python",
+   "stars": 2806,
+   "created_at": "2017-09-27T04:46:34Z",
+   "pushed_at": "2018-01-27T16:43:15Z",
+   "cell": "python|stars:1000-3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "yfeng95/face3d",
+   "language": "Python",
+   "stars": 2780,
+   "created_at": "2018-07-13T02:56:34Z",
+   "pushed_at": "2019-10-04T08:41:17Z",
+   "cell": "python|stars:1000-3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "kotartemiy/newscatcher",
+   "language": "Python",
+   "stars": 2988,
+   "created_at": "2020-02-24T18:49:18Z",
+   "pushed_at": "2020-10-30T19:09:31Z",
+   "cell": "python|stars:1000-3000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "rougier/matplotlib-cheatsheet",
+   "language": "Python",
+   "stars": 2909,
+   "created_at": "2019-08-11T15:24:54Z",
+   "pushed_at": "2020-09-30T15:35:55Z",
+   "cell": "python|stars:1000-3000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "taki0112/Tensorflow-Cookbook",
+   "language": "Python",
+   "stars": 2741,
+   "created_at": "2019-02-16T15:43:31Z",
+   "pushed_at": "2020-02-09T06:12:49Z",
+   "cell": "python|stars:1000-3000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "zllrunning/video-object-removal",
+   "language": "Python",
+   "stars": 2709,
+   "created_at": "2019-07-02T14:14:39Z",
+   "pushed_at": "2019-09-27T14:16:03Z",
+   "cell": "python|stars:1000-3000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "rbgirshick/py-faster-rcnn",
+   "language": "Python",
+   "stars": 8290,
+   "created_at": "2015-09-25T21:04:08Z",
+   "pushed_at": "2019-11-07T04:31:35Z",
+   "cell": "python|stars:>=3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "larsenwork/monoid",
+   "language": "Python",
+   "stars": 7953,
+   "created_at": "2015-04-02T18:02:59Z",
+   "pushed_at": "2020-10-26T07:45:56Z",
+   "cell": "python|stars:>=3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "isnowfy/snownlp",
+   "language": "Python",
+   "stars": 6635,
+   "created_at": "2013-11-26T11:46:56Z",
+   "pushed_at": "2020-01-19T02:39:05Z",
+   "cell": "python|stars:>=3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "MorvanZhou/tutorials",
+   "language": "Python",
+   "stars": 13084,
+   "created_at": "2016-05-29T13:29:44Z",
+   "pushed_at": "2020-12-22T22:02:58Z",
+   "cell": "python|stars:>=3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "vipstone/faceai",
+   "language": "Python",
+   "stars": 11095,
+   "created_at": "2018-04-17T08:44:17Z",
+   "pushed_at": "2020-04-16T12:16:19Z",
+   "cell": "python|stars:>=3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "Urinx/WeixinBot",
+   "language": "Python",
+   "stars": 7416,
+   "created_at": "2016-01-31T07:53:08Z",
+   "pushed_at": "2019-11-27T08:44:08Z",
+   "cell": "python|stars:>=3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "MingchaoZhu/DeepLearning",
+   "language": "Python",
+   "stars": 7808,
+   "created_at": "2020-02-27T07:11:46Z",
+   "pushed_at": "2020-06-23T02:05:50Z",
+   "cell": "python|stars:>=3000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "649453932/Chinese-Text-Classification-Pytorch",
+   "language": "Python",
+   "stars": 5732,
+   "created_at": "2019-07-11T01:38:08Z",
+   "pushed_at": "2020-09-23T11:28:21Z",
+   "cell": "python|stars:>=3000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "INTERMT/Awesome-PyTorch-Chinese",
+   "language": "Python",
+   "stars": 4787,
+   "created_at": "2019-05-01T07:16:27Z",
+   "pushed_at": "2019-08-14T03:04:28Z",
+   "cell": "python|stars:>=3000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "AnSavvides/d3act",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2015-07-14T16:06:42Z",
+   "pushed_at": "2017-05-24T00:58:02Z",
+   "cell": "javascript|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "adobe-webplatform/css-shapes-polyfill",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2014-04-17T22:08:56Z",
+   "pushed_at": "2015-04-07T13:31:46Z",
+   "cell": "javascript|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "numtel/meteor-pg",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2015-04-16T06:38:02Z",
+   "pushed_at": "2015-08-12T19:44:14Z",
+   "cell": "javascript|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "mathew-kurian/CharacterMap",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2015-01-12T22:58:03Z",
+   "pushed_at": "2020-10-04T21:56:22Z",
+   "cell": "javascript|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "jiang111/chrome-plugin-recommand",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2016-05-09T14:02:29Z",
+   "pushed_at": "2017-08-17T03:40:36Z",
+   "cell": "javascript|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "janicduplessis/react-native-scrollable-header",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2016-05-03T05:06:59Z",
+   "pushed_at": "2018-03-16T05:13:08Z",
+   "cell": "javascript|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "yangyunhe369/h5-game-blockBreaker",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2017-10-26T06:24:13Z",
+   "pushed_at": "2018-06-19T03:52:24Z",
+   "cell": "javascript|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "sararob/ml-talk-demos",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2017-03-17T14:37:15Z",
+   "pushed_at": "2018-12-10T02:27:55Z",
+   "cell": "javascript|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "deepred5/daily-anime",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2019-02-18T15:46:32Z",
+   "pushed_at": "2019-04-06T06:36:43Z",
+   "cell": "javascript|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "olegmitrakhovich/Defi-Arb-Bot",
+   "language": "JavaScript",
+   "stars": 294,
+   "created_at": "2020-08-25T15:05:06Z",
+   "pushed_at": "2020-09-01T15:07:27Z",
+   "cell": "javascript|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "ShizukuIchi/minesweeper",
+   "language": "JavaScript",
+   "stars": 289,
+   "created_at": "2019-02-24T00:16:55Z",
+   "pushed_at": "2019-05-03T05:16:12Z",
+   "cell": "javascript|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "tylerthebuildor/graphqless",
+   "language": "JavaScript",
+   "stars": 287,
+   "created_at": "2019-01-11T08:04:11Z",
+   "pushed_at": "2019-12-04T04:28:35Z",
+   "cell": "javascript|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "owenthereal/hacker-menu",
+   "language": "JavaScript",
+   "stars": 999,
+   "created_at": "2015-08-17T15:21:43Z",
+   "pushed_at": "2018-10-10T22:14:31Z",
+   "cell": "javascript|stars:300-1000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "RisingStack/graffiti",
+   "language": "JavaScript",
+   "stars": 999,
+   "created_at": "2015-07-25T08:34:28Z",
+   "pushed_at": "2017-05-12T18:19:54Z",
+   "cell": "javascript|stars:300-1000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "vladikoff/grunt-devtools",
+   "language": "JavaScript",
+   "stars": 997,
+   "created_at": "2013-02-25T05:07:40Z",
+   "pushed_at": "2016-08-09T19:47:41Z",
+   "cell": "javascript|stars:300-1000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "bevacqua/react-dragula",
+   "language": "JavaScript",
+   "stars": 996,
+   "created_at": "2015-08-04T18:40:21Z",
+   "pushed_at": "2020-09-09T17:28:40Z",
+   "cell": "javascript|stars:300-1000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "sghall/resonance",
+   "language": "JavaScript",
+   "stars": 999,
+   "created_at": "2017-01-16T07:17:46Z",
+   "pushed_at": "2019-02-17T06:30:39Z",
+   "cell": "javascript|stars:300-1000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "ment-mx/Prism",
+   "language": "JavaScript",
+   "stars": 995,
+   "created_at": "2016-02-19T08:26:28Z",
+   "pushed_at": "2020-05-22T14:17:30Z",
+   "cell": "javascript|stars:300-1000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "FZliweiliang/wechat-app-mall",
+   "language": "JavaScript",
+   "stars": 993,
+   "created_at": "2018-08-24T07:56:27Z",
+   "pushed_at": "2020-03-15T03:32:52Z",
+   "cell": "javascript|stars:300-1000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "mafintosh/turbo-http",
+   "language": "JavaScript",
+   "stars": 993,
+   "created_at": "2018-03-01T17:08:07Z",
+   "pushed_at": "2019-05-09T20:18:48Z",
+   "cell": "javascript|stars:300-1000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "Schachte/Mermrender",
+   "language": "JavaScript",
+   "stars": 909,
+   "created_at": "2019-04-14T18:51:59Z",
+   "pushed_at": "2019-04-19T15:57:02Z",
+   "cell": "javascript|stars:300-1000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "Domenicobrz/Blurry",
+   "language": "JavaScript",
+   "stars": 882,
+   "created_at": "2019-06-20T21:23:48Z",
+   "pushed_at": "2019-09-23T23:22:43Z",
+   "cell": "javascript|stars:300-1000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "flotwig/the-one-cert",
+   "language": "JavaScript",
+   "stars": 803,
+   "created_at": "2019-05-08T18:14:55Z",
+   "pushed_at": "2020-10-22T17:19:41Z",
+   "cell": "javascript|stars:300-1000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "lingxiaoyi/navigation-bar",
+   "language": "JavaScript",
+   "stars": 782,
+   "created_at": "2019-08-13T14:04:57Z",
+   "pushed_at": "2020-12-20T05:34:07Z",
+   "cell": "javascript|stars:300-1000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "carrot/share-button",
+   "language": "JavaScript",
+   "stars": 2925,
+   "created_at": "2013-06-05T21:37:45Z",
+   "pushed_at": "2016-06-17T15:39:04Z",
+   "cell": "javascript|stars:1000-3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "a8m/angular-filter",
+   "language": "JavaScript",
+   "stars": 2896,
+   "created_at": "2014-07-07T12:51:49Z",
+   "pushed_at": "2017-12-11T08:44:08Z",
+   "cell": "javascript|stars:1000-3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "weui/react-weui",
+   "language": "JavaScript",
+   "stars": 2855,
+   "created_at": "2015-10-12T06:10:32Z",
+   "pushed_at": "2020-08-06T15:18:22Z",
+   "cell": "javascript|stars:1000-3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "jetpacapp/DeepBeliefSDK",
+   "language": "JavaScript",
+   "stars": 2851,
+   "created_at": "2014-04-02T23:14:07Z",
+   "pushed_at": "2019-11-06T19:25:12Z",
+   "cell": "javascript|stars:1000-3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "liuxuanqiang/wechat-weapp-mall",
+   "language": "JavaScript",
+   "stars": 2975,
+   "created_at": "2016-09-25T18:17:54Z",
+   "pushed_at": "2017-10-13T07:38:53Z",
+   "cell": "javascript|stars:1000-3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "Aufree/awesome-wechat-weapp",
+   "language": "JavaScript",
+   "stars": 2937,
+   "created_at": "2016-09-22T22:01:06Z",
+   "pushed_at": "2018-11-15T13:30:10Z",
+   "cell": "javascript|stars:1000-3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "crazycodeboy/GitHubPopular",
+   "language": "JavaScript",
+   "stars": 2935,
+   "created_at": "2016-07-18T15:35:16Z",
+   "pushed_at": "2019-08-08T07:23:05Z",
+   "cell": "javascript|stars:1000-3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "kunalkapadia/express-mongoose-es6-rest-api",
+   "language": "JavaScript",
+   "stars": 2915,
+   "created_at": "2016-01-25T09:33:29Z",
+   "pushed_at": "2020-07-15T23:39:14Z",
+   "cell": "javascript|stars:1000-3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "cehui0303/Tmall_Tickets",
+   "language": "JavaScript",
+   "stars": 2295,
+   "created_at": "2019-11-29T07:59:28Z",
+   "pushed_at": "2020-01-08T02:45:59Z",
+   "cell": "javascript|stars:1000-3000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "aholachek/mobile-first-animation",
+   "language": "JavaScript",
+   "stars": 2068,
+   "created_at": "2019-10-05T22:57:57Z",
+   "pushed_at": "2020-04-20T12:33:23Z",
+   "cell": "javascript|stars:1000-3000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "areslabs/alita",
+   "language": "JavaScript",
+   "stars": 2011,
+   "created_at": "2019-05-15T03:47:21Z",
+   "pushed_at": "2020-08-14T15:26:29Z",
+   "cell": "javascript|stars:1000-3000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "thegreatjavascript/FakeScreenshot",
+   "language": "JavaScript",
+   "stars": 1930,
+   "created_at": "2019-02-26T05:13:12Z",
+   "pushed_at": "2020-09-02T17:16:38Z",
+   "cell": "javascript|stars:1000-3000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "julianshapiro/velocity",
+   "language": "JavaScript",
+   "stars": 17188,
+   "created_at": "2014-04-09T20:02:38Z",
+   "pushed_at": "2020-10-24T07:45:51Z",
+   "cell": "javascript|stars:>=3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "tj/co",
+   "language": "JavaScript",
+   "stars": 11828,
+   "created_at": "2013-06-06T04:06:16Z",
+   "pushed_at": "2020-12-15T07:22:26Z",
+   "cell": "javascript|stars:>=3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "kesenhoo/android-training-course-in-chinese",
+   "language": "JavaScript",
+   "stars": 10587,
+   "created_at": "2014-06-13T09:46:16Z",
+   "pushed_at": "2018-01-11T10:33:39Z",
+   "cell": "javascript|stars:>=3000|created:2013-2015"
+  },
+  {
+   "group": "dead",
+   "full_name": "jawil/blog",
+   "language": "JavaScript",
+   "stars": 7813,
+   "created_at": "2017-02-17T19:06:54Z",
+   "pushed_at": "2019-04-19T08:55:23Z",
+   "cell": "javascript|stars:>=3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "dthree/cash",
+   "language": "JavaScript",
+   "stars": 7730,
+   "created_at": "2016-02-22T16:34:24Z",
+   "pushed_at": "2020-01-14T08:48:46Z",
+   "cell": "javascript|stars:>=3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "icindy/wxParse",
+   "language": "JavaScript",
+   "stars": 7712,
+   "created_at": "2016-10-23T12:25:18Z",
+   "pushed_at": "2020-03-19T03:14:29Z",
+   "cell": "javascript|stars:>=3000|created:2016-2018"
+  },
+  {
+   "group": "dead",
+   "full_name": "Advanced-Frontend/Daily-Interview-Question",
+   "language": "JavaScript",
+   "stars": 27341,
+   "created_at": "2019-01-19T10:49:00Z",
+   "pushed_at": "2020-11-09T01:07:00Z",
+   "cell": "javascript|stars:>=3000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "cmiscm/leonsans",
+   "language": "JavaScript",
+   "stars": 10169,
+   "created_at": "2019-07-28T19:29:16Z",
+   "pushed_at": "2020-09-21T05:40:09Z",
+   "cell": "javascript|stars:>=3000|created:2019-2020"
+  },
+  {
+   "group": "dead",
+   "full_name": "schollz/poetry-generator",
+   "language": "Python",
+   "stars": 298,
+   "created_at": "2014-11-30T17:39:18Z",
+   "pushed_at": "2020-05-14T17:18:19Z",
+   "cell": "python|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "archived",
+   "full_name": "mpetroff/kindle-weather-display",
+   "language": "Python",
+   "stars": 293,
+   "created_at": "2013-02-04T19:21:16Z",
+   "pushed_at": "2015-07-01T02:49:51Z",
+   "cell": "python|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "archived",
+   "full_name": "benhutchins/docker-taiga",
+   "language": "Python",
+   "stars": 293,
+   "created_at": "2015-08-25T16:17:52Z",
+   "pushed_at": "2020-11-09T13:39:00Z",
+   "cell": "python|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "archived",
+   "full_name": "yandexdataschool/AgentNet",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2016-02-28T16:42:28Z",
+   "pushed_at": "2017-08-17T22:18:41Z",
+   "cell": "python|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "archived",
+   "full_name": "grantwilk/d-noise",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2018-12-05T19:06:48Z",
+   "pushed_at": "2019-10-05T07:52:32Z",
+   "cell": "python|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "archived",
+   "full_name": "Yutix/instabrute",
+   "language": "Python",
+   "stars": 298,
+   "created_at": "2019-06-14T10:52:58Z",
+   "pushed_at": "2020-01-25T03:24:47Z",
+   "cell": "python|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "archived",
+   "full_name": "aylei/aliyun-exporter",
+   "language": "Python",
+   "stars": 286,
+   "created_at": "2019-01-21T15:16:05Z",
+   "pushed_at": "2019-10-28T14:13:34Z",
+   "cell": "python|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "archived",
+   "full_name": "Yinzo/SmartQQBot",
+   "language": "Python",
+   "stars": 992,
+   "created_at": "2015-01-18T09:08:34Z",
+   "pushed_at": "2019-02-11T03:43:29Z",
+   "cell": "python|stars:300-1000|created:2013-2015"
+  },
+  {
+   "group": "archived",
+   "full_name": "facebookresearch/DetectAndTrack",
+   "language": "Python",
+   "stars": 997,
+   "created_at": "2018-04-19T19:36:51Z",
+   "pushed_at": "2019-01-20T08:38:42Z",
+   "cell": "python|stars:300-1000|created:2016-2018"
+  },
+  {
+   "group": "archived",
+   "full_name": "uber-archive/plato-research-dialogue-system",
+   "language": "Python",
+   "stars": 980,
+   "created_at": "2019-06-18T22:31:15Z",
+   "pushed_at": "2020-09-15T21:04:16Z",
+   "cell": "python|stars:300-1000|created:2019-2020"
+  },
+  {
+   "group": "archived",
+   "full_name": "mantl/mantl",
+   "language": "Python",
+   "stars": 2968,
+   "created_at": "2015-01-27T17:36:52Z",
+   "pushed_at": "2019-05-07T03:45:48Z",
+   "cell": "python|stars:1000-3000|created:2013-2015"
+  },
+  {
+   "group": "archived",
+   "full_name": "roytseng-tw/Detectron.pytorch",
+   "language": "Python",
+   "stars": 2806,
+   "created_at": "2018-02-08T08:32:01Z",
+   "pushed_at": "2019-09-05T07:44:45Z",
+   "cell": "python|stars:1000-3000|created:2016-2018"
+  },
+  {
+   "group": "archived",
+   "full_name": "openai/sparse_attention",
+   "language": "Python",
+   "stars": 1613,
+   "created_at": "2019-04-12T13:06:26Z",
+   "pushed_at": "2020-08-12T16:54:02Z",
+   "cell": "python|stars:1000-3000|created:2019-2020"
+  },
+  {
+   "group": "archived",
+   "full_name": "deis/deis",
+   "language": "Python",
+   "stars": 5991,
+   "created_at": "2013-07-22T19:02:40Z",
+   "pushed_at": "2019-05-05T05:29:20Z",
+   "cell": "python|stars:>=3000|created:2013-2015"
+  },
+  {
+   "group": "archived",
+   "full_name": "youfou/wxpy",
+   "language": "Python",
+   "stars": 14251,
+   "created_at": "2017-02-20T18:20:46Z",
+   "pushed_at": "2019-07-14T17:59:47Z",
+   "cell": "python|stars:>=3000|created:2016-2018"
+  },
+  {
+   "group": "archived",
+   "full_name": "latitudegames/AIDungeon",
+   "language": "Python",
+   "stars": 3220,
+   "created_at": "2019-04-03T02:38:55Z",
+   "pushed_at": "2020-07-25T15:50:31Z",
+   "cell": "python|stars:>=3000|created:2019-2020"
+  },
+  {
+   "group": "archived",
+   "full_name": "mozilla/node-firefox",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2014-07-17T19:35:36Z",
+   "pushed_at": "2017-12-07T13:08:54Z",
+   "cell": "javascript|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "archived",
+   "full_name": "dapphub/dapple",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2015-09-14T12:22:36Z",
+   "pushed_at": "2017-05-13T19:23:19Z",
+   "cell": "javascript|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "archived",
+   "full_name": "JSteunou/webstomp-client",
+   "language": "JavaScript",
+   "stars": 298,
+   "created_at": "2016-04-01T22:28:38Z",
+   "pushed_at": "2020-09-05T22:47:46Z",
+   "cell": "javascript|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "archived",
+   "full_name": "djyde/sinatine",
+   "language": "JavaScript",
+   "stars": 296,
+   "created_at": "2017-03-24T02:40:56Z",
+   "pushed_at": "2017-06-26T06:23:35Z",
+   "cell": "javascript|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "archived",
+   "full_name": "yamalight/graffiti",
+   "language": "JavaScript",
+   "stars": 297,
+   "created_at": "2020-08-25T18:04:14Z",
+   "pushed_at": "2020-10-06T13:12:41Z",
+   "cell": "javascript|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "archived",
+   "full_name": "nearform/react-animation",
+   "language": "JavaScript",
+   "stars": 280,
+   "created_at": "2019-01-18T11:31:48Z",
+   "pushed_at": "2019-09-30T18:55:17Z",
+   "cell": "javascript|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "archived",
+   "full_name": "crcn/mesh.js",
+   "language": "JavaScript",
+   "stars": 998,
+   "created_at": "2015-03-25T23:26:47Z",
+   "pushed_at": "2018-12-22T16:28:21Z",
+   "cell": "javascript|stars:300-1000|created:2013-2015"
+  },
+  {
+   "group": "archived",
+   "full_name": "awalgarg/cv-maker",
+   "language": "JavaScript",
+   "stars": 996,
+   "created_at": "2016-02-02T22:28:11Z",
+   "pushed_at": "2018-02-11T15:32:23Z",
+   "cell": "javascript|stars:300-1000|created:2016-2018"
+  },
+  {
+   "group": "archived",
+   "full_name": "eashish93/imgsquash",
+   "language": "JavaScript",
+   "stars": 949,
+   "created_at": "2019-05-27T18:20:08Z",
+   "pushed_at": "2020-07-17T03:11:12Z",
+   "cell": "javascript|stars:300-1000|created:2019-2020"
+  },
+  {
+   "group": "archived",
+   "full_name": "mozbrick/brick",
+   "language": "JavaScript",
+   "stars": 2944,
+   "created_at": "2013-06-03T22:48:36Z",
+   "pushed_at": "2015-06-11T00:59:12Z",
+   "cell": "javascript|stars:1000-3000|created:2013-2015"
+  },
+  {
+   "group": "archived",
+   "full_name": "google-ar/three.ar.js",
+   "language": "JavaScript",
+   "stars": 2915,
+   "created_at": "2017-08-23T16:43:45Z",
+   "pushed_at": "2018-04-16T10:40:48Z",
+   "cell": "javascript|stars:1000-3000|created:2016-2018"
+  },
+  {
+   "group": "archived",
+   "full_name": "sleepybear1113/taobaoVisitingVenues",
+   "language": "JavaScript",
+   "stars": 1402,
+   "created_at": "2019-10-22T10:29:28Z",
+   "pushed_at": "2020-10-21T17:59:27Z",
+   "cell": "javascript|stars:1000-3000|created:2019-2020"
+  },
+  {
+   "group": "archived",
+   "full_name": "dvdzkwsk/react-redux-starter-kit",
+   "language": "JavaScript",
+   "stars": 10214,
+   "created_at": "2015-06-24T18:38:28Z",
+   "pushed_at": "2018-06-03T17:30:08Z",
+   "cell": "javascript|stars:>=3000|created:2013-2015"
+  },
+  {
+   "group": "archived",
+   "full_name": "zhongyi-tong/electronic-wechat",
+   "language": "JavaScript",
+   "stars": 13816,
+   "created_at": "2016-02-18T09:09:53Z",
+   "pushed_at": "2020-09-30T02:05:55Z",
+   "cell": "javascript|stars:>=3000|created:2016-2018"
+  },
+  {
+   "group": "archived",
+   "full_name": "1995parham/github-do-not-ban-us",
+   "language": "JavaScript",
+   "stars": 11737,
+   "created_at": "2019-07-25T06:23:42Z",
+   "pushed_at": "2019-08-01T19:25:20Z",
+   "cell": "javascript|stars:>=3000|created:2019-2020"
+  },
+  {
+   "group": "alive",
+   "full_name": "itkach/slob",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2014-01-19T16:22:54Z",
+   "pushed_at": "2026-05-09T18:01:32Z",
+   "cell": "python|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "alive",
+   "full_name": "OpenKMIP/PyKMIP",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2014-08-04T11:14:51Z",
+   "pushed_at": "2026-09-10T14:21:24Z",
+   "cell": "python|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "alive",
+   "full_name": "eLifePathways/sciencebeam-parser",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2017-06-21T12:32:55Z",
+   "pushed_at": "2026-10-23T23:51:39Z",
+   "cell": "python|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "alive",
+   "full_name": "snok/django-auth-adfs",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2016-02-10T08:15:03Z",
+   "pushed_at": "2026-04-08T16:46:56Z",
+   "cell": "python|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "alive",
+   "full_name": "asigalov61/Tegridy-MIDI-Dataset",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2020-09-25T18:35:18Z",
+   "pushed_at": "2026-10-28T08:03:41Z",
+   "cell": "python|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "alive",
+   "full_name": "hongbo-miao/hongbomiao.com",
+   "language": "Python",
+   "stars": 299,
+   "created_at": "2019-02-27T01:47:30Z",
+   "pushed_at": "2026-10-28T07:24:14Z",
+   "cell": "python|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "alive",
+   "full_name": "gcovr/gcovr",
+   "language": "Python",
+   "stars": 995,
+   "created_at": "2013-05-15T01:45:20Z",
+   "pushed_at": "2026-10-27T12:54:23Z",
+   "cell": "python|stars:300-1000|created:2013-2015"
+  },
+  {
+   "group": "alive",
+   "full_name": "honeynet/droidbot",
+   "language": "Python",
+   "stars": 993,
+   "created_at": "2015-06-09T04:02:16Z",
+   "pushed_at": "2026-08-29T01:01:04Z",
+   "cell": "python|stars:300-1000|created:2013-2015"
+  },
+  {
+   "group": "alive",
+   "full_name": "WittmannF/sort-google-scholar",
+   "language": "Python",
+   "stars": 998,
+   "created_at": "2016-04-30T00:55:03Z",
+   "pushed_at": "2026-10-09T22:02:23Z",
+   "cell": "python|stars:300-1000|created:2016-2018"
+  },
+  {
+   "group": "alive",
+   "full_name": "mottosso/Qt.py",
+   "language": "Python",
+   "stars": 997,
+   "created_at": "2016-05-27T09:52:11Z",
+   "pushed_at": "2026-09-22T05:07:22Z",
+   "cell": "python|stars:300-1000|created:2016-2018"
+  },
+  {
+   "group": "alive",
+   "full_name": "neka-nat/probreg",
+   "language": "Python",
+   "stars": 997,
+   "created_at": "2019-01-07T13:48:03Z",
+   "pushed_at": "2026-07-21T15:46:37Z",
+   "cell": "python|stars:300-1000|created:2019-2020"
+  },
+  {
+   "group": "alive",
+   "full_name": "cwendt94/espn-api",
+   "language": "Python",
+   "stars": 997,
+   "created_at": "2019-07-24T16:11:15Z",
+   "pushed_at": "2026-10-26T04:14:30Z",
+   "cell": "python|stars:300-1000|created:2019-2020"
+  },
+  {
+   "group": "alive",
+   "full_name": "mypaint/mypaint",
+   "language": "Python",
+   "stars": 2995,
+   "created_at": "2014-06-11T14:29:35Z",
+   "pushed_at": "2026-10-20T23:50:30Z",
+   "cell": "python|stars:1000-3000|created:2013-2015"
+  },
+  {
+   "group": "alive",
+   "full_name": "scottlawsonbc/audio-reactive-led-strip",
+   "language": "Python",
+   "stars": 2991,
+   "created_at": "2016-10-12T21:48:38Z",
+   "pushed_at": "2026-01-06T18:09:14Z",
+   "cell": "python|stars:1000-3000|created:2016-2018"
+  },
+  {
+   "group": "alive",
+   "full_name": "benedekrozemberczki/pytorch_geometric_temporal",
+   "language": "Python",
+   "stars": 2994,
+   "created_at": "2020-06-27T01:11:33Z",
+   "pushed_at": "2026-05-30T17:29:01Z",
+   "cell": "python|stars:1000-3000|created:2019-2020"
+  },
+  {
+   "group": "alive",
+   "full_name": "EbookFoundation/free-programming-books",
+   "language": "Python",
+   "stars": 400385,
+   "created_at": "2013-10-11T06:50:37Z",
+   "pushed_at": "2026-10-27T20:40:54Z",
+   "cell": "python|stars:>=3000|created:2013-2015"
+  },
+  {
+   "group": "alive",
+   "full_name": "public-apis/public-apis",
+   "language": "Python",
+   "stars": 492942,
+   "created_at": "2016-03-20T23:49:42Z",
+   "pushed_at": "2026-10-27T16:15:10Z",
+   "cell": "python|stars:>=3000|created:2016-2018"
+  },
+  {
+   "group": "alive",
+   "full_name": "yt-dlp/yt-dlp",
+   "language": "Python",
+   "stars": 203336,
+   "created_at": "2020-10-26T04:22:55Z",
+   "pushed_at": "2026-10-26T22:25:00Z",
+   "cell": "python|stars:>=3000|created:2019-2020"
+  },
+  {
+   "group": "alive",
+   "full_name": "ImaginarySense/Imaginary-Teleprompter",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2015-10-12T21:40:59Z",
+   "pushed_at": "2026-10-23T05:21:33Z",
+   "cell": "javascript|stars:100-300|created:2013-2015"
+  },
+  {
+   "group": "alive",
+   "full_name": "ajhsu/chromecast-device-emulator",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2017-04-07T10:37:07Z",
+   "pushed_at": "2026-02-09T16:03:39Z",
+   "cell": "javascript|stars:100-300|created:2016-2018"
+  },
+  {
+   "group": "alive",
+   "full_name": "10up/wp-scaffold",
+   "language": "JavaScript",
+   "stars": 299,
+   "created_at": "2020-11-10T17:27:06Z",
+   "pushed_at": "2026-10-14T07:13:23Z",
+   "cell": "javascript|stars:100-300|created:2019-2020"
+  },
+  {
+   "group": "alive",
+   "full_name": "csstools/postcss-font-magician",
+   "language": "JavaScript",
+   "stars": 998,
+   "created_at": "2015-07-24T14:03:12Z",
+   "pushed_at": "2026-02-28T16:35:07Z",
+   "cell": "javascript|stars:300-1000|created:2013-2015"
+  },
+  {
+   "group": "alive",
+   "full_name": "jae-jae/Camtd",
+   "language": "JavaScript",
+   "stars": 998,
+   "created_at": "2018-04-30T16:26:59Z",
+   "pushed_at": "2026-08-18T08:01:29Z",
+   "cell": "javascript|stars:300-1000|created:2016-2018"
+  },
+  {
+   "group": "alive",
+   "full_name": "tailwindlabs/tailwindcss-aspect-ratio",
+   "language": "JavaScript",
+   "stars": 999,
+   "created_at": "2020-11-06T19:20:06Z",
+   "pushed_at": "2026-05-12T14:58:31Z",
+   "cell": "javascript|stars:300-1000|created:2019-2020"
+  },
+  {
+   "group": "alive",
+   "full_name": "GoogleCloudPlatform/nodejs-docs-samples",
+   "language": "JavaScript",
+   "stars": 2995,
+   "created_at": "2015-05-04T23:26:38Z",
+   "pushed_at": "2026-10-27T19:55:31Z",
+   "cell": "javascript|stars:1000-3000|created:2013-2015"
+  },
+  {
+   "group": "alive",
+   "full_name": "bytenode/bytenode",
+   "language": "JavaScript",
+   "stars": 2981,
+   "created_at": "2018-10-24T10:23:29Z",
+   "pushed_at": "2026-10-25T06:58:48Z",
+   "cell": "javascript|stars:1000-3000|created:2016-2018"
+  },
+  {
+   "group": "alive",
+   "full_name": "pwndoc/pwndoc",
+   "language": "JavaScript",
+   "stars": 2916,
+   "created_at": "2020-01-13T23:42:23Z",
+   "pushed_at": "2026-10-26T16:25:28Z",
+   "cell": "javascript|stars:1000-3000|created:2019-2020"
+  },
+  {
+   "group": "alive",
+   "full_name": "react/react",
+   "language": "JavaScript",
+   "stars": 251783,
+   "created_at": "2013-05-24T16:15:54Z",
+   "pushed_at": "2026-10-27T15:08:39Z",
+   "cell": "javascript|stars:>=3000|created:2013-2015"
+  },
+  {
+   "group": "alive",
+   "full_name": "trekhleb/javascript-algorithms",
+   "language": "JavaScript",
+   "stars": 196699,
+   "created_at": "2018-03-24T07:47:04Z",
+   "pushed_at": "2026-07-26T02:43:08Z",
+   "cell": "javascript|stars:>=3000|created:2016-2018"
+  },
+  {
+   "group": "alive",
+   "full_name": "microsoft/Web-Dev-For-Beginners",
+   "language": "JavaScript",
+   "stars": 97030,
+   "created_at": "2020-11-10T02:44:00Z",
+   "pushed_at": "2026-10-20T21:43:35Z",
+   "cell": "javascript|stars:>=3000|created:2019-2020"
+  }
+ ]
+}

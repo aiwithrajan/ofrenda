@@ -309,6 +309,16 @@ def build_rows() -> tuple[list[dict[str, Any]], dict[str, Any]]:
     """
     rows: list[dict[str, Any]] = []
     repos: list[str] = []
+    roster_path = Path(__file__).resolve().parents[2] / "pull_out" / "roster.json"
+    group_map: dict[str, str] = {}
+    if roster_path.exists():
+        try:
+            roster_data = json.loads(roster_path.read_text(encoding="utf-8"))
+            for entry in roster_data.get("roster", []):
+                group_map[entry["full_name"]] = entry.get("group", "unknown")
+        except Exception:
+            pass
+
     for slug in sorted(p.name for p in CACHE.iterdir() if (p / "meta.ndjson").exists()):
         full_name = slug.replace("__", "/")
         if full_name == SPECIMEN:
@@ -317,10 +327,11 @@ def build_rows() -> tuple[list[dict[str, Any]], dict[str, Any]]:
         if repo is None:
             continue
         repos.append(full_name)
+        grp = group_map.get(full_name, None)
         for label in rows_for(repo, ANNUAL_GRID):
             t = parse(label["t"])
             assert t is not None
-            rows.append({"repo": full_name, "group": None, **label, **feature_row(repo, t)})
+            rows.append({"repo": full_name, "group": grp, **label, **feature_row(repo, t)})
 
     def base_rate(column: str) -> float | None:
         if not rows:

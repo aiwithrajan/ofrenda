@@ -1,0 +1,11 @@
+file '/Users/apple/Desktop/hack5/results/demo_frames/slide_00.png'
+duration 5
+file '/Users/apple/Desktop/hack5/results/demo_frames/slide_01.png'
+duration 5
+file '/Users/apple/Desktop/hack5/results/demo_frames/slide_02.png'
+duration 5
+file '/Users/apple/Desktop/hack5/results/demo_frames/slide_03.png'
+duration 5
+file '/Users/apple/Desktop/hack5/results/demo_frames/slide_04.png'
+duration 5
+file '/Users/apple/Desktop/hack5/results/demo_frames/slide_04.png'

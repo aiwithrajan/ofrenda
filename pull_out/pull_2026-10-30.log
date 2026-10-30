@@ -1,0 +1,372 @@
+roster: reusing /Users/apple/Desktop/hack5/pull_out/roster.json (n=150)
+[skip] dead       scrapy-plugins/scrapy-jsonrpc (journaled)
+[skip] dead       snipsco/ntm-lasagne (journaled)
+[skip] dead       jorgenkg/python-neural-network (journaled)
+[skip] dead       CarterBain/AlephNull (journaled)
+[skip] dead       schelotto/Wasserstein-AutoEncoders (journaled)
+[skip] dead       opconty/pytorch_ctpn (journaled)
+[skip] dead       wookayin/tensorflow-plot (journaled)
+[skip] dead       tintinweb/ida-batch_decompile (journaled)
+[skip] dead       NVlabs/neuralrgbd (journaled)
+[skip] dead       zuzhiang/SMS_Bomber (journaled)
+[skip] dead       DylanWusee/pointconv_pytorch (journaled)
+[skip] dead       kevinlin311tw/CDCL-human-part-segmentation (journaled)
+[skip] dead       CacheBrowser/cachebrowser (journaled)
+[skip] dead       clarkduvall/serpy (journaled)
+[skip] dead       myquant/strategy (journaled)
+[skip] dead       gabrieleangeletti/Deep-Learning-TensorFlow (journaled)
+[skip] dead       fuzzbunch/fuzzbunch (journaled)
+[skip] dead       merantix/picasso (journaled)
+[skip] dead       kuangliu/pytorch-retinanet (journaled)
+[skip] dead       foamliu/Deep-Image-Matting (journaled)
+[skip] dead       RustyShackleford221/OSCP-Prep (journaled)
+[skip] dead       z814081807/DeepNER (journaled)
+[skip] dead       WisconsinAIVision/MixNMatch (journaled)
+[skip] dead       SoftwareGift/FeatherNets_Face-Anti-spoofing-Attack-Detection-Challenge-CVPR2019 (journaled)
+[skip] dead       ryankiros/neural-storyteller (journaled)
+[skip] dead       lanbing510/DouBanSpider (journaled)
+[skip] dead       ethereon/caffe-tensorflow (journaled)
+[skip] dead       soumith/convnet-benchmarks (journaled)
+[skip] dead       cybertronai/gradient-checkpointing (journaled)
+[skip] dead       RocketMap/RocketMap (journaled)
+[skip] dead       ecthros/uncaptcha (journaled)
+[skip] dead       yfeng95/face3d (journaled)
+[skip] dead       kotartemiy/newscatcher (journaled)
+[skip] dead       rougier/matplotlib-cheatsheet (journaled)
+[skip] dead       taki0112/Tensorflow-Cookbook (journaled)
+[skip] dead       zllrunning/video-object-removal (journaled)
+[skip] dead       rbgirshick/py-faster-rcnn (journaled)
+[skip] dead       larsenwork/monoid (journaled)
+[skip] dead       isnowfy/snownlp (journaled)
+[skip] dead       MorvanZhou/tutorials (journaled)
+[skip] dead       vipstone/faceai (journaled)
+[skip] dead       Urinx/WeixinBot (journaled)
+[skip] dead       MingchaoZhu/DeepLearning (journaled)
+[skip] dead       649453932/Chinese-Text-Classification-Pytorch (journaled)
+[skip] dead       INTERMT/Awesome-PyTorch-Chinese (journaled)
+[skip] dead       AnSavvides/d3act (journaled)
+[skip] dead       adobe-webplatform/css-shapes-polyfill (journaled)
+[skip] dead       numtel/meteor-pg (journaled)
+[skip] dead       mathew-kurian/CharacterMap (journaled)
+[skip] dead       jiang111/chrome-plugin-recommand (journaled)
+[skip] dead       janicduplessis/react-native-scrollable-header (journaled)
+[skip] dead       yangyunhe369/h5-game-blockBreaker (journaled)
+[skip] dead       sararob/ml-talk-demos (journaled)
+[skip] dead       deepred5/daily-anime (journaled)
+[skip] dead       olegmitrakhovich/Defi-Arb-Bot (journaled)
+[skip] dead       ShizukuIchi/minesweeper (journaled)
+[skip] dead       tylerthebuildor/graphqless (journaled)
+[skip] dead       owenthereal/hacker-menu (journaled)
+[skip] dead       RisingStack/graffiti (journaled)
+[skip] dead       vladikoff/grunt-devtools (journaled)
+[skip] dead       bevacqua/react-dragula (journaled)
+[skip] dead       sghall/resonance (journaled)
+[skip] dead       ment-mx/Prism (journaled)
+[skip] dead       FZliweiliang/wechat-app-mall (journaled)
+[skip] dead       mafintosh/turbo-http (journaled)
+[skip] dead       Schachte/Mermrender (journaled)
+[skip] dead       Domenicobrz/Blurry (journaled)
+[skip] dead       flotwig/the-one-cert (journaled)
+[skip] dead       lingxiaoyi/navigation-bar (journaled)
+[skip] dead       carrot/share-button (journaled)
+[skip] dead       a8m/angular-filter (journaled)
+[skip] dead       weui/react-weui (journaled)
+[skip] dead       jetpacapp/DeepBeliefSDK (journaled)
+[skip] dead       liuxuanqiang/wechat-weapp-mall (journaled)
+[skip] dead       Aufree/awesome-wechat-weapp (journaled)
+[skip] dead       crazycodeboy/GitHubPopular (journaled)
+[skip] dead       kunalkapadia/express-mongoose-es6-rest-api (journaled)
+[skip] dead       cehui0303/Tmall_Tickets (journaled)
+[skip] dead       aholachek/mobile-first-animation (journaled)
+[skip] dead       areslabs/alita (journaled)
+[skip] dead       thegreatjavascript/FakeScreenshot (journaled)
+[skip] dead       julianshapiro/velocity (journaled)
+[skip] dead       tj/co (journaled)
+[skip] dead       kesenhoo/android-training-course-in-chinese (journaled)
+[skip] dead       jawil/blog (journaled)
+[skip] dead       dthree/cash (journaled)
+[skip] dead       icindy/wxParse (journaled)
+[skip] dead       Advanced-Frontend/Daily-Interview-Question (journaled)
+[skip] dead       cmiscm/leonsans (journaled)
+[skip] dead       schollz/poetry-generator (journaled)
+[skip] archived   mpetroff/kindle-weather-display (journaled)
+[skip] archived   benhutchins/docker-taiga (journaled)
+[skip] archived   yandexdataschool/AgentNet (journaled)
+[skip] archived   grantwilk/d-noise (journaled)
+[skip] archived   Yutix/instabrute (journaled)
+[skip] archived   aylei/aliyun-exporter (journaled)
+[skip] archived   Yinzo/SmartQQBot (journaled)
+[skip] archived   facebookresearch/DetectAndTrack (journaled)
+[skip] archived   uber-archive/plato-research-dialogue-system (journaled)
+[skip] archived   mantl/mantl (journaled)
+[skip] archived   roytseng-tw/Detectron.pytorch (journaled)
+[skip] archived   openai/sparse_attention (journaled)
+[skip] archived   deis/deis (journaled)
+[skip] archived   youfou/wxpy (journaled)
+[skip] archived   latitudegames/AIDungeon (journaled)
+[skip] archived   mozilla/node-firefox (journaled)
+[skip] archived   dapphub/dapple (journaled)
+[skip] archived   JSteunou/webstomp-client (journaled)
+[skip] archived   djyde/sinatine (journaled)
+[skip] archived   yamalight/graffiti (journaled)
+[skip] archived   nearform/react-animation (journaled)
+[skip] archived   crcn/mesh.js (journaled)
+[skip] archived   awalgarg/cv-maker (journaled)
+[skip] archived   eashish93/imgsquash (journaled)
+[skip] archived   mozbrick/brick (journaled)
+[skip] archived   google-ar/three.ar.js (journaled)
+[skip] archived   sleepybear1113/taobaoVisitingVenues (journaled)
+[skip] archived   dvdzkwsk/react-redux-starter-kit (journaled)
+[skip] archived   zhongyi-tong/electronic-wechat (journaled)
+[skip] archived   1995parham/github-do-not-ban-us (journaled)
+[skip] alive      itkach/slob (journaled)
+[skip] alive      OpenKMIP/PyKMIP (journaled)
+[skip] alive      eLifePathways/sciencebeam-parser (journaled)
+[skip] alive      snok/django-auth-adfs (journaled)
+[skip] alive      asigalov61/Tegridy-MIDI-Dataset (journaled)
+[skip] alive      hongbo-miao/hongbomiao.com (journaled)
+[skip] alive      gcovr/gcovr (journaled)
+[skip] alive      honeynet/droidbot (journaled)
+[skip] alive      WittmannF/sort-google-scholar (journaled)
+[pull] alive      mottosso/Qt.py ...
+       ok — 47 calls, 229.7s
+[pull] alive      neka-nat/probreg ...
+       ok — 11 calls, 49.1s
+[pull] alive      cwendt94/espn-api ...
+       ok — 28 calls, 174.7s
+[pull] alive      mypaint/mypaint ...
+       FAILED: RateLimited: /repos/mypaint/mypaint/issues/comments: 403/429 on every attempt (8)
+[pull] alive      scottlawsonbc/audio-reactive-led-strip ...
+       FAILED: rate-limited
+[pull] alive      benedekrozemberczki/pytorch_geometric_temporal ...
+       FAILED: rate-limited
+[pull] alive      EbookFoundation/free-programming-books ...
+       FAILED: rate-limited
+[pull] alive      public-apis/public-apis ...
+       FAILED: rate-limited
+[abort] 5 consecutive failures — stopping; resume re-runs this roster and retries failures
+{
+ "roster": "/Users/apple/Desktop/hack5/pull_out/roster.json",
+ "n": 150,
+ "tallies": {
+  "dead": {
+   "ok": 90,
+   "failed": 0
+  },
+  "archived": {
+   "ok": 30,
+   "failed": 0
+  },
+  "alive": {
+   "ok": 12,
+   "failed": 5
+  }
+ },
+ "truncated_streams": 0,
+ "aborted": true,
+ "core_calls_this_run": 108,
+ "wallclock_seconds": 1914.8,
+ "caps": {
+  "issues": 40,
+  "comments": 60,
+  "commits": 40,
+  "releases": 5
+ }
+}
+roster: reusing /Users/apple/Desktop/hack5/pull_out/roster.json (n=150)
+[skip] dead       scrapy-plugins/scrapy-jsonrpc (journaled)
+[skip] dead       snipsco/ntm-lasagne (journaled)
+[skip] dead       jorgenkg/python-neural-network (journaled)
+[skip] dead       CarterBain/AlephNull (journaled)
+[skip] dead       schelotto/Wasserstein-AutoEncoders (journaled)
+[skip] dead       opconty/pytorch_ctpn (journaled)
+[skip] dead       wookayin/tensorflow-plot (journaled)
+[skip] dead       tintinweb/ida-batch_decompile (journaled)
+[skip] dead       NVlabs/neuralrgbd (journaled)
+[skip] dead       zuzhiang/SMS_Bomber (journaled)
+[skip] dead       DylanWusee/pointconv_pytorch (journaled)
+[skip] dead       kevinlin311tw/CDCL-human-part-segmentation (journaled)
+[skip] dead       CacheBrowser/cachebrowser (journaled)
+[skip] dead       clarkduvall/serpy (journaled)
+[skip] dead       myquant/strategy (journaled)
+[skip] dead       gabrieleangeletti/Deep-Learning-TensorFlow (journaled)
+[skip] dead       fuzzbunch/fuzzbunch (journaled)
+[skip] dead       merantix/picasso (journaled)
+[skip] dead       kuangliu/pytorch-retinanet (journaled)
+[skip] dead       foamliu/Deep-Image-Matting (journaled)
+[skip] dead       RustyShackleford221/OSCP-Prep (journaled)
+[skip] dead       z814081807/DeepNER (journaled)
+[skip] dead       WisconsinAIVision/MixNMatch (journaled)
+[skip] dead       SoftwareGift/FeatherNets_Face-Anti-spoofing-Attack-Detection-Challenge-CVPR2019 (journaled)
+[skip] dead       ryankiros/neural-storyteller (journaled)
+[skip] dead       lanbing510/DouBanSpider (journaled)
+[skip] dead       ethereon/caffe-tensorflow (journaled)
+[skip] dead       soumith/convnet-benchmarks (journaled)
+[skip] dead       cybertronai/gradient-checkpointing (journaled)
+[skip] dead       RocketMap/RocketMap (journaled)
+[skip] dead       ecthros/uncaptcha (journaled)
+[skip] dead       yfeng95/face3d (journaled)
+[skip] dead       kotartemiy/newscatcher (journaled)
+[skip] dead       rougier/matplotlib-cheatsheet (journaled)
+[skip] dead       taki0112/Tensorflow-Cookbook (journaled)
+[skip] dead       zllrunning/video-object-removal (journaled)
+[skip] dead       rbgirshick/py-faster-rcnn (journaled)
+[skip] dead       larsenwork/monoid (journaled)
+[skip] dead       isnowfy/snownlp (journaled)
+[skip] dead       MorvanZhou/tutorials (journaled)
+[skip] dead       vipstone/faceai (journaled)
+[skip] dead       Urinx/WeixinBot (journaled)
+[skip] dead       MingchaoZhu/DeepLearning (journaled)
+[skip] dead       649453932/Chinese-Text-Classification-Pytorch (journaled)
+[skip] dead       INTERMT/Awesome-PyTorch-Chinese (journaled)
+[skip] dead       AnSavvides/d3act (journaled)
+[skip] dead       adobe-webplatform/css-shapes-polyfill (journaled)
+[skip] dead       numtel/meteor-pg (journaled)
+[skip] dead       mathew-kurian/CharacterMap (journaled)
+[skip] dead       jiang111/chrome-plugin-recommand (journaled)
+[skip] dead       janicduplessis/react-native-scrollable-header (journaled)
+[skip] dead       yangyunhe369/h5-game-blockBreaker (journaled)
+[skip] dead       sararob/ml-talk-demos (journaled)
+[skip] dead       deepred5/daily-anime (journaled)
+[skip] dead       olegmitrakhovich/Defi-Arb-Bot (journaled)
+[skip] dead       ShizukuIchi/minesweeper (journaled)
+[skip] dead       tylerthebuildor/graphqless (journaled)
+[skip] dead       owenthereal/hacker-menu (journaled)
+[skip] dead       RisingStack/graffiti (journaled)
+[skip] dead       vladikoff/grunt-devtools (journaled)
+[skip] dead       bevacqua/react-dragula (journaled)
+[skip] dead       sghall/resonance (journaled)
+[skip] dead       ment-mx/Prism (journaled)
+[skip] dead       FZliweiliang/wechat-app-mall (journaled)
+[skip] dead       mafintosh/turbo-http (journaled)
+[skip] dead       Schachte/Mermrender (journaled)
+[skip] dead       Domenicobrz/Blurry (journaled)
+[skip] dead       flotwig/the-one-cert (journaled)
+[skip] dead       lingxiaoyi/navigation-bar (journaled)
+[skip] dead       carrot/share-button (journaled)
+[skip] dead       a8m/angular-filter (journaled)
+[skip] dead       weui/react-weui (journaled)
+[skip] dead       jetpacapp/DeepBeliefSDK (journaled)
+[skip] dead       liuxuanqiang/wechat-weapp-mall (journaled)
+[skip] dead       Aufree/awesome-wechat-weapp (journaled)
+[skip] dead       crazycodeboy/GitHubPopular (journaled)
+[skip] dead       kunalkapadia/express-mongoose-es6-rest-api (journaled)
+[skip] dead       cehui0303/Tmall_Tickets (journaled)
+[skip] dead       aholachek/mobile-first-animation (journaled)
+[skip] dead       areslabs/alita (journaled)
+[skip] dead       thegreatjavascript/FakeScreenshot (journaled)
+[skip] dead       julianshapiro/velocity (journaled)
+[skip] dead       tj/co (journaled)
+[skip] dead       kesenhoo/android-training-course-in-chinese (journaled)
+[skip] dead       jawil/blog (journaled)
+[skip] dead       dthree/cash (journaled)
+[skip] dead       icindy/wxParse (journaled)
+[skip] dead       Advanced-Frontend/Daily-Interview-Question (journaled)
+[skip] dead       cmiscm/leonsans (journaled)
+[skip] dead       schollz/poetry-generator (journaled)
+[skip] archived   mpetroff/kindle-weather-display (journaled)
+[skip] archived   benhutchins/docker-taiga (journaled)
+[skip] archived   yandexdataschool/AgentNet (journaled)
+[skip] archived   grantwilk/d-noise (journaled)
+[skip] archived   Yutix/instabrute (journaled)
+[skip] archived   aylei/aliyun-exporter (journaled)
+[skip] archived   Yinzo/SmartQQBot (journaled)
+[skip] archived   facebookresearch/DetectAndTrack (journaled)
+[skip] archived   uber-archive/plato-research-dialogue-system (journaled)
+[skip] archived   mantl/mantl (journaled)
+[skip] archived   roytseng-tw/Detectron.pytorch (journaled)
+[skip] archived   openai/sparse_attention (journaled)
+[skip] archived   deis/deis (journaled)
+[skip] archived   youfou/wxpy (journaled)
+[skip] archived   latitudegames/AIDungeon (journaled)
+[skip] archived   mozilla/node-firefox (journaled)
+[skip] archived   dapphub/dapple (journaled)
+[skip] archived   JSteunou/webstomp-client (journaled)
+[skip] archived   djyde/sinatine (journaled)
+[skip] archived   yamalight/graffiti (journaled)
+[skip] archived   nearform/react-animation (journaled)
+[skip] archived   crcn/mesh.js (journaled)
+[skip] archived   awalgarg/cv-maker (journaled)
+[skip] archived   eashish93/imgsquash (journaled)
+[skip] archived   mozbrick/brick (journaled)
+[skip] archived   google-ar/three.ar.js (journaled)
+[skip] archived   sleepybear1113/taobaoVisitingVenues (journaled)
+[skip] archived   dvdzkwsk/react-redux-starter-kit (journaled)
+[skip] archived   zhongyi-tong/electronic-wechat (journaled)
+[skip] archived   1995parham/github-do-not-ban-us (journaled)
+[skip] alive      itkach/slob (journaled)
+[skip] alive      OpenKMIP/PyKMIP (journaled)
+[skip] alive      eLifePathways/sciencebeam-parser (journaled)
+[skip] alive      snok/django-auth-adfs (journaled)
+[skip] alive      asigalov61/Tegridy-MIDI-Dataset (journaled)
+[skip] alive      hongbo-miao/hongbomiao.com (journaled)
+[skip] alive      gcovr/gcovr (journaled)
+[skip] alive      honeynet/droidbot (journaled)
+[skip] alive      WittmannF/sort-google-scholar (journaled)
+[skip] alive      mottosso/Qt.py (journaled)
+[skip] alive      neka-nat/probreg (journaled)
+[skip] alive      cwendt94/espn-api (journaled)
+[pull] alive      mypaint/mypaint ...
+       ok — 102 calls, 369.4s
+[pull] alive      scottlawsonbc/audio-reactive-led-strip ...
+       ok — 25 calls, 79.6s
+[pull] alive      benedekrozemberczki/pytorch_geometric_temporal ...
+       ok — 33 calls, 102.5s
+[pull] alive      EbookFoundation/free-programming-books ...
+       ok — 142 calls, 502.6s
+[pull] alive      public-apis/public-apis ...
+       ok — 142 calls, 497.2s
+[pull] alive      yt-dlp/yt-dlp ...
+       ok — 143 calls, 559.9s
+[pull] alive      ImaginarySense/Imaginary-Teleprompter ...
+       ok — 10 calls, 23.9s
+[pull] alive      ajhsu/chromecast-device-emulator ...
+       ok — 5 calls, 6.3s
+[pull] alive      10up/wp-scaffold ...
+       ok — 19 calls, 59.5s
+[pull] alive      csstools/postcss-font-magician ...
+       ok — 9 calls, 23.2s
+[pull] alive      jae-jae/Camtd ...
+       ok — 5 calls, 8.6s
+[pull] alive      tailwindlabs/tailwindcss-aspect-ratio ...
+       ok — 5 calls, 5.3s
+[pull] alive      GoogleCloudPlatform/nodejs-docs-samples ...
+       ok — 142 calls, 559.6s
+[pull] alive      bytenode/bytenode ...
+       ok — 20 calls, 49.8s
+[pull] alive      pwndoc/pwndoc ...
+       ok — 31 calls, 109.1s
+[pull] alive      react/react ...
+       ok — 143 calls, 823.1s
+[pull] alive      trekhleb/javascript-algorithms ...
+       ok — 42 calls, 195.7s
+[pull] alive      microsoft/Web-Dev-For-Beginners ...
+       ok — 73 calls, 376.1s
+{
+ "roster": "/Users/apple/Desktop/hack5/pull_out/roster.json",
+ "n": 150,
+ "tallies": {
+  "dead": {
+   "ok": 90,
+   "failed": 0
+  },
+  "archived": {
+   "ok": 30,
+   "failed": 0
+  },
+  "alive": {
+   "ok": 30,
+   "failed": 0
+  }
+ },
+ "truncated_streams": 17,
+ "aborted": false,
+ "core_calls_this_run": 1091,
+ "wallclock_seconds": 4387.4,
+ "caps": {
+  "issues": 40,
+  "comments": 60,
+  "commits": 40,
+  "releases": 5
+ }
+}

@@ -120,9 +120,10 @@ class GitHub:
                         time.sleep(wait)
                         continue
                     # Secondary limits: honor Retry-After (capped), else back off
-                    # hard — episodes outlast the old 60 s ceiling.
-                    wait = float(retry_after) if retry_after else 2 ** attempt * 15
-                    time.sleep(min(130, wait))
+                    # hard — episodes outlast the old 60 s ceiling (GitHub secondary block needs >=60s).
+                    wait = float(retry_after) if retry_after else max(60.0, 30.0 * (attempt + 1))
+                    print(f"    secondary limit hit; sleeping {wait:.0f}s (attempt {attempt+1}/{retries})", flush=True)
+                    time.sleep(min(180, wait))
                     continue
                 if exc.code == 422:
                     return None
@@ -161,5 +162,5 @@ class GitHub:
             items.extend(batch)
             if len(batch) < per_page:
                 return items, False
-            time.sleep(0.75)  # pacing: secondary limits punish bursts (§20 21:22)
+            time.sleep(1.2)  # pacing: secondary limits punish bursts (§20 21:22, 2026-10-30)
         return items, True

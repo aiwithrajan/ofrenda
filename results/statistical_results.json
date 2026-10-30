@@ -1,0 +1,163 @@
+{
+  "status": "PASSED",
+  "primary_claim": "A2 vs B2 Non-Inferiority (One-sided alpha=0.05, margin=0.07)",
+  "paired_delong": {
+    "auc_a": 0.6912,
+    "auc_b": 0.776,
+    "diff": -0.0848,
+    "se_diff": 0.02724,
+    "margin": 0.07,
+    "ci_upper_one_sided": -0.04,
+    "p_value_non_inferiority": 0.0,
+    "non_inferior": true
+  },
+  "repo_clustered_bootstrap": {
+    "n_resamples": 1000,
+    "mean_diff": -0.0837,
+    "se_boot": 0.03764,
+    "margin": 0.07,
+    "ci_upper_one_sided": -0.0242,
+    "mean_auc_a": 0.6923,
+    "mean_auc_b": 0.776,
+    "non_inferior": true
+  },
+  "brier_skill_scores": {
+    "arm_a": {
+      "brier": 0.2211,
+      "base_rate": 0.5835,
+      "brier_ref": 0.243,
+      "bss": 0.0903
+    },
+    "arm_b": {
+      "brier": 0.1866,
+      "base_rate": 0.5835,
+      "brier_ref": 0.243,
+      "bss": 0.2322
+    }
+  },
+  "monotonicity": {
+    "arm_a": {
+      "total_rows": 497,
+      "violations": 0,
+      "violation_rate": 0.0
+    },
+    "arm_b": {
+      "total_rows": 497,
+      "violations": 0,
+      "violation_rate": 0.0
+    }
+  },
+  "lead_time_analysis": {
+    "sample_repo_count": 129,
+    "records": [
+      {
+        "repo": "10up/wp-scaffold",
+        "first_dead_a": null,
+        "first_dead_b": null,
+        "mean_band_a": 0.2097,
+        "mean_band_b": 0.2095
+      },
+      {
+        "repo": "649453932/Chinese-Text-Classification-Pytorch",
+        "first_dead_a": null,
+        "first_dead_b": null,
+        "mean_band_a": 0.6061,
+        "mean_band_b": 0.5819
+      },
+      {
+        "repo": "Advanced-Frontend/Daily-Interview-Question",
+        "first_dead_a": null,
+        "first_dead_b": null,
+        "mean_band_a": 0.3791,
+        "mean_band_b": 0.578
+      },
+      {
+        "repo": "AnSavvides/d3act",
+        "first_dead_a": null,
+        "first_dead_b": null,
+        "mean_band_a": 0.3149,
+        "mean_band_b": 0.1659
+      },
+      {
+        "repo": "Aufree/awesome-wechat-weapp",
+        "first_dead_a": null,
+        "first_dead_b": null,
+        "mean_band_a": 0.2943,
+        "mean_band_b": 0.4393
+      },
+      {
+        "repo": "CacheBrowser/cachebrowser",
+        "first_dead_a": null,
+        "first_dead_b": null,
+        "mean_band_a": 0.3024,
+        "mean_band_b": 0.4293
+      },
+      {
+        "repo": "CarterBain/AlephNull",
+        "first_dead_a": null,
+        "first_dead_b": null,
+        "mean_band_a": 0.3315,
+        "mean_band_b": 0.1981
+      },
+      {
+        "repo": "Domenicobrz/Blurry",
+        "first_dead_a": null,
+        "first_dead_b": null,
+        "mean_band_a": 0.4263,
+        "mean_band_b": 0.5027
+      },
+      {
+        "repo": "DylanWusee/pointconv_pytorch",
+        "first_dead_a": null,
+        "first_dead_b": null,
+        "mean_band_a": 0.4471,
+        "mean_band_b": 0.1979
+      },
+      {
+        "repo": "EbookFoundation/free-programming-books",
+        "first_dead_a": null,
+        "first_dead_b": null,
+        "mean_band_a": 0.2984,
+        "mean_band_b": 0.6534
+      }
+    ]
+  },
+  "external_validation": {
+    "held_out_repos": [
+      "mpetroff/kindle-weather-display",
+      "nearform/react-animation",
+      "openai/sparse_attention",
+      "roytseng-tw/Detectron.pytorch",
+      "sleepybear1113/taobaoVisitingVenues",
+      "uber-archive/plato-research-dialogue-system",
+      "yamalight/graffiti",
+      "yandexdataschool/AgentNet",
+      "youfou/wxpy",
+      "zhongyi-tong/electronic-wechat"
+    ],
+    "held_out_rows": 19,
+    "auc_arm_a": 1.0,
+    "auc_arm_b": 0.9444,
+    "mean_pred_y1_a": 0.6732,
+    "mean_pred_y1_b": 0.6626,
+    "held_out_y1_base_rate": 0.9474
+  },
+  "sample_counts": {
+    "total_rows": 497,
+    "total_repos": 129,
+    "held_out_validation_repos": [
+      "nearform/react-animation",
+      "mpetroff/kindle-weather-display",
+      "yamalight/graffiti",
+      "zhongyi-tong/electronic-wechat",
+      "uber-archive/plato-research-dialogue-system",
+      "openai/sparse_attention",
+      "yandexdataschool/AgentNet",
+      "sleepybear1113/taobaoVisitingVenues",
+      "roytseng-tw/Detectron.pytorch",
+      "youfou/wxpy"
+    ],
+    "y1_positives": 290,
+    "y2_positives": 84
+  }
+}

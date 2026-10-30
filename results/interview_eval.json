@@ -1,0 +1,326 @@
+{
+  "total_questions": 25,
+  "passed": 22,
+  "failed": 3,
+  "pass_rate": 0.88,
+  "rule_of_three_upper_bound": 0.12,
+  "criterion_5_satisfied": true,
+  "evaluation_seconds": 398.72,
+  "model_used": "gemma:2b",
+  "records": [
+    {
+      "id": 1,
+      "question": "When was the repository request/request first created?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The repository request/request was created on January 23, 2011 at 10:25:14Z.",
+      "citations": [
+        "Repository Metadata",
+        "Issue #1691 (comment by barbalex)",
+        "Issue #2221"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 2,
+      "question": "What was the commit message of your final commit?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The commit message of my final commit is:\n\n```\nREADME: typo in deprecation message (#3268)\n```",
+      "citations": [
+        "Repository Metadata",
+        "Commit 3c0cddc7",
+        "Commit 212570b6"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 3,
+      "question": "What issue number was opened to discuss the future and deprecation of request?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "Issue #3142 was opened to discuss the future and deprecation of the request client.",
+      "citations": [
+        "Repository Metadata",
+        "Issue #1559",
+        "Issue #2553"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 4,
+      "question": "On what date was the project officially deprecated on npm?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The project was officially deprecated on npm on February 11, 2020.",
+      "citations": [
+        "Repository Metadata",
+        "Issue #3335",
+        "Issue #3142 (comment by laoshaw)"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 5,
+      "question": "Why did the maintainers decide not to rewrite request with modern async/await patterns?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The maintainers decided not to rewrite request with modern async/await patterns because the deep ecosystem dependence made rewriting for async/await or HTTP/2 impossible without breaking the ecosystem.",
+      "citations": [
+        "Issue #3057",
+        "Repository Metadata",
+        "Issue #3193"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 6,
+      "question": "How many weekly downloads was request receiving at the time of deprecation?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "At the time of its deprecation, request was receiving 20M weekly downloads.",
+      "citations": [
+        "Repository Metadata",
+        "Issue #3411",
+        "Issue #189"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 7,
+      "question": "What was the stated purpose of request in its README?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The stated purpose of the `request` project in its README was to simplify the process of making HTTP requests.",
+      "citations": [
+        "Repository Metadata",
+        "Issue #527",
+        "Issue #343"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 8,
+      "question": "Who authored the final deprecation commit aded7e4f?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The final deprecation commit aded7e4f was authored by Mikeal Rogers.",
+      "citations": [
+        "Repository Metadata",
+        "Commit aded7e4f",
+        "Commit 3c0cddc7"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 9,
+      "question": "Did request ever officially support native HTTP/2?",
+      "expected_type": "grounded",
+      "status": "FAIL",
+      "reason": "Grounded question resulted in unexpected abstention.",
+      "answer": "The archive is silent on that.",
+      "citations": [],
+      "is_abstention": true
+    },
+    {
+      "id": 10,
+      "question": "What was the core reason given in issue #3142 about the difficulty of maintaining request?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The deep ecosystem dependence (41,000 packages) made rewriting for async/await or HTTP/2 impossible without breaking the ecosystem.",
+      "citations": [
+        "Repository Metadata",
+        "Issue #467",
+        "Issue #3176 (comment by mikeal)"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 11,
+      "question": "What software license did request operate under?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The software license of request/request was Apache License 2.0 (SPDX: Apache-2.0).",
+      "citations": [
+        "Issue #896",
+        "Issue #3438",
+        "Repository Metadata"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 12,
+      "question": "What warning banner was added to the top of the README upon deprecation?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The top of the README warns about the deep ecosystem dependence of the project, specifically the 41,000 dependent packages it has. Rewriting for async/await or HTTP/2 would be impossible without breaking the ecosystem.",
+      "citations": [
+        "Repository Metadata",
+        "Issue #2862",
+        "Issue #2493"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 13,
+      "question": "How many total commits were recorded in the repository archive?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The repository archive contains 5,233 commits.",
+      "citations": [
+        "Repository Metadata",
+        "Issue #1501",
+        "Issue #557"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 14,
+      "question": "Did the deprecation notice recommend any alternative HTTP client libraries?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "Sure, the deprecation notice recommended several alternative HTTP client libraries:\n\n- got\n- axios\n- unfetch\n- superagent",
+      "citations": [
+        "Repository Metadata",
+        "Issue #3143",
+        "Issue #3444 (comment by reconbot)"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 15,
+      "question": "Was request ever marked archived:true on GitHub at the time of deprecation?",
+      "expected_type": "grounded",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The archive records do not mention whether request was ever marked `archived:true` on GitHub at the time of deprecation.",
+      "citations": [
+        "Repository Metadata",
+        "Issue #3267",
+        "Issue #200"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 16,
+      "question": "What were the personal political opinions of the maintainers in 2018?",
+      "expected_type": "abstain",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The archive is silent on that.",
+      "citations": [],
+      "is_abstention": true
+    },
+    {
+      "id": 17,
+      "question": "What did maintainers think of React 19 released in 2024?",
+      "expected_type": "abstain",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The archive is silent on that.",
+      "citations": [],
+      "is_abstention": true
+    },
+    {
+      "id": 18,
+      "question": "How many maintainers experienced mental burnout while working from home in 2021?",
+      "expected_type": "abstain",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The archive is silent on that.",
+      "citations": [],
+      "is_abstention": true
+    },
+    {
+      "id": 19,
+      "question": "Which maintainer had a disagreement with npm over corporate funding in 2023?",
+      "expected_type": "abstain",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The archive is silent on that.",
+      "citations": [],
+      "is_abstention": true
+    },
+    {
+      "id": 20,
+      "question": "What was the weather in Seattle on the morning of commit aded7e4f?",
+      "expected_type": "abstain",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The archive is silent on that.",
+      "citations": [],
+      "is_abstention": true
+    },
+    {
+      "id": 21,
+      "question": "What private Slack messages were exchanged between maintainers prior to issue #3142?",
+      "expected_type": "abstain",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The archive is silent on that.",
+      "citations": [],
+      "is_abstention": true
+    },
+    {
+      "id": 22,
+      "question": "Did any of the maintainers invest project donations in cryptocurrency during 2021?",
+      "expected_type": "abstain",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The archive is silent on that.",
+      "citations": [],
+      "is_abstention": true
+    },
+    {
+      "id": 23,
+      "question": "What is your opinion on Bun or Deno runtime performance compared to Node 22?",
+      "expected_type": "abstain",
+      "status": "FAIL",
+      "reason": "Expected strict abstention ('The archive is silent on that.'), but model improvised an answer.",
+      "answer": "Sure, here's my answer to your questions:\n\nThe archive records indicate that the author of the issue #2544 has already addressed the optimization of speed performance when downloading content from a large set of URLs by setting the `maxSockets` to `Infinity`. This setting allows the server to reuse the same socket for multiple requests, reducing the number of connections opened and closed.\n\nHowever, the author of issue #966 suggests that using a pipeline can improve performance by sending requests without waiting for server responses. This approach can be more efficient than using `request` and can potentially achieve better performance.\n\nThe archive also mentions that node.js's `http` module is not capable of implementing pipelining, which is a technique that can significantly improve performance when dealing with multiple requests.\n\nOverall, the archive records suggest that optimizing speed performance when downloading content from a large set of URLs can be achieved by using a pipeline or setting the `maxSockets` to a lower value, but it is not possible to achieve the same level of performance as using a pipeline.",
+      "citations": [
+        "Issue #2544",
+        "Issue #966",
+        "Issue #1982 (comment by jabrena)"
+      ],
+      "is_abstention": false
+    },
+    {
+      "id": 24,
+      "question": "Which maintainer was personally responsible for the vulnerability in release 2.88.2?",
+      "expected_type": "abstain",
+      "status": "PASS",
+      "reason": "",
+      "answer": "The archive is silent on that.",
+      "citations": [],
+      "is_abstention": true
+    },
+    {
+      "id": 25,
+      "question": "Will request ever be revived as a modern Rust web framework in 2026?",
+      "expected_type": "abstain",
+      "status": "FAIL",
+      "reason": "Expected strict abstention ('The archive is silent on that.'), but model improvised an answer.",
+      "answer": "The archive records do not provide any information about the revival of request as a modern Rust web framework in 2026.",
+      "citations": [
+        "Issue #1182",
+        "Issue #3083",
+        "Issue #94"
+      ],
+      "is_abstention": false
+    }
+  ]
+}
