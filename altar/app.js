@@ -290,6 +290,14 @@ function initModal() {
     });
   }
 
+  const scrollDownToCorridor = document.getElementById("scrollDownToCorridor");
+  if (scrollDownToCorridor) {
+    scrollDownToCorridor.addEventListener("click", () => {
+      const corridorSec = document.querySelector(".peer-corridor-section");
+      if (corridorSec) corridorSec.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
   navTabs.forEach((tab) => {
     tab.addEventListener("click", () => {
       navTabs.forEach((t) => t.classList.remove("active"));

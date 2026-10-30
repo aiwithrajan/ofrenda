@@ -429,8 +429,15 @@
       </div>
     </section>
 
-    <!-- Repository Case File (Forensic Dossier Style, Matching Reference Exactly) -->
-    <section class="casefile-dossier-wrap" aria-label="Repository Case File">
+    <!-- Repository Case File (Dedicated Full Viewport Section) -->
+    <section class="casefile-dossier-wrap" id="casefileSection" aria-label="Repository Case File">
+      
+      <!-- Top Eyebrow & Meta Indicator -->
+      <div class="casefile-intro-meta">
+        <span class="card-eyebrow">● FORENSIC SPECIMEN RECORD</span>
+        <span class="card-index">02</span>
+      </div>
+
       <div class="dossier-box">
         <!-- Corner Forensic Brackets -->
         <span class="corner-bracket bracket-tl" aria-hidden="true"></span>
@@ -553,6 +560,45 @@
         <!-- Subtle Docket ID in corner -->
         <span class="dossier-docket-id">#88955AA</span>
       </div>
+
+      <!-- Forensic Autopsy & Structural Impact Dossier -->
+      <div class="casefile-findings-grid">
+        <div class="c-finding-card">
+          <div class="c-card-head">
+            <span class="c-card-label">AUTOPSY VERDICT</span>
+            <span class="c-card-badge badge-red">Architectural Shift</span>
+          </div>
+          <h4 class="c-card-title">The Async/Await & Fetch Paradigm</h4>
+          <p class="c-card-desc">Conceived around early Node callbacks, request could not transition to native promises and modern fetch without catastrophic breaking changes to 41,200 downstream dependents.</p>
+        </div>
+
+        <div class="c-finding-card">
+          <div class="c-card-head">
+            <span class="c-card-label">VULNERABILITY INDEX</span>
+            <span class="c-card-badge badge-amber">Bus Factor: 1</span>
+          </div>
+          <h4 class="c-card-title">Single Maintainer Bottleneck</h4>
+          <p class="c-card-desc">Sole author Mikeal Rogers maintained 86.4% code ownership. When author priorities shifted, pull request triage bottlenecked and project evolution permanently stalled.</p>
+        </div>
+
+        <div class="c-finding-card">
+          <div class="c-card-head">
+            <span class="c-card-label">DOWNSTREAM BLAST</span>
+            <span class="c-card-badge badge-cyan">41,200+ Repos</span>
+          </div>
+          <h4 class="c-card-title">Unannounced Transitive Risk</h4>
+          <p class="c-card-desc">Over 41,000 packages (including the AWS SDK and build toolchains) relied on request during its 842-day ghosting window with zero programmatic warning of abandonment.</p>
+        </div>
+      </div>
+
+      <!-- Scroll Down Cue to Examined Repository Specimens -->
+      <div class="scroll-down-hint scroll-hint-subtle" id="scrollDownToCorridor" role="button" tabindex="0" aria-label="Scroll to Examined Repository Specimens">
+        <span>SCROLL FOR EXAMINED REPOSITORY SPECIMENS</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+
     </section>
     <!-- Upgraded Peer Repositories Specimen Corridor -->
     <section class="peer-corridor-section" aria-label="Cross-Ecosystem Examined Repositories">
