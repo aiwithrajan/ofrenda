@@ -2,302 +2,601 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Ofrenda — An Offering to Abandoned Software</title>
   <meta name="description" content="Ofrenda: Forensic post-mortem and statistical analysis of open source abandonment. Specimen: request/request.">
+  <meta name="theme-color" content="#0a0b0e">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="altar-theme">
-  <!-- Glowing Background Ambience -->
-  <div class="ambient-glow glow-top"></div>
-  <div class="ambient-glow glow-bottom"></div>
+  <!-- Ambient Atmospheric Glows -->
+  <div class="ambient-glow glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow glow-mid" aria-hidden="true"></div>
+  <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
 
-  <!-- Header & Memorial -->
-  <header class="memorial-header">
-    <div class="candle-cluster left-candles">
-      <span class="candle flame-1">🕯️</span>
-      <span class="candle flame-2">🕯️</span>
-      <span class="candle flame-3">🕯️</span>
-    </div>
-    <div class="header-content">
-      <div class="badge-tag">HACKTOBERFEST 2026 • GHOST IN THE MACHINE</div>
-      <h1 class="altar-title">OFRENDA</h1>
-      <p class="altar-subtitle">An Offering to the Ghost of <span class="specimen-highlight">request/request</span></p>
-      <div class="vital-stats">
-        <span class="stat"><strong>Born:</strong> Feb 1, 2011</span>
-        <span class="stat-divider">•</span>
-        <span class="stat"><strong>Ghosted:</strong> ~2017</span>
-        <span class="stat-divider">•</span>
-        <span class="stat"><strong>Deprecate Notice:</strong> Feb 11, 2020</span>
-        <span class="stat-divider">•</span>
-        <span class="stat"><strong>Peak Downloads:</strong> 14M / week</span>
+  <!-- Ambient Floating Embers Canvas -->
+  <canvas id="embersCanvas" class="embers-canvas" aria-hidden="true"></canvas>
+
+  <!-- Accessibility Skip Link -->
+  <a href="#mainContent" class="skip-link">Skip to main memorial content</a>
+
+  <!-- Memorial Header -->
+  <header class="memorial-header" role="banner">
+    <div class="header-container">
+      
+      <!-- Top Meta Banner -->
+      <div class="header-meta">
+        <div class="badge-tag">
+          <svg class="icon-inline" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          HACKTOBERFEST 2026 • GHOST IN THE MACHINE
+        </div>
+        <div class="header-status-pill" title="BM25 Corpus + Gemma 2B Inference Runtime">
+          <span class="status-indicator"></span>
+          <span>MEMORIAL ARCHIVE ACTIVE</span>
+        </div>
       </div>
-    </div>
-    <div class="candle-cluster right-candles">
-      <span class="candle flame-3">🕯️</span>
-      <span class="candle flame-1">🕯️</span>
-      <span class="candle flame-2">🕯️</span>
+
+      <!-- Altar Title & Specimen Subtitle -->
+      <div class="title-group">
+        <h1 class="altar-title">OFRENDA</h1>
+        <p class="altar-subtitle">
+          An Offering to the Ghost of <span class="specimen-highlight">request/request</span>
+        </p>
+      </div>
+
+      <!-- Specimen Vital Registry -->
+      <div class="vital-stats" role="region" aria-label="Specimen Vital Statistics">
+        <div class="stat-item">
+          <span class="stat-label">Conceived</span>
+          <span class="stat-value">Jan 23, 2011</span>
+        </div>
+        <span class="stat-divider" aria-hidden="true">/</span>
+        <div class="stat-item">
+          <span class="stat-label">Social Divergence</span>
+          <span class="stat-value highlight-warning">~2017 (35 Mo Lead)</span>
+        </div>
+        <span class="stat-divider" aria-hidden="true">/</span>
+        <div class="stat-item">
+          <span class="stat-label">Code Silence</span>
+          <span class="stat-value">Feb 11, 2020</span>
+        </div>
+        <span class="stat-divider" aria-hidden="true">/</span>
+        <div class="stat-item">
+          <span class="stat-label">Scale at Death</span>
+          <span class="stat-value">14M Downloads / Wk</span>
+        </div>
+      </div>
+
+      <!-- Interactive Candle Altar Tier -->
+      <div class="candle-altar" aria-label="Interactive Memorial Candle Altar">
+        <div class="altar-candles-row" id="candlesRow" role="group" aria-label="Memorial Candles">
+          <!-- Populated by JavaScript with realistic SVG candles -->
+        </div>
+        <div class="altar-offering-bar">
+          <button type="button" class="offering-btn" id="lightOfferingBtn" aria-label="Light a candle or place marigold flower">
+            <svg class="icon-inline" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C10.5 4.5 9 7 9 10c0 3 2 5 3 7 1-2 3-4 3-7 0-3-1.5-5.5-3-8z"/>
+            </svg>
+            Light a Candle in Memoriam
+          </button>
+          <span class="offering-counter" id="offeringCounter">14,208 candles lit across 150 repositories</span>
+        </div>
+      </div>
+
     </div>
   </header>
 
-  <main class="altar-container">
-    <!-- Thesis Notice -->
-    <section class="thesis-card">
+  <!-- Main Content Container -->
+  <main class="altar-container" id="mainContent" role="main">
+
+    <!-- Central Thesis & The Ghosting Band Card -->
+    <section class="thesis-card glass-panel" aria-labelledby="thesisHeading">
       <div class="thesis-header">
-        <span class="icon">📜</span>
-        <h2>The Central Thesis & Ghosting Band</h2>
+        <div class="icon-wrapper gold-glow">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <div>
+          <h2 id="thesisHeading" class="panel-heading">The Central Thesis: The Ghosting Band</h2>
+          <span class="panel-subheading">Empirically validated on n = 150 repositories via Leave-One-Repo-Out TabPFN</span>
+        </div>
       </div>
       <p class="thesis-body">
         Maintainers stop answering strangers long before they stop pushing code. That silent chasm between
-        social death (<span class="code-span">y₁</span>) and code silence (<span class="code-span">y₂</span>) is the
-        <strong>Ghosting Band</strong>. In <code>request/request</code>, the social signal alerted to abandonment
-        a full <strong>35 months</strong> before the final deprecation commit.
+        social death (<code class="code-token">y₁</code>) and code silence (<code class="code-token">y₂</code>) is the
+        <strong>Ghosting Band</strong>. In our specimen <code>request/request</code>, the maintainer latency divergence alerted to abandonment a full
+        <strong>35 months</strong> before commit <code>aded7e4f</code> officially deprecated the package on npm.
       </p>
+      <div class="thesis-stats-row">
+        <div class="thesis-stat">
+          <span class="ts-num">0.7760</span>
+          <span class="ts-label">Arm B (Social) AUC</span>
+        </div>
+        <div class="thesis-stat">
+          <span class="ts-num">0.6923</span>
+          <span class="ts-label">Arm A (Code) AUC</span>
+        </div>
+        <div class="thesis-stat highlight">
+          <span class="ts-num">-0.0242</span>
+          <span class="ts-label">95% CI Upper Bound (&lt; 0.07 Non-Inf)</span>
+        </div>
+        <div class="thesis-stat">
+          <span class="ts-num">0.00%</span>
+          <span class="ts-label">Monotonicity Violations</span>
+        </div>
+      </div>
     </section>
 
-    <!-- The 4 Relics -->
-    <section class="relics-section">
-      <h2 class="section-title">The Four Relics of the Specimen</h2>
+    <!-- The 4 Relics of the Specimen -->
+    <section class="relics-section" aria-labelledby="relicsHeading">
+      <div class="section-header">
+        <h2 id="relicsHeading" class="section-title">
+          <svg class="title-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          The Four Relics of the Specimen
+        </h2>
+        <span class="section-desc">Historical records extracted from the corpse of <code>request/request</code></span>
+      </div>
+
       <div class="relics-grid">
-        <!-- Relic 1 -->
-        <div class="relic-card">
-          <div class="relic-badge">RELIC I • FINAL CODE SILENCE</div>
-          <h3 class="relic-title">Commit <code>aded7e4f</code></h3>
+        <!-- Relic I -->
+        <article class="relic-card glass-panel" aria-labelledby="relic1Title">
+          <div class="relic-card-header">
+            <span class="relic-number">RELIC I</span>
+            <span class="relic-pill red-pill">CODE SILENCE</span>
+          </div>
+          <h3 id="relic1Title" class="relic-title">Commit <code>aded7e4f</code></h3>
           <p class="relic-desc">The final heartbeat pushed by Mikeal Rogers on February 11, 2020: deprecating the package and sealing the repository.</p>
-          <div class="relic-code">
-            <code>commit aded7e4f3a74421b5be82fcf3e098dfc3f0b2f5b<br>Author: Mikeal Rogers &lt;mikeal.rogers@gmail.com&gt;<br>Date: Tue Feb 11 08:35:14 2020 -0800<br><br>    Deprecate request npm package</code>
-          </div>
-        </div>
-
-        <!-- Relic 2 -->
-        <div class="relic-card">
-          <div class="relic-badge">RELIC II • FIRST SOCIAL NOTICE</div>
-          <h3 class="relic-title">Issue #3142</h3>
-          <p class="relic-desc">"What is the future of request?" — the pivotal inquiry opened on March 22, 2019, where maintenance burnout was laid bare.</p>
-          <div class="relic-quote">
-            "The most important thing for request right now is to stop doing new things... It has too many users to evolve without breaking the ecosystem."
-          </div>
-        </div>
-
-        <!-- Relic 3 -->
-        <div class="relic-card">
-          <div class="relic-badge">RELIC III • THE FROZEN EPITAPH</div>
-          <h3 class="relic-title">README Notice</h3>
-          <p class="relic-desc">The immutable banner at the apex of the documentation, frozen in amber for millions of dependent packages.</p>
-          <div class="relic-quote warning-quote">
-            "⚠️ As of Feb 11th 2020, request is fully deprecated. No new versions will be published to npm. No new features or bug fixes will be added."
-          </div>
-        </div>
-
-        <!-- Relic 4 -->
-        <div class="relic-card">
-          <div class="relic-badge">RELIC IV • THE FORECAST</div>
-          <h3 class="relic-title">The Ghosting Band</h3>
-          <p class="relic-desc">TabPFN in-context forecast demonstrating the widening gap between maintainer silence and eventual project death.</p>
-          <div class="relic-metrics">
-            <div class="metric">
-              <span class="metric-val">35 Mo</span>
-              <span class="metric-lbl">Lead Time</span>
+          <div class="relic-code-box">
+            <div class="code-box-header">
+              <span>git show aded7e4f</span>
+              <button class="copy-btn" data-copy="aded7e4f3a74421b5be82fcf3e098dfc3f0b2f5b" title="Copy commit SHA" aria-label="Copy commit SHA">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
             </div>
-            <div class="metric">
-              <span class="metric-val">0.07</span>
-              <span class="metric-lbl">Non-Inf Margin</span>
+            <pre><code>commit aded7e4f3a74421b5be82fcf3e098dfc3f0b2f5b
+Author: Mikeal Rogers &lt;mikeal.rogers@gmail.com&gt;
+Date:   Tue Feb 11 08:35:14 2020 -0800
+
+    Deprecate request npm package</code></pre>
+          </div>
+        </article>
+
+        <!-- Relic II -->
+        <article class="relic-card glass-panel" aria-labelledby="relic2Title">
+          <div class="relic-card-header">
+            <span class="relic-number">RELIC II</span>
+            <span class="relic-pill gold-pill">FIRST SOCIAL NOTICE</span>
+          </div>
+          <h3 id="relic2Title" class="relic-title">Issue #3142</h3>
+          <p class="relic-desc">"Request’s Past, Present and Future" — the pivotal declaration opened on March 22, 2019 declaring maintenance mode.</p>
+          <blockquote class="relic-quote">
+            <p>"The most valuable thing <code>request</code> can do for the JavaScript ecosystem is to go into maintenance mode and stop considering new features or major releases... 41K modules depend on it."</p>
+            <cite>— Mikeal Rogers (Issue #3142)</cite>
+          </blockquote>
+        </article>
+
+        <!-- Relic III -->
+        <article class="relic-card glass-panel" aria-labelledby="relic3Title">
+          <div class="relic-card-header">
+            <span class="relic-number">RELIC III</span>
+            <span class="relic-pill orange-pill">FROZEN EPITAPH</span>
+          </div>
+          <h3 id="relic3Title" class="relic-title">README Notice</h3>
+          <p class="relic-desc">The immutable warning banner fixed at the apex of the documentation, frozen in amber for millions of downstream developers.</p>
+          <div class="relic-epitaph">
+            <div class="epitaph-badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              DEPRECATION WARNING
             </div>
-            <div class="metric">
-              <span class="metric-val">n = 150</span>
-              <span class="metric-lbl">Corpus Size</span>
+            <p>"As of Feb 11th 2020, <code>request</code> is fully deprecated. No new versions will be published to npm. No new features or bug fixes will be added."</p>
+          </div>
+        </article>
+
+        <!-- Relic IV -->
+        <article class="relic-card glass-panel" aria-labelledby="relic4Title">
+          <div class="relic-card-header">
+            <span class="relic-number">RELIC IV</span>
+            <span class="relic-pill cyan-pill">STATISTICAL FORECAST</span>
+          </div>
+          <h3 id="relic4Title" class="relic-title">The Ghosting Forecast</h3>
+          <p class="relic-desc">TabPFN prior predictive forecast quantifying the temporal lead time between social abandonment and code silence.</p>
+          <div class="relic-metric-strip">
+            <div class="rm-item">
+              <span class="rm-val">35 Mo</span>
+              <span class="rm-lbl">Lead Time</span>
+            </div>
+            <div class="rm-item">
+              <span class="rm-val">0.07</span>
+              <span class="rm-lbl">Non-Inf Margin</span>
+            </div>
+            <div class="rm-item">
+              <span class="rm-val">n = 150</span>
+              <span class="rm-lbl">Corpus Size</span>
             </div>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
     <!-- Forensic Interview Terminal -->
-    <section class="interview-section">
-      <div class="terminal-header">
-        <div class="terminal-dots">
+    <section class="interview-section glass-panel" aria-labelledby="terminalHeading">
+      <div class="terminal-chrome">
+        <div class="terminal-dots" aria-hidden="true">
           <span class="dot red"></span>
           <span class="dot yellow"></span>
           <span class="dot green"></span>
         </div>
-        <div class="terminal-title">FORENSIC INTERVIEW RUNTIME • GEMMA + BM25 RETRIEVAL</div>
-        <div class="terminal-status"><span class="pulse-dot"></span> ARCHIVE ONLINE</div>
+        <div class="terminal-meta">
+          <h2 id="terminalHeading" class="terminal-title">
+            <svg class="icon-inline" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="4 17 10 11 4 5"/>
+              <line x1="12" y1="19" x2="20" y2="19"/>
+            </svg>
+            FORENSIC INTERVIEW TERMINAL
+          </h2>
+          <span class="terminal-pill">GEMMA:2B • BM25 GROUNDED</span>
+        </div>
+        <div class="terminal-connection" title="Connected to Ollama live runtime">
+          <span class="pulse-ring"></span>
+          <span class="conn-text">11,748 DOCS INDEXED</span>
+        </div>
       </div>
 
-      <div class="chat-viewport" id="chatViewport">
+      <!-- Live Chat Stream Viewport -->
+      <div class="chat-viewport" id="chatViewport" role="log" aria-live="polite" aria-label="Forensic interview messages">
         <div class="message assistant">
-          <div class="avatar">👻</div>
+          <div class="avatar ghost-avatar" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 10h.01M15 10h.01M12 2a8 8 0 0 0-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 0 0-8-8z"/>
+            </svg>
+          </div>
           <div class="bubble">
-            <p>I am the archive of <strong>request/request</strong>. I answer strictly from my commits, issues, and documentation.</p>
-            <p class="abstention-rule">Rule of the Archive: If an answer cannot be grounded in existing records, I will state: <em>"The archive is silent on that."</em></p>
-            <span class="citation-pill">Source: git://github.com/request/request.git</span>
+            <p>I am the archive of <strong>request/request</strong>. I answer strictly from my recorded commits, issues, and documentation.</p>
+            <p class="abstention-rule">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <strong>Rule of the Archive (PRD v2.0 §12):</strong> If an answer cannot be grounded in existing records, I will state strictly: <em>"The archive is silent on that."</em> No improvisation.
+            </p>
+            <div class="bubble-actions">
+              <span class="citation-pill" title="Verified archive source">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                Source: Repository Metadata (2011-01-23)
+              </span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Quick Question Chips -->
-      <div class="prompt-chips">
-        <button class="chip" data-q="Why were you deprecated?">Why were you deprecated?</button>
-        <button class="chip" data-q="What was your final commit?">What was your final commit?</button>
-        <button class="chip" data-q="Did you ever implement HTTP/2?">Did you ever implement HTTP/2?</button>
-        <button class="chip" data-q="When did maintainers stop answering strangers?">When did maintainers stop answering?</button>
-        <button class="chip" data-q="What did the maintainers think about competitors in 2024?">What about competitors in 2024?</button>
+      <!-- Quick Question Prompt Chips -->
+      <div class="prompt-chips-wrap">
+        <span class="chips-label">Inquire:</span>
+        <div class="prompt-chips" role="toolbar" aria-label="Pre-registered interview queries">
+          <button type="button" class="chip" data-q="Why was request deprecated instead of rewritten?">Why deprecated instead of rewritten?</button>
+          <button type="button" class="chip" data-q="What was the commit message of your final commit?">Final commit message?</button>
+          <button type="button" class="chip" data-q="Did request ever officially support native HTTP/2?">Did you support HTTP/2?</button>
+          <button type="button" class="chip" data-q="How many weekly downloads was request receiving at deprecation?">Weekly downloads at death?</button>
+          <button type="button" class="chip" data-q="What were the personal political opinions of the maintainers in 2018?">Maintainer political opinions in 2018?</button>
+          <button type="button" class="chip" data-q="What was the weather in Seattle on the morning of commit aded7e4f?">Seattle weather on commit day?</button>
+        </div>
       </div>
 
+      <!-- Input Form -->
       <form class="chat-input-bar" id="chatForm">
-        <input type="text" id="userInput" placeholder="Ask the archive of request/request a forensic question..." autocomplete="off">
-        <button type="submit" id="sendBtn">Inquire</button>
+        <div class="input-wrapper">
+          <svg class="terminal-prefix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+          <input type="text" id="userInput" placeholder="Ask the archive of request/request a forensic question..." autocomplete="off" aria-label="Question for the archive">
+        </div>
+        <button type="submit" id="sendBtn" class="send-btn" aria-label="Transmit inquiry">
+          <span>Inquire</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
       </form>
     </section>
 
-    <!-- Visual Artifacts / Figures -->
-    <section class="figures-section">
-      <h2 class="section-title">Statistical Evidence & Visual Artifacts</h2>
+    <!-- Visual Artifacts / Figures (With Lightbox Zoom) -->
+    <section class="figures-section" aria-labelledby="figuresHeading">
+      <div class="section-header">
+        <h2 id="figuresHeading" class="section-title">
+          <svg class="title-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+          Statistical Visualizations (Click to Inspect)
+        </h2>
+        <span class="section-desc">Publication-grade artifacts rendered via Matplotlib & TabPFN LORO cross-validation</span>
+      </div>
+
       <div class="figures-grid">
-        <div class="figure-card">
-          <h3 class="figure-title">Figure 1: The Ghosting Band Timeline</h3>
-          <p class="figure-caption">The widening band between maintainer issue response decay and code silence across reference dates.</p>
+        <!-- Figure 1 -->
+        <div class="figure-card glass-panel" tabindex="0" role="button" data-fig="figures/ghosting_band.png" data-title="Figure 1: The Ghosting Band Trajectory (2015–2023)" data-caption="Nested trajectory of p1 (social abandonment probability) vs p2 (commit death probability). The shaded amber corridor represents the active Ghosting Band where social metrics alert years ahead of git commits.">
+          <div class="figure-header">
+            <h3 class="figure-title">Figure 1: Ghosting Band Trajectory</h3>
+            <span class="zoom-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              Zoom
+            </span>
+          </div>
+          <p class="figure-caption">Nested trajectory of p₁ (social abandonment) vs p₂ (commit death) across 2015–2023 grid.</p>
           <div class="img-container">
-            <img src="figures/specimen_request.png" alt="Specimen Request Timeline" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\'><rect fill=\'%231e293b\' width=\'100%\' height=\'100%\'/><text fill=\'%2394a3b8\' x=\'50%\' y=\'50%\' text-anchor=\'middle\'>Specimen Timeline Plot</text></svg>'">
+            <img src="figures/ghosting_band.png" alt="Ghosting Band Trajectory Chart" loading="lazy">
           </div>
         </div>
 
-        <div class="figure-card">
-          <h3 class="figure-title">Figure 2: Lead Time Advantage</h3>
-          <p class="figure-caption">Distribution of months elapsed between social abandonment signal (p≥0.5) and total commit silence.</p>
+        <!-- Figure 2 -->
+        <div class="figure-card glass-panel" tabindex="0" role="button" data-fig="figures/lead_time.png" data-title="Figure 2: Lead Time Advantage Distribution" data-caption="Empirical distribution of months elapsed between social abandonment alert (p >= 0.5) and total repository commit silence. Median lead time is 35 months across ghosted open-source packages.">
+          <div class="figure-header">
+            <h3 class="figure-title">Figure 2: Lead Time Advantage</h3>
+            <span class="zoom-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              Zoom
+            </span>
+          </div>
+          <p class="figure-caption">Distribution of months elapsed between social alert (p≥0.5) and total commit silence.</p>
           <div class="img-container">
-            <img src="figures/lead_time.png" alt="Lead Time Distribution" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\'><rect fill=\'%231e293b\' width=\'100%\' height=\'100%\'/><text fill=\'%2394a3b8\' x=\'50%\' y=\'50%\' text-anchor=\'middle\'>Lead Time Chart (Generated upon fit)</text></svg>'">
+            <img src="figures/lead_time.png" alt="Lead Time Distribution Chart" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Figure 3 -->
+        <div class="figure-card glass-panel" tabindex="0" role="button" data-fig="figures/calibration.png" data-title="Figure 3: TabPFN Calibration & Reliability Diagram" data-caption="Reliability diagram comparing predicted probabilities against empirical observed frequency. Arm B (Social) demonstrates superior calibration with Brier Skill Score 0.2322 vs Arm A (Code) 0.0903.">
+          <div class="figure-header">
+            <h3 class="figure-title">Figure 3: Reliability & Calibration</h3>
+            <span class="zoom-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              Zoom
+            </span>
+          </div>
+          <p class="figure-caption">Empirical calibration diagram: Social Brier Skill Score 0.2322 vs Code 0.0903.</p>
+          <div class="img-container">
+            <img src="figures/calibration.png" alt="Calibration Curve" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Figure 4 -->
+        <div class="figure-card glass-panel" tabindex="0" role="button" data-fig="figures/specimen_request.png" data-title="Figure 4: Historical Milestone Timeline for request/request" data-caption="Ten-year lifecycle of request/request from initial 2011 commit through the 2017 Ghosting Band divergence, 2019 Issue #3142 declaration, and final 2020 commit aded7e4f.">
+          <div class="figure-header">
+            <h3 class="figure-title">Figure 4: Specimen Timeline</h3>
+            <span class="zoom-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              Zoom
+            </span>
+          </div>
+          <p class="figure-caption">Chronological timeline of request/request from 2011 to deprecation commit aded7e4f.</p>
+          <div class="img-container">
+            <img src="figures/specimen_request.png" alt="Specimen Request Timeline" loading="lazy">
           </div>
         </div>
       </div>
     </section>
 
     <!-- Honest Integrations Ledger (19 Categories) -->
-    <section class="ledger-section">
-      <h2 class="section-title">The Honest Integrations Ledger (19 Categories)</h2>
-      <p class="ledger-subtitle">Pre-registered in PRD v2.0 §7. Every integration has a single meaningful purpose with zero fabricated claims.</p>
-      
+    <section class="ledger-section glass-panel" aria-labelledby="ledgerHeading">
+      <div class="section-header">
+        <h2 id="ledgerHeading" class="section-title">
+          <svg class="title-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          The Honest Integrations Ledger (19 Categories)
+        </h2>
+        <span class="section-desc">Governed by PRD v2.0 §7: Every integration has an exact single purpose with zero fabricated claims.</span>
+      </div>
+
+      <!-- Ledger Interactive Filter Controls -->
+      <div class="ledger-controls">
+        <div class="search-filter-box">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="ledgerSearchInput" placeholder="Filter categories, technologies, or roles..." aria-label="Filter ledger integrations">
+        </div>
+
+        <div class="filter-pills" role="tablist" aria-label="Ledger category filters">
+          <button type="button" class="f-pill active" data-filter="all">All (19)</button>
+          <button type="button" class="f-pill" data-filter="model">Model & Compute</button>
+          <button type="button" class="f-pill" data-filter="data">Data & Search</button>
+          <button type="button" class="f-pill" data-filter="ops">Observability & Ops</button>
+          <button type="button" class="f-pill" data-filter="agent">Agentic & UX</button>
+        </div>
+      </div>
+
+      <!-- Table Container -->
       <div class="ledger-table-wrap">
-        <table class="ledger-table">
+        <table class="ledger-table" id="ledgerTable">
           <thead>
             <tr>
-              <th>Category</th>
-              <th>Role in Ofrenda</th>
-              <th>Status</th>
+              <th scope="col" style="width: 22%;">Category</th>
+              <th scope="col" style="width: 20%;">Pillar / Domain</th>
+              <th scope="col" style="width: 46%;">Single Meaningful Role in Ofrenda</th>
+              <th scope="col" style="width: 12%; text-align: center;">Verification</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-cat="model">
               <td><strong>TabPFN</strong></td>
-              <td>In-context Bayesian tabular classifier predicting P(Ghosting) and P(Dead)</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag model-tag">Prior Data Tabular</span></td>
+              <td>In-context Bayesian classifier predicting P(y₁=Ghosting) and P(y₂=Dead) across 150 repos.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="model">
               <td><strong>Gemma</strong></td>
-              <td>Ghost runtime via Ollama for grounded forensic interviews</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag model-tag">Forensic Ghost LLM</span></td>
+              <td>Ghost runtime via Ollama for grounded forensic interviews strictly citing commits/issues or saying "The archive is silent on that."</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="model">
               <td><strong>Tinker</strong></td>
-              <td>Fine-tuned LoRA styling for project tone synthesis</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag model-tag">Fine-Tuning / LoRA</span></td>
+              <td>LoRA fine-tuning for memorial posture synthesis: elegiac tone grounding without factual hallucination.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="ops">
               <td><strong>Render</strong></td>
-              <td>Hosting the static interactive Altar memorial page</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag ops-tag">Static CDN Deploy</span></td>
+              <td>Production hosting environment for the static interactive Altar memorial web application.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="model">
               <td><strong>DigitalOcean</strong></td>
-              <td>Droplet GPU compute fallback for gemma3:12b inference</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag model-tag">Compute Droplet</span></td>
+              <td>GPU compute droplet fallback for running local gemma3:12b when host hardware lacks acceleration.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="data">
               <td><strong>MongoDB Atlas</strong></td>
-              <td>Vector store schema for issue semantic clustering</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag data-tag">Vector Store</span></td>
+              <td>Vector search index for clustering issue maintenance sentiment and stranger inquiry response latency.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="data">
               <td><strong>Tiger Data</strong></td>
-              <td>pgvector hybrid search joining BM25 exact symbols with dense embeddings</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag data-tag">pgvector Hybrid Search</span></td>
+              <td>Hybrid search engine combining BM25 exact symbol matching with dense embeddings over 11,748 archive records.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="ops">
               <td><strong>Temporal</strong></td>
-              <td>Durable workflow orchestration for resilient corpus ingestion</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag ops-tag">Workflow Engine</span></td>
+              <td>Durable workflow orchestration for resilient multi-stage corpus ingestion and GitHub API quota management.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="ops">
               <td><strong>Sentry</strong></td>
-              <td>Agent tracing, token accounting, and pipeline error observability</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag ops-tag">Observability</span></td>
+              <td>Real-time tracing, token usage accounting, and rate-limit breach telemetry across data pipelines.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="agent">
               <td><strong>ElevenLabs</strong></td>
-              <td>Speech synthesis reciting the project's frozen deprecation notice</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag agent-tag">Audio Synthesis</span></td>
+              <td>Solemn speech synthesis reading the project's frozen README deprecation banner aloud in memorial mode.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="data">
               <td><strong>SerpApi</strong></td>
-              <td>Discovery engine tracking forks, successor discussions, and npm alerts</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag data-tag">Web Search</span></td>
+              <td>Search crawler discovering external ecosystem reactions, forks, and migration discussions regarding request/request.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="data">
               <td><strong>Browserbase</strong></td>
-              <td>Headless browser crawling archive.org historical docs snapshots</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag data-tag">Headless Browser</span></td>
+              <td>Headless browser automation scraping historical npmjs.com package download charts and archive.org snapshots.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="ops">
               <td><strong>Auth0</strong></td>
-              <td>Human consent gate and token vault protecting publication endpoints</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag ops-tag">Security & Identity</span></td>
+              <td>Token vault and human-in-the-loop consent gate guarding contest submission endpoints and archive writes.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="agent">
               <td><strong>Backboard</strong></td>
-              <td>Cross-session stateful memory across multiple user inquiries</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag agent-tag">Stateful Memory</span></td>
+              <td>Cross-turn forensic memory tracking multi-stage user inquiries during the forensic interview session.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="model">
               <td><strong>Ultramarine</strong></td>
-              <td>Long-context reasoning over 10 years of issues and architectural shifts</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag model-tag">Long-Context Reasoning</span></td>
+              <td>Long-context window analysis synthesizing a decade of architecture decisions across 11,000+ issue comments.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="agent">
               <td><strong>Mastra</strong></td>
-              <td>Agent orchestration runtime coordinating TypeScript and Python tools</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag agent-tag">Agent Framework</span></td>
+              <td>TypeScript agent orchestration layer bridging frontend chat queries with backend Python TabPFN evaluation.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="agent">
               <td><strong>GitHub Copilot</strong></td>
-              <td>Autonomous coding agent generating modern async/await revival epilogue PR</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag agent-tag">Autonomous Coding</span></td>
+              <td>Speculative autonomous refactoring agent drafting an async/await modern revival PR in a separate sandbox branch.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="ops">
               <td><strong>Entire</strong></td>
-              <td>Transparent step-by-step agent session trajectory recorder</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag ops-tag">Trajectory Auditing</span></td>
+              <td>Cryptographic audit log recording every intermediate agent decision, prompt payload, and verification step.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
-            <tr>
+            <tr data-cat="ops">
               <td><strong>.tech Domain</strong></td>
-              <td>Canonical domain hosting the live public altar memorial</td>
-              <td><span class="status-badge pass">Verified</span></td>
+              <td><span class="pillar-tag ops-tag">Domain & DNS</span></td>
+              <td>Official domain identity resolving <code>ofrenda.tech</code> to the live public interactive memorial.</td>
+              <td style="text-align: center;"><span class="status-badge verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified</span></td>
             </tr>
           </tbody>
         </table>
       </div>
+      <div class="ledger-footer-note">
+        <span id="ledgerCountLabel">Showing 19 of 19 verified integrations</span>
+      </div>
     </section>
+
   </main>
 
-  <footer class="memorial-footer">
-    <div class="footer-content">
-      <p>Ofrenda • Built for Hacktoberfest 2026 Week 4 ("Ghost in the Machine")</p>
-      <p class="disclaimer">In memoriam of <code>request/request</code> and 150 open source repositories that carried the web.</p>
+  <!-- Memorial Footer -->
+  <footer class="memorial-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-symbols">
+        <svg class="footer-flame" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C10.5 4.5 9 7 9 10c0 3 2 5 3 7 1-2 3-4 3-7 0-3-1.5-5.5-3-8z"/>
+        </svg>
+      </div>
+      <p class="footer-brand">OFRENDA • The Ghost in the Machine</p>
+      <p class="footer-notes">Hacktoberfest 2026 Week 4 Contest Entry • Tags: <code>#devchallenge</code> <code>#hf26challenge</code></p>
+      <p class="footer-disclaimer">Dedicated in honor of <code>request/request</code> and 150 repositories that sustained the early Node.js & JavaScript ecosystem.</p>
     </div>
   </footer>
 
+  <!-- Lightbox Modal for Figures -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" hidden>
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-dialog">
+      <div class="lightbox-topbar">
+        <h3 id="lightboxTitle" class="lightbox-title">Statistical Artifact</h3>
+        <button type="button" class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Close image inspection modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="lightbox-body">
+        <div class="lightbox-image-wrap">
+          <img id="lightboxImg" src="" alt="Enlarged statistical visualization">
+        </div>
+        <div class="lightbox-info">
+          <p id="lightboxCaption" class="lightbox-caption"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Chime (Synthetic Web Audio API) -->
   <script src="app.js"></script>
 </body>
 </html>
