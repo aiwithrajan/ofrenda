@@ -306,11 +306,15 @@ function initModal() {
       if (tabName === "ghosting") {
         const researchSec = document.getElementById("researchSection");
         if (researchSec) researchSec.scrollIntoView({ behavior: "smooth" });
-      } else if (tabName === "archive") {
+      } else if (tabName === "sanctuary" || tabName === "archive") {
         const mainContent = document.getElementById("mainContent");
         if (mainContent) mainContent.scrollIntoView({ behavior: "smooth" });
-      } else if (tabName === "methodology") {
-        openModal("ledger");
+      } else if (tabName === "casefile") {
+        const casefileSec = document.getElementById("casefileSection");
+        if (casefileSec) casefileSec.scrollIntoView({ behavior: "smooth" });
+      } else if (tabName === "corridor") {
+        const corridorSec = document.getElementById("corridorSection");
+        if (corridorSec) corridorSec.scrollIntoView({ behavior: "smooth" });
       }
     });
   });
