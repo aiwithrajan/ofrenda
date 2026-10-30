@@ -378,89 +378,130 @@
       </div>
     </section>
 
-    <!-- Repository Case File (Positioned underneath) -->
-    <section class="casefile-row-section" aria-label="Repository Case File">
-      <article class="glass-card casefile-card">
-        <div class="card-top-meta">
-          <div class="casefile-title-wrap">
-            <svg class="folder-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+    <!-- Repository Case File (Forensic Dossier Style, Matching Reference Exactly) -->
+    <section class="casefile-dossier-wrap" aria-label="Repository Case File">
+      <div class="dossier-box">
+        <!-- Corner Forensic Brackets -->
+        <span class="corner-bracket bracket-tl" aria-hidden="true"></span>
+        <span class="corner-bracket bracket-tr" aria-hidden="true"></span>
+        <span class="corner-bracket bracket-bl" aria-hidden="true"></span>
+        <span class="corner-bracket bracket-br" aria-hidden="true"></span>
+
+        <!-- Top Header Bar -->
+        <div class="dossier-header-bar">
+          <div class="dossier-title-col">
+            <svg class="dossier-doc-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
             </svg>
-            <span class="card-eyebrow">REPOSITORY CASE FILE</span>
+            <span class="dossier-title-text">REPOSITORY CASE FILE</span>
           </div>
-          <span class="badge-archived">
-            <span class="dot-archived"></span>
-            ARCHIVED
-          </span>
+
+          <div class="dossier-header-right">
+            <span class="dossier-case-tag">CASE #REQ-001</span>
+            <span class="dossier-badge-archived">
+              <span class="badge-dot-orange"></span>
+              ARCHIVED
+            </span>
+          </div>
         </div>
 
-        <div class="casefile-content-grid">
-          <!-- Left Column: Repo Identity -->
-          <div class="casefile-identity">
-            <div class="casefile-repo">
+        <!-- Gold Accent Divider Line -->
+        <div class="dossier-gold-line"></div>
+
+        <!-- 3-Column Dossier Body -->
+        <div class="dossier-body-grid">
+          
+          <!-- Column 1: Identity -->
+          <div class="dossier-col-identity">
+            <div class="dossier-repo-name-row">
               <svg class="gh-icon-sm" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
               </svg>
-              <span class="casefile-repo-name">request/request</span>
+              <span class="dossier-repo-title">request/request</span>
             </div>
-            <p class="casefile-desc">Simplified HTTP request client for Node.js.</p>
-          </div>
-
-          <!-- Middle Column: 3 Stat Metrics -->
-          <div class="casefile-stats-grid">
-            <div class="c-stat-box">
-              <div class="c-stat-top">
-                <span class="c-stat-arrow">&darr;</span>
-                <span class="c-stat-val">14M</span>
-              </div>
-              <span class="c-stat-sub">downloads / week at peak</span>
-            </div>
-
-            <div class="c-stat-box">
-              <div class="c-stat-top">
-                <span class="c-stat-ico">📅</span>
-                <span class="c-stat-val">Conceived</span>
-              </div>
-              <span class="c-stat-sub">Jan 23, 2011</span>
-            </div>
-
-            <div class="c-stat-box">
-              <div class="c-stat-top">
-                <span class="c-stat-ico">🚫</span>
-                <span class="c-stat-val">Code silence</span>
-              </div>
-              <span class="c-stat-sub">Feb 11, 2020</span>
+            <p class="dossier-repo-tagline">Simplified HTTP request client for Node.js.</p>
+            <div class="dossier-repo-meta-sub">
+              LANGUAGE: JavaScript &nbsp;|&nbsp; ESTABLISHED: 2011
             </div>
           </div>
 
-          <!-- Right Column: Evidence Tags -->
-          <div class="casefile-evidence-section">
-            <span class="evidence-title">EVIDENCE</span>
-            <div class="evidence-pills-wrap">
-              <button class="evidence-pill" data-evidence="gh">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <!-- Column 2: Forensic Metrics & Mini Timeline -->
+          <div class="dossier-col-metrics">
+            <div class="dossier-metrics-top">
+              <div class="d-metric-item">
+                <div class="d-metric-val">
+                  <span class="d-arrow">&darr;</span>
+                  <span>14M</span>
+                </div>
+                <span class="d-metric-label">peak downloads/wk</span>
+              </div>
+
+              <div class="d-metric-milestone">
+                <span class="d-m-eyebrow">CONCEIVED</span>
+                <span class="d-m-date">&mdash; Jan 23, 2011</span>
+              </div>
+
+              <button type="button" class="dossier-terminal-btn" id="dossierTerminalBtn">
+                &gt;_ TERMINAL
+              </button>
+            </div>
+
+            <!-- Mini Forensic Timeline -->
+            <div class="dossier-mini-timeline">
+              <span class="d-t-bar"></span>
+              <div class="d-t-node node-conceived-point">
+                <span class="d-t-dot"></span>
+              </div>
+              <div class="d-t-node node-divergence-point">
+                <span class="d-t-dot dot-amber"></span>
+                <div class="d-t-label-wrap">
+                  <span class="d-t-title">SOCIAL DIVERGENCE</span>
+                  <span class="d-t-sub">&mdash; ~2017</span>
+                </div>
+              </div>
+              <div class="d-t-node node-silence-point">
+                <span class="d-t-square"></span>
+                <div class="d-t-label-wrap">
+                  <span class="d-t-title title-orange">CODE SILENCE</span>
+                  <span class="d-t-sub">&mdash; Feb 11, 2020</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: Evidence Matrix -->
+          <div class="dossier-col-evidence">
+            <span class="dossier-ev-eyebrow">EVIDENCE</span>
+            <div class="dossier-ev-grid">
+              <button class="ev-btn ev-highlight" data-evidence="gh">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                 GitHub activity
               </button>
-              <button class="evidence-pill" data-evidence="downstream">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+              <button class="ev-btn" data-evidence="downstream">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
                 Downstream usage
               </button>
-              <button class="evidence-pill" data-evidence="archive">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+              <button class="ev-btn" data-evidence="archive">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
                 Archive snapshot
               </button>
-              <button class="evidence-pill" data-evidence="social">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <button class="ev-btn" data-evidence="social">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                 Social signals
               </button>
-              <button class="evidence-pill" data-evidence="commit">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/></svg>
+              <button class="ev-btn" data-evidence="commit">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/></svg>
                 Last commit
               </button>
             </div>
           </div>
+
         </div>
-      </article>
+
+        <!-- Subtle Docket ID in corner -->
+        <span class="dossier-docket-id">#88955AA</span>
+      </div>
     </section>
               GitHub activity
             </button>

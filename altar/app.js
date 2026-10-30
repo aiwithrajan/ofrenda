@@ -364,13 +364,13 @@ function initLedger() {
 }
 
 // --------------------------------------------------------------------------
-// 7. Evidence Tag Pills Quick Interaction
+// 7. Evidence Tag Pills & Terminal Button Quick Interaction
 // --------------------------------------------------------------------------
 function initEvidencePills() {
-  const pills = document.querySelectorAll(".evidence-pill");
+  const pills = document.querySelectorAll(".ev-btn, .evidence-pill");
   pills.forEach((pill) => {
     pill.addEventListener("click", () => {
-      const type = pill.getAttribute("data-evidence");
+      const type = pill.getAttribute("data-evidence") || "records";
       chime.ring();
       pill.style.borderColor = "#f59e0b";
       setTimeout(() => (pill.style.borderColor = ""), 400);
@@ -386,6 +386,20 @@ function initEvidencePills() {
       }
     });
   });
+
+  const termBtn = document.getElementById("dossierTerminalBtn");
+  if (termBtn) {
+    termBtn.addEventListener("click", () => {
+      chime.ring();
+      const modal = document.getElementById("archiveModal");
+      const input = document.getElementById("terminalInput");
+      if (modal) {
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        if (input) input.focus();
+      }
+    });
+  }
 }
 
 // --------------------------------------------------------------------------
