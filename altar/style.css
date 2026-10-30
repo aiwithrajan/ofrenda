@@ -1235,117 +1235,201 @@ html, body {
 }
 
 /* ==========================================================================
-   BOTTOM PEER REPOSITORIES STRIP
+   UPGRADED PEER SPECIMEN CORRIDOR (Luxury Forensic Showcase)
    ========================================================================== */
-.peer-repos-strip {
-  background: rgba(12, 14, 18, 0.8);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-card);
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+.peer-corridor-section {
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 56px;
 }
 
-.peer-header-col {
+.peer-corridor-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  gap: 20px;
+}
+
+.peer-header-left {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  min-width: 190px;
 }
 
-.peer-eyebrow {
-  font-size: 10.5px;
+.corridor-eyebrow {
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   color: #dfb256;
 }
 
-.peer-desc {
-  font-size: 11px;
+.corridor-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-white);
+  letter-spacing: 0.04em;
+  margin: 4px 0 6px;
+}
+
+.corridor-subtitle {
+  font-size: 13.5px;
   color: var(--text-muted);
 }
 
-.peer-cards-row {
-  display: flex;
+.btn-corridor-viewall {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  flex: 1;
-}
-
-.peer-repo-chip {
-  flex: 1;
-  background: rgba(18, 22, 28, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 10px;
-  padding: 10px 14px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.peer-repo-chip:hover {
-  border-color: rgba(212, 175, 55, 0.3);
-  background: rgba(24, 29, 38, 0.9);
-}
-
-.chip-main {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin-bottom: 2px;
-}
-
-.gh-icon-chip {
-  color: var(--text-secondary);
-}
-
-.chip-name {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.chip-status {
-  margin-left: auto;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-}
-
-.status-active {
-  color: var(--accent-emerald);
-}
-
-.status-partial {
-  color: #f59e0b;
-}
-
-.status-archived {
-  color: #ef4444;
-}
-
-.chip-sub {
-  font-size: 10.5px;
-  color: var(--text-muted);
-}
-
-.view-all-link {
-  background: none;
-  border: none;
-  color: var(--accent-gold);
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: rgba(22, 26, 36, 0.85);
+  color: #fef08a;
   font-family: var(--font-sans);
   font-size: 12.5px;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
-  padding: 6px 10px;
-  transition: color 0.2s ease;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.12);
 }
 
-.view-all-link:hover {
+.btn-corridor-viewall:hover {
+  background: rgba(30, 36, 52, 0.95);
+  border-color: #f59e0b;
   color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+}
+
+/* 3-Card Responsive Grid */
+.peer-specimens-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.specimen-card {
+  background: rgba(14, 17, 24, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-card);
+  padding: 22px 24px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+}
+
+.specimen-card:hover {
+  border-color: rgba(212, 175, 55, 0.38);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+}
+
+.s-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.s-card-repo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.s-repo-name {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-white);
+}
+
+.s-status-badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+}
+
+.s-status-badge.status-active {
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.s-status-badge.status-partial {
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.s-status-badge.status-archived {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.s-repo-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.s-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #e2e8f0;
+  margin-bottom: 14px;
+}
+
+.s-divider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.s-footer-note {
+  margin-top: auto;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+}
+
+.note-healthy {
+  background: rgba(34, 197, 94, 0.08);
+  color: #86efac;
+  border-left: 2.5px solid #22c55e;
+}
+
+.note-warning {
+  background: rgba(245, 158, 11, 0.08);
+  color: #fde047;
+  border-left: 2.5px solid #eab308;
+}
+
+.note-dead {
+  background: rgba(239, 68, 68, 0.08);
+  color: #fca5a5;
+  border-left: 2.5px solid #ef4444;
+}
+
+@media (max-width: 960px) {
+  .peer-corridor-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .peer-specimens-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ==========================================================================

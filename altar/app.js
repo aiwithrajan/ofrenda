@@ -216,6 +216,20 @@ function initModal() {
   if (viewAllBtn) viewAllBtn.addEventListener("click", openModal);
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
 
+  const specimenCards = document.querySelectorAll(".specimen-card");
+  specimenCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const repo = card.getAttribute("data-repo");
+      chime.ring();
+      openModal();
+      const searchInput = document.getElementById("ledgerSearchInput");
+      if (searchInput && repo) {
+        searchInput.value = repo;
+        searchInput.dispatchEvent(new Event("input"));
+      }
+    });
+  });
+
   if (modal) {
     modal.addEventListener("click", (e) => {
       if (e.target === modal) closeModal();
