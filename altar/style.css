@@ -1430,10 +1430,16 @@ html, body {
 }
 
 /* ==========================================================================
-   UPGRADED PEER SPECIMEN CORRIDOR (Luxury Forensic Showcase)
+   UPGRADED PEER SPECIMEN CORRIDOR (Dedicated Full Viewport Section - Direct Borderless)
    ========================================================================== */
 .peer-corridor-section {
   width: 100%;
+  min-height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 40px 0 24px;
+  box-sizing: border-box;
   margin-top: 16px;
   margin-bottom: 56px;
 }
@@ -1442,13 +1448,20 @@ html, body {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 22px;
+  margin-bottom: 16px;
   gap: 20px;
 }
 
 .peer-header-left {
   display: flex;
   flex-direction: column;
+}
+
+.corridor-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 4px;
 }
 
 .corridor-eyebrow {
@@ -1498,30 +1511,107 @@ html, body {
   box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
 }
 
-/* 3-Card Responsive Grid */
+/* Corridor Global Benchmark Strip (Direct, Borderless) */
+.corridor-metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 14px 0 26px;
+  width: 100%;
+}
+
+.c-metric-stat {
+  border-top: 1px solid rgba(212, 175, 55, 0.35);
+  padding: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.c-metric-stat:hover {
+  border-top-color: #f59e0b;
+  transform: translateY(-2px);
+}
+
+.c-stat-lbl {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #dfb256;
+  margin-bottom: 6px;
+}
+
+.c-stat-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.c-stat-num {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-white);
+  line-height: 1;
+}
+
+.c-stat-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.c-stat-tag.tag-green {
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.c-stat-tag.tag-amber {
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.c-stat-tag.tag-blue {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.c-stat-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* 3-Card Responsive Grid (Direct, Borderless) */
 .peer-specimens-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  gap: 24px;
 }
 
 .specimen-card {
-  background: rgba(14, 17, 24, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-card);
-  padding: 22px 24px;
+  background: transparent;
+  border: none;
+  border-top: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 0;
+  padding: 18px 4px 10px;
   cursor: pointer;
   transition: all 0.25s ease;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
 }
 
 .specimen-card:hover {
-  border-color: rgba(212, 175, 55, 0.38);
+  border-top-color: #f59e0b;
   transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+  box-shadow: none;
 }
 
 .s-card-top {
@@ -1594,27 +1684,23 @@ html, body {
 .s-footer-note {
   margin-top: auto;
   font-size: 11px;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 6px 0;
+  border-radius: 0;
   font-family: var(--font-sans);
+  background: transparent;
+  border-left: none;
 }
 
 .note-healthy {
-  background: rgba(34, 197, 94, 0.08);
   color: #86efac;
-  border-left: 2.5px solid #22c55e;
 }
 
 .note-warning {
-  background: rgba(245, 158, 11, 0.08);
   color: #fde047;
-  border-left: 2.5px solid #eab308;
 }
 
 .note-dead {
-  background: rgba(239, 68, 68, 0.08);
   color: #fca5a5;
-  border-left: 2.5px solid #ef4444;
 }
 
 /* Centered Bottom Ledger Action */
@@ -1684,6 +1770,9 @@ html, body {
 
 @media (max-width: 960px) {
   .research-findings-grid {
+    grid-template-columns: 1fr;
+  }
+  .corridor-metrics-strip {
     grid-template-columns: 1fr;
   }
   .peer-corridor-header {
