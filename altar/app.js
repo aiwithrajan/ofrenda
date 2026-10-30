@@ -195,13 +195,30 @@ function initModal() {
   const modal = document.getElementById("archiveModal");
   const closeBtn = document.getElementById("modalCloseBtn");
   const exploreBtn = document.getElementById("btnExploreArchive");
-  const viewAllBtn = document.getElementById("btnViewAllRepos");
+  const exploreCorridorBtn = document.getElementById("btnExploreCorridor");
+  const openFullLedgerBtn = document.getElementById("btnOpenFullLedger");
+  const legacyViewAllBtn = document.getElementById("btnViewAllRepos");
   const navTabs = document.querySelectorAll(".nav-tab");
 
-  function openModal() {
+  function openModal(focusTarget = "terminal") {
     if (modal) {
       modal.classList.add("open");
       modal.setAttribute("aria-hidden", "false");
+      if (focusTarget === "ledger") {
+        const ledgerSection = document.querySelector(".archive-ledger-section");
+        const searchInput = document.getElementById("ledgerSearchInput");
+        if (ledgerSection) {
+          ledgerSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        if (searchInput) {
+          setTimeout(() => searchInput.focus(), 250);
+        }
+      } else {
+        const termInput = document.getElementById("terminalInput");
+        if (termInput) {
+          setTimeout(() => termInput.focus(), 250);
+        }
+      }
     }
   }
 
@@ -212,8 +229,22 @@ function initModal() {
     }
   }
 
-  if (exploreBtn) exploreBtn.addEventListener("click", openModal);
-  if (viewAllBtn) viewAllBtn.addEventListener("click", openModal);
+  if (exploreBtn) {
+    exploreBtn.addEventListener("click", () => {
+      chime.ring();
+      openModal("terminal");
+    });
+  }
+
+  [exploreCorridorBtn, openFullLedgerBtn, legacyViewAllBtn].forEach((btn) => {
+    if (btn) {
+      btn.addEventListener("click", () => {
+        chime.ring();
+        openModal("ledger");
+      });
+    }
+  });
+
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
 
   const specimenCards = document.querySelectorAll(".specimen-card");
