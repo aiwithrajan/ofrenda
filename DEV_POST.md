@@ -34,7 +34,7 @@ By construction, $y_2 \le y_1$, creating the **Ghosting Band** $[p_1 - p_2]$.
 
 ### B. The Interactive Altar Page
 A standalone memorial page for `request/request`, the iconic HTTP client that peaked at 14 million weekly downloads before its deprecation on February 11, 2020. The Altar presents:
-- **Relic I:** The final commit `aded7e4f` ("Deprecate request npm package").
+- **Relic I:** The final commit `3c0cddc` ("README: typo in deprecation message (#3268)", preceded by `aded7e4f` "doc: note full deprecation").
 - **Relic II:** Issue #3142 ("What is the future of request?").
 - **Relic III:** The frozen README deprecation banner.
 - **Relic IV:** The Ghosting Band forecast curve showing that maintainer latency rose from 4.2 days to >180 days starting in 2017—**35 months before the project was put to rest**.

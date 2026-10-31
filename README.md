@@ -166,7 +166,7 @@ Every integration has a single meaningful, load-bearing role per PRD §6:
 
 - **TabPFN:** Prior Labs (`tabpfn` Python library).
 - **Gemma:** Google DeepMind open weights.
-- **request/request:** Mikeal Rogers and all contributors who maintained the foundational HTTP client of Node.js.
+- **request/request:** The founding creators and community contributors who maintained the foundational HTTP client of Node.js.
 - **Hacktoberfest 2026 & DEV Community:** Challenge organizers for "Ghost in the Machine".
 
 ---

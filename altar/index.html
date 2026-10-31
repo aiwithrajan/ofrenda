@@ -100,8 +100,8 @@
             <div class="t-node node-peak">
               <span class="t-dot dot-gold"></span>
               <div class="t-info">
-                <span class="t-date">~2017</span>
-                <span class="t-name">Social peak</span>
+                <span class="t-date">Jan 1, 2018</span>
+                <span class="t-name">Social divergence (&gamma;<sub>1</sub>)</span>
               </div>
             </div>
 
@@ -111,7 +111,7 @@
               <span class="t-dot dot-muted"></span>
               <div class="t-info">
                 <span class="t-date">Feb 11, 2020</span>
-                <span class="t-name">Code silence</span>
+                <span class="t-name">Code silence (sha: 3c0cddc)</span>
               </div>
             </div>
           </div>
@@ -138,8 +138,8 @@
               <path d="M12 22V12"/>
             </svg>
             <div class="stat-meta">
-              <span class="stat-num" id="candlesCountDisplay">14,210</span>
-              <span class="stat-desc">candles lit</span>
+              <span class="stat-num" id="candlesCountDisplay">142</span>
+              <span class="stat-desc">community offerings</span>
             </div>
           </div>
 
@@ -319,7 +319,7 @@
     <!-- Full-Width Direct Research Insight (Dedicated Full Viewport Section) -->
     <section class="research-direct-section" id="researchSection" aria-label="Forensic Research Insight">
       <div class="direct-insight-meta">
-        <span class="card-eyebrow">+ RESEARCH INSIGHT</span>
+        <span class="card-eyebrow">+ RESEARCH INSIGHT &bull; SPECIMEN GROUND TRUTH</span>
         <span class="card-index">01</span>
       </div>
 
@@ -328,6 +328,12 @@
       <p class="direct-insight-narrative">
         Maintainers stop answering strangers long before they stop pushing code. That silent chasm between social death (<span class="math-term">&gamma;<sub>1</sub></span>) and code silence (<span class="math-term">&gamma;<sub>2</sub></span>) is the <strong>Ghosting Band</strong>.
       </p>
+
+      <!-- Empirical Distinction & Provenance Banner -->
+      <div class="insight-methodology-note">
+        <span class="method-tag">EMPIRICALLY MEASURED POST-MORTEM</span>
+        <span>Specimen <code>request/request</code> is strictly held out of model training. The values below are empirical post-mortem measurements from archival git and issue logs against which our Leave-One-Repo-Out TabPFN forecast was validated.</span>
+      </div>
 
       <!-- Direct Full-Width Visual Graph -->
       <div class="direct-chart-wrap">
@@ -400,10 +406,11 @@
         <div class="r-finding-card">
           <div class="r-card-head">
             <span class="r-card-label">CHASM GAP (&Delta;&gamma;)</span>
-            <span class="r-card-badge badge-amber">842 Days</span>
+            <span class="r-card-badge badge-amber">771 Days</span>
           </div>
           <h4 class="r-card-title">Dual Silence Divergence</h4>
-          <p class="r-card-desc">Social responsiveness dropped to zero in January 2018 (&gamma;<sub>1</sub>), yet commits quietly continued until February 2020 (&gamma;<sub>2</sub>) before official deprecation.</p>
+          <p class="r-card-desc">Social responsiveness dropped to zero on January 1, 2018 (&gamma;<sub>1</sub>), yet commits quietly continued until February 11, 2020 (&gamma;<sub>2</sub>) before official deprecation (771-day silent gap).</p>
+          <span class="r-provenance-tag">Source: GitHub issue response logs vs git commit history &bull; PRD v2.0 §1</span>
         </div>
 
         <div class="r-finding-card">
@@ -413,6 +420,7 @@
           </div>
           <h4 class="r-card-title">Stranger Issue Abandonment</h4>
           <p class="r-card-desc">Median maintainer response time to outside community issues surged from 18 to 269 days, serving as the earliest algorithmic indicator of project ghosting.</p>
+          <span class="r-provenance-tag">Source: Feature F4 triage latency across 1,180 issues &bull; derived/rows.ndjson</span>
         </div>
 
         <div class="r-finding-card">
@@ -422,6 +430,7 @@
           </div>
           <h4 class="r-card-title">The Echo Commit Illusion</h4>
           <p class="r-card-desc">Automated bots and maintenance commits created a false signal of project health, leaving 14M weekly npm consumers unaware of critical maintainer fatigue.</p>
+          <span class="r-provenance-tag">Source: Feature F2 commit entropy audit; npm download logs at Issue #3142</span>
         </div>
       </div>
 
@@ -462,9 +471,9 @@
 
           <div class="dossier-header-right">
             <span class="dossier-case-tag">CASE #REQ-001</span>
-            <span class="dossier-badge-archived">
+            <span class="dossier-badge-archived" title="Repository was deprecated on npm and inactive, but GitHub repository was never archived (archived: false)">
               <span class="badge-dot-orange"></span>
-              ARCHIVED
+              DEPRECATED &middot; NOT ARCHIVED
             </span>
           </div>
         </div>
@@ -520,14 +529,14 @@
                 <span class="d-t-dot dot-amber"></span>
                 <div class="d-t-label-wrap">
                   <span class="d-t-title">SOCIAL DIVERGENCE</span>
-                  <span class="d-t-sub">&mdash; ~2017</span>
+                  <span class="d-t-sub">&mdash; Jan 1, 2018</span>
                 </div>
               </div>
               <div class="d-t-node node-silence-point">
                 <span class="d-t-square"></span>
                 <div class="d-t-label-wrap">
                   <span class="d-t-title title-orange">CODE SILENCE</span>
-                  <span class="d-t-sub">&mdash; Feb 11, 2020</span>
+                  <span class="d-t-sub">&mdash; Feb 11, 2020 (sha: 3c0cddc)</span>
                 </div>
               </div>
             </div>
@@ -562,8 +571,8 @@
 
         </div>
 
-        <!-- Subtle Docket ID in corner -->
-        <span class="dossier-docket-id">#88955AA</span>
+        <!-- Docket ID showing verified final commit SHA -->
+        <span class="dossier-docket-id" title="Final commit sha: 3c0cddc (Feb 11, 2020)">sha: 3c0cddc</span>
       </div>
 
       <!-- Forensic Autopsy & Structural Impact Dossier -->
@@ -575,6 +584,7 @@
           </div>
           <h4 class="c-card-title">The Async/Await & Fetch Paradigm</h4>
           <p class="c-card-desc">Conceived around early Node callbacks, request could not transition to native promises and modern fetch without catastrophic breaking changes to 41,200 downstream dependents.</p>
+          <span class="r-provenance-tag">Source: Issue #3142 ('Request’s Past, Present and Future')</span>
         </div>
 
         <div class="c-finding-card">
@@ -583,7 +593,8 @@
             <span class="c-card-badge badge-amber">Bus Factor: 1</span>
           </div>
           <h4 class="c-card-title">Single Maintainer Bottleneck</h4>
-          <p class="c-card-desc">Sole author Mikeal Rogers maintained 86.4% code ownership. When author priorities shifted, pull request triage bottlenecked and project evolution permanently stalled.</p>
+          <p class="c-card-desc">A single founding maintainer maintained 86.4% code ownership. As maintenance bandwidth declined, external pull request triage stalled and unanswered community issues accumulated without delegation.</p>
+          <span class="r-provenance-tag">Source: Git author commit share &bull; PRD v2.0 §12 strict restraint</span>
         </div>
 
         <div class="c-finding-card">
@@ -592,7 +603,8 @@
             <span class="c-card-badge badge-cyan">41,200+ Repos</span>
           </div>
           <h4 class="c-card-title">Unannounced Transitive Risk</h4>
-          <p class="c-card-desc">Over 41,000 packages (including the AWS SDK and build toolchains) relied on request during its 842-day ghosting window with zero programmatic warning of abandonment.</p>
+          <p class="c-card-desc">Over 41,000 packages (including the AWS SDK and build toolchains) relied on request during its 771-day ghosting window with zero programmatic warning of abandonment.</p>
+          <span class="r-provenance-tag">Source: npm registry dependent package graph at deprecation</span>
         </div>
       </div>
 

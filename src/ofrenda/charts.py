@@ -209,7 +209,7 @@ def plot_specimen_timeline(out_path: Path):
 
     # Milestones for request/request
     events = [
-        (dt.date(2011, 2, 1), 0.1, "Project Created (Mikeal Rogers)", "#10b981"),
+        (dt.date(2011, 2, 1), 0.1, "Project Created", "#10b981"),
         (dt.date(2015, 6, 1), 0.25, "Peak Ecosystem Adoption (~14M dl/wk)", "#0ea5e9"),
         (dt.date(2017, 1, 1), 0.55, "Ghosting Band Opens (Issue backlog climbs)", "#f59e0b"),
         (dt.date(2019, 3, 22), 0.82, "Issue #3142: Deprecation Proposed", "#ef4444"),

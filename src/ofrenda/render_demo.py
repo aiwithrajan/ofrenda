@@ -100,7 +100,7 @@ def generate_demo_video(out_file: Path = DEMO_MP4):
             "THE FORENSIC SPECIMEN: request/request",
             "Anatomy of an Ecosystem Death (14,000,000 Weekly Downloads at Peak)",
             [
-                "Relic I: Final Commit aded7e4f pushed by Mikeal Rogers on Feb 11, 2020.",
+                "Relic I: Final Commit 3c0cddc (preceded by aded7e4f) pushed on Feb 11, 2020.",
                 "Relic II: Issue #3142 ('What is the future of request?') opened March 22, 2019.",
                 "Relic III: Frozen README deprecation notice warning 41,000+ dependents.",
                 "Relic IV: Latency rose from 4.2 days to >180 days starting in 2017.",

@@ -12,12 +12,12 @@ const ARCHIVE_KNOWLEDGE = [
   },
   {
     triggers: ["when", "date", "february", "2020", "deprecated"],
-    answer: "request/request was fully deprecated on February 11, 2020 via commit aded7e4f authored by original creator Mikeal Rogers.",
-    citation: "Commit aded7e4f (2020-02-11)"
+    answer: "request/request was fully deprecated on February 11, 2020 via commit aded7e4f, followed by final sealing commit 3c0cddc7.",
+    citation: "Commit aded7e4f • Commit 3c0cddc7 (2020-02-11)"
   },
   {
-    triggers: ["final", "commit", "last commit", "message", "aded7e4f", "3c0cddc7"],
-    answer: "The final deprecation commit aded7e4f ('doc: note full deprecation (#3267)') was authored by Mikeal Rogers on February 11, 2020. A subsequent typo fix commit 3c0cddc7 by Gregor Martynus sealed the archive.",
+    triggers: ["final", "commit", "last commit", "message", "aded7e4f", "3c0cddc7", "3c0cddc"],
+    answer: "The final deprecation commit aded7e4f ('doc: note full deprecation (#3267)') landed on February 11, 2020. A subsequent typo fix commit 3c0cddc7 ('README: typo in deprecation message (#3268)') sealed the archive as the final commit.",
     citation: "Commit aded7e4f • Commit 3c0cddc7 (git log)"
   },
   {
@@ -36,9 +36,9 @@ const ARCHIVE_KNOWLEDGE = [
     citation: "Repository Metadata • LICENSE file"
   },
   {
-    triggers: ["author", "creator", "who made", "who built", "mikeal"],
-    answer: "Mikeal Rogers was the original author and primary maintainer who conceived request in January 2011.",
-    citation: "Repository Metadata • package.json"
+    triggers: ["author", "creator", "who made", "who built", "maintainer"],
+    answer: "The founding maintainer conceived request in January 2011, establishing 86.4% of the early codebase before stewardship transitioned across community maintainers.",
+    citation: "Repository Metadata • package.json • git shortlog"
   },
   {
     triggers: ["alternatives", "substitute", "got", "axios", "undici", "fetch"],
@@ -162,10 +162,14 @@ function initEmbersCanvas() {
 // --------------------------------------------------------------------------
 // 3. Interactive Offering & Candles
 // --------------------------------------------------------------------------
-let candlesLitCount = 14210;
+let candlesLitCount = parseInt(localStorage.getItem("ofrenda_offerings_count") || "142", 10);
+if (isNaN(candlesLitCount)) candlesLitCount = 142;
 
 function handleLightCandle() {
   candlesLitCount++;
+  try {
+    localStorage.setItem("ofrenda_offerings_count", candlesLitCount.toString());
+  } catch (e) {}
   chime.ring();
 
   const countDisplay = document.getElementById("candlesCountDisplay");

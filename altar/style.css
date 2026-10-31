@@ -989,6 +989,38 @@ html, body {
   margin: 0;
 }
 
+.r-provenance-tag {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+
+.insight-methodology-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0 22px;
+  padding: 10px 16px;
+  background: rgba(212, 175, 55, 0.05);
+  border-left: 2px solid #dfb256;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.method-tag {
+  color: #dfb256;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
 /* ==========================================================================
    REPOSITORY CASE FILE (Dedicated Full Viewport Section - Direct Borderless)
    ========================================================================== */

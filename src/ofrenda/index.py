@@ -145,7 +145,7 @@ def build_corpse_index(cache_dir: Path | str | None = None) -> CorpseIndex:
                     f"Maintenance Declaration: March 30, 2019 in Issue #3142 ('Request’s Past, Present and Future').\n"
                     f"Scale at deprecation: 14 million weekly downloads, 41,000 dependent packages (Issue #3142).\n"
                     f"Official Deprecation Date: February 11, 2020 (v2.88.2 published on npm).\n"
-                    f"Deprecation Commit: Commit aded7e4f ('doc: note full deprecation (#3267)') authored by Mikeal Rogers on 2020-02-11.\n"
+                    f"Deprecation Commit: Commit aded7e4f ('doc: note full deprecation (#3267)') authored on 2020-02-11.\n"
                     f"Final Commit: Commit 3c0cddc7 ('README: typo in deprecation message (#3268)') authored by Gregor Martynus on 2020-02-11.\n"
                     f"README Warning Banner: 'NOTE: request has been deprecated, see #3142'.\n"
                     f"Alternative Libraries Recommended: got, axios, and node-fetch (Issue #3142).\n"
