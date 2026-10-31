@@ -104,16 +104,23 @@ def ask_ghost(
     ]
 
     try:
-        raw_answer = call_ollama(model, messages).strip()
+        raw_answer = call_ollama(model, messages, timeout=8).strip()
     except (TimeoutError, urllib.error.URLError, OSError):
         top_doc, _ = hits[0]
-        summary_lines = [
+        # Direct archival excerpt fallback when LLM runtime daemon is offline
+        clean_lines = [
             line.strip()
             for line in top_doc.body.split("\n")
             if line.strip() and not line.startswith("Repository:")
         ]
-        summary_text = " ".join(summary_lines[:2]) if summary_lines else top_doc.body[:240]
-        raw_answer = f"{summary_text} ({top_doc.citation})"
+        summary_text = " ".join(clean_lines[:3]) if clean_lines else top_doc.body[:280]
+        return {
+            "question": question,
+            "answer": f"{summary_text} ({top_doc.citation})",
+            "citations": citations,
+            "hits": len(hits),
+            "abstention": False,
+        }
 
     # Detect refusal or inability to answer
     refusal_pattern = re.compile(
