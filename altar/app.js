@@ -398,9 +398,11 @@ function initTerminal() {
 // --------------------------------------------------------------------------
 const SAMPLE_SPECIMENS = [
   { name: "request/request", status: "DEPRECATED", dls: "14,000,000", bus: 1, conceived: "2011", silence: "2020-02" },
+  { name: "julianshapiro/velocity", status: "ABANDONED", dls: "1,200,000", bus: 1, conceived: "2014", silence: "2020-10" },
+  { name: "deis/deis", status: "ARCHIVED", dls: "450,000", bus: 3, conceived: "2013", silence: "2019-05" },
   { name: "pallets/flask", status: "ACTIVE", dls: "12,000,000", bus: 4, conceived: "2010", silence: "None" },
   { name: "django/django", status: "ACTIVE", dls: "8,500,000", bus: 8, conceived: "2005", silence: "None" },
-  { name: "twilio/twilio-python", status: "MAINTAINED", dls: "4,100,000", bus: 3, conceived: "2011", silence: "None" },
+  { name: "twilio/twilio-python", status: "ACTIVE", dls: "4,100,000", bus: 3, conceived: "2011", silence: "None" },
   { name: "left-pad", status: "UNPUBLISHED", dls: "2,500,000", bus: 1, conceived: "2016", silence: "2016-03" },
   { name: "event-stream", status: "ABANDONED", dls: "1,800,000", bus: 1, conceived: "2011", silence: "2018-11" },
   { name: "colors.js", status: "SABOTAGED", dls: "20,000,000", bus: 1, conceived: "2011", silence: "2022-01" },
