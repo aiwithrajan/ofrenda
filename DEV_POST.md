@@ -131,7 +131,7 @@ And as a maintainer remarked in the thread:
 
 ---
 
-## Limitations (Published Verbatim per PRD §15)
+## Limitations (Published Verbatim per PRD Section 15)
 
 In keeping with our scientific pre-registration, we state our project's limitations explicitly before any judge has to find them:
 1. **Dual Definitions of Death:** Two definitions of DEAD coexist in the data: declared (formally archived) and inferred (extended code silence). The model learns a blend of both.
