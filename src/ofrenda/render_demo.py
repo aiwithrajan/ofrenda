@@ -123,10 +123,10 @@ def generate_demo_video(out_file: Path = DEMO_MP4):
                 "Testing the Ghosting Band hypothesis across n = 150 open-source repositories.",
                 "Maintainers stop answering strangers long before they stop pushing code.",
                 "Leave-One-Repo-Out Bayesian prediction with TabPFN; specimen autopsy on request/request.",
-                "Forensic Gemma interview runtime with strict citation grounding or abstention.",
+                "Live Interactive Memorial Shrine with candles deployed at ofrenda-altar.onrender.com.",
             ],
             "highlight": "Tags: #devchallenge #hf26challenge | 17 Verified Code Integrations",
-            "image": None,
+            "image": RESULTS_DIR / "figures" / "live_altar.png",
             "narration": (
                 "Welcome to Ofrenda: The Ghost in the Machine. "
                 "Some projects do not end with a declaration. They just go quiet. "
@@ -145,7 +145,7 @@ def generate_demo_video(out_file: Path = DEMO_MP4):
                 "Arm B (Social Signals): f4 issue response latency trend, f5 response rate decline.",
             ],
             "highlight": "Pre-registered Hypothesis: H0: AUC_A − AUC_B ≥ 0.07 vs H1: AUC_A − AUC_B < 0.07",
-            "image": FIGURES_DIR / "lead_time.png",
+            "image": FIGURES_DIR / "ghosting_band.png",
             "narration": (
                 "Our central thesis posits that maintainers abandon strangers months before they abandon code. "
                 "We formalize two nested outcomes: target y-one, representing social ghosting where maintainers stop answering stranger issues; "
@@ -164,7 +164,7 @@ def generate_demo_video(out_file: Path = DEMO_MP4):
                 "External Validation: Confirmed on 10 held-out permanently archived repositories.",
             ],
             "highlight": "Verdict: Non-inferiority confirmed. Social signals achieve parity with 35-month lead time.",
-            "image": FIGURES_DIR / "ghosting_band.png",
+            "image": FIGURES_DIR / "lead_time.png",
             "narration": (
                 "Using TabPFN in-context Bayesian priors with Leave-One-Repo-Out cross-fitting, "
                 "our paired DeLong test and repo-clustered bootstrap confirm non-inferiority. "
@@ -193,21 +193,40 @@ def generate_demo_video(out_file: Path = DEMO_MP4):
         },
         {
             "id": 4,
-            "title": "THE DIGITAL SÉANCE & LIVE MEMORIAL",
+            "title": "THE DIGITAL SÉANCE & LIVE WORKING TERMINAL",
             "subtitle": "Gemma Archival Retrieval Runtime with Strict Abstention • Live on Render",
             "bullets": [
                 "Interactive Altar shrine with glowing community offering candles.",
-                "Gemma 2B interview runtime grounded via BM25 over 11,748 cached documents.",
-                "Strict Abstention Enforcement: Speculative queries met with 'The archive is silent on that.'",
-                "Production Cloud Deployment: 24/7 web service live at ofrenda-altar.onrender.com.",
+                "Live Working Séance Terminal grounded via BM25 over 11,748 cached documents.",
+                "Examined Specimen Ledger: 150 repository forensic audit with interactive search.",
+                "Strict Abstention: Non-recorded questions met with 'The archive is silent on that.'",
             ],
             "highlight": "Live URL: https://ofrenda-altar.onrender.com | Apache-2.0 License",
-            "image": FIGURES_DIR / "calibration.png",
+            "image": RESULTS_DIR / "figures" / "live_seance.png",
             "narration": (
-                "To remember these repositories with dignity, Ofrenda provides an interactive digital séance. "
+                "To remember these repositories with dignity, Ofrenda provides an interactive digital séance and 150 specimen ledger. "
                 "Grounded in BM25 retrieval over eleven thousand archive documents, "
                 "the ghost speaks as the project, citing its commits and issues, and strictly abstaining on unrecorded speculation. "
                 "The complete memorial is live on Render at ofrenda-altar.onrender.com."
+            ),
+        },
+        {
+            "id": 5,
+            "title": "SYSTEM ARCHITECTURE & PRODUCTION DEPLOYMENT",
+            "subtitle": "Full Documentation, Open Source Repository, and Cloud Infrastructure",
+            "bullets": [
+                "Production Cloud Web Service: Hosted 24/7 on Render with automated health monitoring.",
+                "Transparent Scientific Documentation: Complete formula specs at /docs.html.",
+                "Public GitHub Repository: Open source code, unit tests, and pre-registration documents.",
+                "Honest Ledger: 17 fully code-backed integration categories.",
+            ],
+            "highlight": "GitHub: https://github.com/aiwithrajan/ofrenda | Cloud: ofrenda-altar.onrender.com",
+            "image": RESULTS_DIR / "figures" / "live_docs.png",
+            "narration": (
+                "The complete system is live in production today on Render, serving the interactive memorial, "
+                "the comprehensive documentation, and the grounded forensic API. "
+                "Across seventeen verified integration categories, Ofrenda demonstrates how open source innovation "
+                "preserves the monuments of the digital commons."
             ),
         },
     ]
@@ -221,7 +240,7 @@ def generate_demo_video(out_file: Path = DEMO_MP4):
         wav_audio = FRAMES_DIR / f"voice_{idx:02d}.wav"
         clip_mp4 = FRAMES_DIR / f"clip_{idx:02d}.mp4"
 
-        print(f"Rendering chapter {idx + 1}/5: {chapter['title']}")
+        print(f"Rendering chapter {idx + 1}/{len(chapters)}: {chapter['title']}")
         create_slide(
             title=chapter["title"],
             subtitle=chapter["subtitle"],
