@@ -47,10 +47,12 @@ An interview runtime where users speak with the deceased repository. Implemented
 
 ## 2. Demo
 
-- **Video Walkthrough:** Fully self-contained video [`demo.mp4`](file:///Users/apple/Desktop/hack5/demo.mp4) (533 KB) included directly in the repository root and release assets, demonstrating:
+- **Live Demo Video (YouTube):** [https://youtu.be/omB2iQKnRts](https://youtu.be/omB2iQKnRts)
+- **Committed Video Walkthrough:** Fully self-contained video [`demo.mp4`](file:///Users/apple/Desktop/hack5/demo.mp4) (4.3 MB, Full HD 1080p with synchronized voice narration) included directly in the repository root and release assets, demonstrating:
   1. The LORO statistical pipeline executing TabPFN cross-fitting over $n=150$ repositories.
   2. The interactive Altar memorial interface and Ghosting Band divergence visualization.
   3. Real-time forensic interview queries with archival citations and strict abstention on unrecorded claims.
+- **Live Cloud Memorial (Render):** [https://ofrenda-altar.onrender.com](https://ofrenda-altar.onrender.com)
 - **Local Interactive Memorial:** Served locally in three seconds via `.venv/bin/python -m ofrenda.server 8080` (or viewing `altar/index.html` and `altar/archive.html`).
 - **1-Click Render Cloud Deployment:** Deploy instantly to Render with zero-configuration via the pre-configured Blueprint:
   [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/aiwithrajan/ofrenda)
