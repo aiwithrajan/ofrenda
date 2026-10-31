@@ -1,8 +1,9 @@
 *This is a submission for the [Hacktoberfest Open-Source AI Challenge Week 4: Ghost in the Machine](https://dev.to/challenges/hacktoberfest-week4-2026-10-26)*
 
-# Ofrenda: An Offering to Abandoned Software and the Ghosting Band
+# 🕯️ Ofrenda: The Ghost in the Machine
+### *Some projects don't end. They just go quiet.*
 
-> *"Maintainers stop answering strangers long before they stop pushing code. That silent chasm is the ghosting band."*
+> *"Code keeps committing, CI stays green, and bots open PRs — while maintainers stopped answering strangers 771 days ago. That silent twilight is the Ghosting Band."*
 
 Every open-source autopsy begins too late. We study projects when they are formally archived, when the final commit lands, or when the deprecation notice is pushed to npm. But open source projects rarely die in a day. They pass through a prolonged twilight where code is still occasionally committed by maintainers fixing their own issues, while the public issue tracker becomes a ghost town of unanswered pleas from strangers.
 
