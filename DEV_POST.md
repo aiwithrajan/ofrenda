@@ -52,6 +52,9 @@ An interview runtime where users speak with the deceased repository. Implemented
   2. The interactive Altar memorial interface and Ghosting Band divergence visualization.
   3. Real-time forensic interview queries with archival citations and strict abstention on unrecorded claims.
 - **Local Interactive Memorial:** Served locally in three seconds via `.venv/bin/python -m ofrenda.server 8080` (or viewing `altar/index.html` and `altar/archive.html`).
+- **1-Click Render Cloud Deployment:** Deploy instantly to Render with zero-configuration via the pre-configured Blueprint:
+  [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/aiwithrajan/ofrenda)
+  Direct link: `https://render.com/deploy?repo=https://github.com/aiwithrajan/ofrenda`
 
 ---
 
