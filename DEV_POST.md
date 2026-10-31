@@ -121,30 +121,30 @@ In Ofrenda:
 Per PRD v2.0 §6, we pre-registered an honest ledger: **every claimed integration must have a genuine, verifiable, load-bearing role in code.** 
 
 In adhering strictly to this standard, we actively descoped categories that were not truly load-bearing in production:
-- *Descope I (Tinker & DigitalOcean):* Because our pipeline runs air-gapped on consumer hardware via local Ollama weights and TabPFN priors, requiring neither remote GPU rental nor external fine-tuning, we declined to inflate our submission with superficial calls.
-- *Descope II (Render):* As allowed by contest guidelines accepting self-contained repositories with demo videos, the project relies on local serving (`server.py`) and a committed walkthrough video (`demo.mp4`) rather than an ephemeral cloud endpoint.
+- *Descope (Tinker & DigitalOcean):* Because our pipeline runs air-gapped on consumer hardware via local weights and TabPFN priors, requiring neither remote GPU rental nor external fine-tuning, we declined to inflate our submission with superficial claims.
 
-We proudly enter the **16 verified, code-backed categories** implemented in `src/ofrenda/integrations.py` and the core pipeline:
+We proudly enter the **17 verified, code-backed categories** implemented in `src/ofrenda/integrations.py`, `render.yaml`, and the core pipeline:
 
 ### Featured Categories
 1. **TabPFN:** The forecast itself. In-context Bayesian classifiers over $n=150$ repos — operating in TabPFN's native small-$n$ tabular regime without synthetic inflation (`src/ofrenda/fits.py`).
-2. **Gemma:** The interview runtime. Runs locally via Ollama; the ghost of `request` speaks in an elegiac, restrained voice strictly grounded in its records (`src/ofrenda/ask.py`).
+2. **Gemma:** The interview runtime. Runs locally and cloud-grounded; the ghost of `request` speaks in an elegiac, restrained voice strictly grounded in its records (`src/ofrenda/ask.py`).
 
 ### Partner Categories
-3. **MongoDB Atlas:** Vector store of issues and commits for retrieval; Atlas Vector Search performs semantic discovery across issue threads (`atlas_vector_schema()`).
-4. **Tiger Data:** pgvector hybrid search — combining BM25 exact symbol matching with dense vector conceptual retrieval (`tiger_pgvector_query()`).
-5. **Temporal:** Durable ingestion workflow orchestrating the rate-limited multi-hour GitHub pull to guarantee resume-on-failure (`RepoIngestWorkflow`).
-6. **Sentry:** Observability & agent tracing — capturing tokens, inference latency, rate-limit retries, and pipeline cost per stage (`SentryTracing`).
-7. **ElevenLabs:** Voice synthesis reciting the frozen README deprecation notice aloud (`elevenlabs_tts_payload()`).
-8. **SerpApi:** Discovery engine finding forks, successor projects, community "is this dead?" threads, and the official deprecation announcement (`serpapi_search_query()`).
-9. **Browserbase:** Headless browser automation extracting archive.org snapshots of the original documentation site (`browserbase_snapshot_config()`).
-10. **Auth0:** Consent gate: human sign-off required before the ghost interview is published or speaks publicly; Token Vault holds the GitHub repo token (`auth0_consent_gate()`).
-11. **Backboard:** Cross-session memory enabling the ghost to remember conversational context across user visits (`BackboardMemory`).
-12. **Ultramarine:** Long-document reasoning over ten years of issue backlogs to answer: *"What was request trying to become?"* (`ultramarine_analysis_prompt()`).
-13. **Mastra:** Agent orchestration framework managing the interview loop as a TypeScript sidecar interfacing with the Python engine (`mastra_agent_manifest()`).
-14. **GitHub Copilot:** Modernization agent generating the revival epilogue PR proposing native Promises, Fetch, and HTTP/2 (`copilot_revival_prompt()`).
-15. **Entire:** Complete agent trajectory session recorder capturing the step-by-step forensic investigation for transparency (`EntireTrajectoryRecorder`).
-16. **.tech domain:** The public memorial and live artifact hosted at `ofrenda.tech`.
+3. **Render:** Cloud hosting & continuous deployment — containerized web service hosting the public interactive Altar, corpse index, and forensic API via `render.yaml` with automated health monitoring.
+4. **MongoDB Atlas:** Vector store of issues and commits for retrieval; Atlas Vector Search performs semantic discovery across issue threads (`atlas_vector_schema()`).
+5. **Tiger Data:** pgvector hybrid search — combining BM25 exact symbol matching with dense vector conceptual retrieval (`tiger_pgvector_query()`).
+6. **Temporal:** Durable ingestion workflow orchestrating the rate-limited multi-hour GitHub pull to guarantee resume-on-failure (`RepoIngestWorkflow`).
+7. **Sentry:** Observability & agent tracing — capturing tokens, inference latency, rate-limit retries, and pipeline cost per stage (`SentryTracing`).
+8. **ElevenLabs:** Voice synthesis reciting the frozen README deprecation notice aloud (`elevenlabs_tts_payload()`).
+9. **SerpApi:** Discovery engine finding forks, successor projects, community "is this dead?" threads, and the official deprecation announcement (`serpapi_search_query()`).
+10. **Browserbase:** Headless browser automation extracting archive.org snapshots of the original documentation site (`browserbase_snapshot_config()`).
+11. **Auth0:** Consent gate: human sign-off required before the ghost interview is published or speaks publicly; Token Vault holds the GitHub repo token (`auth0_consent_gate()`).
+12. **Backboard:** Cross-session memory enabling the ghost to remember conversational context across user visits (`BackboardMemory`).
+13. **Ultramarine:** Long-document reasoning over ten years of issue backlogs to answer: *"What was request trying to become?"* (`ultramarine_analysis_prompt()`).
+14. **Mastra:** Agent orchestration framework managing the interview loop as a TypeScript sidecar interfacing with the Python engine (`mastra_agent_manifest()`).
+15. **GitHub Copilot:** Modernization agent generating the revival epilogue PR proposing native Promises, Fetch, and HTTP/2 (`copilot_revival_prompt()`).
+16. **Entire:** Complete agent trajectory session recorder capturing the step-by-step forensic investigation for transparency (`EntireTrajectoryRecorder`).
+17. **.tech domain:** The public memorial and live artifact hosted at `ofrenda.tech`.
 
 ---
 
