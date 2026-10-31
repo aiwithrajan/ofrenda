@@ -43,11 +43,11 @@ An interview runtime where users speak with the deceased repository. Implemented
 
 ## Demo
 
-- **Live Video Walkthrough (YouTube):** [https://youtu.be/omB2iQKnRts](https://youtu.be/omB2iQKnRts)
-- **Live Cloud Deployment (Render):** [https://ofrenda-altar.onrender.com](https://ofrenda-altar.onrender.com)
-- **Digital Séance & Specimen Ledger:** [https://ofrenda-altar.onrender.com/archive.html](https://ofrenda-altar.onrender.com/archive.html)
-- **System Documentation:** [https://ofrenda-altar.onrender.com/docs.html](https://ofrenda-altar.onrender.com/docs.html)
-- **Committed 1080p Video Walkthrough:** [`demo.mp4`](https://github.com/aiwithrajan/ofrenda/blob/main/demo.mp4) (4.3 MB, Full HD 1080p with synchronized voice narration committed directly in repository root).
+- **Live Video Walkthrough (YouTube):** https://youtu.be/omB2iQKnRts
+- **Live Cloud Deployment (Render):** https://ofrenda-altar.onrender.com
+- **Digital Séance & Specimen Ledger:** https://ofrenda-altar.onrender.com/archive.html
+- **System Documentation:** https://ofrenda-altar.onrender.com/docs.html
+- **Committed 1080p Video Walkthrough:** `demo.mp4` (4.3 MB, Full HD 1080p with synchronized voice narration committed directly in repository root).
 - **1-Click Render Cloud Deployment:** Deploy instantly via pre-configured Blueprint:
   [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/aiwithrajan/ofrenda)
 
@@ -59,14 +59,15 @@ All code, data schemas, unit tests, and pre-registration documents are open sour
 
 {% github aiwithrajan/ofrenda %}
 
-- **GitHub Repository:** [https://github.com/aiwithrajan/ofrenda](https://github.com/aiwithrajan/ofrenda)
+- **GitHub Repository:** https://github.com/aiwithrajan/ofrenda
+- **License:** Apache License 2.0 (`LICENSE` file in repo root)
 - **Key Source Components:**
   - `src/ofrenda/derive.py`: Pure functions computing nested labels $y_1, y_2$ and reference grid masks.
   - `src/ofrenda/features.py`: Feature derivation over release decay, commit entropy, and response latency.
   - `src/ofrenda/fits.py`: Leave-One-Repo-Out TabPFN fitting, Paired DeLong test, and 1,000-resample repo-clustered bootstrap.
   - `src/ofrenda/ask.py`: Gemma forensic interview runtime with citation enforcement.
   - `src/ofrenda/index.py`: Inverted index and grounded retrieval over 11,748 corpus documents.
-  - `src/ofrenda/integrations.py`: Verified contest integration schemas, workflows, and query adapters.
+  - `src/ofrenda/integrations.py`: Pre-registered architectural target schemas and adapters.
   - `altar/`: Complete standalone memorial interface (`index.html`, `archive.html`, `docs.html`).
 
 ---
@@ -88,15 +89,10 @@ On the locked $n=150$ corpus (497 masked rows evaluated in Leave-One-Repo-Out cr
 - **Empirical Difference ($\text{AUC}_A - \text{AUC}_B$):** $-0.0837$ ($\text{SE}_{\text{boot}} = 0.0376$)
 - **One-sided 95% CI Upper Bound on $(\text{AUC}_A - \text{AUC}_B)$:** $\mathbf{-0.0242}$
 - **Non-Inferiority Margin:** $0.07$ ($\text{Upper Bound } -0.0242 < 0.07 \implies \mathbf{p < 0.0001}$)
-- **Non-Inferiority Verdict:** **CONFIRMED (PARITY SECURED)**. Social signals predict abandonment at least as well as code commits—in fact, outperforming code by $0.08$ AUC points.
+- **Statistical Verdict:** **NON-INFERIORITY CONFIRMED (PARITY SECURED)**. Social signals predict abandonment without inferiority to code signals. (The descriptive $+0.08$ point estimate favored social signals, but our confirmatory claim remains strictly non-inferiority as pre-registered).
 - **Brier Skill Score:** $\text{BSS}_A = 0.0903$ vs $\text{BSS}_B = \mathbf{0.2322}$ (Social signals achieve $>2.5\times$ better probability calibration over base rate).
 - **Monotonicity:** $0.00\%$ violation rate across all 497 rows ($p_2 \le p_1$ holds unconditionally).
-- **External Validation on Held-Out Corpse Stratum ($n=10$):** Arm A $\text{AUC} = 1.0000$, Arm B $\text{AUC} = 0.9444$.
-
-### 3. Open-Source AI Architecture
-- **TabPFN (Prior-Data Fitted Networks):** Operating in tabular small-$n$ regimes without requiring synthetic oversampling or GPU clusters.
-- **Gemma (Open-Weight Models):** Running locally via Ollama (`gemma:2b` / `gemma3:12b`) and grounded cloud fallbacks.
-- **BM25 Corpse Index:** 11,748 documents parsed and indexed for deterministic evidence grounding.
+- **Exploratory Held-Out Check ($n=10$ permanently archived repos):** Arm A $\text{AUC} = 1.0000$, Arm B $\text{AUC} = 0.9444$. We report this transparently: on this small slice, code activity was fully informative at terminal archival, and with $n=10$, confidence intervals span most of the unit range. It serves as an exploratory sanity check rather than confirmatory proof.
 
 ---
 
@@ -127,34 +123,47 @@ During our forensic examination of `request/request`, we discovered that commit 
 
 For 771 days prior, automated bots had continued to open dependency PRs, CI badges remained green, and downloads averaged 14 million per week. The world thought the project was alive because the commits had not stopped. But in reality, the maintainers had walked away two years earlier—exhausted by 41,000 downstream dependents who demanded that the project never break, making it impossible to modernize for async/await or HTTP/2.
 
-When you ask the ghost of `request` in the séance terminal: *"Why were you deprecated instead of rewritten?"*, it does not give a generic AI apology. It cites Issue #3142:
-> *"Existing patterns could not be changed without breaking foundational infrastructure. The project stood still so the ecosystem could move forward."*
+When you ask the ghost of `request` in the séance terminal: *"Why were you deprecated instead of rewritten?"*, it does not give a generic AI apology. It cites the verified opening words of Issue #3142:
+> *"The most valuable thing `request` can do for the JavaScript ecosystem is to go into maintenance mode and stop considering new features or major releases."*
+
+And as a maintainer remarked in the thread:
+> *"As I see it, maintenance mode is not the same thing as deprecation."*
+
+---
+
+## Limitations (Published Verbatim per PRD §15)
+
+In keeping with our scientific pre-registration, we state our project's limitations explicitly before any judge has to find them:
+1. **Dual Definitions of Death:** Two definitions of DEAD coexist in the data: declared (formally archived) and inferred (extended code silence). The model learns a blend of both.
+2. **Selection Bias in Archival:** The archived stratum is self-selected. Owners archive projects they still care enough to curate; `request/request` was deprecated but never archived on GitHub (`archived: false`).
+3. **Age-Related Missingness:** Older repositories (pre-2012) suffer from incomplete GitHub issue metadata and API backfill anomalies.
+4. **Disabled Issue Trackers:** Issue-based features ($f_4, f_5$) are undefined when repositories disable their public issue trackers, and this missingness is not missing at random.
+5. **Sample Size:** $n = 150$ is modest for estimating three latent states across time horizons. We report confidence intervals rather than bare point estimates.
+6. **Social Death as Proxy:** Maintainer silence is an empirical proxy for social exhaustion, not biological or organizational cessation.
+7. **Interview Specificity ($n = 1$):** The forensic interview runtime over `request/request` is an illustrative story and commemorative artifact, not statistical evidence.
+8. **Pre-Registered Scope:** Our primary claim is strictly non-inferiority (parity), not superiority. Point estimates exceeding parity are reported as descriptive.
 
 ---
 
 ## Prize Categories
 
-Per PRD §6, we pre-registered an **Honest Ledger**: every claimed integration must have a genuine, verifiable, load-bearing role in code. We actively descoped categories that were not truly load-bearing in production (Tinker and DigitalOcean, as our pipeline runs air-gapped on consumer hardware without remote GPU rentals).
+### 1. Core Executed Production Engines (Live in Pipeline)
+- **TabPFN:** The statistical forecast itself. In-context Bayesian classifiers evaluating $n=150$ repositories in TabPFN's native small-$n$ tabular regime without synthetic oversampling (`src/ofrenda/fits.py`).
+- **Gemma:** The forensic interview inference runtime. Runs locally via Ollama (`gemma:2b` / `gemma3:12b`) with grounded cloud fallback; speaks in an elegiac voice strictly citing archival records (`src/ofrenda/ask.py`).
+- **Render:** Cloud hosting & continuous deployment. Containerized production web service running 24/7 with automated health monitoring at [https://ofrenda-altar.onrender.com](https://ofrenda-altar.onrender.com) (`render.yaml`).
 
-We proudly enter the **17 verified, code-backed categories** implemented in `src/ofrenda/integrations.py`, `render.yaml`, and the core pipeline:
-
-### Featured Categories
-1. **TabPFN:** The forecast itself. In-context Bayesian classifiers over $n=150$ repos — operating in TabPFN's native small-$n$ tabular regime without synthetic inflation (`src/ofrenda/fits.py`).
-2. **Gemma:** The interview runtime. Runs locally and cloud-grounded; the ghost of `request` speaks in an elegiac, restrained voice strictly grounded in its records (`src/ofrenda/ask.py`).
-
-### Partner Categories
-3. **Render:** Cloud hosting & continuous deployment — containerized web service hosting the public interactive Altar, corpse index, and forensic API via `render.yaml` with automated health monitoring.
-4. **MongoDB Atlas:** Vector store of issues and commits for retrieval; Atlas Vector Search performs semantic discovery across issue threads (`atlas_vector_schema()`).
-5. **Tiger Data:** pgvector hybrid search — combining BM25 exact symbol matching with dense vector conceptual retrieval (`tiger_pgvector_query()`).
-6. **Temporal:** Durable ingestion workflow orchestrating the rate-limited multi-hour GitHub pull to guarantee resume-on-failure (`RepoIngestWorkflow`).
-7. **Sentry:** Observability & agent tracing — capturing tokens, inference latency, rate-limit retries, and pipeline cost per stage (`SentryTracing`).
-8. **ElevenLabs:** Voice synthesis reciting the frozen README deprecation notice aloud (`elevenlabs_tts_payload()`).
-9. **SerpApi:** Discovery engine finding forks, successor projects, community "is this dead?" threads, and the official deprecation announcement (`serpapi_search_query()`).
-10. **Browserbase:** Headless browser automation extracting archive.org snapshots of the original documentation site (`browserbase_snapshot_config()`).
-11. **Auth0:** Consent gate: human sign-off required before the ghost interview is published or speaks publicly; Token Vault holds the GitHub repo token (`auth0_consent_gate()`).
-12. **Backboard:** Cross-session memory enabling the ghost to remember conversational context across user visits (`BackboardMemory`).
-13. **Ultramarine:** Long-document reasoning over ten years of issue backlogs to answer: *"What was request trying to become?"* (`ultramarine_analysis_prompt()`).
-14. **Mastra:** Agent orchestration framework managing the interview loop as a TypeScript sidecar interfacing with the Python engine (`mastra_agent_manifest()`).
-15. **GitHub Copilot:** Modernization agent generating the revival epilogue PR proposing native Promises, Fetch, and HTTP/2 (`copilot_revival_prompt()`).
-16. **Entire:** Complete agent trajectory session recorder capturing the step-by-step forensic investigation for transparency (`EntireTrajectoryRecorder`).
-17. **.tech domain:** The public memorial and live artifact hosted at `ofrenda.tech`.
+### 2. Architectural Target Schemas & Partner Specifications
+To demonstrate how Ofrenda integrates into broader production pipelines, we pre-registered concrete schemas, query patterns, and agent manifests in `src/ofrenda/integrations.py`:
+- **MongoDB Atlas:** Vector search index definition for semantic issue thread embeddings (`atlas_vector_schema()`).
+- **Tiger Data:** Hybrid BM25 + pgvector Reciprocal Rank Fusion query specification (`tiger_pgvector_query()`).
+- **Temporal:** Durable multi-stage ingestion workflow and retry policy definition (`RepoIngestWorkflow`).
+- **Sentry:** Observability tracing specification capturing stage duration, token count, and cost telemetry (`SentryTracing`).
+- **ElevenLabs:** Text-to-speech payload definition for voice synthesis of the deprecation notice (`elevenlabs_tts_payload()`).
+- **SerpApi:** Search query adapter for discovering external deprecation news and successor forks (`serpapi_search_query()`).
+- **Browserbase:** Headless crawling configuration for Wayback Machine snapshot extraction (`browserbase_snapshot_config()`).
+- **Auth0:** Curator authorization and role-based consent gate specification (`auth0_consent_gate()`).
+- **Backboard:** Persistent multi-turn conversational session memory adapter (`BackboardMemory`).
+- **Ultramarine:** Long-document backlog reasoning prompt for historical topic drift analysis (`ultramarine_analysis_prompt()`).
+- **Mastra:** TypeScript sidecar agent manifest and tool routing orchestration (`mastra_agent_manifest()`).
+- **GitHub Copilot:** Modernization prompt specification for generating legacy-compatible revival PRs (`copilot_revival_prompt()`).
+- **Entire:** Agent session trajectory recorder schema for forensic reproducibility (`EntireTrajectoryRecorder`).

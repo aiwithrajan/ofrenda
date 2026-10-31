@@ -271,12 +271,10 @@ def build_corpse_index(cache_dir: Path | str | None = None) -> CorpseIndex:
                 title="Request's Past, Present and Future",
                 body=(
                     "Issue #3142: Request's Past, Present and Future\n"
-                    "State: Open\n"
-                    "Summary: The maintainers declare request entering maintenance mode. "
-                    "With 14M weekly downloads and 41,000 dependents, request cannot be rewritten "
-                    "around modern JavaScript primitives (Promises, async/await, WHATWG Streams, HTTP/2) "
-                    "without breaking foundational ecosystem infrastructure. "
-                    "No new features will be accepted; maintenance will focus strictly on security."
+                    "Opening statement: 'The most valuable thing request can do for the JavaScript ecosystem "
+                    "is to go into maintenance mode and stop considering new features or major releases.'\n"
+                    "Discussion note: 'As I see it, maintenance mode is not the same thing as deprecation.'\n"
+                    "With 14M weekly downloads and 41,000 dependents, request entered maintenance mode rather than risking breaking changes."
                 ),
                 tokens=tokenize("Issue 3142 Request Past Present Future maintenance mode 14M downloads 41000 dependents async await Promises HTTP2 fetch deprecated deprecate rewrite"),
             ),
