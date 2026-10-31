@@ -584,7 +584,17 @@
         let answer = "The archive is silent on that.";
         let citations = [];
 
-        if (qLower.includes("deprecat") || qLower.includes("why") || qLower.includes("rewrit")) {
+        // Check if querying a specific examined specimen from the 150 repository ledger
+        const matchedSpecimen = CORPUS_DATA.find(s => {
+          const parts = s.name.toLowerCase().split("/");
+          const baseName = parts[parts.length - 1];
+          return qLower.includes(s.name.toLowerCase()) || (baseName.length > 3 && qLower.includes(baseName));
+        });
+
+        if (matchedSpecimen && matchedSpecimen.name !== "request/request") {
+          answer = `Specimen Ledger Case File: ${matchedSpecimen.name} (Classification: ${matchedSpecimen.status}). Conceived in ${matchedSpecimen.conceived}, this repository reached ${matchedSpecimen.dls} weekly downloads with an estimated bus factor of ${matchedSpecimen.bus}. Public maintainer activity entered terminal silence in ${matchedSpecimen.silence}.`;
+          citations = [`Specimen Ledger Dossier (n=150)`, `GitHub Case File: ${matchedSpecimen.name}`];
+        } else if (qLower.includes("deprecat") || qLower.includes("why") || qLower.includes("rewrit")) {
           answer = "In February 2020, request was deprecated because the JavaScript ecosystem had standardized on native Promises, async/await, and WHATWG fetch. Rewriting request's core callback architecture around modern idioms was impossible without breaking over 41,000 dependent packages and 14 million weekly downloads.";
           citations = ["Issue #3142", "Repository Metadata"];
         } else if (qLower.includes("author") || qLower.includes("creator") || qLower.includes("who") || qLower.includes("mikeal") || qLower.includes("found")) {
@@ -664,7 +674,7 @@
           else if (s.status === "ABANDONED" || s.status === "SABOTAGED") color = "#f87171";
 
           return `
-            <tr onclick="document.getElementById('archiveTerminalInput').value='Tell me about ${s.name}'; document.getElementById('archiveTerminalInput').focus();">
+            <tr style="cursor:pointer;" title="Click to summon forensic dossier in terminal" onclick="document.getElementById('archiveTerminalInput').value='Tell me about ${s.name}'; queryPageGhost('Tell me about ${s.name}'); window.scrollTo({top: 180, behavior: 'smooth'});">
               <td><strong>${s.name}</strong></td>
               <td><span class="status-pill" style="color:${color};">&#x25CF; ${s.status}</span></td>
               <td>${s.dls}</td>
