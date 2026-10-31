@@ -103,7 +103,17 @@ def ask_ghost(
         {"role": "user", "content": prompt},
     ]
 
-    raw_answer = call_ollama(model, messages).strip()
+    try:
+        raw_answer = call_ollama(model, messages).strip()
+    except (TimeoutError, urllib.error.URLError, OSError):
+        top_doc, _ = hits[0]
+        summary_lines = [
+            line.strip()
+            for line in top_doc.body.split("\n")
+            if line.strip() and not line.startswith("Repository:")
+        ]
+        summary_text = " ".join(summary_lines[:2]) if summary_lines else top_doc.body[:240]
+        raw_answer = f"{summary_text} ({top_doc.citation})"
 
     # Detect refusal or inability to answer
     refusal_pattern = re.compile(

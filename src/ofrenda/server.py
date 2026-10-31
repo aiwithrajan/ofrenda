@@ -54,7 +54,8 @@ class AltarHandler(SimpleHTTPRequestHandler):
                 AltarHandler.index = build_corpse_index()
 
             try:
-                res = ask_ghost(question, AltarHandler.index, model="gemma:2b", top_k=3, score_threshold=6.5)
+                threshold = 1.0 if len(AltarHandler.index.documents) < 100 else 6.0
+                res = ask_ghost(question, AltarHandler.index, model="gemma:2b", top_k=3, score_threshold=threshold)
             except Exception as e:
                 res = {
                     "question": question,
