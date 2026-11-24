@@ -16,7 +16,10 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
-from tabpfn import TabPFNClassifier
+try:
+    from tabpfn import TabPFNClassifier
+except ImportError:
+    TabPFNClassifier = None
 
 warnings.filterwarnings("ignore")
 
