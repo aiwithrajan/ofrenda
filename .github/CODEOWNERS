@@ -1,0 +1,11 @@
+# ==============================================================================
+# OFRENDA CODEOWNERS
+# ==============================================================================
+# Sole Lead Maintainer: Rajan Mishra (@aiwithrajan)
+# All pull requests, issues, reviews, and workflows require maintainer approval.
+
+* @aiwithrajan
+.github/ @aiwithrajan
+src/ @aiwithrajan
+altar/ @aiwithrajan
+tests/ @aiwithrajan

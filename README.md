@@ -3,6 +3,10 @@
 > **Hacktoberfest 2026 Week 4 Contest Entry — "Ghost in the Machine"**  
 > *Tags:* `#devchallenge`, `#hf26challenge`
 
+[![CI](https://github.com/aiwithrajan/ofrenda/actions/workflows/ci.yml/badge.svg)](https://github.com/aiwithrajan/ofrenda/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Maintainer](https://img.shields.io/badge/Maintainer-@aiwithrajan-amber.svg)](https://github.com/aiwithrajan)
+
 An empirical and forensic memorial to open source abandonment.
 
 ---

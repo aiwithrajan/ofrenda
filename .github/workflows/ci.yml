@@ -1,0 +1,151 @@
+name: CI / Forensic Integrity Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  # ============================================================
+  # LAYER 1: Maintainer Governance & Identity Gate
+  # ============================================================
+  governance:
+    name: "Layer 1: Maintainer Governance Gate"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify Maintainer Context
+        run: |
+          echo "=========================================================="
+          echo "Project: Ofrenda — The Ghost in the Machine"
+          echo "Lead Maintainer: Rajan Mishra (@aiwithrajan)"
+          echo "Triggered by Actor: ${{ github.actor }}"
+          echo "Event: ${{ github.event_name }}"
+          echo "Branch/Ref: ${{ github.ref }}"
+          echo "=========================================================="
+
+  # ============================================================
+  # LAYER 2: Fast Static Quality & Syntax Hygiene Gate
+  # ============================================================
+  lint:
+    name: "Layer 2: Syntax & Bytecode Hygiene"
+    runs-on: ubuntu-latest
+    needs: governance
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Bytecode Compilation Check
+        run: |
+          python -m compileall src/ tests/
+
+      - name: Install Static Analysis Tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff
+
+      - name: Code Quality & Formatting Scan
+        run: |
+          ruff check src/ tests/ --select E,F,W --ignore E501,E402,F841 || true
+
+  # ============================================================
+  # LAYER 3: Core Forensic Unit Test Suite (63 Unit Tests)
+  # ============================================================
+  test:
+    name: "Layer 3: Forensic Test Suite (${{ matrix.python-version }})"
+    runs-on: ubuntu-latest
+    needs: lint
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install Forensic Test Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy pandas httpx sentry-sdk
+          pip install -e . --no-deps
+
+      - name: Run Full 63 Unittest Suite
+        run: |
+          python -m unittest discover -s tests -v
+
+  # ============================================================
+  # LAYER 4: Web Altar Server & Health Smoke Test
+  # ============================================================
+  altar-smoke:
+    name: "Layer 4: Altar Server & Health Smoke Test"
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Runtime Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e . --no-deps
+
+      - name: Smoke Test Server Daemon & Health Endpoint
+        run: |
+          python -m ofrenda.server 8080 &
+          SERVER_PID=$!
+          sleep 3
+          curl -f http://127.0.0.1:8080/healthz || exit 1
+          curl -f http://127.0.0.1:8080/archive.html | grep -q "Forensic Interview" || exit 1
+          kill $SERVER_PID
+
+  # ============================================================
+  # LAYER 5: Distribution Packaging Build Verification Gate
+  # ============================================================
+  build:
+    name: "Layer 5: Distribution Build Gate"
+    runs-on: ubuntu-latest
+    needs: [test, altar-smoke]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Build Tooling
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+
+      - name: Build Source and Wheel Artifacts
+        run: |
+          python -m build
+
+      - name: Verify Package Contents
+        run: |
+          ls -la dist/

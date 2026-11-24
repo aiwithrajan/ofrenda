@@ -2,7 +2,15 @@
 name = "ofrenda"
 version = "0.1.0"
 description = "A forensic interview with a dead open-source project, and a forecast of when it stopped answering people."
+readme = "README.md"
+license = { text = "Apache-2.0" }
 requires-python = ">=3.11"
+authors = [
+  { name = "Rajan Mishra", email = "aiwithrajan@users.noreply.github.com" }
+]
+maintainers = [
+  { name = "Rajan Mishra (@aiwithrajan)", email = "aiwithrajan@users.noreply.github.com" }
+]
 
 dependencies = [
   "pandas>=2.2",
