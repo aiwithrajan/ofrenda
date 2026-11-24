@@ -85,7 +85,7 @@ jobs:
       - name: Install Forensic Test Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install numpy pandas httpx sentry-sdk
+          pip install numpy pandas scipy httpx sentry-sdk
           pip install -e . --no-deps
 
       - name: Run Full 63 Unittest Suite
